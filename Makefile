@@ -1,34 +1,36 @@
+# === COLORS ===
 RED=\033[1;31m
-YELLOW = \033[1;33m
-ORANGE = \033[1;38;5;214m
-GREEN = \033[1;32m
-CYAN = \033[1;36m
-RESET = \033[0m
+YELLOW=\033[1;33m
+ORANGE=\033[1;38;5;214m
+GREEN=\033[1;32m
+CYAN=\033[1;36m
+RESET=\033[0m
 
+# === NAME ===
 NAME = minishell
 
+# === COMPILATION ===
 CC = cc
-CFLAGS = -Wall -Werror -Wextra -lreadline
+CFLAGS = -Wall -Werror -Wextra -I$(INCLUDES) -I$(LIBFT_DIR)/include
 OBJDIR = build
+
+# === INCLUDES ===
 INCLUDES = include/
-INCLUDES_FLAGS = -I$(INCLUDES)
 
+# === LIBFT ===
+LIBFT_DIR = libft
+LIBFT = $(LIBFT_DIR)/libft.a
+
+# === SRC PATH ===
 SRC = src
-#MAIN = src/minishell.c
 
-# Dirs
+# === MODULE DIRS ===
 DIR_BUILT_INS = built_ins
 DIR_FD = .
-DIR_LISTS = ft_list
-DIR_MEM = ft_memory
-DIR_NUM = ft_num
-DIR_STR = ft_strings
-DIR_PRINTF = ft_printf
-DIR_GNL = gnl
 
-SRC_BUILT_INS =	pwd.c cd.c echo.c
-
-SRC_FD =	misc.c minishell.c
+# === FILES ===
+SRC_BUILT_INS = pwd.c cd.c echo.c
+SRC_FD = misc.c minishell.c
 
 SRC_LISTS =	
 
@@ -44,46 +46,44 @@ SRC_GNL =
 
 SRCS_DIR =	$(addprefix $(SRC)/, $(addprefix $(DIR_BUILT_INS)/, $(SRC_BUILT_INS))) \
 			$(addprefix $(SRC)/, $(addprefix $(DIR_FD)/, $(SRC_FD))) \
-			#$(addprefix $(SRC)/, $(addprefix $(DIR_GNL)/, $(SRC_GNL))) \
-			#$(addprefix $(SRC)/, $(addprefix $(DIR_STR)/, $(SRC_STR))) \
-			#$(addprefix $(SRC)/, $(addprefix $(DIR_CHECK)/, $(SRC_CHECK))) \
-			#$(addprefix $(SRC)/, $(addprefix $(DIR_LISTS)/, $(SRC_LISTS))) \
-			#$(addprefix $(SRC)/, $(addprefix $(DIR_MEM)/, $(SRC_MEM))) \
-			#$(addprefix $(SRC)/, $(addprefix $(DIR_NUM)/, $(SRC_NUM))) \
+			$(addprefix $(SRC)/, $(addprefix $(DIR_GNL)/, $(SRC_GNL))) \
+			$(addprefix $(SRC)/, $(addprefix $(DIR_STR)/, $(SRC_STR))) \
+			$(addprefix $(SRC)/, $(addprefix $(DIR_CHECK)/, $(SRC_CHECK))) \
+			$(addprefix $(SRC)/, $(addprefix $(DIR_LISTS)/, $(SRC_LISTS))) \
+			$(addprefix $(SRC)/, $(addprefix $(DIR_MEM)/, $(SRC_MEM))) \
+			$(addprefix $(SRC)/, $(addprefix $(DIR_NUM)/, $(SRC_NUM))) \
 
 OBJS_DIR = $(addprefix $(OBJDIR)/, $(SRCS_DIR:$(SRC)/%.c=%.o))
 
+# === RULES ===
 all: $(NAME)
 
-$(NAME): $(OBJS_MAIN) $(OBJS_DIR) $(LIBFT)
+$(NAME): $(OBJS_DIR) $(LIBFT)
 	@echo "$(YELLOW)Compiling $(NAME)...$(RESET)"
-	@$(CC) $(CFLAGS) $(OBJS_MAIN) $(OBJS_DIR) $(LIBFT) -o $(NAME)
+	@$(CC) $(CFLAGS) $(OBJS_DIR) $(LIBFT) -o $(NAME) -lreadline
+	@echo "$(GREEN)Done!$(RESET)"
 
-$(OBJS_MAIN): $(MAIN_SRC) | $(OBJS_DIR)
-	@$(CC) $(CFLAGS) -c $< -o $@ $(INCLUDE_FLAGS) -lreadline
+$(LIBFT):
+	@make -C $(LIBFT_DIR) -s
 
 $(OBJDIR):
 	@mkdir -p $(OBJDIR)
 
 $(OBJDIR)/%.o: $(SRC)/%.c
 	@mkdir -p $(@D)
-	@$(CC) $(CFLAGS) -c $< -o $@ $(INCLUDES_FLAGS)
-
-$(LIBFT):
-	@make -C ./libft -s
+	@$(CC) $(CFLAGS) -c $< -o $@
 
 clean:
 	@echo "$(RED)Removing objects$(RESET)"
-	@rm -rf $(OBJS_DIR)
-	@make clean -C ./libft -s
+	@rm -rf $(OBJDIR)
+	@make clean -C $(LIBFT_DIR) -s
 
 fclean: clean
 	@echo "$(RED)Removing $(NAME)$(RESET)"
 	@rm -rf $(NAME)
-	@echo "$(RED)Removing Libft$(RESET)"
-	@rm -rf $(LIBFT)
+	@make fclean -C $(LIBFT_DIR) -s
 
-re:	fclean all
+re: fclean all
 	@echo "$(ORANGE)Re-Done!!$(RESET)"
 
 .PHONY: all clean fclean re
