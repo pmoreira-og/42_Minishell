@@ -22,7 +22,7 @@ typedef struct s_cmd
 
 
 // misc
-void	printASCII(void);
+void	printascii(void);
 
 // built in functions:
 void	echo(t_cmd cmd);
