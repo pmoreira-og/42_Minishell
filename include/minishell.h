@@ -20,12 +20,21 @@ typedef struct s_cmd
 	struct s_cmd	*next; // Para pipes
 }	t_cmd;
 
+typedef struct s_env
+{
+	char			*var;
+	char			*value;
+	struct s_env	*next;
+}	t_env;
 
-// misc
+
+// miscs:
 void	printascii(void);
 
 // built in functions:
 void	echo(t_cmd cmd);
 void	pwd(t_cmd cmd);
 void	cd(t_cmd cmd);
-// void	update_pwd_env();
+
+// enviroment management:
+void	ft_setenv(t_env **env, char *var, char *value);

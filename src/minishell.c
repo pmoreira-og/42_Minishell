@@ -12,7 +12,7 @@
 
 #include "minishell.h"
 
-int	is_builtin(t_cmd cmd)
+static int	is_builtin(t_cmd cmd)
 {
 	if (!ft_strcmp(cmd.argv[0], "echo"))
 		return (1);
@@ -23,7 +23,7 @@ int	is_builtin(t_cmd cmd)
 	return (0);
 }
 
-void	list_builtin(t_cmd cmd)
+static void	list_builtin(t_cmd cmd)
 {
 	if (!ft_strcmp(cmd.argv[0], "echo"))
 		echo(cmd);

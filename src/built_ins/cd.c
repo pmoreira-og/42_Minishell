@@ -11,8 +11,27 @@
 /* ************************************************************************** */
 
 #include "minishell.h"
+// dd para double dots btw, n pensei em nome melhor ent se quiser mudar va em frentekkkk
+/* static void	dd_handler(char *path)
+{
 
+} */
 
+/* static int	dd_check(char *path)
+{
+	char	**dirs;
+	int		i;
+
+	i = 0;
+	dirs = ft_split(path, '/');
+	while (dirs[i] && ft_strcmp(dirs[i], ".."))
+	{
+		i++;
+		if (!dirs[i])
+			return(0);
+	}
+	return (1);
+} */
 
 void	cd(t_cmd cmd)
 {
@@ -25,12 +44,15 @@ void	cd(t_cmd cmd)
 		exit(1);
 	if (!cmd.argv[1])
 		chdir(getenv("HOME"));
-	else if (!ft_strcmp(cmd.argv[1], "/"))
+	else if (!ft_strcmp(cmd.argv[1][0], "/"))
 		chdir("/");
-	else if (cmd.argv[1])
+
+/* 	else if (cmd.argv[1])
 	{
+		if (dd_check(cmd.argv[1]))
+			printf("..");
 		n_path = ft_strjoin(c_path, "/");
 		n_path = ft_strjoin(n_path, cmd.argv[1]);
 		chdir(n_path);
-	}
+	} */
 }

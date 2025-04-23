@@ -30,7 +30,7 @@ DIR_FD = .
 
 # === FILES ===
 SRC_BUILT_INS = pwd.c cd.c echo.c
-SRC_FD = misc.c minishell.c
+SRC_FD = misc.c minishell.c env.c
 
 SRC_LISTS =	
 
