@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cd.c                                               :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ernda-si <ernda-si@student.42.fr>          +#+  +:+       +#+        */
+/*   By: pmoreira <pmoreira@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/23 12:12:04 by ernda-si          #+#    #+#             */
-/*   Updated: 2025/04/23 13:37:32 by ernda-si         ###   ########.fr       */
+/*   Updated: 2025/04/24 14:11:22 by pmoreira         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,16 +35,16 @@
 
 void	cd(t_cmd cmd)
 {
-	char	*c_path;
-	char	*n_path;
+	// char	*c_path;
+	// char	*n_path;
 
 	(void)cmd;
-	c_path = getcwd(NULL, 0);
+	// c_path = getcwd(NULL, 0);
 	if (cmd.argc > 2)
 		exit(1);
 	if (!cmd.argv[1])
 		chdir(getenv("HOME"));
-	else if (!ft_strcmp(cmd.argv[1][0], "/"))
+	else if (!ft_strcmp(cmd.argv[1], "/"))
 		chdir("/");
 
 /* 	else if (cmd.argv[1])

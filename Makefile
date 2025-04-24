@@ -11,7 +11,7 @@ NAME = minishell
 
 # === COMPILATION ===
 CC = cc
-CFLAGS = -Wall -Werror -Wextra -I$(INCLUDES) -I$(LIBFT_DIR)/include
+CFLAGS = -Wall -Werror -Wextra -I$(INCLUDES) -I$(LIBFT_DIR)/include -g
 OBJDIR = build
 
 # === INCLUDES ===
@@ -27,14 +27,17 @@ SRC = src
 # === MODULE DIRS ===
 DIR_BUILT_INS = built_ins
 DIR_FD = .
+DIR_PIPEX = pipex
+DIR_PARSE = parse
 
 # === FILES ===
 SRC_BUILT_INS = pwd.c cd.c echo.c
+
 SRC_FD = misc.c minishell.c env.c
 
-SRC_LISTS =	
+SRC_PIPEX =	pipex.c aux.c utils.c ft_parse.c
 
-SRC_MEM =	
+SRC_PARSE =	first.c
 
 SRC_NUM =	
 
@@ -46,8 +49,8 @@ SRC_GNL =
 
 SRCS_DIR =	$(addprefix $(SRC)/, $(addprefix $(DIR_BUILT_INS)/, $(SRC_BUILT_INS))) \
 			$(addprefix $(SRC)/, $(addprefix $(DIR_FD)/, $(SRC_FD))) \
-			$(addprefix $(SRC)/, $(addprefix $(DIR_GNL)/, $(SRC_GNL))) \
-			$(addprefix $(SRC)/, $(addprefix $(DIR_STR)/, $(SRC_STR))) \
+			$(addprefix $(SRC)/, $(addprefix $(DIR_PIPEX)/, $(SRC_PIPEX))) \
+			$(addprefix $(SRC)/, $(addprefix $(DIR_PARSE)/, $(SRC_PARSE))) \
 			$(addprefix $(SRC)/, $(addprefix $(DIR_CHECK)/, $(SRC_CHECK))) \
 			$(addprefix $(SRC)/, $(addprefix $(DIR_LISTS)/, $(SRC_LISTS))) \
 			$(addprefix $(SRC)/, $(addprefix $(DIR_MEM)/, $(SRC_MEM))) \

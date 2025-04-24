@@ -1,24 +1,66 @@
-#include <stdlib.h>
-#include <stdio.h>
-#include <string.h>
-#include <signal.h>
-#include <unistd.h>
-#include <readline/readline.h>
-#include <readline/history.h>
-#include "../libft/include/libft.h"
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   minishell.h                                        :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: pmoreira <pmoreira@student.42lisboa.com    +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2025/04/24 14:48:17 by pmoreira          #+#    #+#             */
+/*   Updated: 2025/04/24 17:01:50 by pmoreira         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
 
+#ifndef MINISHELL_H
+# define MINISHELL_H
 
+# include <stdlib.h>
+# include <stdio.h>
+# include <string.h>
+# include <signal.h>
+# include <unistd.h>
+# include <readline/readline.h>
+# include <readline/history.h>
+# include "../libft/include/libft.h"
+# include "pipex.h"
+# include "parse.h"
+
+# define HIST_FILE "minishell_history"
+
+typedef enum s_bool
+{
+	FALSE,
+	TRUE
+}	t_bool;
+
+/// @brief Command Structure
+/// @param argc Number of tokens
+/// @param argv Matrix that contains command plus args
+/// @param infile Filename (char *)
+/// @param outfile Filename (char *)
+/// @param append Flag: 0 for >, 1 for >>
+/// @param heredoc Heredoc flag
+/// @param delimiter Heredoc demiliter string
+/// @param next Next cmd node
 typedef struct s_cmd
 {
-	int				argc; // quantidade de tokens
-	char			**argv; // Comando + argumentos
-	char			*infile; // Para redirecionamento <
-	char			*outfile; // Para > ou >>
-	int				append; // 0 para >, 1 para >>
-	int				heredoc; // 1 se for <<, 0 caso contrário
-	char			*delimiter; // Delimitador do heredoc
-	struct s_cmd	*next; // Para pipes
+	int				argc;
+	int				hist_fd;
+	char			**argv;
+	char			*infile;
+	char			*outfile;
+	t_bool			append;
+	t_bool			heredoc;
+	char			*delimiter;
+	struct s_cmd	*next;
 }	t_cmd;
+
+typedef struct s_token
+{
+	t_type			type;
+	char			*cmd;
+	char			**args;
+	struct s_token	*next;
+}	t_token;
 
 typedef struct s_env
 {
@@ -30,6 +72,10 @@ typedef struct s_env
 
 // miscs:
 void	printascii(void);
+int		get_history_fd(t_cmd *cmd);
+void	load_history(t_cmd *cmd);
+void	save_history(char *input, t_cmd *cmd);
+
 
 // built in functions:
 void	echo(t_cmd cmd);
@@ -38,3 +84,5 @@ void	cd(t_cmd cmd);
 
 // enviroment management:
 void	ft_setenv(t_env **env, char *var, char *value);
+
+#endif
