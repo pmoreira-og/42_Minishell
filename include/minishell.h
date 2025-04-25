@@ -6,7 +6,7 @@
 /*   By: pmoreira <pmoreira@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/24 14:48:17 by pmoreira          #+#    #+#             */
-/*   Updated: 2025/04/24 17:01:50 by pmoreira         ###   ########.fr       */
+/*   Updated: 2025/04/25 12:33:51 by pmoreira         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,6 +31,13 @@ typedef enum s_bool
 	FALSE,
 	TRUE
 }	t_bool;
+
+typedef struct s_hell
+{
+	struct s_cmd	*cmd;
+	struct s_env	*env;
+	int				status;
+}	t_hell;
 
 /// @brief Command Structure
 /// @param argc Number of tokens
@@ -69,20 +76,21 @@ typedef struct s_env
 	struct s_env	*next;
 }	t_env;
 
-
 // miscs:
 void	printascii(void);
 int		get_history_fd(t_cmd *cmd);
 void	load_history(t_cmd *cmd);
 void	save_history(char *input, t_cmd *cmd);
 
-
 // built in functions:
-void	echo(t_cmd cmd);
-void	pwd(t_cmd cmd);
-void	cd(t_cmd cmd);
+void	mini_echo(t_cmd *cmd);
+void	mini_pwd(t_cmd *cmd);
+void	mini_cd(t_cmd *cmd, t_env *env);
+void	mini_env(t_env *env);
+void	mini_exit(t_hell *hell);
 
 // enviroment management:
+void	init_env(t_env **env, char **envp);
 void	ft_setenv(t_env **env, char *var, char *value);
 
 #endif
