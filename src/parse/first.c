@@ -1,28 +1,27 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   pwd.c                                              :+:      :+:    :+:   */
+/*   first.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: pmoreira <pmoreira@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/04/23 12:12:02 by ernda-si          #+#    #+#             */
-/*   Updated: 2025/04/25 12:13:53 by pmoreira         ###   ########.fr       */
+/*   Created: 2025/04/24 14:39:15 by pmoreira          #+#    #+#             */
+/*   Updated: 2025/04/24 15:15:08 by pmoreira         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "minishell.h"
-#include <readline/history.h>
-#include <unistd.h>
+# include "minishell.h"
 
-void	mini_pwd(t_cmd *cmd)
+void	print_input(char *input)
 {
-	char *current;
+	char	**matrix;
+	int	i;
 
-	(void)cmd;
-	current = getcwd(NULL, 0);
-	if (!current)
-		printf("Error 'pwd'\n");
-	printf("%s\n", current);
-	free(current);
-	return ;
+	matrix = ft_parse(input, ' ');
+	if (!matrix)
+		return ;
+	i = -1;
+	while (matrix[++i])
+		printf("%s\n", matrix[i]);
+	ft_clean_matrix(matrix);
 }

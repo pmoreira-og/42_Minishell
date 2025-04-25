@@ -1,28 +1,30 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   pwd.c                                              :+:      :+:    :+:   */
+/*   env.c                                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: pmoreira <pmoreira@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/04/23 12:12:02 by ernda-si          #+#    #+#             */
-/*   Updated: 2025/04/25 12:13:53 by pmoreira         ###   ########.fr       */
+/*   Created: 2025/04/25 12:15:18 by pmoreira          #+#    #+#             */
+/*   Updated: 2025/04/25 12:15:33 by pmoreira         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minishell.h"
-#include <readline/history.h>
-#include <unistd.h>
 
-void	mini_pwd(t_cmd *cmd)
+void	mini_env(t_env *env)
 {
-	char *current;
+	t_env *temp;
 
-	(void)cmd;
-	current = getcwd(NULL, 0);
-	if (!current)
-		printf("Error 'pwd'\n");
-	printf("%s\n", current);
-	free(current);
+	temp = env;
+	while (temp)
+	{
+		printf("%s=", temp->var);
+		if (temp->value)
+			printf("%s\n", temp->value);
+		else
+			printf("\n");
+		temp = temp->next;
+	}
 	return ;
 }
