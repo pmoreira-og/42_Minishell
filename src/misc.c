@@ -6,7 +6,7 @@
 /*   By: pmoreira <pmoreira@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/23 12:11:56 by ernda-si          #+#    #+#             */
-/*   Updated: 2025/04/24 16:57:56 by pmoreira         ###   ########.fr       */
+/*   Updated: 2025/04/25 13:50:30 by pmoreira         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,44 +30,37 @@ void	printascii(void)
 
 int	get_history_fd(t_cmd *cmd)
 {
-	char	*temp;
-	char	*path;
-	
-	temp = getcwd(NULL, 0);
-	if (!temp)
-		return (1);
-	path = ft_strjoin(temp, HIST_FILE);
-	if (!path)
-		return (1);
-	cmd->hist_fd = open(path, O_RDWR | O_CREAT , 0766);
+	cmd->hist_fd = open(HIST_FILE, O_RDWR | O_APPEND | O_CREAT , 0766);
 	if (cmd->hist_fd == -1)
 		return (printf("DEU RUIM"), 1);
-	// free(temp);
-	free(path);
 	return (0);
 }
 
 void load_history(t_cmd *cmd)
 {
-	char	*temp;
+	char		*temp;
+	char	temp2[1024];
+	int			size;
 
 	if (cmd->hist_fd == -1)
 		return ;
+	ft_bzero(&temp2, 1024);
 	while (1)
 	{
 		temp = get_next_line(cmd->hist_fd);
 		if (!temp)
 			break ;
-		add_history(temp);
+		size = ft_strlen(temp);
+		ft_strlcpy(temp2, temp, size);
+		add_history(temp2);
 		free(temp);
 	}
 }
 
 void save_history(char *input, t_cmd *cmd)
 {
-	if (cmd->hist_fd == -1 || !input)
+	if (cmd->hist_fd == -1 || !input || !ft_strcmp(input, "exit"))
 		return;
-	write(cmd->hist_fd, input, ft_strlen(input));
+	ft_putendl_fd(input, cmd->hist_fd);
 	add_history(input);
-
 }
