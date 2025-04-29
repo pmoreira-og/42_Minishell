@@ -6,7 +6,7 @@
 /*   By: pmoreira <pmoreira@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/23 12:17:06 by ernda-si          #+#    #+#             */
-/*   Updated: 2025/04/25 13:08:41 by pmoreira         ###   ########.fr       */
+/*   Updated: 2025/04/25 14:57:02 by pmoreira         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,6 +58,7 @@ int	main(int ac, char **av, char **envp)
 	hell->cmd->argv = NULL;
 	hell->env = NULL;
 	init_env(&hell->env, envp);
+	hell->envp = envp;
 	if (ac == 2 && !ft_strcmp(av[1], "-b"))
 		printascii();
 	if (!get_history_fd(hell->cmd))
@@ -66,6 +67,7 @@ int	main(int ac, char **av, char **envp)
 	{
 		input = readline("\033[1;31mMinishell$\033[0m ");
 		save_history(input, hell->cmd);
+		print_input(input, hell);
 		hell->cmd->argv = ft_split(input, ' ');
 		if (is_builtin(hell) && hell->cmd->argv[0])
 			list_builtin(hell);

@@ -6,7 +6,7 @@
 /*   By: pmoreira <pmoreira@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/24 14:48:17 by pmoreira          #+#    #+#             */
-/*   Updated: 2025/04/25 12:33:51 by pmoreira         ###   ########.fr       */
+/*   Updated: 2025/04/25 15:05:13 by pmoreira         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,59 +22,12 @@
 # include <readline/history.h>
 # include "../libft/include/libft.h"
 # include "pipex.h"
-# include "parse.h"
+# include "structs.h"
 
 # define HIST_FILE "minishell_history"
 
-typedef enum s_bool
-{
-	FALSE,
-	TRUE
-}	t_bool;
-
-typedef struct s_hell
-{
-	struct s_cmd	*cmd;
-	struct s_env	*env;
-	int				status;
-}	t_hell;
-
-/// @brief Command Structure
-/// @param argc Number of tokens
-/// @param argv Matrix that contains command plus args
-/// @param infile Filename (char *)
-/// @param outfile Filename (char *)
-/// @param append Flag: 0 for >, 1 for >>
-/// @param heredoc Heredoc flag
-/// @param delimiter Heredoc demiliter string
-/// @param next Next cmd node
-typedef struct s_cmd
-{
-	int				argc;
-	int				hist_fd;
-	char			**argv;
-	char			*infile;
-	char			*outfile;
-	t_bool			append;
-	t_bool			heredoc;
-	char			*delimiter;
-	struct s_cmd	*next;
-}	t_cmd;
-
-typedef struct s_token
-{
-	t_type			type;
-	char			*cmd;
-	char			**args;
-	struct s_token	*next;
-}	t_token;
-
-typedef struct s_env
-{
-	char			*var;
-	char			*value;
-	struct s_env	*next;
-}	t_env;
+// parse:
+void	print_input(char *input, t_hell *data);
 
 // miscs:
 void	printascii(void);

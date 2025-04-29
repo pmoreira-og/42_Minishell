@@ -1,17 +1,23 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   parse.h                                            :+:      :+:    :+:   */
+/*   structs.h                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: pmoreira <pmoreira@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/24 15:03:58 by pmoreira          #+#    #+#             */
-/*   Updated: 2025/04/24 15:05:41 by pmoreira         ###   ########.fr       */
+/*   Updated: 2025/04/25 15:02:27 by pmoreira         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef PARSE_H
 # define PARSE_H
+
+typedef enum s_bool
+{
+	FALSE,
+	TRUE
+}	t_bool;
 
 /// @brief Enumeration of all possible node types
 /// @param CMD Commands
@@ -36,6 +42,50 @@ typedef enum s_type
 	BUILT_IN,
 }	t_type;
 
-void	print_input(char *input);
+typedef struct s_hell
+{
+	struct s_cmd	*cmd;
+	struct s_env	*env;
+	char			**envp;
+	char			**path;
+	int				status;
+}	t_hell;
+
+/// @brief Command Structure
+/// @param argc Number of tokens
+/// @param argv Matrix that contains command plus args
+/// @param infile Filename (char *)
+/// @param outfile Filename (char *)
+/// @param append Flag: 0 for >, 1 for >>
+/// @param heredoc Heredoc flag
+/// @param delimiter Heredoc demiliter string
+/// @param next Next cmd node
+typedef struct s_cmd
+{
+	int				argc;
+	int				hist_fd;
+	char			**argv;
+	char			*infile;
+	char			*outfile;
+	t_bool			append;
+	t_bool			heredoc;
+	char			*delimiter;
+	struct s_cmd	*next;
+}	t_cmd;
+
+typedef struct s_token
+{
+	t_type			type;
+	char			*cmd;
+	char			**args;
+	struct s_token	*next;
+}	t_token;
+
+typedef struct s_env
+{
+	char			*var;
+	char			*value;
+	struct s_env	*next;
+}	t_env;
 
 #endif
