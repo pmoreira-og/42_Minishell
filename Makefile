@@ -9,6 +9,9 @@ RESET=\033[0m
 # === NAME ===
 NAME = minishell
 
+# === VALGRIND FLAGS ===
+# valgrind --leak-check=full --show-leak-kinds=all --track-fds=yes --track-origins=yes --suppressions=readline.supp
+
 # === COMPILATION ===
 CC = cc
 CFLAGS = -Wall -Werror -Wextra -I$(INCLUDES) -I$(LIBFT_DIR)/include -g
