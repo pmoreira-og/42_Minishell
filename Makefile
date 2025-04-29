@@ -32,6 +32,7 @@ DIR_BUILT_INS = built_ins
 DIR_FD = .
 DIR_PIPEX = pipex
 DIR_PARSE = parse
+DIR_UTILS = utils
 
 # === FILES ===
 SRC_BUILT_INS = pwd.c cd.c echo.c env.c exit.c
@@ -42,7 +43,7 @@ SRC_PIPEX =	pipex.c aux.c utils.c ft_parse.c
 
 SRC_PARSE =	first.c
 
-SRC_NUM =	
+SRC_UTILS =	cleaners.c constructors.c
 
 SRC_STR =	
 
@@ -54,7 +55,7 @@ SRCS_DIR =	$(addprefix $(SRC)/, $(addprefix $(DIR_BUILT_INS)/, $(SRC_BUILT_INS))
 			$(addprefix $(SRC)/, $(addprefix $(DIR_FD)/, $(SRC_FD))) \
 			$(addprefix $(SRC)/, $(addprefix $(DIR_PIPEX)/, $(SRC_PIPEX))) \
 			$(addprefix $(SRC)/, $(addprefix $(DIR_PARSE)/, $(SRC_PARSE))) \
-			$(addprefix $(SRC)/, $(addprefix $(DIR_CHECK)/, $(SRC_CHECK))) \
+			$(addprefix $(SRC)/, $(addprefix $(DIR_UTILS)/, $(SRC_UTILS))) \
 			$(addprefix $(SRC)/, $(addprefix $(DIR_LISTS)/, $(SRC_LISTS))) \
 			$(addprefix $(SRC)/, $(addprefix $(DIR_MEM)/, $(SRC_MEM))) \
 			$(addprefix $(SRC)/, $(addprefix $(DIR_NUM)/, $(SRC_NUM))) \

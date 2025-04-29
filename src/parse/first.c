@@ -6,7 +6,7 @@
 /*   By: pmoreira <pmoreira@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/24 14:39:15 by pmoreira          #+#    #+#             */
-/*   Updated: 2025/04/25 15:14:47 by pmoreira         ###   ########.fr       */
+/*   Updated: 2025/04/29 10:56:30 by pmoreira         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,6 +35,11 @@ t_bool	is_command(char *s, t_token *tok, char **path)
 void	token_type(char *s, char **path)
 {
 	printf("%s -> ", s);
+	if (!ft_strcmp(s, ">>"))
+		printf("append");
+	if (!ft_strcmp(s, ">"))
+		printf("redirect");
+		
 	if (is_command(s, NULL, path))
 		printf("TRUE\n");
 	else
