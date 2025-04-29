@@ -6,7 +6,7 @@
 /*   By: pmoreira <pmoreira@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/24 14:48:17 by pmoreira          #+#    #+#             */
-/*   Updated: 2025/04/25 15:05:13 by pmoreira         ###   ########.fr       */
+/*   Updated: 2025/04/29 11:43:53 by pmoreira         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,9 +31,9 @@ void	print_input(char *input, t_hell *data);
 
 // miscs:
 void	printascii(void);
-int		get_history_fd(t_cmd *cmd);
-void	load_history(t_cmd *cmd);
-void	save_history(char *input, t_cmd *cmd);
+int		get_history_fd(t_hell *cmd);
+void	load_history(t_hell *cmd);
+void	save_history(char *input, t_hell *cmd);
 
 // built in functions:
 void	mini_echo(t_cmd *cmd);
@@ -45,5 +45,10 @@ void	mini_exit(t_hell *hell);
 // enviroment management:
 void	init_env(t_env **env, char **envp);
 void	ft_setenv(t_env **env, char *var, char *value);
+
+// Utils
+void	armageddon(t_hell *data);
+t_hell	*init_hell(int ac, char **av,char **envp);
+
 
 #endif

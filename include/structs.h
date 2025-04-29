@@ -6,7 +6,7 @@
 /*   By: pmoreira <pmoreira@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/24 15:03:58 by pmoreira          #+#    #+#             */
-/*   Updated: 2025/04/25 15:02:27 by pmoreira         ###   ########.fr       */
+/*   Updated: 2025/04/29 11:18:17 by pmoreira         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,6 +49,7 @@ typedef struct s_hell
 	char			**envp;
 	char			**path;
 	int				status;
+	int				hist_fd;
 }	t_hell;
 
 /// @brief Command Structure
@@ -63,7 +64,6 @@ typedef struct s_hell
 typedef struct s_cmd
 {
 	int				argc;
-	int				hist_fd;
 	char			**argv;
 	char			*infile;
 	char			*outfile;
