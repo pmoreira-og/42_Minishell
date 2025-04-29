@@ -6,59 +6,70 @@
 /*   By: pmoreira <pmoreira@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/24 14:39:15 by pmoreira          #+#    #+#             */
-/*   Updated: 2025/04/29 10:56:30 by pmoreira         ###   ########.fr       */
+/*   Updated: 2025/04/29 16:06:38 by pmoreira         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 # include "minishell.h"
 
-t_bool	is_command(char *s, t_token *tok, char **path)
+void	token_type(char *s, t_token *tok , t_token *prev, char **path)
 {
-	int		i;
-	char	*temp;
-
-	i = 0;
-	(void) tok;
-	while(path && path[i])
-	{
-		temp = ft_strjoin(path[i], s);
-		if (!temp)
-			return (FALSE);
-		if (access(temp, F_OK) != -1)
-			return (TRUE);
-		free(temp);
-		i++;
-	}
-	return (FALSE);
+	printf("%s -> \n", s);
+	if (check_prev(prev, tok))
+		return ;
+	else if (is_builtin(s))
+		tok->type = BUILT_IN;
+	else if (!ft_strcmp(s, ">>"))
+		tok->type = REDIR_OUT_APPEND;
+	else if (!ft_strcmp(s, ">"))
+		tok->type = REDIR_OUT;
+	else if (!ft_strcmp(s, "<"))
+		tok->type = REDIR_IN;
+	else if (!ft_strcmp(s, "<<"))
+		tok->type = REDIR_HERE_DOC;
+	else if (!ft_strcmp(s, "|"))
+		tok->type = PIPE;
+	else if (is_command(s, path))
+		tok->type = CMD;
+	// printf("%d\n", tok->type);
 }
 
-void	token_type(char *s, char **path)
+void	print_token(t_token *toks)
 {
-	printf("%s -> ", s);
-	if (!ft_strcmp(s, ">>"))
-		printf("append");
-	if (!ft_strcmp(s, ">"))
-		printf("redirect");
-		
-	if (is_command(s, NULL, path))
-		printf("TRUE\n");
-	else
-		printf("FALSE\n");
+	t_token	*temp;
+	int		i;
+
+	temp = toks;
+	i = 0;
+	while (temp->next)
+	{
+		printf("[%d]: %d\n", i, temp->type);
+		i++;
+		temp = temp->next;
+	}
 }
 
 void	print_input(char *input, t_hell *data)
 {
 	char	**matrix;
-	int	i;
+	int		i;
+	t_token	*temp;
 
-	data->path = ft_getenv(data->envp, "PATH", ':');
-	if (!data->path)
-		return ((void) printf("Error path \n"));
 	matrix = ft_parse(input, ' ');
 	if (!matrix)
 		return ;
 	i = -1;
+	temp = data->tokens;
 	while (matrix[++i])
-		token_type(matrix[i], data->path);
+	{
+		token_type(matrix[i], temp, temp->prev, data->path);
+		temp->next = ft_calloc(1, sizeof(t_token));
+		if (!temp->next)
+			return ;
+		temp->next->prev = temp;
+		temp = temp->next;
+	}
+	print_token(data->tokens);
 	ft_clean_matrix(matrix);
 }
+

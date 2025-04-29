@@ -6,7 +6,7 @@
 /*   By: pmoreira <pmoreira@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/24 15:03:58 by pmoreira          #+#    #+#             */
-/*   Updated: 2025/04/29 11:18:17 by pmoreira         ###   ########.fr       */
+/*   Updated: 2025/04/29 15:44:17 by pmoreira         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,12 +40,15 @@ typedef enum s_type
 	REDIR_OUT,
 	REDIR_OUT_APPEND,
 	BUILT_IN,
+	INFILE,
+	OUTFILE,
 }	t_type;
 
 typedef struct s_hell
 {
 	struct s_cmd	*cmd;
 	struct s_env	*env;
+	struct s_token	*tokens;
 	char			**envp;
 	char			**path;
 	int				status;
@@ -79,6 +82,7 @@ typedef struct s_token
 	char			*cmd;
 	char			**args;
 	struct s_token	*next;
+	struct s_token	*prev;
 }	t_token;
 
 typedef struct s_env

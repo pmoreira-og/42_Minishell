@@ -6,7 +6,7 @@
 /*   By: pmoreira <pmoreira@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/24 14:48:17 by pmoreira          #+#    #+#             */
-/*   Updated: 2025/04/29 11:43:53 by pmoreira         ###   ########.fr       */
+/*   Updated: 2025/04/29 15:14:33 by pmoreira         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,6 +49,8 @@ void	ft_setenv(t_env **env, char *var, char *value);
 // Utils
 void	armageddon(t_hell *data);
 t_hell	*init_hell(int ac, char **av,char **envp);
-
+t_bool	is_builtin(char *s);
+t_bool	is_command(char *s, char **path);
+int		check_prev(t_token *prev, t_token *current);
 
 #endif

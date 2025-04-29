@@ -43,7 +43,7 @@ SRC_PIPEX =	pipex.c aux.c utils.c ft_parse.c
 
 SRC_PARSE =	first.c
 
-SRC_UTILS =	cleaners.c constructors.c
+SRC_UTILS =	cleaners.c constructors.c checkers.c
 
 SRC_STR =	
 
