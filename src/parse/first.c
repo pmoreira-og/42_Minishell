@@ -6,7 +6,7 @@
 /*   By: pmoreira <pmoreira@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/24 14:39:15 by pmoreira          #+#    #+#             */
-/*   Updated: 2025/04/29 16:06:38 by pmoreira         ###   ########.fr       */
+/*   Updated: 2025/04/30 13:47:38 by pmoreira         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,6 @@
 
 void	token_type(char *s, t_token *tok , t_token *prev, char **path)
 {
-	printf("%s -> \n", s);
 	if (check_prev(prev, tok))
 		return ;
 	else if (is_builtin(s))
@@ -29,24 +28,48 @@ void	token_type(char *s, t_token *tok , t_token *prev, char **path)
 		tok->type = REDIR_HERE_DOC;
 	else if (!ft_strcmp(s, "|"))
 		tok->type = PIPE;
-	else if (is_command(s, path))
+	else if (*s && is_command(s, path))
 		tok->type = CMD;
-	// printf("%d\n", tok->type);
+}
+
+int	valid_input(t_token *tok)
+{
+	t_bool	cmd;
+	t_token	*temp;
+
+	temp = tok;
+	cmd = FALSE;
+	while (temp->next)
+	{
+		if (temp->type == CMD || temp->type == BUILT_IN)
+			cmd = TRUE;
+		temp = temp->next;
+	}
+	if (temp->type == REDIR_HERE_DOC)
+		return (0);
+	else if (temp->type == REDIR_OUT)
+		return (0);
+	else if (temp->type == REDIR_OUT_APPEND)
+		return (0);
+	else if (temp->type == REDIR_IN)
+		return (0);
+	if (!cmd)
+		return (0);
+	return (1);
 }
 
 void	print_token(t_token *toks)
 {
 	t_token	*temp;
-	int		i;
 
 	temp = toks;
-	i = 0;
 	while (temp->next)
 	{
-		printf("[%d]: %d\n", i, temp->type);
-		i++;
+		printf("[%s]: %d\n", temp->cmd, temp->type);
 		temp = temp->next;
 	}
+	if (!valid_input(toks))
+		printf("inpu invalido!");
 }
 
 void	print_input(char *input, t_hell *data)
@@ -66,6 +89,7 @@ void	print_input(char *input, t_hell *data)
 		temp->next = ft_calloc(1, sizeof(t_token));
 		if (!temp->next)
 			return ;
+		temp->cmd = ft_strdup(matrix[i]);
 		temp->next->prev = temp;
 		temp = temp->next;
 	}
