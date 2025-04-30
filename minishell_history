@@ -1,0 +1,230 @@
+echo a
+echo -n a
+clear
+env
+export oi=abc
+export oi=abc
+env
+export oi=abc
+export oi
+export
+export "a =abc"
+clear
+env
+export a=aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa
+export a=a
+export a=ac
+export a=abc
+export a=abc
+export a=abc
+export a
+export a=abc
+export "a=abc"
+export a
+export a=bc
+export a =bc
+export "a =bc"
+export "a b"
+export "a b=a"
+export "ab=a"
+clear
+env
+export a=aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa
+env
+export a=abc
+export a=aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa
+env
+env
+cd ..
+env
+cd ~/home
+pwd
+cd ~/dev/minishell
+pwd
+env
+clear
+pwd
+cd ..
+pwd
+env
+env
+cd ..
+env
+cd ..
+env
+clear
+export a=aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa
+env
+clear
+env
+export test_var=test_value
+env
+unset test_var
+unset aaaaaaa
+env
+env
+export a=abc
+env
+unset a
+clear
+export a=aaaaaaaaaaaaaaaaaaaaaaa
+env
+unser a
+unset a
+env
+clear
+clear
+export a=aaaaaaaaaaa
+unset a
+emnv
+env
+env
+export a=aaaaaa
+env
+unset a
+env
+env
+clear
+env
+export a=aaaa
+env
+unset a
+env
+clear
+env
+export a=aaaaaaaa
+env
+unset a
+env
+echo $$
+clear
+clear
+echo a a
+echo a
+clear
+echo $PATH
+echo -
+echo -
+echo -n
+clear
+clear -na
+clear
+echo $PATH
+echo a
+env
+echo a
+echo path
+echo PATH
+echo $PATH
+echo $a
+clear
+env
+echo $TERM_PROGRAM_VERSION
+clear
+echo $a
+clear
+echo $PATH
+echo $PATH
+clear
+echo a
+echo $a
+echo a
+cleaa
+echo $a
+echo a
+echo $PATH
+clear
+echo a$PATH
+echo $PATH
+clear
+echo a
+echo $PATH
+echo a$PATH
+echo a$PATHa
+echo a$PATH
+echo a$PATH a
+clear
+echo $PATH
+echo $PATHa
+clear
+echo a$PATH
+echo a
+clear
+echo
+echo $PATH
+echo $PATH
+echo $PATHa
+echo a$PATh
+echo a$PATH
+clear
+echo $PATh
+echo $PATH
+clear
+echo $PATH
+echo a$PATH
+echo a$PATHa
+echo a$PATH a
+echo $PATH
+echo aaaaaa$PATH
+clear
+echo $PATH
+echo a$PATH
+echo $PATH
+echo a$PATH
+echo aa$PATH
+clear
+echo $PATH
+echo a$PATH
+echo aaaa$PATH
+echo aaaaaaaaaaaaaaaaaaaaaaaaaaaa$PATH
+echo aaaa$PATH
+echo $PATH
+echo a$PATH
+echo a$PATHa
+echo a$PATH a
+echo a$PATH a a
+echo a$PATH a a a
+echo $PATH
+clear
+echo $PATH
+echo $PATH a
+
+echo a$PATH a
+echo $PATH
+echo a$PATH
+echo $PATH
+echo a$PATH
+echo a$PATHa
+echo a"$PATH"a
+echo a"$PATH"
+echo a"$PATH
+echo abc$PATH
+clear
+echo abc$PATH
+echo abc$PATH
+echo abcd$PATH
+echo abcdef$PATH
+echo abcdefgh$PATH
+echo abc$PATH
+echo a$PATH
+echo $PATH
+echo $PATH
+claer
+echo $PATH
+echo a$PATH
+echo a$PATH a
+echo a$PATH$PATH a
+echo a$PATH
+echo a$$
+echo a$$$
+echo a$$$PATH
+l
+ls
+clear
+echo $PATH
+echo $PATHa
+echo $PATH A
+echo A$PATH A
+echo A $PATH A
+echo A $PATH A
+echo A$PATH A

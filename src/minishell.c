@@ -24,21 +24,29 @@ static int	is_builtin(t_hell *hell)
 		return (1);
 	else if (!ft_strcmp(hell->cmd->argv[0], "exit"))
 		return (1);
+	else if (!ft_strcmp(hell->cmd->argv[0], "export"))
+		return (1);
+	else if (!ft_strcmp(hell->cmd->argv[0], "unset"))
+		return (1);
 	return (0);
 }
 
 static void	list_builtin(t_hell *hell)
 {
 	if (!ft_strcmp(hell->cmd->argv[0], "echo"))
-		mini_echo(hell->cmd);
+		mini_echo(hell->cmd, &hell->env);
 	else if (!ft_strcmp(hell->cmd->argv[0], "pwd"))
 		mini_pwd(hell->cmd);
 	else if (!ft_strcmp(hell->cmd->argv[0], "cd"))
-		mini_cd(hell->cmd, hell->env);
+		mini_cd(hell->cmd, &hell->env);
 	else if (!ft_strcmp(hell->cmd->argv[0], "env"))
 		mini_env(hell->env);
 	else if (!ft_strcmp(hell->cmd->argv[0], "exit"))
 		mini_exit(hell);
+	else if (!ft_strcmp(hell->cmd->argv[0], "export"))
+		mini_export(&hell->env, hell->cmd);
+	else if (!ft_strcmp(hell->cmd->argv[0], "unset"))
+		mini_unset(&hell->env, hell->cmd);
 }
 
 int	main(int ac, char **av, char **envp)

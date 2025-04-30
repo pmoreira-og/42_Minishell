@@ -83,11 +83,13 @@ void	load_history(t_cmd *cmd);
 void	save_history(char *input, t_cmd *cmd);
 
 // built in functions:
-void	mini_echo(t_cmd *cmd);
+void	mini_echo(t_cmd *cmd, t_env **env);
 void	mini_pwd(t_cmd *cmd);
-void	mini_cd(t_cmd *cmd, t_env *env);
+void	mini_cd(t_cmd *cmd, t_env **env);
 void	mini_env(t_env *env);
 void	mini_exit(t_hell *hell);
+void	mini_export(t_env **env, t_cmd *cmd);
+void	mini_unset(t_env **env, t_cmd *cmd);
 
 // enviroment management:
 void	init_env(t_env **env, char **envp);

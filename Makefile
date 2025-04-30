@@ -31,9 +31,9 @@ DIR_PIPEX = pipex
 DIR_PARSE = parse
 
 # === FILES ===
-SRC_BUILT_INS = pwd.c cd.c echo.c env.c exit.c
+SRC_BUILT_INS = pwd.c cd.c echo.c env.c exit.c export.c unset.c
 
-SRC_FD = misc.c minishell.c env.c env_manager.c
+SRC_FD = misc.c minishell.c env_manager.c
 
 SRC_PIPEX =	pipex.c aux.c utils.c ft_parse.c
 
