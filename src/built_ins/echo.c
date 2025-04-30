@@ -49,36 +49,61 @@ static int	has_var(t_env **env, char *str)
 	while (temp && ft_strcmp(env_var + 1, temp->var))
 		temp = temp->next;
 	if (!temp)
-		return(0);
+		return(2);
 	return(1);
+}
+
+static char	*ft_strjoin_free(char *s1, char *s2)
+{
+	char *tmp = ft_strjoin(s1, s2);
+	free(s1);
+	return (tmp);
+}
+
+static char	*get_env_value(t_env **env, char *name)
+{
+	t_env *tmp;
+
+	tmp = *env;
+	while (tmp)
+	{
+		if (!ft_strcmp(tmp->var, name))
+			return (tmp->value);
+		tmp = tmp->next;
+	}
+	return ("");
 }
 
 static char	*expand_vars(t_env **env, char *str)
 {
-	char	*str_temp;
-	char	*env_var;
-	t_env	*temp;
-	int		i;
+	int		i; 
+	int		start;
+	char	*result;
+	char	*temp;
 
-	i = -1;
-	temp = *env;
-	env_var = ft_strchr(str, '$');
-	str_temp = ft_strdup("");
-	while (temp && ft_strcmp(env_var + 1, temp->var))
-		temp = temp->next;
-	while (str[++i])
+	i = 0;
+	result = ft_strdup("");
+	while (str[i])
 	{
 		if (str[i] == '$')
 		{
-			str_temp = ft_strjoin(str_temp, temp->value);
-			//fazer uma funcao para encontrar o proximo $
-			// como um strlen modificado para evitar alocacao de memoria excessiva.
-			break;
+			start = ++i;
+			while (str[i] && (ft_isalnum(str[i]) || str[i] == '_'))
+				i++;
+			temp = ft_substr(str, start, i - start);
+			result = ft_strjoin_free(result, ft_strdup(get_env_value(env, temp)));
+			free(temp);
 		}
-		str_temp[i] = str[i];
-		// printf("str_temp: %s\n", str_temp);
+		else
+		{
+			start = i;
+			while (str[i] && str[i] != '$')
+				i++;
+			temp = ft_substr(str, start, i - start);
+			result = ft_strjoin_free(result, temp);
+		}
 	}
-	return (str_temp);
+	return (result);
 }
 
 void	mini_echo(t_cmd *cmd, t_env **env)
@@ -99,7 +124,7 @@ void	mini_echo(t_cmd *cmd, t_env **env)
 	{
 		if (has_var(env, cmd->argv[token]))
 			printf("%s", expand_vars(env, cmd->argv[token]));
-		else
+		else if (!has_var(env, cmd->argv[token]))
 			printf("%s", cmd->argv[token]);
 		if (cmd->argv[token + 1] != NULL)
 			printf(" ");

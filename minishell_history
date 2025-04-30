@@ -228,3 +228,158 @@ echo A$PATH A
 echo A $PATH A
 echo A $PATH A
 echo A$PATH A
+echo $PATH
+echo $PATHa
+echo a$PATHa
+echo a$PATH
+clear
+echo a$PATH
+echo a$PATH
+clear
+echo a$PATH
+echo a$PATH
+echo a$PATH
+echo aa$PATH
+echo aaa$PATH
+echo aaa$PATH
+echo aaaa$PATH
+echo aaaaaaa$PATH
+clear
+echo $PATH
+echo a$PATH
+echo $PATH
+echo a$PATH
+echo aaaaaaaaaaaa$PATH
+echo $PATH
+echo a$PATH
+echo $PATH
+echo a$PATH
+echo abc$PATH
+clear
+echo $PATH
+echo a$PATH
+echo $PATH
+echo a$PATH
+echo abc$PATH
+echo $PATH
+echo a$PATH
+echo abc$PATH
+echo abc$PATH$
+echo abc$PATH$PATH
+echo abc$PATH
+clear
+echo abc$PATH $PATH
+env
+echo abc$PATH $SHELL
+echo abc$PATH \n$SHELL
+echo abc$PATH \$SHELL
+echo abc$PATH $SHELL
+echo abc$PATH $aSHELL
+echo abc$PATH abc$SHELL
+echo $PATH
+clear
+eixt
+clear
+echo $PATH$PATH
+echo $PATH
+echo $PATH $PATH
+clear
+echo $PATH
+echo $PATH$PATH
+echo $PATH $PATH
+echo a$PATH $PATH
+echo a$PATH a$PATH
+echo a$PATH$PATH
+echo $PATH$PATH
+echo a$PATH$PATHexit
+echo $PATH$PATH
+echo $PATH $PATH
+echo $PATHa$PATH
+clear
+echo $PATh
+echo $PATH
+echo $PATH $PATH
+echo $PATH                         $PATH
+clear
+echo $PATHa$PATH
+echo $PATH $PATH
+echo $PATH aaaaaaaaaaaaaaaaaaaaaaaaaaaaaa$PATH
+echo aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa$PATH aaaaaaaaaaaaaaaaaaaaaaaaaaaaaa$PATH
+echo aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa$PATHaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa$PATH
+clear
+echo $PATH$PATH
+clear
+echo $PATH$PATH
+clear
+echo $PATH$PATH
+
+echo $PATH$PATH
+clear
+echo $PATH$PATH
+echo $PATH
+echo $PATHa
+echo aa$PATH
+echo a$PATH
+clear
+echo $PATH$PATH
+clear
+echo
+echo a
+echo $
+echo $$
+echo $$$
+echo $p
+echo $PATH
+echo $PATH$PATH
+echo $PATHa$PATH
+echoaaaa$PATH
+echo aaaa$PATH
+echo aaaa$PATH a
+echo aaaa$PATH
+echo aaaa$PATH
+echo aaaa$PATH
+echo aaaa$PATH
+echo aaaa$PATH
+echo aaaa$PATH
+echo aaaa$PATH
+echo aaaa$PATH
+echo aaaa$PATH
+echo aaaa$PATH
+echo aaaa$PATH
+echo aaaa$PATH
+echo aaaa$PATH
+echo aaaa$PATH
+echo aaaa$PATH
+echo aaaa$PATH
+echo aaaa$PATH
+echo aaaa$PATH
+echo aaaa$PATH
+echo aaaa$PATH
+echo aaaa$PATH
+echo $PATH$PATH
+echo $PATHa$PATH
+echo a$PATH
+echo a$PATHa
+echo $PATH$PATH
+echo $PATH$PATH
+echo $p
+echo $p$PATH
+echo $pa$PATH
+echo a$PATH
+echo $ATHa$PATH
+echo $PATHa$PATH
+echo $PATH$PATH
+clear
+echo $PATH$PATH
+echo a$PATH$PATH
+clear
+echo $PATH$PATh
+echo $PATH$PATH
+claer
+echo $PATH$PATH
+echo $PATH$PATH$SHELL
+echo $PATH$PATHAAA$SHELL
+echo $PATHa$PATHAAA$SHELL
+echo $PATHa$PATHAAA$SHELLa
+clear
+eit
