@@ -6,7 +6,7 @@
 /*   By: pmoreira <pmoreira@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/26 12:23:53 by pmoreira          #+#    #+#             */
-/*   Updated: 2025/05/01 13:52:55 by pmoreira         ###   ########.fr       */
+/*   Updated: 2025/05/01 14:29:33 by pmoreira         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -64,13 +64,19 @@ static void	ft_count(const char *start, const char *end, int *count, char c)
 			while (*start && *start != c)
 				start++;
 		}
+		if (*start == '\"')
+				quote = !quote;
 		if (*start && *start != c && !quote)
 		{
-			printf("%c", *start);
 			*count += 1;
 		}
-		while (*start != c && *start && quote)
+		while (*start && (*start != c || quote))
+		{
+			printf("%c", *start);
+			if (*start == '\"')
+				quote = !quote;
 			start++;
+		}
 	}
 }
 
