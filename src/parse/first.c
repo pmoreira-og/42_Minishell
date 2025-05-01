@@ -6,7 +6,7 @@
 /*   By: pmoreira <pmoreira@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/24 14:39:15 by pmoreira          #+#    #+#             */
-/*   Updated: 2025/04/30 13:47:38 by pmoreira         ###   ########.fr       */
+/*   Updated: 2025/05/01 13:44:49 by pmoreira         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -72,13 +72,28 @@ void	print_token(t_token *toks)
 		printf("inpu invalido!");
 }
 
+// char	*get_end(char *s)
+// {
+// 	t_bool	inside;
+
+// 	inside = FALSE;
+// 	if (!s)
+// 		return (NULL);
+// 	while(*s)
+// 	{
+// 		if (*s == '\"')
+// 			inside == TRUE;
+		
+// 	}
+// }
+
 void	print_input(char *input, t_hell *data)
 {
 	char	**matrix;
 	int		i;
 	t_token	*temp;
 
-	matrix = ft_parse(input, ' ');
+	matrix = ft_params(input, &input[ft_strlen(input)]);
 	if (!matrix)
 		return ;
 	i = -1;

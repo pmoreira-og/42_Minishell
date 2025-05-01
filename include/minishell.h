@@ -6,7 +6,7 @@
 /*   By: pmoreira <pmoreira@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/24 14:48:17 by pmoreira          #+#    #+#             */
-/*   Updated: 2025/04/29 15:14:33 by pmoreira         ###   ########.fr       */
+/*   Updated: 2025/05/01 13:44:45 by pmoreira         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,6 +28,7 @@
 
 // parse:
 void	print_input(char *input, t_hell *data);
+char	**ft_params(const char *start, const char *end);
 
 // miscs:
 void	printascii(void);
