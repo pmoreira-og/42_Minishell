@@ -6,7 +6,7 @@
 /*   By: pmoreira <pmoreira@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/24 14:48:17 by pmoreira          #+#    #+#             */
-/*   Updated: 2025/05/01 13:44:45 by pmoreira         ###   ########.fr       */
+/*   Updated: 2025/05/05 15:40:04 by pmoreira         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,6 +25,7 @@
 # include "structs.h"
 
 # define HIST_FILE "minishell_history"
+# define ERR_QUOTES "minishell: syntax error: input contains unclosed quotes\n"
 
 // parse:
 void	print_input(char *input, t_hell *data);

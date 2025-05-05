@@ -6,7 +6,7 @@
 /*   By: pmoreira <pmoreira@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/26 12:23:53 by pmoreira          #+#    #+#             */
-/*   Updated: 2025/05/01 14:29:33 by pmoreira         ###   ########.fr       */
+/*   Updated: 2025/05/05 12:19:12 by pmoreira         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,36 +45,56 @@ static int	ft_add_word(char **matrix, const char *start, const char *end)
 	return (1);
 }
 
-static void	ft_count(const char *start, const char *end, int *count, char c)
-{
-	t_bool	quote;
+// static void	ft_count(const char *start, const char *end, int *count, char c)
+// {
+// 	t_bool	quote;
 
-	quote = FALSE;
-	while (start < end)
+// 	quote = FALSE;
+// 	while (start < end)
+// 	{
+// 		while (*start && *start == c)
+// 			start++;
+// 		if (*start == '\'')
+// 		{
+// 			start++;
+// 			*count += 1;
+// 			printf("count++\n");
+// 			while (*start && *start != '\'')
+// 				start++;
+// 			while (*start && *start != c)
+// 				start++;
+// 		}
+// 		if (*start == '\"')
+// 				quote = !quote;
+// 		if (*start && *start != c && !quote)
+// 		{
+// 			*count += 1;
+// 		}
+// 		while (*start && (*start != c || quote))
+// 		{
+// 			// printf("%c", *start);
+// 			if (*start == '\"')
+// 				quote = !quote;
+// 			start++;
+// 		}
+// 	}
+// }
+static void	ft_count(const char *start, int *count, char c)
+{
+	while (*start)
 	{
-		while (*start && *start == c)
+		while (*start && (*start == c))
 			start++;
-		if (*start == '\'')
-		{
-			start++;
+		if (*start)
 			*count += 1;
-			printf("count++\n");
-			while (*start && *start != '\'')
-				start++;
-			while (*start && *start != c)
-				start++;
-		}
-		if (*start == '\"')
-				quote = !quote;
-		if (*start && *start != c && !quote)
+		while(*start && (*start != c))
 		{
-			*count += 1;
-		}
-		while (*start && (*start != c || quote))
-		{
-			printf("%c", *start);
 			if (*start == '\"')
-				quote = !quote;
+			{
+				start++;
+				while(*start && *start != '\"')
+					start++;
+			}
 			start++;
 		}
 	}
@@ -117,7 +137,8 @@ char	**ft_params(const char *start, const char *end)
 	if (!start || !end)
 		return (NULL);
 	size = 0;
-	ft_count(start, end, &size, ' ');
+	(void) end;
+	ft_count(start, &size, ' ');
 	printf("Words: %d\n", size);
 	return (NULL);
 	if (size == 0)

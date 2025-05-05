@@ -6,7 +6,7 @@
 /*   By: pmoreira <pmoreira@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/24 14:39:15 by pmoreira          #+#    #+#             */
-/*   Updated: 2025/05/01 14:32:09 by pmoreira         ###   ########.fr       */
+/*   Updated: 2025/05/05 15:41:36 by pmoreira         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,20 +41,14 @@ int	valid_input(t_token *tok)
 	cmd = FALSE;
 	while (temp->next)
 	{
+		if (temp->type == PIPE)
+			cmd = FALSE;
+		if (cmd && (temp->type == CMD || temp->type == BUILT_IN))
+			temp->type = ARG;
 		if (temp->type == CMD || temp->type == BUILT_IN)
 			cmd = TRUE;
 		temp = temp->next;
 	}
-	if (temp->type == REDIR_HERE_DOC)
-		return (0);
-	else if (temp->type == REDIR_OUT)
-		return (0);
-	else if (temp->type == REDIR_OUT_APPEND)
-		return (0);
-	else if (temp->type == REDIR_IN)
-		return (0);
-	if (!cmd)
-		return (0);
 	return (1);
 }
 
@@ -63,13 +57,13 @@ void	print_token(t_token *toks)
 	t_token	*temp;
 
 	temp = toks;
+	valid_input(toks);
 	while (temp->next)
 	{
 		printf("[%s]: %d\n", temp->cmd, temp->type);
 		temp = temp->next;
 	}
-	if (!valid_input(toks))
-		printf("inpu invalido!");
+
 }
 
 // char	*get_end(char *s)
@@ -87,13 +81,38 @@ void	print_token(t_token *toks)
 // 	}
 // }
 
+int	quotes_check(char *input)
+{
+	int	quotes;
+	int	d_quotes;
+
+	quotes = 0;
+	d_quotes = 0;
+	if (!input)
+		return (0);
+	while (*input)
+	{
+		if (*input == '\'')
+			quotes++;
+		if ((quotes % 2 == 0) && *input == '\"')
+			d_quotes++;
+		input++;
+	}
+	if ((d_quotes + quotes) % 2 != 0)
+		return (0);
+	return (1);
+}
+
 void	print_input(char *input, t_hell *data)
 {
 	char	**matrix;
 	int		i;
 	t_token	*temp;
 
-	matrix = ft_params(input, &input[ft_strlen(input)]);
+	if (!quotes_check(input))
+		return (ft_putstr_fd(ERR_QUOTES, 2));
+	matrix = ft_parse(input, ' ');
+	// matrix = ft_params(input, &input[ft_strlen(input)]);
 	if (!matrix)
 		return ;
 	i = -1;

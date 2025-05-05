@@ -383,3 +383,92 @@ echo $PATHa$PATHAAA$SHELL
 echo $PATHa$PATHAAA$SHELLa
 clear
 eit
+echo $PATH$PATH
+export abc="echo 123"
+$abc
+echo $abc
+export abc="echo 123"
+export abc="echo 123"
+export abc="echo 123" asss="aasaddadas"
+export abc="echo 123" asda  asss="aasaddadas"
+export abc="echo 123" asda  asss="aasaddadas"
+< infile cat | wc -l > out > outfile
+< infile cat | wc -l > out > outfile ads
+""''echo hola""'''' que""'' tal""''
+echo "$DONTEXIST" "Makefile"
+echo a
+echo "$DONTEXIST""Makefile"
+echo "$DONTEXIST"Makefile"
+echo "$DONTEXISTMakefile"
+echo $DONTEXISTMakefile
+sleep 3 | sleep 3 | sleep 3
+sleep "3" | sleep 3 | sleep 3
+sleep 3 | sleep 3 | sleep 3
+echo '''a'
+make re
+echo '''a'
+
+echo '''a'
+echo '' 'a'
+echo ' ' 'a'
+echo ' aasads ' 'a'
+echo ' aasads ' ' ' dasd 'a'
+echo ' aasads  dasd a'
+echo '" aasads " dasd a'
+export '" aasads " dasd a'
+export abc='" aasads " dasd a'
+export '" aasads " dasd a'
+export abc='" aasads " dasd a'
+export abc=" aasads " dasd a'"
+export '" aasads " dasd a'
+export '" aasads " dasd a'
+export '" aasads " dasd a'
+export '" aasads " dasd a'
+export abc="echo 123"
+export abc="echo 123" ass="banana split"
+export abc="echo 123" ass="banana split
+echo ola > cat olas asd ad asdasd asd as
+echo ola > cat olas asd ad asdasd asd as echo
+export abc="echo 123"
+export abc='echo 123'
+echo "$DONTEXIST""Makefile"
+echo "$DONTEXIST""Makefile"
+echo '''
+echo ola > cat as asdas
+echo ola > cat as asdas echo
+echo ola > cat as asdas echo | wc -l \
+echo ola > cat as asdas echo | wc -l echo
+echo ola > cat as asdas echo | wc -l echo | export abc="echo123" | cut -d ' ' -f 1 > outfile
+echo ola > cat as asdas echo | wc -l echo | export abc="echo123" | cut -d ' ' -f 1 > outfile
+export abc="echo 123"
+export abc="echo 123"
+export abc="echo 123"
+echo ola > cat as asdas echo | wc -l echo | export abc="echo123" | cut -d ' ' -f 1 > outfile
+echo ola > cat as asdas echo | wc -l echo | export abc="echo 123" | cut -d ' ' -f 1 > outfile
+echo ola > cat as asdas echo | wc -l echo | export abc='echo 123' | cut -d ' ' -f 1 > outfile
+echo ol '
+echo '"'
+echo '"'
+echo '''
+echo "'"
+echo "'"
+echo '"'
+echo '''
+echo ''''
+echo '' ''
+echo '' ''
+echo '' '''
+echo '"'
+echo "'"
+echo '' ''
+echo '' '''
+echo "'"
+echo '"'
+echo "'"
+echo "''"
+echo "'asdasdasd'"
+echo ola > cat as asdas echo | wc -l echo | export abc="echo 123" | cut -d ' ' -f 1 > outfile
+echo "ola " $PATH
+echo "ola''$PATH''"
+echo ola ' $PATH '$PATH' ""[][ '
+echo "ola''$PATH''"
