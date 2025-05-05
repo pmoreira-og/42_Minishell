@@ -33,13 +33,13 @@
 	return (1);
 } */
 
-static void	dir_handler(t_env *env, char *path, char *c_path)
+static void	dir_handler(t_env **env, char *path, char *c_path)
 {
-	ft_setenv(&env, "OLDPWD", c_path);
+	ft_setenv(env, "OLDPWD", c_path);
 	chdir(path);
 }
 
-void	mini_cd(t_cmd *cmd, t_env *env)
+void	mini_cd(t_cmd *cmd, t_env **env)
 {
 	char	*c_path;
 	char	*n_path;
@@ -64,5 +64,5 @@ void	mini_cd(t_cmd *cmd, t_env *env)
 		dir_handler(env, n_path, c_path);
 	}
 	n_path = getcwd(NULL, 0);
-	ft_setenv(&env, "PWD", n_path);
+	ft_setenv(env, "PWD", n_path);
 }
