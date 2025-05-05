@@ -6,12 +6,12 @@
 /*   By: pmoreira <pmoreira@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/24 15:03:58 by pmoreira          #+#    #+#             */
-/*   Updated: 2025/04/29 15:44:17 by pmoreira         ###   ########.fr       */
+/*   Updated: 2025/04/30 12:53:57 by pmoreira         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef PARSE_H
-# define PARSE_H
+#ifndef STRUCTS_H
+# define STRUCTS_H
 
 typedef enum s_bool
 {
