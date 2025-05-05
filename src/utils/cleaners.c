@@ -1,30 +1,37 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   get_next_line.h                                    :+:      :+:    :+:   */
+/*   cleaners.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: pmoreira <pmoreira@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/11/21 10:21:39 by pmoreira          #+#    #+#             */
-/*   Updated: 2025/04/25 14:04:44 by pmoreira         ###   ########.fr       */
+/*   Created: 2025/04/29 11:10:40 by pmoreira          #+#    #+#             */
+/*   Updated: 2025/04/29 11:22:15 by pmoreira         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef GET_NEXT_LINE_H
-# define GET_NEXT_LINE_H
+#include "minishell.h"
 
-# include <unistd.h>
-# include <stdlib.h>
+// void	clean_cmds(t_cmd *cmd)
+// {
+	
+// }
 
-# ifndef BUFFER_SIZE
-#  define BUFFER_SIZE 10000
-# endif
+// void	clean_env(t_env *env)
+// {
+	
+// }
 
-char	*get_next_line(int fd);
-char	*ft_strjoin_nl(char *line, char *buffer);
-char	*ft_str_nl(char *str);
-char	*ft_fill_line(char *buffer, int fd);
-size_t	ft_len(const char *str);
-void	ft_refill_buffer(char *buffer);
-
-#endif
+void	armageddon(t_hell *data)
+{
+	// if (data->cmd)
+	// 	clean_cmds(data->cmd);
+	// if (data->env)
+	// 	clean_env(data->env);
+	if (data->path)
+		ft_clean_matrix(data->path);
+	if (data->envp)
+		ft_clean_matrix(data->envp);
+	if (data->hist_fd >= 0)
+		close(data->hist_fd);
+}

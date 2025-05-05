@@ -6,7 +6,7 @@
 /*   By: pmoreira <pmoreira@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/23 12:11:56 by ernda-si          #+#    #+#             */
-/*   Updated: 2025/04/25 13:50:30 by pmoreira         ###   ########.fr       */
+/*   Updated: 2025/04/29 11:23:35 by pmoreira         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,7 +28,7 @@ void	printascii(void)
 		);
 }
 
-int	get_history_fd(t_cmd *cmd)
+int	get_history_fd(t_hell *cmd)
 {
 	cmd->hist_fd = open(HIST_FILE, O_RDWR | O_APPEND | O_CREAT , 0766);
 	if (cmd->hist_fd == -1)
@@ -36,7 +36,7 @@ int	get_history_fd(t_cmd *cmd)
 	return (0);
 }
 
-void load_history(t_cmd *cmd)
+void load_history(t_hell *cmd)
 {
 	char		*temp;
 	char	temp2[1024];
@@ -57,7 +57,7 @@ void load_history(t_cmd *cmd)
 	}
 }
 
-void save_history(char *input, t_cmd *cmd)
+void save_history(char *input, t_hell *cmd)
 {
 	if (cmd->hist_fd == -1 || !input || !ft_strcmp(input, "exit"))
 		return;
