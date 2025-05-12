@@ -1,338 +1,3 @@
-echo a
-echo -n a
-clear
-env
-export oi=abc
-export oi=abc
-env
-export oi=abc
-export oi
-export
-export "a =abc"
-clear
-env
-export a=aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa
-export a=a
-export a=ac
-export a=abc
-export a=abc
-export a=abc
-export a
-export a=abc
-export "a=abc"
-export a
-export a=bc
-export a =bc
-export "a =bc"
-export "a b"
-export "a b=a"
-export "ab=a"
-clear
-env
-export a=aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa
-env
-export a=abc
-export a=aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa
-env
-env
-cd ..
-env
-cd ~/home
-pwd
-cd ~/dev/minishell
-pwd
-env
-clear
-pwd
-cd ..
-pwd
-env
-env
-cd ..
-env
-cd ..
-env
-clear
-export a=aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa
-env
-clear
-env
-export test_var=test_value
-env
-unset test_var
-unset aaaaaaa
-env
-env
-export a=abc
-env
-unset a
-clear
-export a=aaaaaaaaaaaaaaaaaaaaaaa
-env
-unser a
-unset a
-env
-clear
-clear
-export a=aaaaaaaaaaa
-unset a
-emnv
-env
-env
-export a=aaaaaa
-env
-unset a
-env
-env
-clear
-env
-export a=aaaa
-env
-unset a
-env
-clear
-env
-export a=aaaaaaaa
-env
-unset a
-env
-echo $$
-clear
-clear
-echo a a
-echo a
-clear
-echo $PATH
-echo -
-echo -
-echo -n
-clear
-clear -na
-clear
-echo $PATH
-echo a
-env
-echo a
-echo path
-echo PATH
-echo $PATH
-echo $a
-clear
-env
-echo $TERM_PROGRAM_VERSION
-clear
-echo $a
-clear
-echo $PATH
-echo $PATH
-clear
-echo a
-echo $a
-echo a
-cleaa
-echo $a
-echo a
-echo $PATH
-clear
-echo a$PATH
-echo $PATH
-clear
-echo a
-echo $PATH
-echo a$PATH
-echo a$PATHa
-echo a$PATH
-echo a$PATH a
-clear
-echo $PATH
-echo $PATHa
-clear
-echo a$PATH
-echo a
-clear
-echo
-echo $PATH
-echo $PATH
-echo $PATHa
-echo a$PATh
-echo a$PATH
-clear
-echo $PATh
-echo $PATH
-clear
-echo $PATH
-echo a$PATH
-echo a$PATHa
-echo a$PATH a
-echo $PATH
-echo aaaaaa$PATH
-clear
-echo $PATH
-echo a$PATH
-echo $PATH
-echo a$PATH
-echo aa$PATH
-clear
-echo $PATH
-echo a$PATH
-echo aaaa$PATH
-echo aaaaaaaaaaaaaaaaaaaaaaaaaaaa$PATH
-echo aaaa$PATH
-echo $PATH
-echo a$PATH
-echo a$PATHa
-echo a$PATH a
-echo a$PATH a a
-echo a$PATH a a a
-echo $PATH
-clear
-echo $PATH
-echo $PATH a
-
-echo a$PATH a
-echo $PATH
-echo a$PATH
-echo $PATH
-echo a$PATH
-echo a$PATHa
-echo a"$PATH"a
-echo a"$PATH"
-echo a"$PATH
-echo abc$PATH
-clear
-echo abc$PATH
-echo abc$PATH
-echo abcd$PATH
-echo abcdef$PATH
-echo abcdefgh$PATH
-echo abc$PATH
-echo a$PATH
-echo $PATH
-echo $PATH
-claer
-echo $PATH
-echo a$PATH
-echo a$PATH a
-echo a$PATH$PATH a
-echo a$PATH
-echo a$$
-echo a$$$
-echo a$$$PATH
-l
-ls
-clear
-echo $PATH
-echo $PATHa
-echo $PATH A
-echo A$PATH A
-echo A $PATH A
-echo A $PATH A
-echo A$PATH A
-echo $PATH
-echo $PATHa
-echo a$PATHa
-echo a$PATH
-clear
-echo a$PATH
-echo a$PATH
-clear
-echo a$PATH
-echo a$PATH
-echo a$PATH
-echo aa$PATH
-echo aaa$PATH
-echo aaa$PATH
-echo aaaa$PATH
-echo aaaaaaa$PATH
-clear
-echo $PATH
-echo a$PATH
-echo $PATH
-echo a$PATH
-echo aaaaaaaaaaaa$PATH
-echo $PATH
-echo a$PATH
-echo $PATH
-echo a$PATH
-echo abc$PATH
-clear
-echo $PATH
-echo a$PATH
-echo $PATH
-echo a$PATH
-echo abc$PATH
-echo $PATH
-echo a$PATH
-echo abc$PATH
-echo abc$PATH$
-echo abc$PATH$PATH
-echo abc$PATH
-clear
-echo abc$PATH $PATH
-env
-echo abc$PATH $SHELL
-echo abc$PATH \n$SHELL
-echo abc$PATH \$SHELL
-echo abc$PATH $SHELL
-echo abc$PATH $aSHELL
-echo abc$PATH abc$SHELL
-echo $PATH
-clear
-eixt
-clear
-echo $PATH$PATH
-echo $PATH
-echo $PATH $PATH
-clear
-echo $PATH
-echo $PATH$PATH
-echo $PATH $PATH
-echo a$PATH $PATH
-echo a$PATH a$PATH
-echo a$PATH$PATH
-echo $PATH$PATH
-echo a$PATH$PATHexit
-echo $PATH$PATH
-echo $PATH $PATH
-echo $PATHa$PATH
-clear
-echo $PATh
-echo $PATH
-echo $PATH $PATH
-echo $PATH                         $PATH
-clear
-echo $PATHa$PATH
-echo $PATH $PATH
-echo $PATH aaaaaaaaaaaaaaaaaaaaaaaaaaaaaa$PATH
-echo aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa$PATH aaaaaaaaaaaaaaaaaaaaaaaaaaaaaa$PATH
-echo aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa$PATHaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa$PATH
-clear
-echo $PATH$PATH
-clear
-echo $PATH$PATH
-clear
-echo $PATH$PATH
-
-echo $PATH$PATH
-clear
-echo $PATH$PATH
-echo $PATH
-echo $PATHa
-echo aa$PATH
-echo a$PATH
-clear
-echo $PATH$PATH
-clear
-echo
-echo a
-echo $
-echo $$
-echo $$$
-echo $p
-echo $PATH
-echo $PATH$PATH
-echo $PATHa$PATH
-echoaaaa$PATH
 echo aaaa$PATH
 echo aaaa$PATH a
 echo aaaa$PATH
@@ -472,3 +137,232 @@ echo "ola " $PATH
 echo "ola''$PATH''"
 echo ola ' $PATH '$PATH' ""[][ '
 echo "ola''$PATH''"
+echo "ola''$PATH''"
+echo "ola''$PATH''" ''''
+echo "ola''$PATH''" '''' adsd a
+echo "ola''$PATH''" '''' adsd as
+echo "ola''$PATH''" '''' adsd as
+echo ola ' $PATH '$PATH' ""[][ '
+echo "ola''$PATH''" ''''
+echo "ola''$PATH''"
+echo ola " $PATH '$PATH' ""[][ "
+echo ola " $PATH '$PATH' ""[][ " ""
+echo ola " $PATH '$PATH' ""[][ " ""
+echo ola ' $PATH '$PATH' ""[][ '
+echo "ola''$PATH''" '''' adsd as
+export abc="echo 123"
+export abc="echo 123" as="sadsasd"
+echo ola > cat as asdas echo | wc -l echo | export abc="echo 123" | cut -d ' ' -f 1 > outfile
+bash
+'echo' ola
+'echo' "ola"
+echo "$HOME '$HOME'"
+
+echo $HOME '$HOME'
+echo $HOME '$HOME'
+echo $HOME '$HOME'
+echo $HOME '$HOME'
+echo $HOME '$HOME'
+echo $HOME '$HOME'
+
+clear
+clear
+echo $HOME '$HOME'
+echo $HOME '$HOME'
+echo $HOME '$HOME'
+echo $HOME '$HOME'
+echo $HOME '$HOME'
+echo $HOME '$HOME'
+echo $HOME '$HOME'
+echo $HOME '$HOME'
+make re
+clear
+echo $HOME '$HOME'
+echo $HOME '$HOME'
+echo $HOME '$HOME'
+echo $HOME '$HOME'
+echo ola " $PATH '$PATH' ""[][ " ""
+'echo' ola
+'echo' ola
+'echo' ola $HOME '$HOME'
+'echo' ola $HOME '$HOME'
+echo $HOME '$HOME'"
+echo ola " $PATH '$PATH' ""[][ " ""
+echo ola " $HOME '$HOME' ""[][ " ""
+echo $HOME '$HOME'"
+echo ola " echo $HOME '$HOME'"
+echo $HOME '$HOME'"
+echo ola " $HOME$HOME '$HOME'"
+echo ola " $HOME$HOME '$HOME'"
+echo ola " $HOME$HOME '$HOME'"
+echo ola " $HOME$HOME '$HOME'"
+echo ola " $HOME$HOME '$HOME'"
+echo ola " $HOME$HOME '$HOME'"
+echo ola " $HOME$HOME '$HOME'"
+make re
+make re
+echo ola " $HOME$HOME '$HOME'"
+echo ola " $HOME$HOME '$HOME'"
+echo ola " $HOME$HOME '$HOME'"
+echo ola " $HOME$HOME '$HOME'"-
+echo ola " $HOME$HOME '$HOME'"
+echo ola " $HOME$HOME '$HOME'"
+echo ola " $HOME$HOME '$HOME'"
+echo ola " $HOME$HOME '$HOME'"
+echo ola " $HOME$HOME '$HOME'"
+echo ola " $HOME$HOME '$HOME'"
+echo $HOME '$HOME'
+echo ola " $HOME$HOME '$HOME'"
+echo $HOME '$HOME'
+echo ola " $HOME$HOME '$HOME'"
+echo ola " $HOME$HOME '$HOME'""
+echo ola " $HOME$HOME '$HOME'"""
+echo ola " $HOME$HOME '$HOME'"""
+echo ola " $HOME$HOME '$HOME'"
+echo $HOME '$HOME'
+echo ola " $HOME$HOME '$HOME'"""
+echo ola " $HOME$HOME '$HOME'"""
+echo ola " $HOME$HOME '$HOME'"
+echo ola " $HOME$HOME '$HOME'"
+echo ola " $HOME$HOME '$HOME'"""
+echo ola " $HOME$HOME '$HOME'"
+echo ola " $HOME$HOME '$HOME'" "$HOME"
+echo ola " $HOME$HOME '$HOME'"
+echo ola " $HOME$HOME '$HOME'
+echo ola " $HOME$HOME '$HOME'"
+echo ola " $HOME$HOME '$HOME'"
+echo ola " $HOME$HOME '$HOME'"
+echo ola " $HOME$HOME '$HOME'" "$HOME"
+echo ola " $HOME$HOME '$HOME'"
+echo ola " $HOME$HOME '$HOME'"
+echo ola " $HOME$HOME '$HOME'"
+echo ola " $HOME$HOME $HOME"
+echo ola '" $HOME$HOME $HOME"'
+echo ola '" $HOME$HOME $HOME"' ''
+echo ola '" $HOME$HOME $HOME"' ''
+echo ola '" $HOME$HOME $HOME"' ''
+echo ola '" $HOME$HOME $HOME"' ''
+echo ola '" $HOME$HOME $HOME"' ''
+echo ola '" $HOME$HOME $HOME"' ''
+echo ola " $HOME$HOME '$HOME'"
+echo ola " $HOME$HOME '$HOME'" "$HOME"
+echo ola " $HOME$HOME '$HOME'"""
+echo ola " $HOME$HOME '$HOME'
+echo ola " $HOME$HOME '$HOME'"
+echo ola " $HOME$HOME '$HOME'"
+echo ola " $HOME$HOME '$HOME'" "$HOME"
+echo ola '" $HOME$HOME $HOME"' ''
+export abc="echo 123"
+export abc="echo 123"
+export abc="echo 123"
+export abc="echo 123"
+export abc="echo 123"
+export abc="echo 123"
+export abc="echo 123"
+export abc="echo 123"
+export abc="echo 123"
+echo ola '" $HOME$HOME $HOME"' ''
+echo ola '" $HOME$HOME $HOME"' ''
+
+export abc="echo 123"
+export abc="echo 123"
+echo ola '" $HOME$HOME $HOME"' ''
+echo ola " $HOME$HOME '$HOME'"""
+echo ola " $HOME$HOME '$HOME'"""
+echo ola " $HOME$HOME '$HOME'"""
+echo ola " $HOME$HOME '$HOME'"""
+echo ola " $HOME$HOME '$HOME'"""
+echo ola " $HOME$HOME '$HOME'"""
+echo ola " $HOME$HOME '$HOME'"""
+echo ola " $HOME$HOME '$HOME'"""
+echo ola '" $HOME$HOME $HOME"' ''
+export abc="echo 123"
+export abc="echo 123"
+export abc="echo 123"
+echo ola " $HOME$HOME '$HOME'"""
+echo ola " $HOME$HOME '$HOME'" ""
+echo ola " $HOME$HOME '$HOME'" ""
+echo ola " $HOME$HOME '$HOME'" ""
+echo ola " $HOME$HOME '$HOME'" ""
+echo ola " $HOME$HOME '$HOME'"""
+echo ola " $HOME$HOME '$HOME'"""
+echo ola " $HOME$HOME '$HOME'" ""
+export abc="echo 123"
+echo ola " $HOME$HOME '$HOME'" ""
+echo ola " $HOME$HOME '$HOME'"""
+make re
+echo ola " $HOME$HOME '$HOME'"""
+echo ola " $HOME$HOME '$HOME'"""
+echo ola " $HOME$HOME '$HOME'"""
+echo ola " $HOME$HOME '$HOME'"""
+echo ola " $HOME$HOME '$HOME'" ""
+export abc="echo 123"
+echo ola " $HOME$HOME '$HOME'"""
+echo ola " $HOME$HOME '$HOME'" ""
+echo ola " $HOME$HOME '$HOME'" ""
+echo ola " $HOME$HOME '$HOME'"""
+bash
+echo ola " $HOME$HOME '$HOME'"""
+
+echo ola " $HOME$HOME '$HOME'"""
+make re
+echo ola " $HOME$HOME '$HOME'"""
+echo ola " $HOME$HOME '$HOME'"""
+echo ola " $HOME$HOME '$HOME'"""
+echo ola " $HOME$HOME '$HOME'"""
+echo ola " $HOME$HOME '$HOME'"""
+echo ola " $HOME$HOME '$HOME'"""
+echo ola " $HOME$HOME '$HOME'"""
+echo ola " $HOME$HOME '$HOME'"""
+echo ola " $HOME$HOME '$HOME'"""
+echo ola " $HOME$HOME '$HOME'"""
+echo ola " $HOME$HOME '$HOME'" ""
+echo ola " $HOME$HOME '$HOME'"""
+echo ola " $HOME$HOME '$HOME'"""
+echo ola " $HOME$HOME '$HOME'" ""
+echo ola " $HOME$HOME '$HOME'" ""
+echo ola " $HOME$HOME '$HOME'"""
+echo ola " $HOME$HOME '$HOME'"""
+echo ola " $HOME$HOME '$HOME'"""
+echo ola " $HOME$HOME '$HOME'"""
+echo ola " $HOME$HOME '$HOME'"""
+echo ola " $HOME$HOME '$HOME'"""
+make re
+echo ola " $HOME$HOME '$HOME'"""
+make re
+echo ola " $HOME$HOME '$HOME'" ""
+echo ola " $HOME$HOME '$HOME'" ""
+make re
+echo ola " $HOME$HOME '$HOME'"""
+export abc="echo 123"
+echo ola " $HOME$HOME '$HOME'" ""
+echo ola '" $HOME$HOME $HOME"' ''
+echo ola '" $HOME$HOME $HOME"' '              '
+echo ola '" $HOME$HOME $HOME"' '              ""'
+
+echo ola '" $HOME$HOME $HOME"''              ""'
+echo ola '" $HOME$HOME $HOME"''              ""'
+echo ola '" $HOME$HOME $HOME"' '              '
+echo ola '" $HOME$HOME $HOME"' ''
+echo ola " $HOME$HOME '$HOME'" ""
+echo ola " $HOME$HOME '$HOME'"""
+echo ola " $HOME$HOME '$HOME'"""
+echo ola " $HOME$HOME '$HOME'"""
+echo ola " $HOME$HOME '$HOME'"""
+echo ola " $HOME$HOME '$HOME'"""
+echo ola " $HOME$HOME '$HOME'"""
+echo ola " $HOME$HOME '$HOME'"""
+echo ola " $HOME$HOME '$HOME'"""
+echo ola " $HOME$HOME '$HOME'"""
+echo ola " $HOME$HOME '$HOME'"""
+echo ola " $HOME$HOME '$HOME'"""
+echo ola " $HOME$HOME '$HOME'"""
+echo ola " $HOME$HOME '$HOME'"""
+echo ola " $HOME$HOME '$HOME'" ""
+echo ola " $HOME$HOME '$HOME'" ""
+echo ola " $HOME$HOME '$HOME'"""
+echo ola '" $HOME$HOME $HOME"' '              '
+echo ola " $HOME$HOME '$HOME'"""
+echo ola " $HOME$HOME '$HOME'"""
+echo ola " $HOME$HOME '$HOME'"""
+echo "ola""mundo"

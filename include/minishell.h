@@ -6,7 +6,7 @@
 /*   By: pmoreira <pmoreira@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/24 14:48:17 by pmoreira          #+#    #+#             */
-/*   Updated: 2025/05/05 15:40:04 by pmoreira         ###   ########.fr       */
+/*   Updated: 2025/05/07 15:45:27 by pmoreira         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,8 +28,13 @@
 # define ERR_QUOTES "minishell: syntax error: input contains unclosed quotes\n"
 
 // parse:
+char	**ft_params(const char *start, char c);
 void	print_input(char *input, t_hell *data);
-char	**ft_params(const char *start, const char *end);
+// char	**ft_params(const char *start, const char *end);
+int		valid_input(t_token *tok);
+int		quotes_check(char *input);
+void	literal(char **ptr, char *s, t_env **env);
+int		is_quotes(int c);
 
 // miscs:
 void	printascii(void);
