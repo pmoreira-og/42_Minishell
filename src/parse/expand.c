@@ -6,7 +6,7 @@
 /*   By: pmoreira <pmoreira@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/07 14:40:54 by pmoreira          #+#    #+#             */
-/*   Updated: 2025/05/09 16:10:21 by pmoreira         ###   ########.fr       */
+/*   Updated: 2025/05/12 10:47:30 by pmoreira         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,6 +44,36 @@ static char	*get_env_value(t_env **env, char *name)
 	return ("");
 }
 
+// int	new_string(char **ptr, char *s, int flag)
+// {
+// 	int		quotes;
+// 	char	*out;
+
+// 	quotes = 0;
+// 	while(flag && *s)
+// 	{
+// 		if (*s == '\"')
+// 			quotes++;
+// 		s++;
+// 	}
+// 	s = *ptr;
+// 	out = malloc((ft_strlen(s) - quotes + 1));
+// 	if (!out)
+// 		return (0);
+// 	quotes = 0;
+// 	while(*s)
+// 	{
+// 		if (flag && *s == '\"')
+// 			s++;
+// 		if (*s)
+// 			out[quotes++] = *s;
+// 		s++;
+// 	}
+// 	free(*ptr);
+// 	*ptr = out;
+// 	return (1);
+// }
+
 static char	*ft_expand(char *s1, char *s2, char **temp)
 {
 	char	*tmp;
@@ -56,13 +86,14 @@ static char	*ft_expand(char *s1, char *s2, char **temp)
 	return (tmp);
 }
 
-static char	*expand_vars(char *s, char *end, t_env **env)
+static char	*expand_vars(char *s, char *end, t_env **env, int flag)
 {
 	char	*start;
 	char	*result;
 	char	*temp;
 
 	result = NULL;
+	(void) flag;
 	while (s < end)
 	{
 		if (*s == '$')
@@ -102,9 +133,9 @@ void	literal(char **ptr, char *s, t_env **env)
 	if (*s == '\'' && s[size - 1] == '\'')
 		output = new_word(s + 1, &s[size - 1]);
 	else if (temp != s && *s == '\"' && s[size - 1] == '\"')
-		output = expand_vars(s + 1, &s[size - 1], env);
+		output = expand_vars(s + 1, &s[size - 1], env, 1);
 	else
-		output = expand_vars(s, &s[size], env);
+		output = expand_vars(s, &s[size], env, 1);
 	if (!output)
 		return ;
 	*ptr = output;

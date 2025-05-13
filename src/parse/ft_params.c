@@ -6,7 +6,7 @@
 /*   By: pmoreira <pmoreira@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/26 12:23:53 by pmoreira          #+#    #+#             */
-/*   Updated: 2025/05/09 16:39:48 by pmoreira         ###   ########.fr       */
+/*   Updated: 2025/05/13 15:26:11 by pmoreira         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,44 +47,12 @@ static int	ft_add_word(char **matrix, const char *start, const char *end)
 	return (1);
 }
 
-// static void	ft_count(const char *start, const char *end, int *count, char c)
-// {
-// 	t_bool	quote;
-
-// 	quote = FALSE;
-// 	while (start < end)
-// 	{
-// 		while (*start && *start == c)
-// 			start++;
-// 		if (*start == '\'')
-// 		{
-// 			start++;
-// 			*count += 1;
-// 			printf("count++\n");
-// 			while (*start && *start != '\'')
-// 				start++;
-// 			while (*start && *start != c)
-// 				start++;
-// 		}
-// 		if (*start == '\"')
-// 				quote = !quote;
-// 		if (*start && *start != c && !quote)
-// 		{
-// 			*count += 1;
-// 		}
-// 		while (*start && (*start != c || quote))
-// 		{
-// 			// printf("%c", *start);
-// 			if (*start == '\"')
-// 				quote = !quote;
-// 			start++;
-// 		}
-// 	}
-// }
 static void	ft_count(const char *s, int *count, char c)
 {
-	const char	*temp;
+	// const char	*temp;
+	int			quotes;
 
+	quotes = 0;
 	while (*s)
 	{
 		while (*s && *s == c)
@@ -95,8 +63,9 @@ static void	ft_count(const char *s, int *count, char c)
 		{
 			if (is_quotes(*s))
 			{
-				temp = s++;
-				*count += (*(temp - 1) && *(temp - 1) != c && *temp == *s);
+				// temp = s++;
+				
+				// *count += (*(temp - 1) && *(temp - 1) != c && *temp == *s);
 				while (s && *s && (*temp != *s))
 					s++;
 			}
@@ -105,32 +74,31 @@ static void	ft_count(const char *s, int *count, char c)
 	}
 }
 
+// void	process_quotes(const char **s, int c)
+// {
+// 	while (**s)
+// 	{
+// 		*s += 1;
+// 		while (**s && (**s != c))
+// 			*s += 1;
+// 	}
+// }
+
 static int	proc_str(char **matrix, const char *s, char c, int *index)
 {
 	const char	*start;
 
-	while (s && *s)
+	while (*s)
 	{
 		while (*s && *s == c)
 			s++;
-		if (*s)
-			start = s;
-		while(*s && *s != c)
+		start = s;
+		while (*s && *s != c)
 		{
 			if (is_quotes(*s))
-			{
-				s++;
-				if (*(s - 1) && *(s - 1) == *s)
-					break ;
-				while (*s && (*s != *start))
-					s++;
-			}
-			if (*s)
-				s++;
+				
 		}
-		// printf("start->%s;\n", start);
-		// if (*s)
-		// 	printf("s->%s;\n", s);
+		
 		if (!ft_add_word(&matrix[(*index)++], start, s))
 			return (ft_free(matrix, *index), 0);
 	}

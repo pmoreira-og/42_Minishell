@@ -366,3 +366,134 @@ echo ola " $HOME$HOME '$HOME'"""
 echo ola " $HOME$HOME '$HOME'"""
 echo ola " $HOME$HOME '$HOME'"""
 echo "ola""mundo"
+echo "ola""mundo"
+echo ola " $HOME$HOME '$HOME'"""
+echo ola '" $HOME$HOME $HOME"' '              '
+echo ola " $HOME$HOME '$HOME'" ""
+echo ola " $HOME$HOME '$HOME'" ""
+echo ola " $HOME$HOME '$HOME'"""
+echo ola " $HOME$HOME '$HOME'"""
+echo ola " $HOME$HOME '$HOME'"""
+echo ola " $HOME$HOME '$HOME'"""
+echo ola " $HOME$HOME '$HOME'"""
+echo ola " $HOME$HOME '$HOME'"""
+echo ola " $HOME$HOME '$HOME'"""
+echo ola " $HOME$HOME '$HOME'"""
+echo ola " $HOME$HOME '$HOME'"""echo ola " $HOME$HOME '$HOME'""
+echo ola "" $HOME$HOME '$HOME'""
+echo ola " $HOME$HOME '$HOME'""
+echo ola  "$HOME$H"""""""O"ME" '$HOME'""
+echo ola " $HOME$HOME '$HOME'"""
+echo ola " $HOME""""""$H""OME '$HOME'""
+echo ola  $HOME""""""$H""OME '$HOME'""
+echo ola  $HOME""""""$H""OME '$HOME'""
+echo ola " $HOME$HOME '$HOME'"""
+echo ola " $HOME$HOME '$HOME'"""
+echo ola " $HOME""""""$H""OME '$HOME'""
+echo ola " $HOME""""""$H""OME '$HOME'""
+echo ola  "$HOME$H"""""""O"ME" '$HOME'""
+> file echo aaa
+> file echo aaa
+'>' 'file' 'echo' 'asdadas'
+'>' 'file' 'echo' 'asdadas'
+'>' 'file' 'echo' 'asdadas'
+'>' 'file' 'echo' 'asdadas'
+echo ola " $HOME""""""$H""OME '$HOME'""
+echo ola " $HOME""""""$H""OME '$HOME'""
+echo ola " $HOME""""""$H""OME '$HOME'""
+echo ola '" $HOME$HOME $HOME"' '              '
+echo ola ' $HOME" $HOME  $HOME'"
+echo ola "'" $HOME$HO" $HOME$HOME '$HOME'"
+echo ola "'" $HOME$HO" $HOME$HOME $HOME'"
+echo ola "'" $HOME$HO" $HOME$HOME $HOME'""
+echo ola ""'" $HOME$HO" $HOME$HOME $HOME'""
+echo ola ""'" $HOME$HO" $HOME$HOME $HOME'""
+echo ola "" '" $HOME$HO" $HOME$HOME $HOME' ""
+echo ola ""'" $HOME$HO" $HOME$HOME $HOME'""
+echo ola '" $HOME$HOME $HOME"' '              '
+echo ola '" $HOME$HOME $HOME"' '              '
+echo ola '" $HOME$HOME $HOME"' '              '
+echo ola '" $HOME$HOME $HOME"' '              '
+echo ola '" $HOME$HOME $HOME"' '              '
+echo ola "" '" $HOME$HO" $HOME$HOME $HOME' ""
+echo ola "" '" $HOME$HO" $HOME$HOME $HOME' ""
+echo ola "" '" $HOME$HO" $HOME$HOME $HOME' ""
+echo ola "" '" $HOME$HO" $HOME$HOME $HOME' ""
+echo ola '" $HOME$HOME $HOME"' '              '
+echo ola '" $HOME$HO"" '" $HOME$HO" $HOME$HOME $HOME' ""
+echo ola "'" $HOME$HO" $HOME$HOME $HOME'""
+echo ola  $HOME$H"""""""OME '$HOME'""
+echo ola ' $HOME" $HOME  $HOME'"
+echo ola '" $HOME$HO"" '" $HOME$HO" $HOME$HOME $HOME' ""
+""
+" "
+'"'"
+
+
+
+		
+echo "'"
+code .
+echo "'"
+
+echo ola '" $HOME$HO"" '" $HOME$HO" $HOME$HOME $HOME' ""
+echo ola '" $HOME$HO"" '" $HOME$HO" $HOME$HOME $HOME' ""
+echo ola ' $HOME" $HOME  $HOME'"
+echo ola  $HOME$H"""""""OME '$HOME'""
+echo ola "'" $HOME$HO" $HOME$HOME $HOME'""
+"ola""''$HOME''"
+"ola""''$HOME''"
+"ola""''$HOME'"
+"ola""''$HOME"
+"ola""''$HOME"'"
+"ola""''$HOME"''"
+"ola""''$HOME"''""
+"ola""''$HOME"'"'"
+"ola""''$HOME"'"'"'
+"ola""''$HOME"'"'"'"
+echo ola  $HOME$H"""""""OME '$HOME'""
+"ola""''$HOME'"
+echo ola  $HOME$H"""""""OME '$HOME'""
+"ola""''$HOME'"
+echo ola " $HOME$HOME '$HOME'"""
+env
+export _1="echo 123"
+env
+export _1='echo 123'
+export _1="'"
+echo ola  $HOME$H"""""""OME '$HOME'""
+echo ola  $HOME$H"""""""OM"E '$HOME'""
+echo ola  $HOME$H"""""""OM"E '$HOME'""
+echo ola  $HOME$H"""""""OM"E '$HOME'""
+echo ola  $HOME$H"""""""OM"E '$HOME'""
+echo ola  $HOME$H"""""""OM"E '$HOME'""
+export _1="'"
+echo ola  $HOME$H"""""""OM"E '$HOME'""
+export _1="'"
+echo ola  $HOME$H"""""""OM"E '$HOME'""
+echo ola  $HOME$H"""""""OM"E '$HOME'""
+echo ola  $HOME$H"""""""OM"E '$HOME'""
+echo ola  $HOME$H"""""""OM"E '$HOME'""
+echo ola  $HOME$H"""""""OM"E '$HOME'""
+echo ola  $HOME$H"""""""OM"E '$HOME'""
+"ola""''$HOME''"
+echo ola ' $HOME" $HOME  $HOME'"
+echo ola ' $HOME" $HOME  $HOME'""
+echo ola  $HOME$H"""""""OM"E '$HOME'""
+echo ola "'" $HOME$HO" $HOME$HOME '$HOME'"
+echo ola "'" $HOME$HO" $HOME$HOME '$HOME'"
+echo ola ' $HOME" $HOME  $HOME'"
+echo ola "'" $HOME$HO" $HOME$HOME '$HOME'"
+echo ola ' $HOME" $HOME  $HOME'"
+echo ola "'" $HOME$HO" $HOME$HOME '$HOME'"
+echo ola "'" $HOME$HO" $HOME$HOME '$HOME'"
+echo ola "'" $HOME$HO" $HOME$HOME '$HOME'"
+
+
+echo ola "'" $HOME$HO" $HOME$HOME '$HOME'"
+
+
+echo ola ' $HOME" $HOME  $HOME'"
+
+echo ola ' $HOME" $HOME  $HOME'""
+echo ola "'" $HOME$HO" $HOME$HOME '$HOME'"

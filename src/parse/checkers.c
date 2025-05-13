@@ -6,7 +6,7 @@
 /*   By: pmoreira <pmoreira@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/07 13:55:22 by pmoreira          #+#    #+#             */
-/*   Updated: 2025/05/07 13:58:50 by pmoreira         ###   ########.fr       */
+/*   Updated: 2025/05/13 14:15:08 by pmoreira         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,6 +16,8 @@ int	is_quotes(int c)
 {
 	return (c == '\'' || c == '\"');
 }
+
+//* || (d_quotes) % 2 != 0 || (quotes) % 2 != 0
 
 int	quotes_check(char *input)
 {
@@ -28,13 +30,13 @@ int	quotes_check(char *input)
 		return (0);
 	while (*input)
 	{
-		if (*input == '\'')
-			quotes++;
-		if ((quotes % 2 == 0) && *input == '\"')
-			d_quotes++;
+		if ((d_quotes == 0) && *input == '\'')
+			quotes = !quotes;
+		if ((quotes == 0) && *input == '\"')
+			d_quotes = !d_quotes;
 		input++;
 	}
-	if ((d_quotes + quotes) % 2 != 0)
+	if (d_quotes || quotes)
 		return (0);
 	return (1);
 }
