@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   first.c                                            :+:      :+:    :+:   */
+/*   tokenize.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: pmoreira <pmoreira@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/24 14:39:15 by pmoreira          #+#    #+#             */
-/*   Updated: 2025/05/14 14:05:34 by pmoreira         ###   ########.fr       */
+/*   Updated: 2025/05/14 15:02:42 by pmoreira         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,7 +46,7 @@ void	print_token(t_token *toks)
 
 }
 
-void	print_input(char *input, t_hell *data)
+void	tokenize(char *input, t_hell *data)
 {
 	char	**matrix;
 	int		i;
@@ -72,4 +72,3 @@ void	print_input(char *input, t_hell *data)
 	print_token(data->tokens);
 	ft_clean_matrix(matrix);
 }
-

@@ -6,7 +6,7 @@
 /*   By: pmoreira <pmoreira@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/07 14:40:54 by pmoreira          #+#    #+#             */
-/*   Updated: 2025/05/14 12:52:20 by pmoreira         ###   ########.fr       */
+/*   Updated: 2025/05/14 15:04:51 by pmoreira         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -119,23 +119,25 @@ static char	*expand_vars(char *s, char *end, t_env **env, int flag)
 void	literal(char **ptr, char *s, t_env **env)
 {
 	char	*output;
-	char	*temp;
+	char	*end;
 	size_t	size;
 
 	if (!s)
 		return ;
 	output = NULL;
 	size = ft_strlen(s);
-	temp = &s[size - 1];
-	while (temp != s && *temp == '\"')
-		temp--;
-	(void) temp;
-	if (*s == '\'' && s[size - 1] == '\'')
-		output = new_word(s + 1, &s[size - 1]);
+	end = &s[size - 1];
+	while (end != s && *end == '\"')
+		end--;
+	end++;
+	while (*s && *s == '\"')
+		s++;
+	if (*s == '\'' && *(end - 1) == '\'')
+		output = new_word(s + 1, end - 1);
 	// else if (temp != s && *s == '\"' && s[size - 1] == '\"')
 	// 	output = expand_vars(s + 1, &s[size - 1], env, 1);
 	else
-		output = expand_vars(s, &s[size], env, 1);
+		output = expand_vars(s, end, env, 1);
 	if (!output)
 		return ;
 	*ptr = output;
