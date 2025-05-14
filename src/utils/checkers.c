@@ -6,7 +6,7 @@
 /*   By: pmoreira <pmoreira@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/29 14:33:17 by pmoreira          #+#    #+#             */
-/*   Updated: 2025/04/29 15:13:57 by pmoreira         ###   ########.fr       */
+/*   Updated: 2025/05/05 15:42:24 by pmoreira         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,6 +42,10 @@ t_bool	is_builtin(char *s)
 	else if (!ft_strcmp(s, "env"))
 		return (TRUE);
 	else if (!ft_strcmp(s, "exit"))
+		return (TRUE);
+	else if (!ft_strcmp(s, "export"))
+		return (TRUE);
+	else if (!ft_strcmp(s, "unset"))
 		return (TRUE);
 	return (FALSE);
 }
