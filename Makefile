@@ -41,7 +41,7 @@ SRC_FD = misc.c minishell.c env_manager.c
 
 SRC_PIPEX =	pipex.c aux.c utils.c ft_parse.c
 
-SRC_PARSE =	first.c ft_params.c checkers.c expand.c
+SRC_PARSE =	first.c ft_params.c checkers.c expand.c extra.c
 
 SRC_UTILS =	cleaners.c constructors.c checkers.c
 

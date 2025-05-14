@@ -6,7 +6,7 @@
 /*   By: pmoreira <pmoreira@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/24 14:48:17 by pmoreira          #+#    #+#             */
-/*   Updated: 2025/05/07 15:45:27 by pmoreira         ###   ########.fr       */
+/*   Updated: 2025/05/14 14:10:28 by pmoreira         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,12 +28,14 @@
 # define ERR_QUOTES "minishell: syntax error: input contains unclosed quotes\n"
 
 // parse:
-char	**ft_params(const char *start, char c);
+char	**ft_params(const char *start);
 void	print_input(char *input, t_hell *data);
-// char	**ft_params(const char *start, const char *end);
 int		valid_input(t_token *tok);
 int		quotes_check(char *input);
 void	literal(char **ptr, char *s, t_env **env);
+void	init_proc(const char **start, const char *s, t_bool *quote, \
+	t_bool *d_quote);
+void	check_quotes(int c, t_bool *quote, t_bool *d_quote);
 int		is_quotes(int c);
 
 // miscs:
@@ -57,7 +59,7 @@ void	ft_setenv(t_env **env, char *var, char *value);
 
 // Utils
 void	armageddon(t_hell *data);
-t_hell	*init_hell(int ac, char **av,char **envp);
+t_hell	*init_hell(int ac, char **av, char **envp);
 t_bool	is_builtin(char *s);
 t_bool	is_command(char *s, char **path);
 int		check_prev(t_token *prev, t_token *current);

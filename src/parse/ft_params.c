@@ -6,7 +6,7 @@
 /*   By: pmoreira <pmoreira@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/26 12:23:53 by pmoreira          #+#    #+#             */
-/*   Updated: 2025/05/13 15:26:11 by pmoreira         ###   ########.fr       */
+/*   Updated: 2025/05/14 14:17:37 by pmoreira         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,81 +31,71 @@ static int	ft_add_word(char **matrix, const char *start, const char *end)
 	word = (char *)malloc((end - start + 1) * sizeof(char));
 	if (!word)
 		return (0);
-	// if (*start == '\'')
-	// 	start++;
-	// if (*(end - 1) == '\'')
-	// 	end--;
 	while (start < end)
 	{
 		word[i++] = *start;
 		start++;
-		// if (*start == '\\')
-		// 	start++;
 	}
 	word[i] = '\0';
 	*matrix = word;
 	return (1);
 }
 
-static void	ft_count(const char *s, int *count, char c)
+// quote = FALSE;
+// d_quote = FALSE;
+// start = input;
+static void	ft_count(const char *input, int *count)
 {
-	// const char	*temp;
-	int			quotes;
+	t_bool		quote;
+	t_bool		d_quote;
+	const char	*start;
 
-	quotes = 0;
-	while (*s)
+	init_proc(&start, input, &quote, &d_quote);
+	while (*input)
 	{
-		while (*s && *s == c)
-			s++;
-		if(*s)
-			*count += 1;
-		while(*s && *s != c)
+		check_quotes(*input, &quote, &d_quote);
+		if (*input == ' ' && !quote && !d_quote)
 		{
-			if (is_quotes(*s))
-			{
-				// temp = s++;
-				
-				// *count += (*(temp - 1) && *(temp - 1) != c && *temp == *s);
-				while (s && *s && (*temp != *s))
-					s++;
-			}
-			s++;
+			if (input > start)
+				(*count)++;
+			start = input + 1;
 		}
+		input++;
 	}
+	if (input > start)
+		(*count)++;
 }
-
-// void	process_quotes(const char **s, int c)
-// {
-// 	while (**s)
-// 	{
-// 		*s += 1;
-// 		while (**s && (**s != c))
-// 			*s += 1;
-// 	}
-// }
 
 static int	proc_str(char **matrix, const char *s, char c, int *index)
 {
+	t_bool		quote;
+	t_bool		d_quote;
 	const char	*start;
 
+	init_proc(&start, s, &quote, &d_quote);
 	while (*s)
 	{
-		while (*s && *s == c)
-			s++;
-		start = s;
-		while (*s && *s != c)
+		check_quotes(*s, &quote, &d_quote);
+		if (*s == c && !quote && !d_quote)
 		{
-			if (is_quotes(*s))
-				
+			if (s > start)
+			{
+				if (!ft_add_word(&matrix[(*index)++], start, s))
+					return (ft_free(matrix, *index), 0);
+			}
+			start = s + 1;
 		}
-		
+		s++;
+	}
+	if (s > start)
+	{
 		if (!ft_add_word(&matrix[(*index)++], start, s))
 			return (ft_free(matrix, *index), 0);
 	}
 	return (1);
 }
 
-char	**ft_params(const char *start, char c)
+char	**ft_params(const char *start)
 {
 	char	**matrix;
 	int		size;
@@ -114,9 +104,8 @@ char	**ft_params(const char *start, char c)
 	if (!start)
 		return (NULL);
 	size = 0;
-	ft_count(start, &size, c);
+	ft_count(start, &size);
 	printf("Words: %d\n", size);
-	// return (NULL);
 	if (size == 0)
 		return (NULL);
 	matrix = (char **)malloc(sizeof(char *) * (size + 1));
@@ -124,8 +113,7 @@ char	**ft_params(const char *start, char c)
 		return (NULL);
 	matrix[size] = NULL;
 	index = 0;
-	if (!proc_str(matrix, start, c, &index))
+	if (!proc_str(matrix, start, ' ', &index))
 		return (NULL);
-	// return (NULL);
 	return (matrix);
 }

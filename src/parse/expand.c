@@ -6,7 +6,7 @@
 /*   By: pmoreira <pmoreira@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/07 14:40:54 by pmoreira          #+#    #+#             */
-/*   Updated: 2025/05/12 10:47:30 by pmoreira         ###   ########.fr       */
+/*   Updated: 2025/05/14 12:52:20 by pmoreira         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -132,8 +132,8 @@ void	literal(char **ptr, char *s, t_env **env)
 	(void) temp;
 	if (*s == '\'' && s[size - 1] == '\'')
 		output = new_word(s + 1, &s[size - 1]);
-	else if (temp != s && *s == '\"' && s[size - 1] == '\"')
-		output = expand_vars(s + 1, &s[size - 1], env, 1);
+	// else if (temp != s && *s == '\"' && s[size - 1] == '\"')
+	// 	output = expand_vars(s + 1, &s[size - 1], env, 1);
 	else
 		output = expand_vars(s, &s[size], env, 1);
 	if (!output)

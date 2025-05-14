@@ -6,7 +6,7 @@
 /*   By: pmoreira <pmoreira@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/24 14:39:15 by pmoreira          #+#    #+#             */
-/*   Updated: 2025/05/07 15:47:58 by pmoreira         ###   ########.fr       */
+/*   Updated: 2025/05/14 14:05:34 by pmoreira         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,7 +54,7 @@ void	print_input(char *input, t_hell *data)
 
 	if (!quotes_check(input))
 		return (ft_putstr_fd(ERR_QUOTES, 2));
-	matrix = ft_params(input, ' ');
+	matrix = ft_params(input);
 	if (!matrix)
 		return ;
 	i = -1;
