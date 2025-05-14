@@ -6,7 +6,7 @@
 /*   By: pmoreira <pmoreira@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/26 12:23:53 by pmoreira          #+#    #+#             */
-/*   Updated: 2025/05/14 14:17:37 by pmoreira         ###   ########.fr       */
+/*   Updated: 2025/05/14 15:17:21 by pmoreira         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -105,7 +105,6 @@ char	**ft_params(const char *start)
 		return (NULL);
 	size = 0;
 	ft_count(start, &size);
-	printf("Words: %d\n", size);
 	if (size == 0)
 		return (NULL);
 	matrix = (char **)malloc(sizeof(char *) * (size + 1));
