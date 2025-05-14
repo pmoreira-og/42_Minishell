@@ -6,7 +6,7 @@
 /*   By: pmoreira <pmoreira@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/07 14:40:54 by pmoreira          #+#    #+#             */
-/*   Updated: 2025/05/14 15:04:51 by pmoreira         ###   ########.fr       */
+/*   Updated: 2025/05/14 15:53:13 by pmoreira         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -86,14 +86,13 @@ static char	*ft_expand(char *s1, char *s2, char **temp)
 	return (tmp);
 }
 
-static char	*expand_vars(char *s, char *end, t_env **env, int flag)
+static char	*expand_vars(char *s, char *end, t_env **env)
 {
 	char	*start;
 	char	*result;
 	char	*temp;
 
 	result = NULL;
-	(void) flag;
 	while (s < end)
 	{
 		if (*s == '$')
@@ -119,26 +118,43 @@ static char	*expand_vars(char *s, char *end, t_env **env, int flag)
 void	literal(char **ptr, char *s, t_env **env)
 {
 	char	*output;
-	char	*end;
-	size_t	size;
+	char	*ptr;
+	t_bool	quote;
+	t_bool	d_quote;
 
 	if (!s)
 		return ;
 	output = NULL;
-	size = ft_strlen(s);
-	end = &s[size - 1];
-	while (end != s && *end == '\"')
-		end--;
-	end++;
-	while (*s && *s == '\"')
-		s++;
-	if (*s == '\'' && *(end - 1) == '\'')
-		output = new_word(s + 1, end - 1);
-	// else if (temp != s && *s == '\"' && s[size - 1] == '\"')
-	// 	output = expand_vars(s + 1, &s[size - 1], env, 1);
-	else
-		output = expand_vars(s, end, env, 1);
-	if (!output)
-		return ;
-	*ptr = output;
+	init_proc(&ptr, s, &quote, &d_quote);
+	while (*s)
+	{
+		/* code */
+	}
+	
 }
+// void	literal(char **ptr, char *s, t_env **env)
+// {
+// 	char	*output;
+// 	char	*end;
+// 	size_t	size;
+
+// 	if (!s)
+// 		return ;
+// 	output = NULL;
+// 	size = ft_strlen(s);
+// 	end = &s[size - 1];
+// 	while (end != s && *end == '\"')
+// 		end--;
+// 	end++;
+// 	while (*s && *s == '\"')
+// 		s++;
+// 	if (*s == '\'' && *(end - 1) == '\'')
+// 		output = new_word(s + 1, end - 1);
+// 	// else if (temp != s && *s == '\"' && s[size - 1] == '\"')
+// 	// 	output = expand_vars(s + 1, &s[size - 1], env, 1);
+// 	else
+// 		output = expand_vars(s, end, env, 1);
+// 	if (!output)
+// 		return ;
+// 	*ptr = output;
+// }
