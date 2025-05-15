@@ -6,7 +6,7 @@
 /*   By: pmoreira <pmoreira@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/24 14:48:17 by pmoreira          #+#    #+#             */
-/*   Updated: 2025/05/14 15:04:13 by pmoreira         ###   ########.fr       */
+/*   Updated: 2025/05/15 14:01:32 by pmoreira         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,12 +33,16 @@ char	**ft_params(const char *start);
 void	tokenize(char *input, t_hell *data);
 int		valid_input(t_token *tok);
 int		quotes_check(char *input);
-void	literal(char **ptr, char *s, t_env **env);
+void	literal(char **ptr, char *s, char *endptr, t_env **env);
 void	init_proc(const char **start, const char *s, t_bool *quote, \
 	t_bool *d_quote);
 void	check_quotes(int c, t_bool *quote, t_bool *d_quote);
 int		is_quotes(int c);
 char	*new_word(const char *start, const char *end);
+void	ft_copy(char **output, char *s, char **ptr);
+char	*expand_vars(char *s, char *end, t_env **env);
+char	*ft_expand(char *s1, char *s2, char **temp);
+void	process_str(char **ptr, char *s, t_env **env);
 
 // miscs:
 void	printascii(void);

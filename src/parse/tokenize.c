@@ -6,7 +6,7 @@
 /*   By: pmoreira <pmoreira@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/24 14:39:15 by pmoreira          #+#    #+#             */
-/*   Updated: 2025/05/14 15:02:42 by pmoreira         ###   ########.fr       */
+/*   Updated: 2025/05/15 10:51:59 by pmoreira         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -65,7 +65,7 @@ void	tokenize(char *input, t_hell *data)
 		temp->next = ft_calloc(1, sizeof(t_token));
 		if (!temp->next)
 			return ;
-		literal(&temp->cmd, matrix[i], &data->env);
+		process_str(&temp->cmd, matrix[i], &data->env);
 		temp->next->prev = temp;
 		temp = temp->next;
 	}

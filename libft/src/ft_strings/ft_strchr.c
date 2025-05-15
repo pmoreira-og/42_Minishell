@@ -6,7 +6,7 @@
 /*   By: pmoreira <pmoreira@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/29 15:30:13 by pmoreira          #+#    #+#             */
-/*   Updated: 2024/10/30 14:52:31 by pmoreira         ###   ########.fr       */
+/*   Updated: 2025/05/15 09:59:39 by pmoreira         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,6 +20,8 @@ char	*ft_strchr(const char *s, int c)
 	char			*str;
 	unsigned char	letter;
 
+	if (!s)
+		return (0);
 	str = (char *) s;
 	letter = (unsigned char) c;
 	i = 0;

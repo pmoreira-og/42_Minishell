@@ -6,7 +6,7 @@
 /*   By: pmoreira <pmoreira@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/07 14:40:54 by pmoreira          #+#    #+#             */
-/*   Updated: 2025/05/14 15:53:13 by pmoreira         ###   ########.fr       */
+/*   Updated: 2025/05/15 13:54:31 by pmoreira         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,6 +17,8 @@ char	*new_word(const char *start, const char *end)
 	char	*word;
 	int		i;
 
+	if (!start || !end)
+		return (NULL);
 	i = 0;
 	word = (char *)malloc((end - start + 1) * sizeof(char));
 	if (!word)
@@ -32,7 +34,7 @@ char	*new_word(const char *start, const char *end)
 
 static char	*get_env_value(t_env **env, char *name)
 {
-	t_env *tmp;
+	t_env	*tmp;
 
 	tmp = *env;
 	while (tmp)
@@ -44,40 +46,16 @@ static char	*get_env_value(t_env **env, char *name)
 	return ("");
 }
 
-// int	new_string(char **ptr, char *s, int flag)
-// {
-// 	int		quotes;
-// 	char	*out;
-
-// 	quotes = 0;
-// 	while(flag && *s)
-// 	{
-// 		if (*s == '\"')
-// 			quotes++;
-// 		s++;
-// 	}
-// 	s = *ptr;
-// 	out = malloc((ft_strlen(s) - quotes + 1));
-// 	if (!out)
-// 		return (0);
-// 	quotes = 0;
-// 	while(*s)
-// 	{
-// 		if (flag && *s == '\"')
-// 			s++;
-// 		if (*s)
-// 			out[quotes++] = *s;
-// 		s++;
-// 	}
-// 	free(*ptr);
-// 	*ptr = out;
-// 	return (1);
-// }
-
-static char	*ft_expand(char *s1, char *s2, char **temp)
+/// @brief Join the 2 strings, free the s1 and free the s2 if the pointer are 
+///		given.
+/// @param s1 Output string.
+/// @param s2 Temp string.
+/// @param temp Address of Temp.
+/// @return Strjoin.
+char	*ft_expand(char *s1, char *s2, char **temp)
 {
 	char	*tmp;
-	
+
 	tmp = ft_strjoin(s1, s2);
 	if (s1)
 		free(s1);
@@ -86,7 +64,7 @@ static char	*ft_expand(char *s1, char *s2, char **temp)
 	return (tmp);
 }
 
-static char	*expand_vars(char *s, char *end, t_env **env)
+char	*expand_vars(char *s, char *end, t_env **env)
 {
 	char	*start;
 	char	*result;
@@ -98,7 +76,7 @@ static char	*expand_vars(char *s, char *end, t_env **env)
 		if (*s == '$')
 		{
 			start = ++s;
-			while (*s && (ft_isalnum(*s) || *s == '_'))
+			while ((s < end) && *s && (ft_isalnum(*s) || *s == '_'))
 				s++;
 			temp = new_word(start, s);
 			result = ft_expand(result, (get_env_value(env, temp)), &temp);
@@ -106,7 +84,7 @@ static char	*expand_vars(char *s, char *end, t_env **env)
 		else
 		{
 			start = s;
-			while (*s && *s != '$')
+			while ((s < end) && *s && *s != '$')
 				s++;
 			temp = new_word(start, s);
 			result = ft_expand(result, temp, NULL);
@@ -115,46 +93,18 @@ static char	*expand_vars(char *s, char *end, t_env **env)
 	return (result);
 }
 
-void	literal(char **ptr, char *s, t_env **env)
+void	ft_copy(char **output, char *s, char **ptr)
 {
-	char	*output;
-	char	*ptr;
-	t_bool	quote;
-	t_bool	d_quote;
+	char	*tmp;
+	char	*end_quote;
 
-	if (!s)
+	if (!output || !s || !ptr)
 		return ;
-	output = NULL;
-	init_proc(&ptr, s, &quote, &d_quote);
-	while (*s)
+	end_quote = ft_strchr(s + 1, '\'');
+	if (end_quote)
 	{
-		/* code */
+		tmp = new_word(s, ft_strchr(s + 1, '\''));
+		*output = ft_expand(*output, tmp, &tmp);
+		*ptr = ft_strchr(tmp + 1, '\'') + 1;
 	}
-	
 }
-// void	literal(char **ptr, char *s, t_env **env)
-// {
-// 	char	*output;
-// 	char	*end;
-// 	size_t	size;
-
-// 	if (!s)
-// 		return ;
-// 	output = NULL;
-// 	size = ft_strlen(s);
-// 	end = &s[size - 1];
-// 	while (end != s && *end == '\"')
-// 		end--;
-// 	end++;
-// 	while (*s && *s == '\"')
-// 		s++;
-// 	if (*s == '\'' && *(end - 1) == '\'')
-// 		output = new_word(s + 1, end - 1);
-// 	// else if (temp != s && *s == '\"' && s[size - 1] == '\"')
-// 	// 	output = expand_vars(s + 1, &s[size - 1], env, 1);
-// 	else
-// 		output = expand_vars(s, end, env, 1);
-// 	if (!output)
-// 		return ;
-// 	*ptr = output;
-// }
