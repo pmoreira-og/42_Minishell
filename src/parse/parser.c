@@ -6,7 +6,7 @@
 /*   By: pmoreira <pmoreira@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/14 14:59:37 by pmoreira          #+#    #+#             */
-/*   Updated: 2025/05/15 14:01:47 by pmoreira         ###   ########.fr       */
+/*   Updated: 2025/05/15 16:09:11 by pmoreira         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,11 +23,11 @@ void	process_str(char **ptr, char *s, t_env **env)
 	output = NULL;
 	size = ft_strlen(s);
 	end = &s[size - 1];
-	while (end != s && *end == '\"')
-		end--;
-	end++;
-	while (*s && *s == '\"')
-		s++;
+	// while (end != s && *end == '\"')
+	// 	end--;
+	// end++;
+	// while (*s && *s == '\"')
+	// 	s++;
 	literal(&output, s, end, env);
 	if (!output)
 		return ;
@@ -37,4 +37,5 @@ void	process_str(char **ptr, char *s, t_env **env)
 void	parser(char *input, t_hell *data)
 {
 	tokenize(input, data);
+	// clean_list(&data->tokens);
 }

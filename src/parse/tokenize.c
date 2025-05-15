@@ -6,7 +6,7 @@
 /*   By: pmoreira <pmoreira@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/24 14:39:15 by pmoreira          #+#    #+#             */
-/*   Updated: 2025/05/15 10:51:59 by pmoreira         ###   ########.fr       */
+/*   Updated: 2025/05/15 15:49:20 by pmoreira         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,7 +43,6 @@ void	print_token(t_token *toks)
 		printf("[%s]: %d\n", temp->cmd, temp->type);
 		temp = temp->next;
 	}
-
 }
 
 void	tokenize(char *input, t_hell *data)

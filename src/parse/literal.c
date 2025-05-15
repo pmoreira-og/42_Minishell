@@ -6,13 +6,11 @@
 /*   By: pmoreira <pmoreira@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/15 11:06:07 by pmoreira          #+#    #+#             */
-/*   Updated: 2025/05/15 14:10:02 by pmoreira         ###   ########.fr       */
+/*   Updated: 2025/05/15 16:19:20 by pmoreira         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minishell.h"
-
-
 
 void	find_non_expand(char *input, char **start, char **end)
 {
@@ -25,7 +23,8 @@ void	find_non_expand(char *input, char **start, char **end)
 	while (*input)
 	{
 		check_quotes(*input, &quote, &d_quote);
-		if (quote) {
+		if (*input && quote)
+		{
 			*start = input;
 			input++;
 			while (*input && (*input != '\''))
@@ -36,9 +35,8 @@ void	find_non_expand(char *input, char **start, char **end)
 				return;
 			}
 		}
-		if (*input == '"' && !quote)
-			d_quote = !d_quote;
-		input++;
+		if (*(input))
+			input++;
 	}
 }
 
@@ -55,7 +53,7 @@ void	literal(char **ptr, char *s, char *endptr, t_env **env)
 	{
 		if(start > s)
 			*ptr = expand_vars(s, start, env);
-		temp = new_word(start + 1, end - 1);
+		temp = new_word(start, end);
 		*ptr = ft_expand(*ptr, temp, &temp);
 		if (*end)
 		{
@@ -64,5 +62,5 @@ void	literal(char **ptr, char *s, char *endptr, t_env **env)
 		}
 	}
 	else
-		*ptr = expand_vars(s, endptr, env);
+		*ptr = expand_vars(s, endptr + 1, env);
 }

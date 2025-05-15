@@ -6,7 +6,7 @@
 /*   By: pmoreira <pmoreira@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/24 14:48:17 by pmoreira          #+#    #+#             */
-/*   Updated: 2025/05/15 14:01:32 by pmoreira         ###   ########.fr       */
+/*   Updated: 2025/05/15 16:04:01 by pmoreira         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -69,5 +69,6 @@ t_hell	*init_hell(int ac, char **av, char **envp);
 t_bool	is_builtin(char *s);
 t_bool	is_command(char *s, char **path);
 int		check_prev(t_token *prev, t_token *current);
+void	clean_list(t_token **toks);
 
 #endif
