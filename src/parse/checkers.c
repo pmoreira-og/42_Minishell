@@ -6,7 +6,7 @@
 /*   By: pmoreira <pmoreira@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/07 13:55:22 by pmoreira          #+#    #+#             */
-/*   Updated: 2025/05/14 15:47:41 by pmoreira         ###   ########.fr       */
+/*   Updated: 2025/05/16 15:48:28 by pmoreira         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -66,7 +66,7 @@ void	check_quotes(int c, t_bool *quote, t_bool *d_quote)
 		*quote = FALSE;
 		return ;
 	}
-	else if (c == '"' && *d_quote)
+	else if (c == '\"' && *d_quote)
 	{
 		*d_quote = FALSE;
 		return ;
@@ -76,7 +76,7 @@ void	check_quotes(int c, t_bool *quote, t_bool *d_quote)
 		*quote = TRUE;
 		return ;
 	}
-	else if (c == '"' && !(*quote))
+	else if (c == '\"' && !(*quote))
 	{
 		*d_quote = TRUE;
 		return ;

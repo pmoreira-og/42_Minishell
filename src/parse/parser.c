@@ -6,7 +6,7 @@
 /*   By: pmoreira <pmoreira@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/14 14:59:37 by pmoreira          #+#    #+#             */
-/*   Updated: 2025/05/15 16:09:11 by pmoreira         ###   ########.fr       */
+/*   Updated: 2025/05/16 12:19:30 by pmoreira         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,7 +28,7 @@ void	process_str(char **ptr, char *s, t_env **env)
 	// end++;
 	// while (*s && *s == '\"')
 	// 	s++;
-	literal(&output, s, end, env);
+	literal(&output, s, end + 1, env);
 	if (!output)
 		return ;
 	*ptr = output;
