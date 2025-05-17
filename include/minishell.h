@@ -6,7 +6,7 @@
 /*   By: pmoreira <pmoreira@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/24 14:48:17 by pmoreira          #+#    #+#             */
-/*   Updated: 2025/05/15 16:04:01 by pmoreira         ###   ########.fr       */
+/*   Updated: 2025/05/17 17:42:02 by pmoreira         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,6 +43,7 @@ void	ft_copy(char **output, char *s, char **ptr);
 char	*expand_vars(char *s, char *end, t_env **env);
 char	*ft_expand(char *s1, char *s2, char **temp);
 void	process_str(char **ptr, char *s, t_env **env);
+char	*remove_quotes(char *s);
 
 // miscs:
 void	printascii(void);
