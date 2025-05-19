@@ -6,7 +6,7 @@
 /*   By: pmoreira <pmoreira@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/24 14:48:17 by pmoreira          #+#    #+#             */
-/*   Updated: 2025/05/17 17:42:02 by pmoreira         ###   ########.fr       */
+/*   Updated: 2025/05/19 14:39:17 by pmoreira         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,8 +26,10 @@
 
 # define HIST_FILE "minishell_history"
 # define ERR_QUOTES "minishell: syntax error: input contains unclosed quotes\n"
+# define RED "\001\033[31m\002"
+# define RESET "\001\033[0m\002"
 
-// parse:
+// parse: - tab_counter(start)
 void	parser(char *input, t_hell *data);
 char	**ft_params(const char *start);
 void	tokenize(char *input, t_hell *data);
@@ -44,6 +46,9 @@ char	*expand_vars(char *s, char *end, t_env **env);
 char	*ft_expand(char *s1, char *s2, char **temp);
 void	process_str(char **ptr, char *s, t_env **env);
 char	*remove_quotes(char *s);
+void	check_char_quote(const char **s, t_bool *quote, t_bool *d_quote);
+int		tab_counter(const char *start, const char *end);
+
 
 // miscs:
 void	printascii(void);

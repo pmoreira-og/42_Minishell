@@ -6,7 +6,7 @@
 /*   By: pmoreira <pmoreira@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/14 14:59:37 by pmoreira          #+#    #+#             */
-/*   Updated: 2025/05/17 17:43:50 by pmoreira         ###   ########.fr       */
+/*   Updated: 2025/05/19 10:00:25 by pmoreira         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,16 +23,10 @@ void	process_str(char **ptr, char *s, t_env **env)
 	output = NULL;
 	size = ft_strlen(s);
 	end = &s[size - 1];
-	// while (end != s && *end == '\"')
-	// 	end--;
-	// end++;
-	// while (*s && *s == '\"')
-	// 	s++;
 	literal(&output, s, end + 1, env);
 	if (!output)
 		return ;
 	*ptr = remove_quotes(output);
-	// *ptr = output;
 }
 
 void	parser(char *input, t_hell *data)
