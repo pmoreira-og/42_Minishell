@@ -6,7 +6,7 @@
 /*   By: pmoreira <pmoreira@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/07 13:55:22 by pmoreira          #+#    #+#             */
-/*   Updated: 2025/05/19 14:53:41 by pmoreira         ###   ########.fr       */
+/*   Updated: 2025/05/20 10:32:05 by pmoreira         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,22 +32,18 @@ void	check_char_quote(const char **s, t_bool *quote, t_bool *d_quote)
 
 int	quotes_check(char *input)
 {
-	int	quotes;
-	int	d_quotes;
+	t_bool	quote;
+	t_bool	d_quote;
 
-	quotes = 0;
-	d_quotes = 0;
 	if (!input)
 		return (0);
+	init_proc(NULL, NULL, &quote, &d_quote);
 	while (*input)
 	{
-		if ((d_quotes == 0) && *input == '\'')
-			quotes = !quotes;
-		if ((quotes == 0) && *input == '\"')
-			d_quotes = !d_quotes;
+		check_char_quote((const char **) &input, &quote, &d_quote);
 		input++;
 	}
-	if (d_quotes || quotes)
+	if (d_quote || quote)
 		return (0);
 	return (1);
 }

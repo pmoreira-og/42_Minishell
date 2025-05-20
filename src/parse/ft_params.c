@@ -6,7 +6,7 @@
 /*   By: pmoreira <pmoreira@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/26 12:23:53 by pmoreira          #+#    #+#             */
-/*   Updated: 2025/05/19 15:22:22 by pmoreira         ###   ########.fr       */
+/*   Updated: 2025/05/20 10:36:12 by pmoreira         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,7 +57,6 @@ static void	ft_count(const char *input, int *count)
 	init_proc(&start, input, &quote, &d_quote);
 	while (*input)
 	{
-
 		check_char_quote(&input, &quote, &d_quote);
 		if (*input == ' ' && !quote && !d_quote)
 		{
@@ -110,8 +109,6 @@ char	**ft_params(const char *start)
 		return (NULL);
 	size = 0;
 	ft_count(start, &size);
-	// printf("count:%d\n", size);
-	// return (NULL);
 	if (size == 0)
 		return (NULL);
 	matrix = (char **)malloc(sizeof(char *) * (size + 1));

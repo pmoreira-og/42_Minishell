@@ -475,3 +475,40 @@ $NOTHING
 ""''
 ""''r''
 ""''r'$t'
+""''r''
+
+""''r'$t'
+export 123="echo 123"
+< in_file head -n 5 | grep test |  cut -d \' -f 1 > out_file
+< in_file head -n 5 | grep test |  cut -d \' -f 1 > out_file
+< in_file head -n 5 | grep test |cut -d \' -f 1 > out_file
+echo ola "'" $HOME$HO" $HOME$HOME '$HOME'"
+echo ola "'" $HOME$HO" $HOME$HOME $HOME'"
+echo ola "'" $HOME$HO" $HOME$HOME $HOME'"
+echo ola "'" $HOME$HO" $HOME$HOME '$HOME'"
+echo ola "'" $HOME$HO" $HOME$HOME $HOME'"
+echo ola "'" $HOME$HO" $HOME$HOME $HOME'""
+echo ola ""'" $HOME$HO" $HOME$HOME $HOME'""
+echo ola " $HOME$HOME '$HOME'"""
+echo ola  $HOME$HOME '$HOME'""
+echo ola  $HOME$H"""""""OME '$HOME'""
+echo ola  "$HOME$H"""""""O"ME" '$HOME'""
+echo ola ' $HOME" $HOME  $HOME'
+echo ola ' $HOME" $HOME  $HOME'"
+echo ola '" $HOME$HO"" '" $HOME$HO" $HOME$HOME $HOME' ""
+echo ola "'echo ola "'" $HOME$HO" $HOME$HOME '$HOME'"
+echo ola ""'" $HOME$HO" $HOME$HOME $HOME'"$HOME"
+echo ola'pipe'wow "ba'n'an'aa"
+echo' 'ola' '>' 'outfile'
+
+'echo' 'ola' '>' 'outfile'
+
+'echo' 'ola' '>' 'outfile'
+"$USER'"'$HOME"'
+$USER"'$NO'"'"'$USER'"'
+$
+$$
+$''
+export 'a'="eita poha"
+echo $'a'
+echo $3a
