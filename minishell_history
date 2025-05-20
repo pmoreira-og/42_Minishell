@@ -562,3 +562,84 @@ export $HOME="echo ola"
 export
 export a="echo ola "" '$HOME$HO' $HOME$HOME $HOME"
 export a='echo ola "" '$HOME$HO' $HOME$HOME $HOME'
+cat << $HOME | wc -l | cat << $USER > outfile
+cat << $HOME | wc -l | cat << $USER > outfile
+cat << $HOME | wc -l | cat << $USER > outfile
+cat << $HOME | wc -l | cat << $USER > outfile
+cat << $HOME | wc -l | cat << $USER > outfile
+cat << $HOME | wc -l | cat << $USER > outfile
+cat << $HOME | wc -l | cat << $USER > outfile
+cat << $HOME | wc -l | cat << $USER > outfile
+cat << $HOME | 
+cat << $HOME | 
+cat << $HOME | wc -l | cat << $USER > outfile
+cat << $HOME | wc -l | cat << $USER > outfile
+cat << $HOME
+export a="echo ola "" '$HOME$HO' $HOME$HOME $HOME"
+export a='echo ola "" '$HOME$HO' $HOME$HOME $HOME'
+asdasdadasdadadasasd
+\e\c\h\o
+cut -d \' -f 1
+cut -d \\ -f 1
+cat << $HOME | wc -l | cat << $USER > outfile
+'echo' 'ola' '>' "out"
+'echo' 'ola' '>' "out"
+cat << $HOME | wc -l | cat << $USER > outfile
+cat << $HOME | 
+cat << $HOME | 
+cat << $HOME | wc -l | cat << $USER > outfile
+cat << $HOME | wc -l | cat << $USER > outfile
+cat << $HOME | wc -l | cat << $USER > outfile
+cut -f \' -d 1 > cat > outfile
+cat < infile | cut -d ' ' -f 1 | cat > outfile
+'echo' 'ola' '>' "out"
+'cat' 'infile'
+cat cat 'infile'
+< infile cat cat > outfile
+echo ola "'" $HOME$HO" $HOME$HOME '$HOME'"
+echo ola "'" $HOME$HO" $HOME$HOME '$HOME'"
+echo ola "'" $HOME$HO" $HOME$HOME '$HOME'"
+> outfile echo ola
+> outfile echo ola
+> outfile echo ola
+> outfile echo ola
+> outfile echo ola
+> outfile echo ola
+> outfile echo ola
+> outfile echo ola
+> outfile echo ola
+> outfile echo ola
+> outfile echo ola
+> outfile echo ola
+> outfile echo ola
+> outfile echo ola
+echo ola "'" $HOME$HO" $HOME$HOME '$HOME'"
+cat << $HOME | wc -l | cat << $USER > outfile
+'echo' 'ola' '>' "out"
+cut -f \' -d 1 > cat > outfile
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+cat < infile | cut -d ' ' -f 1 | cat > outfile
+cat < infile | cut -d ' ' -f 1 | cat > outfile

@@ -6,7 +6,7 @@
 /*   By: pmoreira <pmoreira@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/23 12:12:04 by ernda-si          #+#    #+#             */
-/*   Updated: 2025/04/25 12:14:18 by pmoreira         ###   ########.fr       */
+/*   Updated: 2025/05/20 16:26:06 by pmoreira         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,20 +47,20 @@ void	mini_cd(t_cmd *cmd, t_env **env)
 	c_path = getcwd(NULL, 0);
 	if (cmd->argc > 2)
 		exit(1);
-	if (!cmd->argv[1])
+	if (!cmd->args[1])
 		dir_handler(env, getenv("HOME"), c_path);
-	else if (!ft_strcmp(cmd->argv[1], "/"))
+	else if (!ft_strcmp(cmd->args[1], "/"))
 		dir_handler(env, "/", c_path);
-	if (cmd->argv[1][0] == '~' && cmd->argv[1][1] == '/')
+	if (cmd->args[1][0] == '~' && cmd->args[1][1] == '/')
 	{
-		n_path = ft_strjoin(getenv("HOME"), ft_strchr(cmd->argv[1], '/'));
+		n_path = ft_strjoin(getenv("HOME"), ft_strchr(cmd->args[1], '/'));
 		printf("n_path: %s\n", n_path);
 		dir_handler(env, n_path, c_path);
 	}
-	else if (cmd->argv[1])
+	else if (cmd->args[1])
 	{
 		n_path = ft_strjoin(c_path, "/");
-		n_path = ft_strjoin(n_path, cmd->argv[1]);
+		n_path = ft_strjoin(n_path, cmd->args[1]);
 		dir_handler(env, n_path, c_path);
 	}
 	n_path = getcwd(NULL, 0);

@@ -6,7 +6,7 @@
 /*   By: pmoreira <pmoreira@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/24 14:48:17 by pmoreira          #+#    #+#             */
-/*   Updated: 2025/05/20 11:16:07 by pmoreira         ###   ########.fr       */
+/*   Updated: 2025/05/20 16:34:16 by pmoreira         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,6 +48,8 @@ char	*remove_quotes(char *s);
 void	check_char_quote(const char **s, t_bool *quote, t_bool *d_quote);
 int		tab_counter(const char *start, const char *end);
 void	skip_expand_name(char **s, char *end);
+int		command_size(t_token *start, t_token **save_ptr, int *cmd_c, t_bool *flag);
+char	**build_args(t_token *start, t_cmd **cmd);
 
 // miscs:
 void	printascii(void);
@@ -75,5 +77,8 @@ t_bool	is_builtin(char *s);
 t_bool	is_command(char *s, char **path);
 int		check_prev(t_token *prev, t_token *current);
 void	clean_list(t_token **toks);
+void	print_matrix(char **matrix);
+void	print_token(t_token *toks);
+void	print_cmd_info(t_cmd *cmds);
 
 #endif
