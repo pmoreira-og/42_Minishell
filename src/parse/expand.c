@@ -6,7 +6,7 @@
 /*   By: pmoreira <pmoreira@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/07 14:40:54 by pmoreira          #+#    #+#             */
-/*   Updated: 2025/05/15 13:54:31 by pmoreira         ###   ########.fr       */
+/*   Updated: 2025/05/20 10:52:16 by pmoreira         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -76,8 +76,7 @@ char	*expand_vars(char *s, char *end, t_env **env)
 		if (*s == '$')
 		{
 			start = ++s;
-			while ((s < end) && *s && (ft_isalnum(*s) || *s == '_'))
-				s++;
+			skip_expand_name(&s, end);
 			temp = new_word(start, s);
 			result = ft_expand(result, (get_env_value(env, temp)), &temp);
 		}
@@ -91,20 +90,4 @@ char	*expand_vars(char *s, char *end, t_env **env)
 		}
 	}
 	return (result);
-}
-
-void	ft_copy(char **output, char *s, char **ptr)
-{
-	char	*tmp;
-	char	*end_quote;
-
-	if (!output || !s || !ptr)
-		return ;
-	end_quote = ft_strchr(s + 1, '\'');
-	if (end_quote)
-	{
-		tmp = new_word(s, ft_strchr(s + 1, '\''));
-		*output = ft_expand(*output, tmp, &tmp);
-		*ptr = ft_strchr(tmp + 1, '\'') + 1;
-	}
 }

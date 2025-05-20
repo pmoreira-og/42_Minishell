@@ -512,3 +512,53 @@ $''
 export 'a'="eita poha"
 echo $'a'
 echo $3a
+echo $3a
+export 'a'="eita poha"
+echo ola ""'" $HOME$HO" $HOME$HOME $HOME'"$HOME"
+echo' 'ola' '>' 'outfile'
+'echo' 'ola' '>' 'outfile'
+echo ola'pipe'wow "ba'n'an'aa"
+cut -d \' -f 1
+"$USER'"'$HOME"'
+echo $3a
+echo $a3a
+echo $_3a
+echo $_3a
+echo $a3a
+echo $3a
+echo ola "'" $HOME$HO" $HOME$HOME '$HOME'"
+echo ola "'" $HOME$HO" $HOME$HOME $HOME'"
+echo ola "'" $HOME$HO" $HOME$HOME $HOME'""
+echo ola ""'" $HOME$HO" $HOME$HOME $HOME'""
+echo ola " $HOME$HOME '$HOME'"""
+echo ola  $HOME$HOME '$HOME'""
+echo \\
+echo ola  $HOME$H"""""""OME '$HOME'""
+echo ola  "$HOME$H"""""""O"ME" '$HOME'""
+echo ola ' $HOME" $HOME  $HOME'
+echo ola ' $HOME" $HOME  $HOME'"
+echo ola ""'" $HOME$HO" $HOME$HOME $HOME'"$HOME"
+echo ola'pipe'wow "ba'n'an'aa"
+echo' 'ola' '>' 'outfile'
+
+'echo' 'ola' '>' 'outfile'
+
+\'echo' 'ola' '>' 'outfile'
+
+'echo' 'ola' '>' 'outfile'
+"$USER'"'$HOME"'
+$USER"'$NO'"'"'$USER'"'
+$
+$SHLVL
+'$SHLVL'
+"'$SHLVL'"
+"\'\\"
+echo '"'
+echo "'"
+'echo' 'ola' '>' 'outfile'
+export 123="echo 123"
+export 123="ls -a"
+export $HOME="echo ola"
+export
+export a="echo ola "" '$HOME$HO' $HOME$HOME $HOME"
+export a='echo ola "" '$HOME$HO' $HOME$HOME $HOME'

@@ -6,7 +6,7 @@
 /*   By: pmoreira <pmoreira@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/14 13:59:13 by pmoreira          #+#    #+#             */
-/*   Updated: 2025/05/19 13:22:02 by pmoreira         ###   ########.fr       */
+/*   Updated: 2025/05/20 10:46:18 by pmoreira         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,4 +43,15 @@ int	tab_counter(const char *start, const char *end)
 			start++;
 	}
 	return (count);
+}
+
+void	skip_expand_name(char **s, char *end)
+{
+	if(isdigit(**s))
+	{
+		*s += 1;
+		return ;
+	}
+	while ((*s < end) && **s && (ft_isalnum(**s) || **s == '_'))
+		*s += 1;
 }
