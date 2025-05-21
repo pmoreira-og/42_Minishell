@@ -6,7 +6,7 @@
 /*   By: pmoreira <pmoreira@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/24 14:39:15 by pmoreira          #+#    #+#             */
-/*   Updated: 2025/05/20 16:03:43 by pmoreira         ###   ########.fr       */
+/*   Updated: 2025/05/21 12:08:28 by pmoreira         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,6 +44,9 @@ void	tokenize(char *input, t_hell *data)
 	if (!matrix)
 		return ;
 	i = -1;
+	data->tokens = ft_calloc(1, sizeof(t_token));
+	if (!data->tokens)
+		return ;
 	temp = data->tokens;
 	while (matrix[++i])
 	{
@@ -55,7 +58,5 @@ void	tokenize(char *input, t_hell *data)
 		temp->next->prev = temp;
 		temp = temp->next;
 	}
-	valid_input(data->tokens);
-	// print_token(data->tokens);
 	ft_clean_matrix(matrix);
 }

@@ -6,7 +6,7 @@
 /*   By: pmoreira <pmoreira@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/14 14:59:37 by pmoreira          #+#    #+#             */
-/*   Updated: 2025/05/20 16:37:26 by pmoreira         ###   ########.fr       */
+/*   Updated: 2025/05/21 12:38:50 by pmoreira         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,6 +32,8 @@ void	process_str(char **ptr, char *s, t_env **env)
 void	parser(char *input, t_hell *data)
 {
 	tokenize(input, data);
-	print_cmd_info(data->cmd);
-	// clean_list(&data->tokens);
+	valid_input(data->tokens);
+	init_cmds(data);
+	print_cmd_info(data);
+	prepare_next_input(data);
 }

@@ -6,7 +6,7 @@
 /*   By: pmoreira <pmoreira@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/07 13:55:22 by pmoreira          #+#    #+#             */
-/*   Updated: 2025/05/20 10:32:05 by pmoreira         ###   ########.fr       */
+/*   Updated: 2025/05/21 11:46:47 by pmoreira         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,6 +53,8 @@ int	valid_input(t_token *tok)
 	t_bool	cmd;
 	t_token	*temp;
 
+	if (!tok)
+		return (0);
 	temp = tok;
 	cmd = FALSE;
 	while (temp->next)

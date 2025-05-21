@@ -6,7 +6,7 @@
 /*   By: pmoreira <pmoreira@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/20 16:01:00 by pmoreira          #+#    #+#             */
-/*   Updated: 2025/05/20 16:22:47 by pmoreira         ###   ########.fr       */
+/*   Updated: 2025/05/21 12:40:22 by pmoreira         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,13 +36,16 @@ void	print_matrix(char **matrix)
 	}
 }
 
-void	print_cmd_info(t_cmd *cmds)
+void	print_cmd_info(t_hell *data)
 {
 	t_cmd	*temp;
 	int		i;
 
-	temp = cmds;
+	if (!data->cmd)
+		return ;
+	temp = data->cmd;
 	i = 0;
+	printf("Total cmds count: %d\n", data->cmd_count);
 	while (temp->next)
 	{
 		printf("------------CMD[%d] PID[%d]-------------\n", i + 1, temp->pid);
@@ -52,5 +55,6 @@ void	print_cmd_info(t_cmd *cmds)
 		printf("Built-in bool: %d\n", temp->is_builtin);
 		printf("----------------------------------------\n");
 		temp = temp->next;
+		i++;
 	}
 }

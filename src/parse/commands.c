@@ -6,7 +6,7 @@
 /*   By: pmoreira <pmoreira@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/20 11:36:02 by pmoreira          #+#    #+#             */
-/*   Updated: 2025/05/20 16:35:01 by pmoreira         ###   ########.fr       */
+/*   Updated: 2025/05/21 12:08:48 by pmoreira         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,7 +32,7 @@ int	command_size(t_token *start, t_token **save_ptr, int *cmd_c, t_bool *flag)
 	{
 		*save_ptr = temp->next;
 		if (flag)
-			*flag = !(*flag);
+			*flag = TRUE;
 	}
 	else if (save_ptr)
 		*save_ptr = temp->next;
@@ -45,10 +45,11 @@ char	**build_args(t_token *start, t_cmd **cmd)
 {
 	char	**args;
 	int		i;
+	t_token	*temp;
 
 	if (!start)
 		return (NULL);
-	(*cmd)->argc = command_size(start, NULL, NULL, &(*cmd)->is_piped);
+	(*cmd)->argc = command_size(start, &temp, NULL, &(*cmd)->is_piped);
 	args = ft_calloc((*cmd)->argc + 1, sizeof(char *));
 	if (!args)
 		return (NULL);
@@ -67,18 +68,22 @@ void	fill_cmd(t_cmd **cmd, t_token *start)
 {
 	(*cmd)->args = build_args(start, cmd);
 	if (!(*cmd)->args)
-		return ;
-	
+		return ((void) printf("DEU RUIM"));
+	if ((*cmd)->args[0])
+		(*cmd)->is_builtin = is_builtin((*cmd)->args[0]);
 }
 
 void	init_cmds(t_hell *data)
 {
 	t_token	*temp;
 	t_cmd	*cmd_tmp;
-	int		test;
-	
-	test = 0;
+
+	if (!data->tokens)
+		return ;
 	temp = data->tokens;
+	data->cmd = ft_calloc(1, sizeof(t_cmd));
+	if (!data->cmd)
+		return ;
 	cmd_tmp = data->cmd;
 	while (temp)
 	{
