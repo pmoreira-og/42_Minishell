@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   pipex.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: pmoreira <pmoreira@student.42lisboa.com    +#+  +:+       +#+        */
+/*   By: ernda-si <ernda-si@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/04 10:39:39 by pmoreira          #+#    #+#             */
-/*   Updated: 2025/04/24 14:54:05 by pmoreira         ###   ########.fr       */
+/*   Updated: 2025/05/21 16:39:57 by ernda-si         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,8 +50,8 @@ void	child(t_pipex *pipex, char **program, int count)
 	ft_dup(pipex, count);
 	while (pipex->paths && pipex->paths[i])
 	{
-		temp = ft_strjoin((const char *) pipex->paths[i] \
-		, (const char *) program[0]);
+		temp = ft_strjoin((/*const*/ char *) pipex->paths[i] \
+		, (/*const*/ char *) program[0]);
 		execve(temp, program, pipex->envp);
 		free(temp);
 		i++;
@@ -82,15 +82,15 @@ void	parent(t_pipex *pipex, int count)
 	}
 }
 
-int	pipex(int ac, char const **av, char *envp[])
+int	pipex(int ac, char /*const*/ **av, char *envp[])
 {
 	int		i;
 	t_pipex	*pipex;
 
 	if (!envp || !*envp)
 		return (ft_putstr_fd("Invalid path\n", 2), 1);
-	if (ac < 5 || (!ft_strcmp(av[1], "here_doc") && ac < 6))
-		return (ft_putstr_fd("Invalid input\n", 2), 0);
+/* 	if (ac < 5 || (!ft_strcmp(av[1], "here_doc") && ac < 6))
+		return (ft_putstr_fd("Invalid input\n", 2), 0); */
 	pipex = ft_init_struct(envp, ac - 2, av);
 	if (!pipex)
 		return (ft_putstr_fd("Unable to generate a valid structure\n", 2), 1);

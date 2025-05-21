@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   aux_bonus.c                                        :+:      :+:    :+:   */
+/*   aux.c                                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: pmoreira <pmoreira@student.42lisboa.com    +#+  +:+       +#+        */
+/*   By: ernda-si <ernda-si@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/25 14:50:57 by pmoreira          #+#    #+#             */
-/*   Updated: 2025/04/24 14:46:12 by pmoreira         ###   ########.fr       */
+/*   Updated: 2025/05/21 16:40:09 by ernda-si         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -92,7 +92,7 @@ void	try_run(t_pipex *pipex, char **program)
 	}
 }
 
-void	ft_heredoc(t_pipex *pipex, const char **av)
+void	ft_heredoc(t_pipex *pipex, /*const*/ char **av)
 {
 	char	*line;
 
