@@ -6,7 +6,7 @@
 /*   By: pmoreira <pmoreira@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/23 12:17:06 by ernda-si          #+#    #+#             */
-/*   Updated: 2025/05/21 12:17:01 by pmoreira         ###   ########.fr       */
+/*   Updated: 2025/05/21 15:40:55 by pmoreira         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,6 +49,7 @@ int	main(int ac, char **av, char **envp)
 		// hell->cmd->argv = ft_split(input, ' ');
 		// if (hell->cmd->argv[0] && is_builtin(hell->cmd->argv[0]))
 		// 	list_builtin(hell);
+		prepare_next_input(hell);
 		free(input);
 	}
 	armageddon(hell);

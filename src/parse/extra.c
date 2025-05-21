@@ -6,7 +6,7 @@
 /*   By: pmoreira <pmoreira@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/14 13:59:13 by pmoreira          #+#    #+#             */
-/*   Updated: 2025/05/20 10:46:18 by pmoreira         ###   ########.fr       */
+/*   Updated: 2025/05/21 16:43:07 by pmoreira         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,6 +19,11 @@ void	init_proc(const char **start, const char *s, t_bool *quote, \
 		*start = s;
 	*quote = FALSE;
 	*d_quote = FALSE;
+}
+
+int	valid_expand(int c)
+{
+	return (ft_isalnum(c) || c == '_');
 }
 
 int	tab_counter(const char *start, const char *end)
@@ -47,11 +52,31 @@ int	tab_counter(const char *start, const char *end)
 
 void	skip_expand_name(char **s, char *end)
 {
-	if(isdigit(**s))
+	if((**s) && (isdigit(**s) || **s == '\?'))
 	{
 		*s += 1;
 		return ;
 	}
-	while ((*s < end) && **s && (ft_isalnum(**s) || **s == '_'))
+	while ((*s < end) && **s && valid_expand(**s))
 		*s += 1;
+}
+
+void	concat_expand(char **result, char **new_str, t_hell *hell, char **ptr)
+{
+	char	*temp;
+
+	(void) ptr;
+	if (!ft_strcmp(*new_str, "\?"))
+	{
+		temp = ft_itoa(hell->status);
+		if (!temp)
+			return ;
+		if (!(*result))
+			*result = ft_strdup("");
+		*result = ft_expand(*result, temp, new_str);
+		free(temp);
+	}
+	else
+			*result = ft_expand(*result, (get_env(&hell->env, *new_str)), new_str);
+	
 }

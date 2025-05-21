@@ -6,7 +6,7 @@
 /*   By: pmoreira <pmoreira@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/15 11:06:07 by pmoreira          #+#    #+#             */
-/*   Updated: 2025/05/17 18:29:54 by pmoreira         ###   ########.fr       */
+/*   Updated: 2025/05/21 16:38:24 by pmoreira         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -97,7 +97,7 @@ void	find_non_expand(char *input, char **start, char **end)
 	}
 }
 
-void	literal(char **ptr, char *s, char *endptr, t_env **env)
+void	literal(char **ptr, char *s, char *endptr, t_hell *hell)
 {
 	char	*start;
 	char	*end;
@@ -107,15 +107,15 @@ void	literal(char **ptr, char *s, char *endptr, t_env **env)
 	if (start && end)
 	{
 		if (start > s)
-			*ptr = expand_vars(s, start, env);
+			*ptr = expand_vars(s, start, hell);
 		temp = (new_word(start, end));
 		*ptr = (ft_expand(*ptr, temp, &temp));
 		if (*(end))
 		{
-			literal(&temp, end, endptr, env);
+			literal(&temp, end, endptr, hell);
 			*ptr = (ft_expand(*ptr, temp, &temp));
 		}
 	}
 	else
-		*ptr = expand_vars(s, endptr, env);
+		*ptr = expand_vars(s, endptr, hell);
 }

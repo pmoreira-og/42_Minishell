@@ -6,7 +6,7 @@
 /*   By: pmoreira <pmoreira@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/07 14:40:54 by pmoreira          #+#    #+#             */
-/*   Updated: 2025/05/21 12:23:47 by pmoreira         ###   ########.fr       */
+/*   Updated: 2025/05/21 16:43:46 by pmoreira         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,7 +32,7 @@ char	*new_word(const char *start, const char *end)
 	return (word);
 }
 
-static char	*get_env_value(t_env **env, char *name)
+char	*get_env(t_env **env, char *name)
 {
 	t_env	*tmp;
 
@@ -64,7 +64,7 @@ char	*ft_expand(char *s1, char *s2, char **temp)
 	return (tmp);
 }
 
-char	*expand_vars(char *s, char *end, t_env **env)
+char	*expand_vars(char *s, char *end, t_hell *hell)
 {
 	char	*start;
 	char	*result;
@@ -73,12 +73,12 @@ char	*expand_vars(char *s, char *end, t_env **env)
 	result = NULL;
 	while (s < end)
 	{
-		if (*s == '$')
+		if (*s == '$' && *(s + 1) && valid_expand(*(s + 1)))
 		{
 			start = ++s;
 			skip_expand_name(&s, end);
 			temp = new_word(start, s);
-			result = ft_expand(result, (get_env_value(env, temp)), &temp);
+			concat_expand(&result, &temp, hell, &s);
 		}
 		else
 		{
