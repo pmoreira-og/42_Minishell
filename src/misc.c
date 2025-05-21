@@ -6,7 +6,7 @@
 /*   By: pmoreira <pmoreira@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/23 12:11:56 by ernda-si          #+#    #+#             */
-/*   Updated: 2025/04/29 11:23:35 by pmoreira         ###   ########.fr       */
+/*   Updated: 2025/05/21 12:37:29 by pmoreira         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,7 +59,7 @@ void load_history(t_hell *cmd)
 
 void save_history(char *input, t_hell *cmd)
 {
-	if (cmd->hist_fd == -1 || !input || !ft_strcmp(input, "exit"))
+	if (cmd->hist_fd == -1 || !input || !ft_strcmp(input, ""))
 		return;
 	ft_putendl_fd(input, cmd->hist_fd);
 	add_history(input);

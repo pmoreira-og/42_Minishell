@@ -7,11 +7,11 @@ void	mini_unset(t_env **env, t_cmd *cmd)
 
 	temp = *env;
 	prev = NULL;
-	if (!cmd->argv[1])
+	if (!cmd->args[1])
 		return ;
 	while (temp)
 	{
-		if (!ft_strcmp(temp->var, cmd->argv[1]))
+		if (!ft_strcmp(temp->var, cmd->args[1]))
 		{
 			if (!prev)
 				*env = temp->next;

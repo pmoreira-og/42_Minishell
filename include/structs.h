@@ -6,7 +6,7 @@
 /*   By: pmoreira <pmoreira@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/24 15:03:58 by pmoreira          #+#    #+#             */
-/*   Updated: 2025/04/30 12:53:57 by pmoreira         ###   ########.fr       */
+/*   Updated: 2025/05/20 16:10:20 by pmoreira         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,12 +52,23 @@ typedef struct s_hell
 	char			**envp;
 	char			**path;
 	int				status;
+	int				cmd_count;
 	int				hist_fd;
 }	t_hell;
 
+typedef struct s_redirection
+{
+	t_type					type;
+	char					*filename;  // *For regular file redirections 
+	char					*heredoc_delimiter; // *For heredoc
+	char					*heredoc_content;   // !Expanded heredoc content
+	int						fd;         // !File descriptor used
+	struct s_redirection	*next;
+} t_redirection;
+
 /// @brief Command Structure
 /// @param argc Number of tokens
-/// @param argv Matrix that contains command plus args
+/// @param args Matrix that contains command plus args
 /// @param infile Filename (char *)
 /// @param outfile Filename (char *)
 /// @param append Flag: 0 for >, 1 for >>
@@ -66,20 +77,27 @@ typedef struct s_hell
 /// @param next Next cmd node
 typedef struct s_cmd
 {
-	int				argc;
-	char			**argv;
-	char			*infile;
-	char			*outfile;
-	t_bool			append;
-	t_bool			heredoc;
-	char			*delimiter;
-	struct s_cmd	*next;
+	// Command and arguments
+	int					argc;
+	char				**args;
+	char				*cmd_path;      // *Full path to executable (after path resolution)
+	char				*infile;
+	char				*outfile;
+	char				*delimiter;
+	int					pipe_in;        // !Read end of pipe from previous command
+	int					pipe_out;       // !Write end of pipe to next command
+	t_bool				is_piped;       // *Flag if this command is part of a pipe
+	pid_t				pid;            // !Process ID when executed
+	t_bool				is_builtin;     // *Flag if this is a shell builtin command
+	char				**envp;         // !Copy of environment variables
+	struct s_cmd		*next;
 }	t_cmd;
 
 typedef struct s_token
 {
 	t_type			type;
 	char			*cmd;
+	char			*backup;
 	char			**args;
 	struct s_token	*next;
 	struct s_token	*prev;

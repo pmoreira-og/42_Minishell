@@ -6,7 +6,7 @@
 /*   By: pmoreira <pmoreira@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/29 11:28:20 by pmoreira          #+#    #+#             */
-/*   Updated: 2025/04/29 15:27:08 by pmoreira         ###   ########.fr       */
+/*   Updated: 2025/05/21 12:08:39 by pmoreira         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,12 +19,12 @@ t_hell	*init_hell(int ac, char **av,char **envp)
 	hell = ft_calloc(1, sizeof(t_hell));
 	if (!hell)
 		return (NULL);
-	hell->tokens = ft_calloc(1, sizeof(t_token));
-	if (!hell->tokens)
-		return (free(hell), NULL);
-	hell->cmd = ft_calloc(1, sizeof(t_cmd));
-	if (!hell->cmd)
-		return (free(hell->tokens), free(hell), NULL);
+	// hell->tokens = ft_calloc(1, sizeof(t_token));
+	// if (!hell->tokens)
+	// 	return (free(hell), NULL);
+	// hell->cmd = ft_calloc(1, sizeof(t_cmd));
+	// if (!hell->cmd)
+	// 	return (free(hell->tokens), free(hell), NULL);
 	init_env(&hell->env, envp);
 	hell->envp = envp;
 	if (!get_history_fd(hell))

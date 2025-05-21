@@ -20,10 +20,10 @@ void	mini_export(t_env **env, t_cmd *cmd)
 
 	if (cmd->argc == 1)
 		return ;
-	matrix = ft_split_once(cmd->argv[1], '=');
+	matrix = ft_split_once(cmd->args[1], '=');
 	if (!identifier_check(matrix))
 	{
-		printf("\033[1;31mMinishell\033[0m: export: %s: not a valid identifier\n", cmd->argv[1]);
+		printf("\033[1;31mMinishell\033[0m: export: %s: not a valid identifier\n", cmd->args[1]);
 		return ;
 	}
 	else if (matrix[0] && matrix[1])

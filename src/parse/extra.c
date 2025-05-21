@@ -6,40 +6,52 @@
 /*   By: pmoreira <pmoreira@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/14 13:59:13 by pmoreira          #+#    #+#             */
-/*   Updated: 2025/05/14 14:12:13 by pmoreira         ###   ########.fr       */
+/*   Updated: 2025/05/20 10:46:18 by pmoreira         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minishell.h"
 
-void	check_quotes(int c, t_bool *quote, t_bool *d_quote)
-{
-	if (c == '\'' && *quote)
-	{
-		*quote = FALSE;
-		return ;
-	}
-	else if (c == '"' && *d_quote)
-	{
-		*d_quote = FALSE;
-		return ;
-	}
-	if (c == '\'' && !(*d_quote))
-	{
-		*quote = TRUE;
-		return ;
-	}
-	else if (c == '"' && !(*quote))
-	{
-		*d_quote = TRUE;
-		return ;
-	}
-}
-
 void	init_proc(const char **start, const char *s, t_bool *quote, \
 	t_bool *d_quote)
 {
-	*start = s;
+	if (start && s)
+		*start = s;
 	*quote = FALSE;
 	*d_quote = FALSE;
+}
+
+int	tab_counter(const char *start, const char *end)
+{
+	int		count;
+	t_bool	quote;
+	t_bool	d_quote;
+
+	if (!start || !end)
+		return (0);
+	count = 0;
+	init_proc(NULL, NULL, &quote, &d_quote);
+	while(start < end)
+	{
+		check_quotes(*start, &quote, &d_quote);
+		if (*start == '\\' && !quote)
+		{
+			count++;
+			start++;
+		}
+		if (*start)
+			start++;
+	}
+	return (count);
+}
+
+void	skip_expand_name(char **s, char *end)
+{
+	if(isdigit(**s))
+	{
+		*s += 1;
+		return ;
+	}
+	while ((*s < end) && **s && (ft_isalnum(**s) || **s == '_'))
+		*s += 1;
 }

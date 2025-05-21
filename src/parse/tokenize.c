@@ -6,7 +6,7 @@
 /*   By: pmoreira <pmoreira@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/24 14:39:15 by pmoreira          #+#    #+#             */
-/*   Updated: 2025/05/14 15:02:42 by pmoreira         ###   ########.fr       */
+/*   Updated: 2025/05/21 12:08:28 by pmoreira         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,20 +32,6 @@ void	token_type(char *s, t_token *tok , t_token *prev, char **path)
 		tok->type = CMD;
 }
 
-void	print_token(t_token *toks)
-{
-	t_token	*temp;
-
-	temp = toks;
-	valid_input(toks);
-	while (temp->next)
-	{
-		printf("[%s]: %d\n", temp->cmd, temp->type);
-		temp = temp->next;
-	}
-
-}
-
 void	tokenize(char *input, t_hell *data)
 {
 	char	**matrix;
@@ -58,17 +44,19 @@ void	tokenize(char *input, t_hell *data)
 	if (!matrix)
 		return ;
 	i = -1;
+	data->tokens = ft_calloc(1, sizeof(t_token));
+	if (!data->tokens)
+		return ;
 	temp = data->tokens;
 	while (matrix[++i])
 	{
 		token_type(matrix[i], temp, temp->prev, data->path);
 		temp->next = ft_calloc(1, sizeof(t_token));
 		if (!temp->next)
-			return ;
-		literal(&temp->cmd, matrix[i], &data->env);
+			return (ft_clean_matrix(matrix));
+		process_str(&temp->cmd, matrix[i], &data->env);
 		temp->next->prev = temp;
 		temp = temp->next;
 	}
-	print_token(data->tokens);
 	ft_clean_matrix(matrix);
 }

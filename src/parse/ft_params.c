@@ -6,7 +6,7 @@
 /*   By: pmoreira <pmoreira@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/26 12:23:53 by pmoreira          #+#    #+#             */
-/*   Updated: 2025/05/14 15:17:21 by pmoreira         ###   ########.fr       */
+/*   Updated: 2025/05/20 10:36:12 by pmoreira         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,26 +24,30 @@ static int	ft_add_word(char **matrix, const char *start, const char *end)
 {
 	char	*word;
 	int		i;
+	t_bool	quote;
+	t_bool	d_quote;
 
 	i = 0;
 	if (!matrix)
 		return (0);
-	word = (char *)malloc((end - start + 1) * sizeof(char));
+	word = malloc(end - start - tab_counter(start, end) + 1);
 	if (!word)
 		return (0);
+	init_proc(NULL, NULL, &quote, &d_quote);
 	while (start < end)
 	{
+		check_quotes(*start, &quote, &d_quote);
+		if (*start == '\\' && !quote)
+			start++;
 		word[i++] = *start;
-		start++;
+		if (*start)
+			start++;
 	}
 	word[i] = '\0';
 	*matrix = word;
 	return (1);
 }
 
-// quote = FALSE;
-// d_quote = FALSE;
-// start = input;
 static void	ft_count(const char *input, int *count)
 {
 	t_bool		quote;
@@ -53,7 +57,7 @@ static void	ft_count(const char *input, int *count)
 	init_proc(&start, input, &quote, &d_quote);
 	while (*input)
 	{
-		check_quotes(*input, &quote, &d_quote);
+		check_char_quote(&input, &quote, &d_quote);
 		if (*input == ' ' && !quote && !d_quote)
 		{
 			if (input > start)
@@ -75,7 +79,7 @@ static int	proc_str(char **matrix, const char *s, char c, int *index)
 	init_proc(&start, s, &quote, &d_quote);
 	while (*s)
 	{
-		check_quotes(*s, &quote, &d_quote);
+		check_char_quote(&s, &quote, &d_quote);
 		if (*s == c && !quote && !d_quote)
 		{
 			if (s > start)
