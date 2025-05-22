@@ -6,7 +6,7 @@
 /*   By: pmoreira <pmoreira@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/07 13:55:22 by pmoreira          #+#    #+#             */
-/*   Updated: 2025/05/21 11:46:47 by pmoreira         ###   ########.fr       */
+/*   Updated: 2025/05/22 09:52:27 by pmoreira         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,28 +45,6 @@ int	quotes_check(char *input)
 	}
 	if (d_quote || quote)
 		return (0);
-	return (1);
-}
-
-int	valid_input(t_token *tok)
-{
-	t_bool	cmd;
-	t_token	*temp;
-
-	if (!tok)
-		return (0);
-	temp = tok;
-	cmd = FALSE;
-	while (temp->next)
-	{
-		if (temp->type == PIPE)
-			cmd = FALSE;
-		if (cmd && (temp->type == CMD || temp->type == BUILT_IN))
-			temp->type = ARG;
-		if (temp->type == CMD || temp->type == BUILT_IN)
-			cmd = TRUE;
-		temp = temp->next;
-	}
 	return (1);
 }
 

@@ -6,62 +6,71 @@
 /*   By: pmoreira <pmoreira@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/07 14:40:54 by pmoreira          #+#    #+#             */
-/*   Updated: 2025/05/21 16:43:46 by pmoreira         ###   ########.fr       */
+/*   Updated: 2025/05/22 13:21:33 by pmoreira         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minishell.h"
 
-char	*new_word(const char *start, const char *end)
+void	skip_expand_name(char **start, char **s, char *end)
 {
-	char	*word;
-	int		i;
+	*start = *s;
+	(*s)++;
+	if (*s < end && is_quotes(**s))
+		return ;
+	if (*s < end && (isdigit(**s) || **s == '\?'))
+	{
+		(*s)++;
+		return ;
+	}
+	if (*s < end && valid_expand(**s))
+	{
+		(*start)++;
+		while (*s < end && valid_expand(**s))
+			(*s)++;
+		return ;
+	}
+}
 
+void	concat_expand(char **result, char **new_str, t_hell *hell)
+{
+	char	*temp;
+
+	if (!ft_strncmp(*new_str, "$\?", 2))
+	{
+		temp = ft_itoa(hell->status);
+		if (!temp)
+			return ;
+		if (!(*result))
+			*result = ft_strdup("");
+		*result = ft_expand(*result, temp, new_str);
+		free(temp);
+	}
+	else if (!ft_strncmp(*new_str, "$", 2))
+		*result = ft_expand(*result, *new_str, new_str);
+	else
+		*result = ft_expand(*result, (get_env(&hell->env, *new_str)), new_str);
+}
+
+int	localized_expansions(char *start, char *end)
+{
 	if (!start || !end)
-		return (NULL);
-	i = 0;
-	word = (char *)malloc((end - start + 1) * sizeof(char));
-	if (!word)
-		return (NULL);
-	while (start < end)
-	{
-		word[i++] = *start;
-		start++;
-	}
-	word[i] = '\0';
-	return (word);
+		return (0);
+	return (*start == '$' && *(start + 1) == '\"' && *(end - 1) == '\"');
 }
 
-char	*get_env(t_env **env, char *name)
+char	*localized_expander(char *start, char *end, t_hell *hell)
 {
-	t_env	*tmp;
+	char	*new_concat;
+	char	*new_start;
+	char	*new_end;
 
-	tmp = *env;
-	while (tmp)
-	{
-		if (!ft_strcmp(tmp->var, name))
-			return (tmp->value);
-		tmp = tmp->next;
-	}
-	return ("");
-}
-
-/// @brief Join the 2 strings, free the s1 and free the s2 if the pointer are 
-///		given.
-/// @param s1 Output string.
-/// @param s2 Temp string.
-/// @param temp Address of Temp.
-/// @return Strjoin.
-char	*ft_expand(char *s1, char *s2, char **temp)
-{
-	char	*tmp;
-
-	tmp = ft_strjoin(s1, s2);
-	if (s1)
-		free(s1);
-	if (temp)
-		free(*temp);
-	return (tmp);
+	new_start = start + 2;
+	new_end = end - 1;
+	new_concat = expand_vars(new_start, new_end, hell);
+	if (!new_concat)
+		return (NULL);
+	return (new_concat);
 }
 
 char	*expand_vars(char *s, char *end, t_hell *hell)
@@ -71,14 +80,15 @@ char	*expand_vars(char *s, char *end, t_hell *hell)
 	char	*temp;
 
 	result = NULL;
+	if (localized_expansions(s, end))
+		return (localized_expander(s, end, hell));
 	while (s < end)
 	{
-		if (*s == '$' && *(s + 1) && valid_expand(*(s + 1)))
+		if (*s == '$')
 		{
-			start = ++s;
-			skip_expand_name(&s, end);
+			skip_expand_name(&start, &s, end);
 			temp = new_word(start, s);
-			concat_expand(&result, &temp, hell, &s);
+			concat_expand(&result, &temp, hell);
 		}
 		else
 		{

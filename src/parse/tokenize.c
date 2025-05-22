@@ -6,13 +6,37 @@
 /*   By: pmoreira <pmoreira@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/24 14:39:15 by pmoreira          #+#    #+#             */
-/*   Updated: 2025/05/21 13:17:15 by pmoreira         ###   ########.fr       */
+/*   Updated: 2025/05/22 15:31:30 by pmoreira         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-# include "minishell.h"
+#include "minishell.h"
 
-void	token_type(char *s, t_token *tok , t_token *prev, char **path)
+int	check_tokens()
+
+int	valid_input(t_token *tok)
+{
+	t_bool	cmd;
+	t_token	*temp;
+
+	if (!tok)
+		return (0);
+	temp = tok;
+	cmd = FALSE;
+	while (temp->next)
+	{
+		if (temp->type == PIPE)
+			cmd = FALSE;
+		if (cmd && (temp->type == CMD || temp->type == BUILT_IN))
+			temp->type = ARG;
+		if (temp->type == CMD || temp->type == BUILT_IN)
+			cmd = TRUE;
+		temp = temp->next;
+	}
+	return (1);
+}
+
+void	token_type(char *s, t_token *tok, t_token *prev, char **path)
 {
 	if (check_prev(prev, tok))
 		return ;

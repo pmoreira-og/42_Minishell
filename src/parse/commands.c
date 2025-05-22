@@ -6,7 +6,7 @@
 /*   By: pmoreira <pmoreira@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/20 11:36:02 by pmoreira          #+#    #+#             */
-/*   Updated: 2025/05/21 12:08:48 by pmoreira         ###   ########.fr       */
+/*   Updated: 2025/05/22 13:22:42 by pmoreira         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,8 +23,8 @@ int	command_size(t_token *start, t_token **save_ptr, int *cmd_c, t_bool *flag)
 	count = 0;
 	while (temp->next && temp->type != PIPE)
 	{
-		if ((temp->type == ARG) || (temp->type == BUILT_IN) ||
-			 (temp->type == CMD))
+		if ((temp->type == ARG) || (temp->type == BUILT_IN)
+			|| (temp->type == CMD))
 			count++;
 		temp = temp->next;
 	}
@@ -56,8 +56,8 @@ char	**build_args(t_token *start, t_cmd **cmd)
 	i = 0;
 	while (start->next && start->type != PIPE)
 	{
-		if ((start->type == ARG) || (start->type == BUILT_IN) ||
-			 (start->type == CMD))
+		if ((start->type == ARG) || (start->type == BUILT_IN)
+			|| (start->type == CMD))
 			args[i++] = ft_strdup(start->cmd);
 		start = start->next;
 	}

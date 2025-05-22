@@ -6,7 +6,7 @@
 /*   By: pmoreira <pmoreira@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/14 13:59:13 by pmoreira          #+#    #+#             */
-/*   Updated: 2025/05/21 16:43:07 by pmoreira         ###   ########.fr       */
+/*   Updated: 2025/05/22 13:20:54 by pmoreira         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,7 +36,7 @@ int	tab_counter(const char *start, const char *end)
 		return (0);
 	count = 0;
 	init_proc(NULL, NULL, &quote, &d_quote);
-	while(start < end)
+	while (start < end)
 	{
 		check_quotes(*start, &quote, &d_quote);
 		if (*start == '\\' && !quote)
@@ -50,33 +50,36 @@ int	tab_counter(const char *start, const char *end)
 	return (count);
 }
 
-void	skip_expand_name(char **s, char *end)
+char	*new_word(const char *start, const char *end)
 {
-	if((**s) && (isdigit(**s) || **s == '\?'))
+	char	*word;
+	int		i;
+
+	if (!start || !end)
+		return (NULL);
+	i = 0;
+	word = (char *)malloc((end - start + 1) * sizeof(char));
+	if (!word)
+		return (NULL);
+	while (start < end)
 	{
-		*s += 1;
-		return ;
+		word[i++] = *start;
+		start++;
 	}
-	while ((*s < end) && **s && valid_expand(**s))
-		*s += 1;
+	word[i] = '\0';
+	return (word);
 }
 
-void	concat_expand(char **result, char **new_str, t_hell *hell, char **ptr)
+char	*get_env(t_env **env, char *name)
 {
-	char	*temp;
+	t_env	*tmp;
 
-	(void) ptr;
-	if (!ft_strcmp(*new_str, "\?"))
+	tmp = *env;
+	while (tmp)
 	{
-		temp = ft_itoa(hell->status);
-		if (!temp)
-			return ;
-		if (!(*result))
-			*result = ft_strdup("");
-		*result = ft_expand(*result, temp, new_str);
-		free(temp);
+		if (!ft_strcmp(tmp->var, name))
+			return (tmp->value);
+		tmp = tmp->next;
 	}
-	else
-			*result = ft_expand(*result, (get_env(&hell->env, *new_str)), new_str);
-	
+	return ("");
 }
