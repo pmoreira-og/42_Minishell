@@ -30,11 +30,6 @@ void	concat_expand_test(char **result, char **new_str, t_hell *hell)
 		*result = ft_expand(*result, (get_env(&hell->env, *new_str)), new_str);
 }
 
-// int	check_localized(char *s, char *end, t_hell *hell)
-// {
-
-// }
-
 char	*expand_vars_test(char *s, char *end, t_hell *hell)
 {
 	char	*result;
@@ -45,7 +40,7 @@ char	*expand_vars_test(char *s, char *end, t_hell *hell)
 	while (s < end)
 	{
 		start = s++;
-		if (*start == '$' && *s && (valid_expand(*s) || *s == '\"'))
+		if (*start == '$' && *s && (valid_expand(*s) || *s == '\?'))
 		{
 			skip_name(&start, &s, end);
 			temp = new_word(start, s);

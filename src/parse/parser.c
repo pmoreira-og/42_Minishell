@@ -6,7 +6,7 @@
 /*   By: pmoreira <pmoreira@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/14 14:59:37 by pmoreira          #+#    #+#             */
-/*   Updated: 2025/05/23 15:05:17 by pmoreira         ###   ########.fr       */
+/*   Updated: 2025/05/23 16:30:22 by pmoreira         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -72,9 +72,10 @@ void	process_str(char **ptr, char *s, t_hell *hell)
 
 void	parser(char *input, t_hell *data)
 {
+	printf("count:%d\n", count_expand_zones(input));
 	tokenize(input, data);
-	valid_input(data->tokens);
-	init_cmds(data);
-	// print_cmd_info(data);
-	print_token(data->tokens);
+	// valid_input(data->tokens);
+	// init_cmds(data);
+	// // print_cmd_info(data);
+	// print_token(data->tokens);
 }

@@ -508,3 +508,47 @@ exit
 echo $'USER''$USER'$?$
 echo ' $HOME' $"$USER$" $ $'USER''$USER'$?$
 echo ' $HOME' $"$USER$" $ $'USER''$USER'$?$
+echo ' $HOME' $"$USER$" $ $'USER''$USER'$?$
+echo $''
+echo $'$HOME'
+echo $'$HOME$'
+echo $"$HOME$"
+export a="echo ' ola"
+export a="echo ' ola'"'"
+export a="echo ' ola'"'"
+export a="echo ' ola'"'""
+export a="echo ' ola'"'"
+export a="echo ' ola'"'""'
+exit
+$?
+echo ' $HOME' $"$USER$" $ $'USER''$USER'$?$
+echo ' $HOME' "$USER$" $ 'USER''$USER'$?$
+echo $'$USER"$USER"$USER'
+echo ' $HOME' $'$USER$' $ $USER'$USER'$?$
+echo ' $HOME' $'$USER$' $ $USER'$USER'$?$
+echo ' $HOME' $"$USER$" $ $USER'$USER'$?$
+$$
+$
+$USER"'$NO'"'"'$USER'"'
+"$USER'"'$HOME"'
+echo ola'pipe'wow "ba'n'an'aa"
+echo ola ""'" $HOME$HO" $HOME$HOME $HOME'"$HOME"
+echo ola "'echo ola "'" $HOME$HO" $HOME$HOME '$HOME'"
+echo ola ' $HOME" $HOME  $HOME'
+echo ola  "$HOME$H"""""""O"ME" '$HOME'""
+echo ola  $HOME$HOME '$HOME'""
+echo ola " $HOME$HOME '$HOME'"""
+echo ola ""'" $HOME$HO" $HOME$HOME $HOME'""
+echo ola "'" $HOME$HO" $HOME$HOME $HOME'""
+echo ola "'" $HOME$HO" $HOME$HOME $HOME'"
+echo ola "'" $HOME$HO" $HOME$HOME '$HOME'"
+echo ' $HOME' $"$USER$" $ $'USER''$USER'$?$
+echo ' $HOME' "$USER$" $ 'USER''$USER'$?$
+echo ' $HOME' "$USER$" $ 'USER''$USER'$?$
+echo ' $HOME' "$USER$" $ 'USER''$USER'$?$
+echo ' $HOME' $"$USER$" $ $'USER''$USER'$?$
+echo ola ""'" $HOME$HO" $HOME$HOME $HOME'""
+echo ola ""'" $HOME$HO" $HOME$HOME $HOME'""
+echo ' $HOME' "$USER$" $ 'USER''$USER'$?$
+echo ' $HOME' $"$USER$" $ $'USER''$USER'$?$
+echo ' $HOME' $"$USER$" $ $'USER''$USER'$?$''
