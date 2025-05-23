@@ -6,7 +6,7 @@
 /*   By: pmoreira <pmoreira@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/07 14:40:54 by pmoreira          #+#    #+#             */
-/*   Updated: 2025/05/22 13:21:33 by pmoreira         ###   ########.fr       */
+/*   Updated: 2025/05/23 11:07:34 by pmoreira         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,8 +16,11 @@ void	skip_expand_name(char **start, char **s, char *end)
 {
 	*start = *s;
 	(*s)++;
-	if (*s < end && is_quotes(**s))
+	if (*s == end || *s > end)
+	{
+		
 		return ;
+	}
 	if (*s < end && (isdigit(**s) || **s == '\?'))
 	{
 		(*s)++;
@@ -56,7 +59,7 @@ int	localized_expansions(char *start, char *end)
 {
 	if (!start || !end)
 		return (0);
-	return (*start == '$' && *(start + 1) == '\"' && *(end - 1) == '\"');
+	return (*start == '$' && *(start + 1) && *(start + 1) == '\"' && *(end - 1) == '\"');
 }
 
 char	*localized_expander(char *start, char *end, t_hell *hell)
@@ -80,8 +83,6 @@ char	*expand_vars(char *s, char *end, t_hell *hell)
 	char	*temp;
 
 	result = NULL;
-	if (localized_expansions(s, end))
-		return (localized_expander(s, end, hell));
 	while (s < end)
 	{
 		if (*s == '$')

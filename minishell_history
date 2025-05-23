@@ -291,3 +291,220 @@ $$
 $$
 echo $'$USER"$USER"$USER'
 exit
+export a="echo ' ola"
+$'$HOME'
+echo ola |
+ |
+ |>
+exit
+echo >>> ola
+exit
+echo ' $HOME' $"$USER$" $ $USER'$USER'$?$
+echo ' $HOME' $"$USER$" $ $'USER''$USER'$?$
+echo $USER$$'$USER'$"$USER$"
+echo ' $HOME' $"$USER$" $ $'USER''$USER'$?$
+echo ' $HOME' $"$USER$" $ $'USER''$USER'$?$
+echo ' $HOME' $"$USER$" $ $'USER''$USER'$?$
+echo ' $HOME' $"$USER$" $ $'USER''$USER'$?$
+echo ' $HOME' $"$USER$" $ $'USER''$USER'$?$
+echo ' $HOME' $"$USER$" $ $'USER$''$USER'$?$
+echo ' $HOME' $"$USER$" $ $'USER$''$USER'$?$
+echo ' $HOME' $"$USER$" $ $'USER$''$USER'$?$
+echo ' $HOME' $"$USER$" $ $"USER$"'$USER'$?$
+echo ' $HOME' $"$USER$" $ $'USER$''$USER'$?$
+echo ' $HOME' $"$USER$" $ $'USER$''$USER'$?$
+echo ' $HOME' $"$USER$" $ $'USER$''$USER'$?$
+exit
+echo ' $HOME' $"$USER$" $ $'USER$''$USER'$?$
+echo ' $HOME' $"$USER$" $ $'USER$''$USER'$?$
+$'USER$''$USER'$?$
+$'USER$''$USER'$?$
+$'USER$''$USER'$?$
+$'USER$''$USER'$?$
+$'USER$''$USER'$?$
+$'USER$''$USER'$?$
+$'USER$''$USER'$?$
+$'USER$''$USER'$?$
+$'USER$''$USER'$?$
+$'USER$''$USER'$?$
+$'USER$''$USER'$?$
+$'USER$''$USER'$?$
+$'USER$''$USER'$?$
+$'USER$''$USER'$?$
+$'USER$''$USER'$?$
+$'USER$''$USER'$?$
+$'USER$''$USER'$?$
+echo ' $HOME' $"$USER$" $ $'USER$''$USER'$?$
+echo ' $HOME' $"$USER$" $ $'USER$''$USER'$?$
+$'USER$''$USER'$?$
+$'USER$''$USER'$?$
+$'USER$''$USER'$?$
+echo $USER$$'$USER'$"$USER$"
+echo $HOME
+echo $HOME
+echo $USER$$'$USER'$"$USER$"
+$'USER$''$USER'$?$
+echo ' $HOME' $"$USER$" $ $'USER$''$USER'$?$
+echo ' $HOME' $"$USER$" $ $'USER$''$USER'$?$
+echo $USER
+echo $'USER'
+echo $USER'USER'
+echo $"USER"
+echo $3a
+echo $USER$USER$'USER'$USER
+echo $USER$
+echo $
+$$
+$"$USER"
+$"$USER"
+echo $USER$
+echo $
+echo ' $HOME' $"$USER$" $ $'USER$''$USER'$?$
+echo $USER
+echo $USER$'$USER'$"$USER"$USER 
+echo $USER
+echo $USER$
+echo $USER$USER$'USER'$USER
+echo $"$USER"$USER
+echo $"$USER"
+echo $"USER"
+echo $'USER'
+echo $'USER'$USER
+echo $'USER'$USER
+echo $"$USER"
+echo $USER$'$USER'$"$USER"$USER 
+echo $USER
+echo $USER$
+echo $USER$'$USER'$"$USER"$USER 
+echo $USER$USER$'USER'$USER
+$"$USER"
+$"$USER"
+$"$USER"
+echo $USER$USER$'USER'$USER
+echo $USER$USER$'$USER'$USER
+echo $USER$USER$'USER'$USER
+echo $USER$USER'USER'$USER
+echo $USER$USER$"USER"$USER
+echo $USER$USER$"USER"$USER
+echo $USER$USER$"USER"$USER
+echo $USER$USER$"USER"$USER
+echo $USER$USER$"USER"$USER
+echo $USER$USER$"USER"$USER
+echo $USER$USER$"USER"$USER
+echo $USER$USER$"USER"$USER
+echo $USER$USER$"USER"$USER
+echo $USER$USER$"$USER"$USER
+echo ' $HOME' $"$USER$" $ $'USER''$USER'$?$
+echo ' $HOME' $"$USER$" $ $'USER''$USER'$?$
+$?
+echo ' $HOME' $"$USER$" $ $'USER''$USER'$?$
+$USER$
+$"$USER$"
+echo ' $HOME' $"$USER$" $ $'USER''$USER'$?$
+echo ' $HOME' $"$USER$" $ $'USER''$USER'$?$
+$'USER''$USER'$?$
+$'USER''$USER'$?$
+$'USER''$USER'$?$
+$'USER' '$USER'$?$
+$'USER''$USER'$?$
+$'USER' $'$USER'$?$
+$'USER'$'$USER'$?$
+$'USER''$USER'$?$
+$'USER''$USER'$?$
+$'USER''$USER'$?$
+$'USER' $'$USER'$?$
+$'USER' $'$USER'$?$
+$'USER''$USER'$?$
+$'USER''$USER'$?$
+$'USER''$USER'$?$
+$'USER''$USER'$?$
+$'USER''$USER'$?$
+$'USER''$USER'$?$
+$'USER''$USER'$?$
+$'USER''$USER'$?$
+$'USER''$USER'$?$
+$'USER''$USER'$?$
+$'USER''$USER'$?$
+$'USER''$USER'$?$
+$'USER''$USER'$?$
+$'USER''$USER'$?$
+$'USER''$USER'$?$
+echo 'ola''mundo'
+echo 'ola'a'mundo'
+echo 'ola''mundo'
+echo 'ola''mundo'
+echo 'ola''mundo'
+echo 'ola''mundo'
+echo 'ola''mundo'
+echo 'ola''mundo'
+echo 'ola''mundo'
+echo 'ola' 'mundo'
+echo 'ola''mundo'
+echo 'ola''mundo'
+echo 'ola''mundo'
+echo
+echo
+echo 'ola''mundo'
+echo 'ola' 'mundo'
+$'USER''$USER'$?$
+$'USER' '$USER'$?$
+$'USER' '$USER'$?$
+echo 'ola' 'mundo'
+$USER
+$'USER''$USER'$?$
+$USER$USER$"USER"
+$USER$USER$"$USER"
+$USER'$USER'$USER
+$USER'$USER$'USER
+echo ola "'" $HOME$HO" $HOME$HOME '$HOME'"
+echo ola  $HOME$HOME '$HOME'""
+'$USER'
+$USER'$USER'
+$USER'$USER'$USER
+$USER'$USER'$USER
+$USER'$USER'
+echo ola  $HOME$HOME '$HOME'""
+echo ola "'" $HOME$HO" $HOME$HOME '$HOME'"
+'$USER'
+'$USER'
+echo ola "'" $HOME$HO" $HOME$HOME '$HOME'"
+echo ola "'" $HOME$HO" $HOME$HOME '$HOME'"'$USER'
+echo ola "'" $HOME$HO" $HOME$HOME '$HOME'"'$USER'$USER
+echo ola "'" $HOME$HO" $HOME$HOME '$HOME'"'$USER'$USER
+$USER'$USER'$USER
+echo 'ola''mundo'
+echo 'ola' 'mundo'
+echo 'ola''mundo'
+echo ' $HOME' $"$USER$" $ $'USER''$USER'$?$
+echo ' $HOME' $"$USER$" $ $'USER''$USER'$?$
+echo ' $HOME' $"$USER$" $ $'USER''$USER'$?$
+exit
+clear
+ls
+clear
+$a
+echp $a
+echo $a
+$a
+env
+echo "$USER"
+echo "'$USER'"
+echo '"'$USER'"'
+echo "'"'$USER'"'"
+echo "'"'$USER'"'"
+echo '"'$USER'"'
+echo '"'$USER'"'
+echo '"''"'$USER'"'
+echo '"''"'$USER'"'
+echo '"''"'$USER'"'
+echo '"'$USER'"'
+echo '"'$USER'"'
+echo '"'$USER'"'
+echo '"'$USER'"'
+echo '"'$USER'"'
+echo '"'$USER'"'
+echo '"'$USER'"'
+exit
+echo $'USER''$USER'$?$
+echo ' $HOME' $"$USER$" $ $'USER''$USER'$?$
+echo ' $HOME' $"$USER$" $ $'USER''$USER'$?$

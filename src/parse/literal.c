@@ -6,7 +6,7 @@
 /*   By: pmoreira <pmoreira@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/15 11:06:07 by pmoreira          #+#    #+#             */
-/*   Updated: 2025/05/21 16:38:24 by pmoreira         ###   ########.fr       */
+/*   Updated: 2025/05/23 15:18:00 by pmoreira         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -97,25 +97,101 @@ void	find_non_expand(char *input, char **start, char **end)
 	}
 }
 
+void	ft_append(t_expand *t, t_hell *hell)
+{
+	char	*temp;
+	char	**ptr;
+
+	if (t->flag == FALSE)
+	{
+		temp = expand_vars_test(t->start, t->end, hell);
+	}
+	else
+	{
+		temp = new_word(t->start, t->end);
+	}
+	ptr = t->ptr;
+	*ptr = ft_expand(*ptr, temp, &temp);
+}
+
+// void	literal(char **ptr, char *s, char *endptr, t_hell *hell)
+// {
+// 	// char		*temp;
+// 	char		*start;
+// 	char		*end;
+// 	t_expand	tmp;
+
+// 	while(s < endptr)
+// 	{
+// 		find_non_expand(s, &start, &end);
+// 		if (start && end && start > s)
+// 			init_expand(&tmp, ptr, s, start);
+// 		else if (start && end)
+// 		{
+// 			init_expand(&tmp, ptr, s, start);
+// 			tmp.flag = TRUE;
+// 			if (*end)
+// 		}
+// 		else
+// 			init_expand(&tmp, ptr, s, endptr);
+// 		ft_append(&tmp, hell);
+// 		if (*end && end < endptr)
+// 			s = end;
+// 	}
+// }
+
+// void	literal(char **ptr, char *s, char *endptr, t_hell *hell)
+// {
+// 	char	*start;
+// 	char	*end;
+// 	char	*temp;
+// 	// char	*rest;
+
+// 	find_non_expand(s, &start, &end);
+// 	if (start && end)
+// 	{
+// 		if (start > s && *(start - 1) && *(start - 1) != '$')
+// 			*ptr = expand_vars_test(s, start, hell);
+// 		else if (start > s && *(start - 1))
+// 			*ptr = expand_vars_test(s, start - 1, hell);
+// 		temp = (new_word(start, end));
+// 		printf("TEMP:%s\n",temp);
+// 		*ptr = (ft_expand(*ptr, temp, &temp));
+// 		if (*(end))
+// 		{
+// 			printf("Rest:%s\n", end);
+// 			literal(&temp, end, endptr, hell);
+// 			*ptr = (ft_expand(*ptr, temp, &temp));
+// 		}
+// 	}
+// 	else
+// 		*ptr = expand_vars_test(s, endptr, hell);
+// }
+
 void	literal(char **ptr, char *s, char *endptr, t_hell *hell)
 {
 	char	*start;
 	char	*end;
 	char	*temp;
 
-	find_non_expand(s, &start, &end);
-	if (start && end)
+	while (s < endptr)
 	{
-		if (start > s)
-			*ptr = expand_vars(s, start, hell);
-		temp = (new_word(start, end));
-		*ptr = (ft_expand(*ptr, temp, &temp));
-		if (*(end))
+		find_non_expand(s, &start, &end);
+		if (!start || !end)
 		{
-			literal(&temp, end, endptr, hell);
-			*ptr = (ft_expand(*ptr, temp, &temp));
+			temp = expand_vars_test(s, endptr, hell);
+			*ptr = ft_expand(*ptr, temp, &temp);
+			break;
 		}
+		if (start > s)
+		{
+			temp = expand_vars_test(s, start, hell);
+			*ptr = ft_expand(*ptr, temp, &temp);
+		}
+		temp = new_word(start, end);
+		*ptr = ft_expand(*ptr, temp, &temp);
+		s = end;
+		if (*s == '\0')
+			break;
 	}
-	else
-		*ptr = expand_vars(s, endptr, hell);
 }

@@ -6,7 +6,7 @@
 /*   By: pmoreira <pmoreira@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/24 14:48:17 by pmoreira          #+#    #+#             */
-/*   Updated: 2025/05/22 15:17:19 by pmoreira         ###   ########.fr       */
+/*   Updated: 2025/05/23 13:58:29 by pmoreira         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,6 +30,8 @@
 # define RESET "\001\033[0m\002"
 
 // parse:
+void	init_expand(t_expand *t,char **ptr, char *start, char *end);
+char	*expand_vars_test(char *s, char *end, t_hell *hell);
 void	parser(char *input, t_hell *data);
 char	**ft_params(const char *start);
 void	tokenize(char *input, t_hell *data);
@@ -56,6 +58,8 @@ void	init_cmds(t_hell *data);
 void	get_status(char **result, t_hell *hell, char **s);
 void	concat_expand(char **result, char **new_str, t_hell *hell);
 int		valid_expand(int c);
+int		localized_expansions(char *start, char *end);
+char	*localized_expander(char *start, char *end, t_hell *hell);
 
 // miscs:
 void	printascii(void);

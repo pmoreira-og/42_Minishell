@@ -6,7 +6,7 @@
 /*   By: pmoreira <pmoreira@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/14 14:59:37 by pmoreira          #+#    #+#             */
-/*   Updated: 2025/05/22 15:20:35 by pmoreira         ###   ########.fr       */
+/*   Updated: 2025/05/23 15:05:17 by pmoreira         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,7 +34,7 @@ int	localized_espacing(char *start, char *end)
 {
 	if (!start || !end)
 		return (0);
-	return (*start == '$' && *(start + 1) == '\'' && *(end) == '\'');
+	return (*start == '$' && *(start + 1) && *(start + 1) == '\'' && *(end) == '\'');
 }
 
 void	associate(char **ptr, char *new_str)
@@ -75,5 +75,6 @@ void	parser(char *input, t_hell *data)
 	tokenize(input, data);
 	valid_input(data->tokens);
 	init_cmds(data);
-	print_cmd_info(data);
+	// print_cmd_info(data);
+	print_token(data->tokens);
 }

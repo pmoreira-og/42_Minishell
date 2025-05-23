@@ -6,13 +6,16 @@
 /*   By: pmoreira <pmoreira@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/24 14:39:15 by pmoreira          #+#    #+#             */
-/*   Updated: 2025/05/22 15:31:30 by pmoreira         ###   ########.fr       */
+/*   Updated: 2025/05/22 16:10:46 by pmoreira         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minishell.h"
 
-int	check_tokens()
+// int	check_tokens(t_token *tok)
+// {
+	
+// }
 
 int	valid_input(t_token *tok)
 {
