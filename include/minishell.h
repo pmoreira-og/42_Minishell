@@ -6,7 +6,7 @@
 /*   By: pmoreira <pmoreira@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/24 14:48:17 by pmoreira          #+#    #+#             */
-/*   Updated: 2025/05/23 16:30:15 by pmoreira         ###   ########.fr       */
+/*   Updated: 2025/05/26 10:49:13 by pmoreira         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,7 +32,7 @@
 // parse:
 void	init_expand(t_expand *t,char **ptr, char *start, char *end);
 char	*expand_vars_test(char *s, char *end, t_hell *hell);
-void	parser(char *input, t_hell *data);
+void	parser(char **input, t_hell *data);
 char	**ft_params(const char *start);
 void	tokenize(char *input, t_hell *data);
 int		valid_input(t_token *tok);
@@ -61,6 +61,7 @@ int		valid_expand(int c);
 int		localized_expansions(char *start, char *end);
 int		count_expand_zones(char *input);
 char	*localized_expander(char *start, char *end, t_hell *hell);
+char	*remove_zones(char **ptr, char *input);
 
 // miscs:
 void	printascii(void);
