@@ -6,7 +6,7 @@
 /*   By: pmoreira <pmoreira@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/14 14:59:37 by pmoreira          #+#    #+#             */
-/*   Updated: 2025/05/26 11:12:44 by pmoreira         ###   ########.fr       */
+/*   Updated: 2025/05/26 11:34:26 by pmoreira         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,13 +28,6 @@ char	*ft_expand(char *s1, char *s2, char **temp)
 	if (temp)
 		free(*temp);
 	return (tmp);
-}
-
-int	localized_espacing(char *start, char *end)
-{
-	if (!start || !end)
-		return (0);
-	return (*start == '$' && *(start + 1) && *(start + 1) == '\'' && *(end) == '\'');
 }
 
 void	associate(char **ptr, char *new_str)
@@ -59,8 +52,6 @@ void	process_str(char **ptr, char *s, t_hell *hell)
 		return (associate(ptr, ft_strdup(s)));
 	size = ft_strlen(s);
 	end = &s[size - 1];
-	// if (localized_espacing(start, end))
-	// 	return (associate(ptr, new_word(start + 2, end)));
 	literal(&output, start, end + 1, hell);
 	if (!output)
 		return ;
@@ -74,7 +65,6 @@ void	parser(char **input, t_hell *data)
 {
 	if (!quotes_check(*input))
 		return (ft_putstr_fd(ERR_QUOTES, 2));
-	// *input = remove_zones(input, *input);
 	tokenize(*input, data);
 	valid_input(data->tokens);
 	init_cmds(data);

@@ -6,7 +6,7 @@
 /*   By: pmoreira <pmoreira@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/24 14:48:17 by pmoreira          #+#    #+#             */
-/*   Updated: 2025/05/26 10:49:13 by pmoreira         ###   ########.fr       */
+/*   Updated: 2025/05/26 11:37:48 by pmoreira         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,7 +31,6 @@
 
 // parse:
 void	init_expand(t_expand *t,char **ptr, char *start, char *end);
-char	*expand_vars_test(char *s, char *end, t_hell *hell);
 void	parser(char **input, t_hell *data);
 char	**ft_params(const char *start);
 void	tokenize(char *input, t_hell *data);

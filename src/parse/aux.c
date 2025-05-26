@@ -6,18 +6,22 @@
 /*   By: pmoreira <pmoreira@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/22 15:21:45 by pmoreira          #+#    #+#             */
-/*   Updated: 2025/05/26 10:51:25 by pmoreira         ###   ########.fr       */
+/*   Updated: 2025/05/26 11:40:04 by pmoreira         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minishell.h"
+
+
 
 int	count_expand_zones(char *input)
 {
 	int		count;
 	t_bool	quote;
 	t_bool	d_quote;
-	
+
+	if (!input)
+		return (0);
 	count = 0;
 	init_proc(NULL, NULL, &quote, &d_quote);
 	while (*input)
@@ -30,6 +34,23 @@ int	count_expand_zones(char *input)
 	return (count);
 }
 
+// int	count_spaces(char *s)
+// {
+// 	int		count;
+// 	t_bool	quote;
+// 	t_bool	d_quote;
+	
+// 	if (!s)
+// 		return (0);
+// 	count = 0;
+// 	init_proc(NULL, NULL, &quote, &d_quote);
+// 	while (*s)
+// 	{
+// 		check_char_quote((const char **)&s, &quote, &d_quote);
+// 		if (!quote && !d_quote)
+// 	}
+// }
+
 char	*remove_zones(char **ptr, char *input)
 {
 	char	*output;
@@ -37,6 +58,8 @@ char	*remove_zones(char **ptr, char *input)
 	t_bool	d_quote;
 	int		i;
 
+	if (!ptr || !input)
+		return (NULL);
 	output = malloc(ft_strlen(input) - count_expand_zones(input) + 1);
 	if (!output)
 		return (NULL);

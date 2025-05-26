@@ -627,3 +627,13 @@ echo ' $HOME' $'$USER$' $ $USER'$USER'$?$
 echo $'$USER"$USER"$USER'
 echo ' $HOME' $"$USER$" $ $'USER''$USER'$?$
 exit
+cut -d \' -f 1
+cut -d \\ -f 1
+ \e\c\h\o
+echo "'"bababa"'"
+exit
+echo "'"bababa"'"
+ \e\c\h\o
+cut -d \' -f 1
+echo ' $HOME' $"$USER$" $ $'USER''$USER'$?$
+exit

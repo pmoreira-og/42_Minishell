@@ -6,32 +6,21 @@
 /*   By: pmoreira <pmoreira@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/07 14:40:54 by pmoreira          #+#    #+#             */
-/*   Updated: 2025/05/23 11:07:34 by pmoreira         ###   ########.fr       */
+/*   Updated: 2025/05/26 11:41:32 by pmoreira         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minishell.h"
 
-void	skip_expand_name(char **start, char **s, char *end)
+void	skip_name(char **start, char **s, char *end)
 {
-	*start = *s;
-	(*s)++;
-	if (*s == end || *s > end)
-	{
-		
-		return ;
-	}
 	if (*s < end && (isdigit(**s) || **s == '\?'))
-	{
 		(*s)++;
-		return ;
-	}
-	if (*s < end && valid_expand(**s))
+	else if (*s < end && valid_expand(**s))
 	{
 		(*start)++;
 		while (*s < end && valid_expand(**s))
 			(*s)++;
-		return ;
 	}
 }
 
@@ -49,51 +38,28 @@ void	concat_expand(char **result, char **new_str, t_hell *hell)
 		*result = ft_expand(*result, temp, new_str);
 		free(temp);
 	}
-	else if (!ft_strncmp(*new_str, "$", 2))
-		*result = ft_expand(*result, *new_str, new_str);
 	else
 		*result = ft_expand(*result, (get_env(&hell->env, *new_str)), new_str);
 }
 
-int	localized_expansions(char *start, char *end)
-{
-	if (!start || !end)
-		return (0);
-	return (*start == '$' && *(start + 1) && *(start + 1) == '\"' && *(end - 1) == '\"');
-}
-
-char	*localized_expander(char *start, char *end, t_hell *hell)
-{
-	char	*new_concat;
-	char	*new_start;
-	char	*new_end;
-
-	new_start = start + 2;
-	new_end = end - 1;
-	new_concat = expand_vars(new_start, new_end, hell);
-	if (!new_concat)
-		return (NULL);
-	return (new_concat);
-}
-
 char	*expand_vars(char *s, char *end, t_hell *hell)
 {
-	char	*start;
 	char	*result;
+	char	*start;
 	char	*temp;
 
 	result = NULL;
 	while (s < end)
 	{
-		if (*s == '$')
+		start = s++;
+		if (*start == '$' && *s && (valid_expand(*s) || *s == '\?'))
 		{
-			skip_expand_name(&start, &s, end);
+			skip_name(&start, &s, end);
 			temp = new_word(start, s);
 			concat_expand(&result, &temp, hell);
 		}
 		else
 		{
-			start = s;
 			while ((s < end) && *s && *s != '$')
 				s++;
 			temp = new_word(start, s);
