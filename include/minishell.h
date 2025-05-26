@@ -6,7 +6,7 @@
 /*   By: pmoreira <pmoreira@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/24 14:48:17 by pmoreira          #+#    #+#             */
-/*   Updated: 2025/05/26 11:37:48 by pmoreira         ###   ########.fr       */
+/*   Updated: 2025/05/26 14:29:38 by pmoreira         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,9 +58,12 @@ void	get_status(char **result, t_hell *hell, char **s);
 void	concat_expand(char **result, char **new_str, t_hell *hell);
 int		valid_expand(int c);
 int		localized_expansions(char *start, char *end);
+int		count_spaces(char *s);
+char	*add_spaces(char **ptr, char *s);
 int		count_expand_zones(char *input);
 char	*localized_expander(char *start, char *end, t_hell *hell);
 char	*remove_zones(char **ptr, char *input);
+int		is_meta(int c);
 
 // miscs:
 void	printascii(void);

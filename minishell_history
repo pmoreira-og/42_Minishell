@@ -637,3 +637,140 @@ echo "'"bababa"'"
 cut -d \' -f 1
 echo ' $HOME' $"$USER$" $ $'USER''$USER'$?$
 exit
+echo ' $HOME' $"$USER$" $ $'USER''$USER'$?$
+echo ' $HOME' $"$USER$" $ $'USER''$USER'$?$
+echo ' $HOME' $"$USER$" $ $'USER''$USER'$?$
+echo ola>>banana
+echo ola>banana
+echo ola>> banana
+echo ola >>banana
+echo ola>> banana
+echo ola>banana
+echo ola >banana
+echo ola> banana
+exit
+echo ola> banana
+echo ola >banana
+echo ola >banana
+echo ola >banana
+echo ola> banana
+echo ola>> banana
+echo ola >>banana
+echo ola>>banana
+echo ola>>banana
+echo ola>>banana
+echo ola>> banana
+echo ola >> banana
+echo ola >>banana
+echo ola>banana
+echo ola >banana
+echo ola> banana
+echo ola>banana
+echo ola > banana
+echo ola | banana
+echo ola||banana
+echo ola|banana
+exit
+echo '"'
+echo '"'
+echo '"'
+echo "'"
+echo $
+echo ola > banana
+echo ola >banana
+echo ' $HOME' $"$USER$" $ $'USER''$USER'$?$
+echo ola >banana
+echo ola >banana
+echo ola >banana
+echo ola >                banana
+echo ola > banana
+echo ola > banana
+echo ola >banana
+echo ola>banana
+exit
+echo ola>banana
+<< '$LIMITER'
+<< '$LIMITER'
+<< $USER
+<< $USER
+<< $USER
+<< $USER
+echo ola>banana
+echo ola> banana
+echo ola > banana
+echo ola > banana
+echo ola > banana
+echo ola>banana
+echo ola>banana
+echo ola > banana
+echo ola > banana
+echo ola>banana
+echo ola>banana
+echo ola>banana
+echo ola>banana
+echo ola>banana
+echo ola> banana
+echo ola > banana
+echo ola> banana
+echo ola>>banana
+echo ola >>banana
+echo ola>> banana
+<< lim
+ cat<<limit
+ cat<<limit
+<< lim
+<< lim
+<< lim
+ cat<<limit
+ cat<<limit
+<< lim
+<< lim
+<< lim
+echo ola>a>b>c>d
+echo ola>a>b>c>>d
+echo ola>a>b>c>> d
+echo ola>a>b>c>> d
+echo ola>a>b>c ">> d"
+echo ola>a>b>"c >> d"
+echo ola>a>b>"c >> d"
+echo ola>a>b>c>>d
+echo ola>a>b>"c >> d"
+echo ola>a>b>c>>d
+echo ola >>banana
+echo ola >>banana
+echo ola >>banana
+echo ola >>banana
+echo ola >>banana
+echo ola >>banana
+echo ola >>banana
+echo ola >>banana
+echo ola >>banana
+echo ola >>banana
+echo ola >>banana
+echo ola >>banana
+echo ola >>banana
+echo ola >>banana
+echo ola>a>b>"c >> d"
+echo ola >>banana
+echo ola>>banana
+echo ola>> banana
+echo ola> banana
+echo ola>outfile
+echo ola>>outfile
+echo ola" banana>split" 'com>> manteiga'>direto> na > panela
+echo ola" banana>split" 'com>> manteiga'>direto> na > panela
+echo ola" banana>split" 'com>> manteiga'>direto> na > panela
+echo ola>outfile
+echo ola> banana
+echo ola >>banana
+echo ola >>banana
+echo ola" banana>split" 'com>> manteiga'>direto> na > panela
+exit
+echo ola" banana>split" 'com>> manteiga'>direto> na > panela
+echo ola" banana>split" 'com>> manteiga'>direto> na > panela
+echo ola" banana>split" 'com>> manteiga'>direto> na > panela
+exit
+echo ola" banana>split" 'com>> manteiga'>direto> na > panela
+cut -d \' -f 1
+\e\c\h\o
+exit
