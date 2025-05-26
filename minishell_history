@@ -774,3 +774,18 @@ echo ola" banana>split" 'com>> manteiga'>direto> na > panela
 cut -d \' -f 1
 \e\c\h\o
 exit
+$HOME
+$H
+$H
+\e\c\h\o
+cut -d \' -f 1
+> ola echo
+> ola echo
+cat << $USER > outfile
+cat << $USER > $HOME
+echo $HOME
+echo $HOME
+cat << $USER > $HOME
+echo $$
+echo $
+exit

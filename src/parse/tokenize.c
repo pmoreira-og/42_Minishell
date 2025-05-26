@@ -6,7 +6,7 @@
 /*   By: pmoreira <pmoreira@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/24 14:39:15 by pmoreira          #+#    #+#             */
-/*   Updated: 2025/05/26 12:25:46 by pmoreira         ###   ########.fr       */
+/*   Updated: 2025/05/26 16:18:06 by pmoreira         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -81,7 +81,7 @@ void	tokenize(char *input, t_hell *data)
 			return (ft_clean_matrix(matrix));
 		if (count_expand_zones(matrix[i]))
 			matrix[i] = remove_zones(&matrix[i], matrix[i]);
-		process_str(&temp->cmd, matrix[i], data);
+		process_str(&temp->cmd, matrix[i], data, &temp->not_expansive);
 		temp->next->prev = temp;
 		temp = temp->next;
 	}

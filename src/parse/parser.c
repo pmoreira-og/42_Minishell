@@ -6,7 +6,7 @@
 /*   By: pmoreira <pmoreira@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/14 14:59:37 by pmoreira          #+#    #+#             */
-/*   Updated: 2025/05/26 15:26:04 by pmoreira         ###   ########.fr       */
+/*   Updated: 2025/05/26 16:22:03 by pmoreira         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,7 +37,7 @@ void	associate(char **ptr, char *new_str)
 	*ptr = new_str;
 }
 
-void	process_str(char **ptr, char *s, t_hell *hell)
+void	process_str(char **ptr, char *s, t_hell *hell, t_bool *flag)
 {
 	char	*output;
 	char	*start;
@@ -48,7 +48,7 @@ void	process_str(char **ptr, char *s, t_hell *hell)
 		return ;
 	output = NULL;
 	start = s;
-	if (!ft_strcmp(s, "$"))
+	if (!ft_strcmp(s, "$") || *flag)
 		return (associate(ptr, ft_strdup(s)));
 	size = ft_strlen(s);
 	end = &s[size - 1];
@@ -67,7 +67,7 @@ void	parser(char **input, t_hell *data)
 		return (ft_putstr_fd(ERR_QUOTES, 2));
 	if (count_spaces(*input))
 		*input = add_spaces(input, *input);
-	printf("Proc:%s\n", *input);
+	// printf("Proc:%s\n", *input);
 	tokenize(*input, data);
 	valid_input(data->tokens);
 	// init_cmds(data);

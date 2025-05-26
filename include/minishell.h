@@ -6,7 +6,7 @@
 /*   By: pmoreira <pmoreira@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/24 14:48:17 by pmoreira          #+#    #+#             */
-/*   Updated: 2025/05/26 14:29:38 by pmoreira         ###   ########.fr       */
+/*   Updated: 2025/05/26 16:16:47 by pmoreira         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,7 +44,7 @@ int		is_quotes(int c);
 char	*new_word(const char *start, const char *end);
 char	*expand_vars(char *s, char *end, t_hell *hell);
 char	*ft_expand(char *s1, char *s2, char **temp);
-void	process_str(char **ptr, char *s, t_hell *hell);
+void	process_str(char **ptr, char *s, t_hell *hell, t_bool *flag);
 char	*remove_quotes(char *s);
 void	check_char_quote(const char **s, t_bool *quote, t_bool *d_quote);
 int		tab_counter(const char *start, const char *end);
