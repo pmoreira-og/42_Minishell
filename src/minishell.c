@@ -25,7 +25,7 @@ static void	list_builtin(t_hell *hell)
 	else if (!ft_strcmp(hell->cmd->args[0], "exit"))
 		mini_exit(hell);
 	else if (!ft_strcmp(hell->cmd->args[0], "export"))
-		mini_export(&hell->env, hell->cmd);
+		mini_export(&hell->env, &hell->export, hell->cmd);
 	else if (!ft_strcmp(hell->cmd->args[0], "unset"))
 		mini_unset(&hell->env, hell->cmd);
 }

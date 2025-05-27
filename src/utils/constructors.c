@@ -26,6 +26,7 @@ t_hell	*init_hell(int ac, char **av,char **envp)
 	// if (!hell->cmd)
 	// 	return (free(hell->tokens), free(hell), NULL);
 	init_env(&hell->env, envp);
+	init_export(&hell->export, envp);
 	hell->envp = envp;
 	if (!get_history_fd(hell))
 		load_history(hell);

@@ -136,3 +136,57 @@ a
 in "echo a" "echo b" out
 a
 echo a
+export
+export
+export
+env
+export
+export
+export
+export
+env
+export
+export
+export
+a
+export
+export
+export
+export a
+env
+export
+clear
+exit
+export
+export a
+export
+exit
+export
+export a=a
+export
+envc
+env
+export a=aaa
+env
+export
+exit
+export
+clear
+exit
+export
+export a
+export
+export b
+clear
+exit
+export
+export a
+export
+clear
+exit
+export a
+export
+export b
+export
+clear
+exit

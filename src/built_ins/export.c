@@ -15,19 +15,48 @@ identifier_check(char **matrix)
 	return (1);
 }
 
-void	mini_export(t_env **env, t_cmd *cmd)
+static void	print_export(t_export *export)
 {
-	char	**matrix;
+	t_export *temp;
 
-	if (cmd->argc == 1)
-		return ;
-	matrix = ft_split_once(cmd->args[1], '=');
-	if (!identifier_check(matrix))
-		return((void)printf("\033[1;31mMinishell\033[0m: export: %s: not a valid identifier\n", cmd->args[1]));
-	else if (matrix[0] && matrix[1])
-		ft_setenv(env, matrix[0], matrix[1]);
-	else if (matrix[0] && !matrix[1])
-		ft_setenv(env, matrix[0], "");
-	printf("matrix[0]: %s\nmatrix[1]: %s\n", matrix[0], matrix[1]);
+	temp = export;
+	while (temp)
+	{
+		if (!temp->value)
+			printf("declare -x %s\n", temp->var);
+		else
+		{
+			printf("declare -x %s=", temp->var);
+			printf("%s\n", temp->value);
+		}
+		temp = temp->next;
+	}
 	return ;
+}
+
+void    mini_export(t_env **env, t_export **export, t_cmd *cmd)
+{
+	int i = 1;
+	if (cmd->argc == 1)
+		return (print_export(*export));
+	while (i < cmd->argc)
+	{
+		char **matrix = ft_split_once(cmd->args[i], '=');
+		if (!identifier_check(matrix))
+			fprintf(stderr,
+				"Minishell: export: `%s': not a valid identifier\n",
+				cmd->args[i]);
+		else if (matrix[0] && matrix[1])
+		{
+			ft_setenv(env, matrix[0], matrix[1]);
+			ft_setexport(export, matrix[0], matrix[1]);
+		}
+		else if (matrix[0] && !matrix[1])
+		{
+			ft_setenv(env, matrix[0], "");
+			ft_setexport(export, matrix[0], ""); // ver isso amanha + casos especificos
+		}
+		ft_clean_matrix(matrix);
+		i++;
+	}
 }
