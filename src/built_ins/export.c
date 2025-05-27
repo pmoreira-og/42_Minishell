@@ -23,6 +23,8 @@ static void	print_export(t_export *export)
 	while (temp)
 	{
 		if (!temp->value)
+			printf("declare -x %s=\n", temp->var);
+		else if (temp->value[0] == '\0')
 			printf("declare -x %s\n", temp->var);
 		else
 		{
@@ -52,9 +54,11 @@ void    mini_export(t_env **env, t_export **export, t_cmd *cmd)
 			ft_setexport(export, matrix[0], matrix[1]);
 		}
 		else if (matrix[0] && !matrix[1])
+			ft_setexport(export, matrix[0], NULL);
+		else if (!ft_strcmp(matrix[1], ""))
 		{
-			ft_setenv(env, matrix[0], "");
-			ft_setexport(export, matrix[0], ""); // ver isso amanha + casos especificos
+			ft_setenv(env, matrix[0], "\"\"");
+			ft_setexport(export, matrix[0], "\"\"");
 		}
 		ft_clean_matrix(matrix);
 		i++;
