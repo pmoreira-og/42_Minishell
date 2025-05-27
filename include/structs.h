@@ -6,7 +6,7 @@
 /*   By: pmoreira <pmoreira@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/24 15:03:58 by pmoreira          #+#    #+#             */
-/*   Updated: 2025/05/20 16:10:20 by pmoreira         ###   ########.fr       */
+/*   Updated: 2025/05/26 16:13:57 by pmoreira         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -98,7 +98,7 @@ typedef struct s_token
 {
 	t_type			type;
 	char			*cmd;
-	char			*backup;
+	t_bool			not_expansive;
 	char			**args;
 	struct s_token	*next;
 	struct s_token	*prev;

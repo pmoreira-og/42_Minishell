@@ -59,6 +59,7 @@ static void	init_exec(t_hell *hell)
 		pipex(4, hell->cmd->args, list_env_matrix(hell->env));
 }
 
+
 int	main(int ac, char **av, char **envp)
 {
 	char	*input;
@@ -72,13 +73,10 @@ int	main(int ac, char **av, char **envp)
 	{
 		input = readline(RED"Minishell> "RESET);
 		save_history(input, hell);
-		parser(input, hell);
+		parser(&input, hell);
 		if (!ft_strcmp(input, "exit"))
 			mini_exit(hell);
 		// hell->cmd->args = ft_split(input, ' ');
-		init_exec(hell);
-/* 		if (hell->cmd && hell->cmd->args[0] && is_builtin(hell->cmd->args[0]))
-			list_builtin(hell); */
 		prepare_next_input(hell);
 		free(input);
 	}

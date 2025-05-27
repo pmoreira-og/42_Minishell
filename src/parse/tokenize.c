@@ -6,13 +6,67 @@
 /*   By: pmoreira <pmoreira@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/24 14:39:15 by pmoreira          #+#    #+#             */
-/*   Updated: 2025/05/21 12:08:28 by pmoreira         ###   ########.fr       */
+/*   Updated: 2025/05/27 10:49:18 by pmoreira         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-# include "minishell.h"
+#include "minishell.h"
 
-void	token_type(char *s, t_token *tok , t_token *prev, char **path)
+int	special_token(t_token *tok)
+{
+	if (!tok)
+		return (0);
+	if (tok->type == REDIR_OUT || tok->type == PIPE)
+		return (1);
+	return (0);
+}
+
+int	valid_format(t_token *tok)
+{
+	t_bool	cmd;
+	t_token	*temp;
+
+	if (!tok)
+		return (0);
+	temp = tok;
+	cmd = FALSE;
+	while (temp->next)
+	{
+		temp = temp->next;
+	}
+	if (temp->prev)
+	{
+		temp = temp->prev;
+		if (special_token(temp))
+			return (0);
+	}
+	return (1);
+}
+int	valid_input(t_token *tok)
+{
+	t_bool	cmd;
+	t_token	*temp;
+
+	if (!tok)
+		return (0);
+	temp = tok;
+	cmd = FALSE;
+	if (!valid_format(tok))
+		return (0);
+	while (temp->next)
+	{
+		if (temp->type == PIPE)
+			cmd = FALSE;
+		if (cmd && (temp->type == CMD || temp->type == BUILT_IN))
+			temp->type = ARG;
+		if (temp->type == CMD || temp->type == BUILT_IN)
+			cmd = TRUE;
+		temp = temp->next;
+	}
+	return (1);
+}
+
+void	token_type(char *s, t_token *tok, t_token *prev, char **path)
 {
 	if (check_prev(prev, tok))
 		return ;
@@ -38,8 +92,6 @@ void	tokenize(char *input, t_hell *data)
 	int		i;
 	t_token	*temp;
 
-	if (!quotes_check(input))
-		return (ft_putstr_fd(ERR_QUOTES, 2));
 	matrix = ft_params(input);
 	if (!matrix)
 		return ;
@@ -54,7 +106,9 @@ void	tokenize(char *input, t_hell *data)
 		temp->next = ft_calloc(1, sizeof(t_token));
 		if (!temp->next)
 			return (ft_clean_matrix(matrix));
-		process_str(&temp->cmd, matrix[i], &data->env);
+		if (count_expand_zones(matrix[i]))
+			matrix[i] = remove_zones(&matrix[i], matrix[i]);
+		process_str(&temp->cmd, matrix[i], data, &temp->not_expansive);
 		temp->next->prev = temp;
 		temp = temp->next;
 	}

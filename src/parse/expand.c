@@ -6,83 +6,60 @@
 /*   By: pmoreira <pmoreira@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/07 14:40:54 by pmoreira          #+#    #+#             */
-/*   Updated: 2025/05/21 12:23:47 by pmoreira         ###   ########.fr       */
+/*   Updated: 2025/05/26 11:41:32 by pmoreira         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minishell.h"
 
-char	*new_word(const char *start, const char *end)
+void	skip_name(char **start, char **s, char *end)
 {
-	char	*word;
-	int		i;
-
-	if (!start || !end)
-		return (NULL);
-	i = 0;
-	word = (char *)malloc((end - start + 1) * sizeof(char));
-	if (!word)
-		return (NULL);
-	while (start < end)
+	if (*s < end && (isdigit(**s) || **s == '\?'))
+		(*s)++;
+	else if (*s < end && valid_expand(**s))
 	{
-		word[i++] = *start;
-		start++;
+		(*start)++;
+		while (*s < end && valid_expand(**s))
+			(*s)++;
 	}
-	word[i] = '\0';
-	return (word);
 }
 
-static char	*get_env_value(t_env **env, char *name)
+void	concat_expand(char **result, char **new_str, t_hell *hell)
 {
-	t_env	*tmp;
+	char	*temp;
 
-	tmp = *env;
-	while (tmp)
+	if (!ft_strncmp(*new_str, "$\?", 2))
 	{
-		if (!ft_strcmp(tmp->var, name))
-			return (tmp->value);
-		tmp = tmp->next;
+		temp = ft_itoa(hell->status);
+		if (!temp)
+			return ;
+		if (!(*result))
+			*result = ft_strdup("");
+		*result = ft_expand(*result, temp, new_str);
+		free(temp);
 	}
-	return ("");
+	else
+		*result = ft_expand(*result, (get_env(&hell->env, *new_str)), new_str);
 }
 
-/// @brief Join the 2 strings, free the s1 and free the s2 if the pointer are 
-///		given.
-/// @param s1 Output string.
-/// @param s2 Temp string.
-/// @param temp Address of Temp.
-/// @return Strjoin.
-char	*ft_expand(char *s1, char *s2, char **temp)
+char	*expand_vars(char *s, char *end, t_hell *hell)
 {
-	char	*tmp;
-
-	tmp = ft_strjoin(s1, s2);
-	if (s1)
-		free(s1);
-	if (temp)
-		free(*temp);
-	return (tmp);
-}
-
-char	*expand_vars(char *s, char *end, t_env **env)
-{
-	char	*start;
 	char	*result;
+	char	*start;
 	char	*temp;
 
 	result = NULL;
 	while (s < end)
 	{
-		if (*s == '$')
+		start = s++;
+		if (*start == '$' && *s && (valid_expand(*s) || *s == '\?'))
 		{
-			start = ++s;
-			skip_expand_name(&s, end);
+			skip_name(&start, &s, end);
 			temp = new_word(start, s);
-			result = ft_expand(result, (get_env_value(env, temp)), &temp);
+			concat_expand(&result, &temp, hell);
 		}
 		else
 		{
-			start = s;
 			while ((s < end) && *s && *s != '$')
 				s++;
 			temp = new_word(start, s);

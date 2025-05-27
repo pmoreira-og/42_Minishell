@@ -6,7 +6,7 @@
 /*   By: pmoreira <pmoreira@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/29 11:10:40 by pmoreira          #+#    #+#             */
-/*   Updated: 2025/05/21 12:22:47 by pmoreira         ###   ########.fr       */
+/*   Updated: 2025/05/26 16:18:42 by pmoreira         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,11 +54,11 @@ void	clean_list(t_hell *data)
 	while(temp)
 	{
 		next_node = temp->next;
-		if (temp->backup)
-		{
-			free(temp->backup);
-			temp->backup = NULL;
-		}
+		// if (temp->backup)
+		// {
+		// 	free(temp->backup);
+		// 	temp->backup = NULL;
+		// }
 		if (temp->cmd)
 		{
 			free(temp->cmd);
