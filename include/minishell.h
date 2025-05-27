@@ -6,7 +6,7 @@
 /*   By: pmoreira <pmoreira@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/24 14:48:17 by pmoreira          #+#    #+#             */
-/*   Updated: 2025/05/21 10:27:46 by pmoreira         ###   ########.fr       */
+/*   Updated: 2025/05/27 11:13:33 by pmoreira         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,31 +26,47 @@
 
 # define HIST_FILE "minishell_history"
 # define ERR_QUOTES "minishell: syntax error: input contains unclosed quotes\n"
+# define ERR_BAD_FORMAT "minishell: syntax error near unexpected token "
+# define TOKEN_NEWLINE	"'newline'\n"
 # define RED "\001\033[31m\002"
 # define RESET "\001\033[0m\002"
 
 // parse:
-void	parser(char *input, t_hell *data);
+void	init_expand(t_expand *t,char **ptr, char *start, char *end);
+void	parser(char **input, t_hell *data);
 char	**ft_params(const char *start);
 void	tokenize(char *input, t_hell *data);
 int		valid_input(t_token *tok);
 int		quotes_check(char *input);
-void	literal(char **ptr, char *s, char *endptr, t_env **env);
+void	literal(char **ptr, char *s, char *endptr, t_hell *hell);
 void	init_proc(const char **start, const char *s, t_bool *quote, \
 	t_bool *d_quote);
 void	check_quotes(int c, t_bool *quote, t_bool *d_quote);
 int		is_quotes(int c);
 char	*new_word(const char *start, const char *end);
-char	*expand_vars(char *s, char *end, t_env **env);
+char	*expand_vars(char *s, char *end, t_hell *hell);
 char	*ft_expand(char *s1, char *s2, char **temp);
-void	process_str(char **ptr, char *s, t_env **env);
+void	process_str(char **ptr, char *s, t_hell *hell, t_bool *flag);
 char	*remove_quotes(char *s);
 void	check_char_quote(const char **s, t_bool *quote, t_bool *d_quote);
 int		tab_counter(const char *start, const char *end);
-void	skip_expand_name(char **s, char *end);
-int		command_size(t_token *start, t_token **save_ptr, int *cmd_c, t_bool *flag);
+void	skip_expand_name(char **start, char **s, char *end);
+int		command_size(t_token *start, t_token **save_ptr, int *cmd_c, \
+	t_bool *flag);
 char	**build_args(t_token *start, t_cmd **cmd);
+char	*get_env(t_env **env, char *name);
 void	init_cmds(t_hell *data);
+void	get_status(char **result, t_hell *hell, char **s);
+void	concat_expand(char **result, char **new_str, t_hell *hell);
+int		valid_expand(int c);
+int		localized_expansions(char *start, char *end);
+int		count_spaces(char *s);
+char	*add_spaces(char **ptr, char *s);
+int		count_expand_zones(char *input);
+char	*localized_expander(char *start, char *end, t_hell *hell);
+char	*remove_zones(char **ptr, char *input);
+int		is_meta(int c);
+void	parser_error(char *error_msg, int fd);
 
 // miscs:
 void	printascii(void);

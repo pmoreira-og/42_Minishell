@@ -6,7 +6,7 @@
 /*   By: pmoreira <pmoreira@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/20 16:01:00 by pmoreira          #+#    #+#             */
-/*   Updated: 2025/05/21 12:40:22 by pmoreira         ###   ########.fr       */
+/*   Updated: 2025/05/23 16:09:02 by pmoreira         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,6 +16,8 @@ void	print_token(t_token *toks)
 {
 	t_token	*temp;
 
+	if (!toks)
+		return ;
 	temp = toks;
 	while (temp->next)
 	{
