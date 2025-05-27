@@ -80,12 +80,14 @@ void	mini_pwd(t_cmd *cmd);
 void	mini_cd(t_cmd *cmd, t_env **env);
 void	mini_env(t_env *env);
 void	mini_exit(t_hell *hell);
-void	mini_export(t_env **env, t_cmd *cmd);
+void	mini_export(t_env **env, t_export **export, t_cmd *cmd);
 void	mini_unset(t_env **env, t_cmd *cmd);
 
 // enviroment management:
 void	init_env(t_env **env, char **envp);
 void	ft_setenv(t_env **env, char *var, char *value);
+void	init_export(t_export **export, char **envp);
+void	ft_setexport(t_export **export, char *var, char *value);
 
 // Utils
 void	armageddon(t_hell *data);

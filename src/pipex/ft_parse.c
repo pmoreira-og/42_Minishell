@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_parse.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: pmoreira <pmoreira@student.42lisboa.com    +#+  +:+       +#+        */
+/*   By: ernda-si <ernda-si@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/26 12:23:53 by pmoreira          #+#    #+#             */
-/*   Updated: 2025/04/24 14:53:38 by pmoreira         ###   ########.fr       */
+/*   Updated: 2025/05/21 16:40:06 by ernda-si         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,7 @@ static char	**ft_free(char **matrix, int index)
 	return (0);
 }
 
-static int	ft_add_word(char **matrix, const char *start, const char *end)
+static int	ft_add_word(char **matrix, /*const*/ char *start, /*const*/ char *end)
 {
 	char	*word;
 	int		i;
@@ -45,7 +45,7 @@ static int	ft_add_word(char **matrix, const char *start, const char *end)
 	return (1);
 }
 
-static void	ft_count_words(const char *str, int *count, char c)
+static void	ft_count_words(/*const*/ char *str, int *count, char c)
 {
 	while (*str)
 	{
@@ -67,9 +67,9 @@ static void	ft_count_words(const char *str, int *count, char c)
 	}
 }
 
-static int	process_str(char **matrix, const char *s, char c, int *index)
+static int	process_str(char **matrix, /*const*/ char *s, char c, int *index)
 {
-	const char	*start;
+	/*const*/ char	*start;
 
 	while (*s)
 	{
@@ -95,7 +95,7 @@ static int	process_str(char **matrix, const char *s, char c, int *index)
 	return (1);
 }
 
-char	**ft_parse(const char *s, char c)
+char	**ft_parse(/*const*/ char *s, char c)
 {
 	char	**matrix;
 	int		size;

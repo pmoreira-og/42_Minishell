@@ -33,16 +33,18 @@ typedef struct s_pipex
 	char	***cmd_args;
 }	t_pipex;
 
+int	pipex(int ac, char /*const*/ **av, char *envp[]);
+
 void	ft_exec(char **path, char **program);
 void	child(t_pipex *pipex, char **program, int count);
 void	parent(t_pipex *pipex, int count);
-char	**ft_parse(const char *s, char c);
+char	**ft_parse(/*const*/ char *s, char c);
 
 // UTILS
 
-int		check_files(int ac, const char **av, t_pipex *pipex);
-t_pipex	*ft_init_struct(char *envp[], int size, char const **av);
-char	*get_next_line_fd(int dst, int src, const char **av);
+int		check_files(int ac, /*const*/ char **av, t_pipex *pipex);
+t_pipex	*ft_init_struct(char *envp[], int size, char /*const*/ **av);
+char	*get_next_line_fd(int dst, int src, /*const*/ char **av);
 int		wait_childs(t_pipex *pipex);
 char	**ft_getenv(char **envp, char *target, char split);
 
@@ -52,6 +54,6 @@ int		ft_dup(t_pipex *pipex, int count);
 void	ft_clean_matrix(char **matrix);
 void	ft_clean_pipex(t_pipex *pipex);
 void	try_run(t_pipex *pipex, char **program);
-void	ft_heredoc(t_pipex *pipex, const char **av);
+void	ft_heredoc(t_pipex *pipex, /*const*/ char **av);
 
 #endif

@@ -48,6 +48,7 @@ typedef struct s_hell
 {
 	struct s_cmd	*cmd;
 	struct s_env	*env;
+	struct s_export	*export;
 	struct s_token	*tokens;
 	char			**envp;
 	char			**path;
@@ -110,13 +111,11 @@ typedef struct s_env
 	struct s_env	*next;
 }	t_env;
 
-typedef struct s_expand
+typedef struct s_export
 {
-	char	**ptr;
-	char	*start;
-	char	*end;
-	t_bool	flag;
-}	t_expand;
-
+	char			*var;
+	char			*value;
+	struct s_export	*next;
+}	t_export;
 
 #endif

@@ -1,18 +1,18 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   utils_bonus.c                                      :+:      :+:    :+:   */
+/*   utils.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: pmoreira <pmoreira@student.42lisboa.com    +#+  +:+       +#+        */
+/*   By: ernda-si <ernda-si@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/11 10:10:57 by pmoreira          #+#    #+#             */
-/*   Updated: 2025/04/24 14:46:44 by pmoreira         ###   ########.fr       */
+/*   Updated: 2025/05/21 16:40:14 by ernda-si         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "pipex.h"
 
-int	check_files(int ac, const char **av, t_pipex *pipex)
+int	check_files(int ac, /*const*/ char **av, t_pipex *pipex)
 {
 	if (pipex->here_doc)
 		pipex->out_fd = open(av[ac - 1], O_RDWR | O_APPEND | O_CREAT, 0766);
@@ -50,7 +50,7 @@ char	**ft_getenv(char **envp, char *target, char split)
 			temp = envp[i] + (ft_strlen(target) + 1);
 		i++;
 	}
-	matrix = ft_split((const char *) temp, split);
+	matrix = ft_split((/*const*/ char *) temp, split);
 	if (!matrix)
 		return (NULL);
 	i = 0;
@@ -64,7 +64,7 @@ char	**ft_getenv(char **envp, char *target, char split)
 	return (matrix);
 }
 
-t_pipex	*ft_init_struct(char *envp[], int size, char const **av)
+t_pipex	*ft_init_struct(char *envp[], int size, char /*const*/ **av)
 {
 	t_pipex	*pipex;
 	int		i;
@@ -92,7 +92,7 @@ t_pipex	*ft_init_struct(char *envp[], int size, char const **av)
 	return (pipex);
 }
 
-char	*get_next_line_fd(int dst, int src, const char **av)
+char	*get_next_line_fd(int dst, int src, /*const*/ char **av)
 {
 	char	*line;
 
