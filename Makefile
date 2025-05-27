@@ -42,7 +42,7 @@ SRC_FD = misc.c minishell.c env_manager.c export_manager.c
 SRC_PIPEX =	pipex.c aux.c utils.c ft_parse.c
 
 SRC_PARSE =	tokenize.c ft_params.c checkers.c expand.c extra.c parser.c \
-			literal.c commands.c test.c aux.c errors.c
+			literal.c commands.c utils.c aux.c errors.c
 
 SRC_UTILS =	cleaners.c constructors.c checkers.c printers.c
 

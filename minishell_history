@@ -56,3 +56,97 @@ exit
 echo > olaexit
 ls
 exit
+export _a="ola"
+echo $_a
+export _a
+echo $_a
+echo $_a="echo ola banana split 123"
+export _a="echo ola banana split 123"
+$_a
+export _a="echo ola banana split 123"
+$_a
+echo $_a
+export a=ech
+export b="o banana split"
+$a$b
+export b=" banana split"
+export a=echo
+$a$b
+export b="banana split"
+$a$b
+export b="banana split"
+$a $b
+export a
+$a$b
+export b="banana split"
+$a $b
+export b="banana split"
+$a $b
+export a=echo
+$a $b
+$a$b
+$a$b
+$a$b
+mrc
+mrc
+$a$b
+export a=echo
+export b="banana split"
+$a$b
+exit
+export a=echo
+export a=echo
+export b="banana split"
+$a$b
+export b="o banana split"
+export a=ech
+$a$b
+export b="o banana split"
+export a=ech
+$a$b
+export a=echo
+export b=" banana split"
+$a$b
+export b=" banana ' split"
+$a$b
+export b=" banana ' split"
+export a=echo
+$a$b
+export b=">"
+$a$b
+export b=">"
+export a=echo
+$a $b
+export a=echo
+export b=">"
+$a $b
+export b=">"
+export a=echo
+$a $b
+export a=echo
+export b=">"
+$a $b
+export a="ech"
+export b="o banana split"
+$a$b
+$a $b
+$a$b
+export a=echo
+export b="banana split"
+$a$b
+export a=ech
+export b="o banana split"
+$a$b
+$a $b
+export a="> out cat Makefile"
+$a
+export a="> out cat Makefile"
+$a
+export a="> out cat Makefile"
+$a
+export a="echo out 'cat' Makefile"
+$a
+export a="echo out 'cat' Makefile"
+$a
+export a="echo out 'cat' Makefile"
+$a

@@ -1,46 +1,20 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   tokenize.c                                         :+:      :+:    :+:   */
+/*   utils.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: pmoreira <pmoreira@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/04/24 14:39:15 by pmoreira          #+#    #+#             */
-/*   Updated: 2025/05/27 16:02:35 by pmoreira         ###   ########.fr       */
+/*   Created: 2025/05/27 14:39:30 by pmoreira          #+#    #+#             */
+/*   Updated: 2025/05/27 16:04:33 by pmoreira         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minishell.h"
 
-int	special_token(t_token *tok)
-{
-	if (!tok)
-		return (0);
-	if (tok->type == REDIR_OUT || tok->type == PIPE)
-		return (1);
-	return (0);
-}
 
-int	valid_format(t_token *tok)
-{
-	t_token	*temp;
 
-	if (!tok)
-		return (0);
-	temp = tok;
-	while (temp->next)
-	{
-		temp = temp->next;
-	}
-	if (temp->prev)
-	{
-		temp = temp->prev;
-		if (special_token(temp))
-			return (0);
-	}
-	return (1);
-}
-int	valid_input(t_token *tok)
+int	recall_valid_input(t_token *tok)
 {
 	t_bool	cmd;
 	t_token	*temp;
@@ -49,24 +23,38 @@ int	valid_input(t_token *tok)
 		return (0);
 	temp = tok;
 	cmd = FALSE;
-	if (!valid_format(tok))
-		return (0);
 	while (temp->next)
 	{
-		if (temp->type == PIPE)
-			cmd = FALSE;
-		if (cmd && (temp->type == CMD || temp->type == BUILT_IN))
-			temp->type = ARG;
-		if (temp->type == CMD || temp->type == BUILT_IN)
-			cmd = TRUE;
+		temp->type = ARG;
+		temp->not_expansive = TRUE;
 		temp = temp->next;
 	}
 	return (1);
 }
 
-void	token_type(char *s, t_token *tok, t_token *prev, char **path)
+int	recall_check_prev(t_token *prev, t_token *current)
 {
-	if (check_prev(prev, tok))
+	current->not_expansive = TRUE;
+	if (!prev)
+		current->type = ARG;
+	else if (prev && prev->type == REDIR_IN)
+		current->type = INFILE;
+	else if (prev && prev->type == REDIR_HERE_DOC)
+		current->type = LIM;
+	else if (prev && prev->type == REDIR_OUT)
+		current->type = OUTFILE;
+	else if (prev && prev->type == REDIR_OUT_APPEND)
+		current->type = OUTFILE;
+	else
+		current->type = ARG;
+	if (current->type == ARG)
+		return (0);
+	return (1);
+}
+
+void	recall_token_type(char *s, t_token *tok, t_token *prev, char **path)
+{
+	if (recall_check_prev(prev, tok))
 		return ;
 	else if (is_builtin(s))
 		tok->type = BUILT_IN;
@@ -84,7 +72,7 @@ void	token_type(char *s, t_token *tok, t_token *prev, char **path)
 		tok->type = CMD;
 }
 
-void	tokenize(char *input, t_hell *data)
+void	recall_tokenize(char *input, t_hell *data)
 {
 	char	**matrix;
 	int		i;
@@ -93,6 +81,7 @@ void	tokenize(char *input, t_hell *data)
 	matrix = ft_params(input);
 	if (!matrix)
 		return ;
+	print_matrix(matrix);
 	i = -1;
 	data->tokens = ft_calloc(1, sizeof(t_token));
 	if (!data->tokens)
@@ -100,7 +89,7 @@ void	tokenize(char *input, t_hell *data)
 	temp = data->tokens;
 	while (matrix[++i])
 	{
-		token_type(matrix[i], temp, temp->prev, data->path);
+		recall_token_type(matrix[i], temp, temp->prev, data->path);
 		temp->next = ft_calloc(1, sizeof(t_token));
 		if (!temp->next)
 			return (ft_clean_matrix(matrix));
@@ -111,4 +100,25 @@ void	tokenize(char *input, t_hell *data)
 		temp = temp->next;
 	}
 	ft_clean_matrix(matrix);
+}
+
+void	recall_parser(char **input, t_hell *data)
+{
+	char	*new_input;
+	t_token	*temp;
+
+	temp = data->tokens;
+	new_input = NULL;
+	while (temp->next)
+	{
+		new_input = ft_expand(new_input, temp->cmd, NULL);
+		if (temp->next)
+			new_input = ft_expand(new_input, " ", NULL);
+		temp = temp->next;
+	}
+	prepare_next_input(data);
+	free (*input);
+	*input = new_input;
+	tokenize(*input, data);
+	recall_valid_input(data->tokens);
 }

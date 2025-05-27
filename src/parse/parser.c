@@ -6,11 +6,27 @@
 /*   By: pmoreira <pmoreira@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/14 14:59:37 by pmoreira          #+#    #+#             */
-/*   Updated: 2025/05/27 12:14:25 by pmoreira         ###   ########.fr       */
+/*   Updated: 2025/05/27 16:02:54 by pmoreira         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minishell.h"
+
+int	check_cmds(t_token *tok)
+{
+	t_token	*temp;
+
+	if (!tok)
+		return (1);
+	temp = tok;
+	while (temp->next)
+	{
+		if (temp->type == CMD || temp->type == BUILT_IN)
+			return (1);
+		temp = temp->next;
+	}
+	return (0);
+}
 
 /// @brief Join the 2 strings, free the s1 and free the s2 if the pointer are 
 ///		given.
@@ -70,6 +86,9 @@ void	parser(char **input, t_hell *data)
 	tokenize(*input, data);
 	if (data->tokens && !valid_input(data->tokens))
 		return (parser_error(TOKEN_NEWLINE, 2));
+	if (!check_cmds(data->tokens))
+		recall_parser(input, data);
+	// printf("input:%s\n", *input);
 	init_cmds(data);
 	if (data->debug)
 	{
