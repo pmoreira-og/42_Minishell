@@ -6,7 +6,7 @@
 /*   By: pmoreira <pmoreira@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/24 15:03:58 by pmoreira          #+#    #+#             */
-/*   Updated: 2025/05/26 16:13:57 by pmoreira         ###   ########.fr       */
+/*   Updated: 2025/05/27 12:12:13 by pmoreira         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,6 +53,7 @@ typedef struct s_hell
 	char			**envp;
 	char			**path;
 	int				status;
+	t_bool			debug;
 	int				cmd_count;
 	int				hist_fd;
 }	t_hell;

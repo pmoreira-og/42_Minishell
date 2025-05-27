@@ -6,7 +6,7 @@
 /*   By: pmoreira <pmoreira@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/23 12:11:58 by ernda-si          #+#    #+#             */
-/*   Updated: 2025/05/20 16:26:34 by pmoreira         ###   ########.fr       */
+/*   Updated: 2025/05/27 12:24:08 by pmoreira         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,22 +37,6 @@ static int	ft_check_n(t_cmd *cmd)
 	return (0);
 }
 
-static int	has_var(t_env **env, char *str)
-{
-	char	*env_var;
-	t_env	*temp;
-
-	temp = *env;
-	env_var = ft_strchr(str, '$');
-	if (!env_var)
-		return(0);
-	while (temp && ft_strcmp(env_var + 1, temp->var))
-		temp = temp->next;
-	if (!temp)
-		return(2);
-	return(1);
-}
-
 void	mini_echo(t_cmd *cmd, t_env **env)
 {
 	int	token;
@@ -60,8 +44,9 @@ void	mini_echo(t_cmd *cmd, t_env **env)
 
 	flag = 0;
 	token = 0;
+	(void) env;
 	if (cmd->args[1] == NULL)
-		return((void)printf("\n"));
+		return ((void)printf("\n"));
 	if (ft_check_n(cmd))
 	{
 		token++;
@@ -69,10 +54,7 @@ void	mini_echo(t_cmd *cmd, t_env **env)
 	}
 	while (cmd->args[++token])
 	{
-		if (has_var(env, cmd->args[token]))
-			continue;
-		else if (!has_var(env, cmd->args[token]))
-			printf("%s", cmd->args[token]);
+		printf("%s", cmd->args[token]);
 		if (cmd->args[token + 1] != NULL)
 			printf(" ");
 	}

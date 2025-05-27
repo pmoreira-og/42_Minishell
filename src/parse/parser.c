@@ -3,10 +3,11 @@
 /*                                                        :::      ::::::::   */
 /*   parser.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ernda-si <ernda-si@student.42.fr>          +#+  +:+       +#+        */
+/*   By: pmoreira <pmoreira@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/14 14:59:37 by pmoreira          #+#    #+#             */
-/*   Updated: 2025/05/27 11:14:09 by pmoreira         ###   ########.fr       */
+/*   Updated: 2025/05/27 12:14:25 by pmoreira         ###   ########.fr       */
+/*                                                                            */
 /* ************************************************************************** */
 
 #include "minishell.h"
@@ -66,9 +67,13 @@ void	parser(char **input, t_hell *data)
 		return (ft_putstr_fd(ERR_QUOTES, 2));
 	if (count_spaces(*input))
 		*input = add_spaces(input, *input);
+	tokenize(*input, data);
 	if (data->tokens && !valid_input(data->tokens))
 		return (parser_error(TOKEN_NEWLINE, 2));
-	// init_cmds(data);
-	// print_cmd_info(data);
-	print_token(data->tokens);
+	init_cmds(data);
+	if (data->debug)
+	{
+		print_token(data->tokens);
+		print_cmd_info(data);
+	}
 }

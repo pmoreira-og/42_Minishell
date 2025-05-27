@@ -1,0 +1,58 @@
+echo ola
+echo ola
+echo ola
+echo ola
+echo ola
+echo "banana'-'split"
+echo $"$USER$"$'$USER$'$?$
+echo $"$USER$"$'$USER$'$?$
+echo $"$USER$"$'$USER$'$?$
+echo $"$USER$"$'$USER$'$?$
+exit
+echo $"$USER$"$'$USER$'$?$
+echo $"$USER$"$'$USER$'$?$
+echo $"$USER$"$'$USER$'$?$
+echo $"$USER$"$'$USER$'$?$9
+echo $"$USER$"$'$USER$'$?$90
+echo $"$USER$"$'$USER$'$?$98
+echo $"$USER$"$'$USER$'$?$98$$
+echo $""
+echo $"$"
+echo $"$USER"
+echo $"$USER$NOEXIST$USER"
+echo $"$USER$NOE!XIST$USER"
+echo $"$USER$N!OE!XIST$USER"
+echo $"$USER$N!OE!XIS$T$USER"
+echo $"$USER$N!OE!XIS$T$USER$HOME"
+echo $"$USER$N!OE!XIS$T$USER$1HOME"
+echo $"$USER$N!OE!XIS$T$USER$1HOME"'$USER'
+echo $"$USER$N!OE!XIS$T$USER$1HOME"'$USER$24'
+echo $"$USER$N!OE!XIS$T$USER$1HOME""'$USER$24'"
+echo $"$USER$N!OE!XIS$T$USER$1HOME"'"'$USER$24'"'
+echo $"$USER$N!OE!XIS$T$USER$1HOME""'"'$USER$24'"'"
+echo "'"'$USER$24'"'"
+echo '"'"'$USER$24'"'"'
+export _a="ola"
+echo $_a
+echo $_8a
+export _46a="ola"
+echo $_46a
+echo $_46a
+echo $No
+echo ""
+sggfdsfsfexit
+exit
+sfsdexit
+exit
+echo "" ""
+echo "" "" ola
+echo "" ba "" ola
+echo "" ba \""' ola
+echo "" ba '""' ola
+echo "" ba '""' ola"'"
+echo > olaexit
+echo > olaexit
+exit
+echo > olaexit
+ls
+exit

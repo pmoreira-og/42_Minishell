@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   minishell.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ernda-si <ernda-si@student.42.fr>          +#+  +:+       +#+        */
+/*   By: pmoreira <pmoreira@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/23 12:17:06 by ernda-si          #+#    #+#             */
-/*   Updated: 2025/05/21 16:42:19 by ernda-si         ###   ########.fr       */
+/*   Updated: 2025/05/27 12:21:51 by pmoreira         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -77,6 +77,8 @@ int	main(int ac, char **av, char **envp)
 		if (!ft_strcmp(input, "exit"))
 			mini_exit(hell);
 		// hell->cmd->args = ft_split(input, ' ');
+		if (hell->cmd)
+			init_exec(hell);
 		prepare_next_input(hell);
 		free(input);
 	}

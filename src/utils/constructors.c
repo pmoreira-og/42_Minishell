@@ -6,7 +6,7 @@
 /*   By: pmoreira <pmoreira@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/29 11:28:20 by pmoreira          #+#    #+#             */
-/*   Updated: 2025/05/23 14:00:00 by pmoreira         ###   ########.fr       */
+/*   Updated: 2025/05/27 12:13:15 by pmoreira         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,16 +32,10 @@ t_hell	*init_hell(int ac, char **av,char **envp)
 		load_history(hell);
 	if (ac == 2 && !ft_strcmp(av[1], "-b"))
 		printascii();
+	if (ac == 2 && !ft_strcmp(av[1], "-d"))
+		hell->debug = TRUE;
 	hell->path = ft_getenv(envp, "PATH", ':');
 	if (!hell->path)
 		return (armageddon(hell), NULL);
 	return (hell);
-}
-
-void	init_expand(t_expand *t, char **ptr, char *start, char *end)
-{
-	t->ptr = ptr;
-	t->start = start;
-	t->end = end;
-	t->flag = FALSE;
 }

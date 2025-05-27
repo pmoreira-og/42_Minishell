@@ -6,7 +6,7 @@
 /*   By: pmoreira <pmoreira@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/24 14:48:17 by pmoreira          #+#    #+#             */
-/*   Updated: 2025/05/27 11:13:33 by pmoreira         ###   ########.fr       */
+/*   Updated: 2025/05/27 11:55:36 by pmoreira         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,7 +32,6 @@
 # define RESET "\001\033[0m\002"
 
 // parse:
-void	init_expand(t_expand *t,char **ptr, char *start, char *end);
 void	parser(char **input, t_hell *data);
 char	**ft_params(const char *start);
 void	tokenize(char *input, t_hell *data);
