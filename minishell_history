@@ -789,3 +789,22 @@ cat << $USER > $HOME
 echo $$
 echo $
 exit
+cat << $USER > $HOME
+cat << $USER > $HOME
+cat << $USER > $HOME
+cat << $USER > $HOME
+exit
+exit
+cat << $USER > $HOME
+cat << $USER > $HOME
+cat << $USER > 
+cat << $USER |
+cat << $USER || adasdasd
+cat << $USER >>> adasdasd
+cat << $USER >> adasdasd
+cat << $USER >
+cat << $USER >
+cat << $USER
+cat << $USER >
+cat << $USER >
+cat << $USER >

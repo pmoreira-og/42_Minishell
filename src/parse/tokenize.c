@@ -6,17 +6,42 @@
 /*   By: pmoreira <pmoreira@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/24 14:39:15 by pmoreira          #+#    #+#             */
-/*   Updated: 2025/05/26 16:18:06 by pmoreira         ###   ########.fr       */
+/*   Updated: 2025/05/27 10:49:18 by pmoreira         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minishell.h"
 
-// int	check_tokens(t_token *tok)
-// {
-	
-// }
+int	special_token(t_token *tok)
+{
+	if (!tok)
+		return (0);
+	if (tok->type == REDIR_OUT || tok->type == PIPE)
+		return (1);
+	return (0);
+}
 
+int	valid_format(t_token *tok)
+{
+	t_bool	cmd;
+	t_token	*temp;
+
+	if (!tok)
+		return (0);
+	temp = tok;
+	cmd = FALSE;
+	while (temp->next)
+	{
+		temp = temp->next;
+	}
+	if (temp->prev)
+	{
+		temp = temp->prev;
+		if (special_token(temp))
+			return (0);
+	}
+	return (1);
+}
 int	valid_input(t_token *tok)
 {
 	t_bool	cmd;
@@ -26,6 +51,8 @@ int	valid_input(t_token *tok)
 		return (0);
 	temp = tok;
 	cmd = FALSE;
+	if (!valid_format(tok))
+		return (0);
 	while (temp->next)
 	{
 		if (temp->type == PIPE)

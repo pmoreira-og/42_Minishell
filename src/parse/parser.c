@@ -6,7 +6,7 @@
 /*   By: pmoreira <pmoreira@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/14 14:59:37 by pmoreira          #+#    #+#             */
-/*   Updated: 2025/05/26 16:22:03 by pmoreira         ###   ########.fr       */
+/*   Updated: 2025/05/27 11:14:09 by pmoreira         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -69,7 +69,8 @@ void	parser(char **input, t_hell *data)
 		*input = add_spaces(input, *input);
 	// printf("Proc:%s\n", *input);
 	tokenize(*input, data);
-	valid_input(data->tokens);
+	if (data->tokens && !valid_input(data->tokens))
+		return (parser_error(TOKEN_NEWLINE, 2));
 	// init_cmds(data);
 	// print_cmd_info(data);
 	print_token(data->tokens);

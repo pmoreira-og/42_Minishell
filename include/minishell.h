@@ -6,7 +6,7 @@
 /*   By: pmoreira <pmoreira@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/24 14:48:17 by pmoreira          #+#    #+#             */
-/*   Updated: 2025/05/26 16:16:47 by pmoreira         ###   ########.fr       */
+/*   Updated: 2025/05/27 11:13:33 by pmoreira         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,6 +26,8 @@
 
 # define HIST_FILE "minishell_history"
 # define ERR_QUOTES "minishell: syntax error: input contains unclosed quotes\n"
+# define ERR_BAD_FORMAT "minishell: syntax error near unexpected token "
+# define TOKEN_NEWLINE	"'newline'\n"
 # define RED "\001\033[31m\002"
 # define RESET "\001\033[0m\002"
 
@@ -64,6 +66,7 @@ int		count_expand_zones(char *input);
 char	*localized_expander(char *start, char *end, t_hell *hell);
 char	*remove_zones(char **ptr, char *input);
 int		is_meta(int c);
+void	parser_error(char *error_msg, int fd);
 
 // miscs:
 void	printascii(void);
