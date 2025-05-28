@@ -150,3 +150,131 @@ export a="echo out 'cat' Makefile"
 $a
 export a="echo out 'cat' Makefile"
 $a
+export a="echo out 'cat' Makefile"
+export a="echo out 'cat' Makefile"
+$a
+> out $a
+export a="echo $USER 'cat' Makefile"
+> out $a
+echo $a
+export a="echo $USER 'cat' Makefile"
+echo $a
+export
+cut -d \' -f 1
+cut -d \' -f 1
+echo $a
+export a="echo $USER 'cat' Makefile"
+> out $a
+cut -d \' -f 1
+export a="echo $USER 'cat' Makefile"
+> out $a
+cut -d \' -f 1
+export a="echo $USER 'cat' Makefile"
+> out $a
+cut -d \' -f 1
+export a="echo $USER 'cat' Makefile"
+> out $a
+export a="echo $USER 'cat' Makefile"
+> out $a
+cut -d \' -f 1
+export a="echo $USER 'cat' Makefile"
+> out $a
+export
+$a
+'$a'
+exit
+export a="echo $USER 'cat' Makefile"
+> out $a
+cut -d \' -f 1
+cut -d \' -f 1
+export a="echo $USER 'cat' Makefile"
+> out $a
+cut -d \' -f 1
+export a="echo $USER 'cat' Makefile"
+> out $a
+export a="echo $USER 'cat' Makefile"
+> out $a
+cut -d \' -f 1
+export a="echo $USER 'cat' Makefile"
+> out $a
+export a="echo $USER 'cat' Makefile"
+> out $a
+export a="echo $USER 'cat' Makefile"
+> out $a
+export a="echo $USER 'cat' Makefile"
+> out $a
+export a="echo $USER 'cat' Makefile"
+> out $a
+export a="echo $USER 'cat' Makefile"
+> out $a
+export a="echo $USER 'cat' Makefile"
+> out $a
+export a="echo $USER 'cat' Makefile"
+cut -d \' -f 1
+export a="echo $USER 'cat' Makefile"
+> out $a
+mrc
+cut -d \' -f 1
+export a="echo $USER 'cat' Makefile"
+> out $a
+echo ola "'" $HOME$HO" $HOME$HOME '$HOME'"
+echo ola "'" $HOME$HO" $HOME$HOME '$HOME'"
+echo ola "'" $HOME$HO" $HOME$HOME $HOME'"
+echo ola "'" $HOME$HO" $HOME$HOME $HOME'""
+echo ola ""'" $HOME$HO" $HOME$HOME $HOME'""
+echo ola " $HOME$HOME '$HOME'"""
+echo ola  $HOME$HOME '$HOME'""
+echo ola  $HOME$H"""""""OME '$HOME'""
+echo ola  "$HOME$H"""""""O"ME" '$HOME'""
+cat << eof | cat > STDOUT
+cat << $USER | cat > STDOUT
+echo ola ' $HOME" $HOME  $HOME'
+> file echo aaa
+echo ola ' $HOME" $HOME  $HOME'"
+echo ola '" $HOME$HO"" '" $HOME$HO" $HOME$HOME $HOME' ""
+echo ola "'echo ola "'" $HOME$HO" $HOME$HOME '$HOME'"
+echo ola ""'" $HOME$HO" $HOME$HOME $HOME'"$HOME"
+echo ola'pipe'wow "ba'n'an'aa"
+'echo' 'ola' '>' 'outfile'
+"$USER'"'$HOME"'
+$USER"'$NO'"'"'$USER'"'
+$
+$$
+"\'\\"
+echo ' $HOME' $"$USER$" $ $USER'$USER'$?$
+echo ' $HOME' $'$USER$' $ $USER'$USER'$?$
+echo $'$USER"$USER"$USER'
+echo ' $HOME' $"$USER$" $ $'USER''$USER'$?$
+cat << $USER
+exit
+export a="cat << $USER"
+$a
+export a="cat << $USER"
+$a
+"$USER'"'$HOME"'
+$USER"'$NO'"'"'$USER'"'
+cut -d \' -f 1
+export a="echo $USER 'cat' Makefile"
+$a
+exit
+export a="cat << $USER"
+$a
+exit
+echo ola '>' outfil
+"echo" ola '>' outfil
+'echo' ola '>' outfil
+export a="> ola echo banana"
+$a
+echo ola > outfile banana split $USER
+echo ola > outfile banana split $USER
+exit
+echo ola > outfile banana split $USER
+echo ola > outfile banana split $USER
+mrc
+echo ola > outfile banana split $USER
+export a="> ola echo banana"
+echo ola '>' outfil
+echo ola '>' outfil
+$a
+export a="> ola echo banana"
+$a

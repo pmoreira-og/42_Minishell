@@ -6,7 +6,7 @@
 /*   By: pmoreira <pmoreira@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/14 14:59:37 by pmoreira          #+#    #+#             */
-/*   Updated: 2025/05/27 16:02:54 by pmoreira         ###   ########.fr       */
+/*   Updated: 2025/05/28 13:33:45 by pmoreira         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -65,16 +65,16 @@ void	process_str(char **ptr, char *s, t_hell *hell, t_bool *flag)
 	output = NULL;
 	start = s;
 	if (!ft_strcmp(s, "$") || *flag)
-		return (associate(ptr, ft_strdup(s)));
+		return ;
 	size = ft_strlen(s);
 	end = &s[size - 1];
 	literal(&output, start, end + 1, hell);
 	if (!output)
 		return ;
 	if (!ft_strcmp(s, "\"") || !ft_strcmp(s, "\'"))
-		*ptr = output;
+		return (free(*ptr), associate(ptr, output));
 	else
-		*ptr = remove_quotes(output);
+		return (free(*ptr), associate(ptr, (output)));
 }
 
 void	parser(char **input, t_hell *data)
@@ -83,16 +83,36 @@ void	parser(char **input, t_hell *data)
 		return (ft_putstr_fd(ERR_QUOTES, 2));
 	if (count_spaces(*input))
 		*input = add_spaces(input, *input);
-	tokenize(*input, data);
-	if (data->tokens && !valid_input(data->tokens))
+	tokenize_test(*input, data);
+	if (data->tokens && !valid_input_test(data->tokens, data, FALSE))
 		return (parser_error(TOKEN_NEWLINE, 2));
 	if (!check_cmds(data->tokens))
 		recall_parser(input, data);
-	// printf("input:%s\n", *input);
+	quotes_remover(data);
 	init_cmds(data);
 	if (data->debug)
 	{
+		printf(RED"------RUNNING PARSING PART NOW-----------\n"RESET);
 		print_token(data->tokens);
 		print_cmd_info(data);
 	}
 }
+// void	parser(char **input, t_hell *data)
+// {
+// 	if (!quotes_check(*input))
+// 		return (ft_putstr_fd(ERR_QUOTES, 2));
+// 	if (count_spaces(*input))
+// 		*input = add_spaces(input, *input);
+// 	tokenize(*input, data);
+// 	if (data->tokens && !valid_input(data->tokens))
+// 		return (parser_error(TOKEN_NEWLINE, 2));
+// 	if (!check_cmds(data->tokens))
+// 		recall_parser(input, data);
+// 	// printf("input:%s\n", *input);
+// 	init_cmds(data);
+// 	if (data->debug)
+// 	{
+// 		print_token(data->tokens);
+// 		print_cmd_info(data);
+// 	}
+// }

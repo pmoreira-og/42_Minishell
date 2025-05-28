@@ -6,7 +6,7 @@
 /*   By: pmoreira <pmoreira@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/24 14:39:15 by pmoreira          #+#    #+#             */
-/*   Updated: 2025/05/27 16:02:35 by pmoreira         ###   ########.fr       */
+/*   Updated: 2025/05/28 13:40:18 by pmoreira         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,6 +40,7 @@ int	valid_format(t_token *tok)
 	}
 	return (1);
 }
+
 int	valid_input(t_token *tok)
 {
 	t_bool	cmd;

@@ -6,7 +6,7 @@
 /*   By: pmoreira <pmoreira@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/23 12:17:06 by ernda-si          #+#    #+#             */
-/*   Updated: 2025/05/27 12:21:51 by pmoreira         ###   ########.fr       */
+/*   Updated: 2025/05/28 13:33:24 by pmoreira         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,33 +30,35 @@ static void	list_builtin(t_hell *hell)
 		mini_unset(&hell->env, hell->cmd);
 }
 
-static char **list_env_matrix(t_env *env)
-{
-	char	**matrix;
-	t_env	*temp;
-	char	*str;
-	int		i;
+// static char **list_env_matrix(t_env *env)
+// {
+// 	char	**matrix;
+// 	t_env	*temp;
+// 	char	*str;
+// 	int		i;
 
-	matrix = ft_split("", '\0');
-	temp = env;
-	str = ft_strdup("");
-	i = 0;
-	while (temp)
-	{
-		str = ft_strjoin(env->var, "=");
-		matrix[i] = ft_strjoin(str, env->value);
-		free(str);
-		temp = temp->next;
-	}
-	return (matrix);
-}
+// 	matrix = ft_split("", '\0');
+// 	temp = env;
+// 	str = ft_strdup("");
+// 	i = 0;
+// 	while (temp)
+// 	{
+// 		str = ft_strjoin(env->var, "=");
+// 		matrix[i] = ft_strjoin(str, env->value);
+// 		free(str);
+// 		temp = temp->next;
+// 	}
+// 	return (matrix);
+// }
 
 static void	init_exec(t_hell *hell)
 {
+	if (hell->debug)
+		printf(RED"------RUNNING EXEC PART NOW-----------\n"RESET);
 	if (hell->cmd && hell->cmd->args[0] && is_builtin(hell->cmd->args[0]))
 		list_builtin(hell);
 	else
-		pipex(4, hell->cmd->args, list_env_matrix(hell->env));
+		return ;// pipex(4, hell->cmd->args, list_env_matrix(hell->env));
 }
 
 
