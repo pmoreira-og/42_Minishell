@@ -278,3 +278,233 @@ echo ola '>' outfil
 $a
 export a="> ola echo banana"
 $a
+$a
+export a="> ola echo banana"
+$a
+exit
+export a="> ola echo banana"
+$a
+> out $a
+'echo' 'ola' '>' 'outfile'
+'>''echo' 'ola' '>' 'outfile'
+'>''echo' 'ola' '>' 'outfile'
+'>''echo' 'ola' '>' 'outfile'
+$a
+export a="> ola echo banana"
+$a
+export a="> ola echo banana"
+$a
+export a="> ola echo banana"
+$a
+export a="> ola echo banana"
+$a
+export a="> ola echo banana"
+$a
+export a="> ola echo banana"
+$a
+export a="> ola echo banana"
+$a
+export a="> ola echo banana"
+$a
+export a="> ola echo banana"
+$a
+export a="> ola echo banana"
+$a
+export a="> ola echo banana"
+$a
+export a="> ola echo banana"
+$a
+export a="> ola echo banana"
+$a
+export a="> ola echo banana"
+$a
+export a="> ola echo banana"
+$a
+export a="> ola echo banana"
+$a
+export a="> ola echo banana"
+$a
+> out $a
+exit
+export a="> ola echo banana"
+echo $a
+exit
+export a="> ola echo banana"
+$a
+export a="> ola echo banana"
+$a
+export a="> ola echo banana"
+$a
+exit
+export a="> ola echo banana"
+$a
+export a="> ola echo banana"
+$a
+export a="> ola echo banana"
+$a
+export a="> ola echo banana"
+$a
+export a="> ola echo banana"
+$a
+exit
+exit
+exit
+export a="> ola echo banana"
+$a
+export a="> ola echo banana"
+$a
+export a="> ola echo banana"
+$a
+export a="> ola echo banana"
+$a
+export a="> ola echo banana"
+$a
+exit
+export a="> ola echo banana"
+$a
+exit
+export a="> ola echo banana"
+$a
+exit
+export a="> ola echo banana"
+$a
+exit
+export a="> ola echo banana"
+$a
+export a="> ola echo banana"
+$a
+> out $a
+exit
+$a
+exit
+export a="> ola echo banana"
+$a
+exit
+export a="> ola echo banana"
+$a
+exit
+export a="> ola echo banana"
+$a
+'echo' ola '>' 'banana'
+export a="cat << $USER"
+$a
+cat << $USER 
+$a
+export a="> ola echo banana"
+$a
+$a > out
+exit
+export a="> ola echo banana"
+$a > out
+> $USER $a
+exit
+export a="> ola echo banana"
+> $USER $a
+> $USER $a | cat | > out
+exit
+exit
+> $USER $a | cat | > out
+exit
+> $USER $a | cat | > out
+exit
+echo ola "'" $HOME$HO" $HOME$HOME '$HOME'"
+echo ola "'" $HOME$HO" $HOME$HOME $HOME'"
+echo ola "'" $HOME$HO" $HOME$HOME $HOME'""
+echo ola ""'" $HOME$HO" $HOME$HOME $HOME'""
+echo ola " $HOME$HOME '$HOME'"""
+echo ola  $HOME$HOME '$HOME'""
+echo ola  "$HOME$H"""""""O"ME" '$HOME'""
+echo ola ' $HOME" $HOME  $HOME'
+cat << eof | cat > STDOUT
+cat << $USER | cat > STDOUT
+$USER"'$NO'"'"'$USER'"'
+$
+$$
+echo ' $HOME' $"$USER$" $ $USER'$USER'$?$
+echo ' $HOME' $'$USER$' $ $USER'$USER'$?$
+echo $'$USER"$USER"$USER'
+echo ' $HOME' $"$USER$" $ $'USER''$USER'$?$
+<< $USER
+export a="cat << $USER"
+$a
+cut -f \' -f 1
+cut -f \" -f 1
+< infile cat | grep test | cut -f \' -f 1 > outfile
+< infile cat | grep test | cut -d \" -f 1 > outfile
+< infile cat | grep test | cut -d \" -f 1 > outfile
+cut -d \' -f 1
+< infile cat | grep test | cut -d \" -f 1 > outfile
+< infile cat | cut -d \" -f 1 > outfile
+< infile cut -d \" -f 1 > outfile
+cut -d \" -f 1 > outfile
+\'
+cut -d \" -f 1 > outfile
+< infile cat | grep test | cut -d \" -f 1 > outfile
+<infile cat | grep test | cut -d \' -f 1 > outfile
+< infile cat | grep test | cut -d \' -f 1 > outfile
+< infile cat | grep test | cut -d  \' -f 1 > outfile
+< infile cat | grep test | cut -d \' -f 1 > outfile
+a -d \' -f 1 > outfile
+| a -d \' -f 1 > outfile
+< infile cat grep test cut -d \' -f 1 > outfile
+ infile cat grep test cut -d \' -f 1 > outfile
+$ infile cat grep test cut -d \' -f 1 > outfile
+< infile cat grep test cut -d \' -f 1 > outfile
+< infile cat | grep test | cut -d \\ -f 1 > outfile
+< infile cat | grep test | cut -d \' -f 1 > outfile
+< infile cat | grep test | cut -d \\ -f 1 > outfile
+< infile cat | grep test | cut -d ''\' -f 1 > outfile
+< infile cat | grep test | cut -d '' -f 1 > outfile
+ infile cat grep test cut -d \' -f 1 > outfile
+& infile cat grep test cut -d \' -f 1 > outfile
+< infile cat grep test cut -d \' -f 1 > outfile
+| infile cat grep test cut -d \' -f 1 > outfile
+\< infile cat grep test cut -d \' -f 1 > outfile
+< infile cat grep test cut -d \' -f 1 > outfile
+ infile cat grep test cut -d \' -f 1 > outfile
+< infile cat grep test cut -d \' -f 1 > outfile
+| infile cat grep test cut -d \' -f 1 > outfile
+ infile cat grep test cut -d \' -f 1 > outfile
+ infile cat grep test cut -d \' -f 1 > outfile
+| infile cat grep test cut -d \' -f 1 > outfile
+< infile cat grep test cut -d \' -f 1 > outfile
+****** infile cat grep test cut -d \' -f 1 > outfile
+\\ infile cat grep test cut -d \' -f 1 > outfile
+\' infile cat grep test cut -d \' -f 1 > outfile
+< infile cat grep test cut -d \' -f 1 > outfile
+ infile cat | grep test cut -d \' -f 1 > outfile
+< infile cat | grep test cut -d \' -f 1 > outfile
+a infile cat | grep test cut -d \' -f 1 > outfile
+ < infile cat | grep test cut -d \' -f 1 > outfile
+< infile cat | grep test cut -d \' -f 1 > outfile
+< infile cat | grep test cut -d \' -f 1 > outfile
+ < infile cat | grep test cut -d \' -f 1 > outfile
+< infile cat | grep test cut -d \' -f 1 > outfile
+ < infile cat | grep test cut -d \' -f 1 > outfile
+ < infile cat | grep test | cut -d \' -f 1 > outfile
+ < infile cat | grep test | cut -d \' -f 1 > outfile
+< infile cat | grep test | cut -d \' -f 1 > outfile
+< cut -d \' -f 1 > file
+ < cut -d \' -f 1 > file
+< infile cat | grep test cut -d \\ -f 1 > outfile
+ < infile cat | grep test cut -d \' -f 1 > outfile
+cat < infile | grep test cut -d \\ -f 1 > outfile
+cat < infile | grep test cut -d \' -f 1 > outfile
+t < infile | grep test cut -d \' -f 1 > outfile
+< infile | grep test cut -d \' -f 1 > outfile
+< infile | grep test cut -d \' -f 1 > outfile
+< infile | grep test cut -d \' -f 1 > outfile
+< infile | grep test cut -d \' -f 1 > outfile
+< infile | grep test cut -d \' -f 1 > outfile
+< infile | grep test cut -d \' -f 1 > outfile
+< infile | grep test cut -d \' -f 1 > outfile
+< infile | grep test cut -d \\ -f 1 > outfile
+< infile | grep test cut -d \\ -f 1 > outfile
+< infile | grep test cut -d \' -f 1 > outfile
+export a="> ola echo banana"
+\e\c\h\o
+\e\c\h\o
+< infile | grep test cut -d \' -f 1 > outfile
+ < infile | grep test cut -d \' -f 1 > outfile
+< \' a
+< \\ a

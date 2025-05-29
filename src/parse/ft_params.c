@@ -6,7 +6,7 @@
 /*   By: pmoreira <pmoreira@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/26 12:23:53 by pmoreira          #+#    #+#             */
-/*   Updated: 2025/05/20 10:36:12 by pmoreira         ###   ########.fr       */
+/*   Updated: 2025/05/29 15:22:05 by pmoreira         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,7 +36,7 @@ static int	ft_add_word(char **matrix, const char *start, const char *end)
 	init_proc(NULL, NULL, &quote, &d_quote);
 	while (start < end)
 	{
-		check_quotes(*start, &quote, &d_quote);
+		check_char_quote(&start, &quote, &d_quote);
 		if (*start == '\\' && !quote)
 			start++;
 		word[i++] = *start;
@@ -48,7 +48,7 @@ static int	ft_add_word(char **matrix, const char *start, const char *end)
 	return (1);
 }
 
-static void	ft_count(const char *input, int *count)
+void	ft_count(const char *input, int *count)
 {
 	t_bool		quote;
 	t_bool		d_quote;

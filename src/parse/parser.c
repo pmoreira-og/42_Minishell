@@ -6,7 +6,7 @@
 /*   By: pmoreira <pmoreira@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/14 14:59:37 by pmoreira          #+#    #+#             */
-/*   Updated: 2025/05/28 13:33:45 by pmoreira         ###   ########.fr       */
+/*   Updated: 2025/05/29 16:16:59 by pmoreira         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -82,12 +82,18 @@ void	parser(char **input, t_hell *data)
 	if (!quotes_check(*input))
 		return (ft_putstr_fd(ERR_QUOTES, 2));
 	if (count_spaces(*input))
+	// {
+	// 	printf("count:%d\n", count_spaces(*input));
+	// 	printf("target:%s\n", ft_strchr(*input, 92));
 		*input = add_spaces(input, *input);
+	// }
+	// printf("new input:%s\n", *input);
+	// return ;
 	tokenize_test(*input, data);
-	if (data->tokens && !valid_input_test(data->tokens, data, FALSE))
+	if (data->tokens && !valid_input_test(data->tokens, data))
 		return (parser_error(TOKEN_NEWLINE, 2));
 	if (!check_cmds(data->tokens))
-		recall_parser(input, data);
+		recall_parser(data);
 	quotes_remover(data);
 	init_cmds(data);
 	if (data->debug)
@@ -97,22 +103,3 @@ void	parser(char **input, t_hell *data)
 		print_cmd_info(data);
 	}
 }
-// void	parser(char **input, t_hell *data)
-// {
-// 	if (!quotes_check(*input))
-// 		return (ft_putstr_fd(ERR_QUOTES, 2));
-// 	if (count_spaces(*input))
-// 		*input = add_spaces(input, *input);
-// 	tokenize(*input, data);
-// 	if (data->tokens && !valid_input(data->tokens))
-// 		return (parser_error(TOKEN_NEWLINE, 2));
-// 	if (!check_cmds(data->tokens))
-// 		recall_parser(input, data);
-// 	// printf("input:%s\n", *input);
-// 	init_cmds(data);
-// 	if (data->debug)
-// 	{
-// 		print_token(data->tokens);
-// 		print_cmd_info(data);
-// 	}
-// }

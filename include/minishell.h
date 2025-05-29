@@ -6,7 +6,7 @@
 /*   By: pmoreira <pmoreira@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/24 14:48:17 by pmoreira          #+#    #+#             */
-/*   Updated: 2025/05/28 13:26:26 by pmoreira         ###   ########.fr       */
+/*   Updated: 2025/05/29 14:20:18 by pmoreira         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,7 +32,8 @@
 # define RESET "\001\033[0m\002"
 
 // parse:
-int	valid_input_test(t_token *tok, t_hell *data, t_bool flag);
+void	ft_count(const char *input, int *count);
+int		valid_input_test(t_token *tok, t_hell *data);
 void	tokenize_test(char *input, t_hell *data);
 void	quotes_remover(t_hell *data);
 int		valid_format(t_token *tok);
@@ -71,7 +72,7 @@ char	*remove_zones(char **ptr, char *input);
 int		is_meta(int c);
 void	parser_error(char *error_msg, int fd);
 int		check_cmds(t_token *tok);
-void	recall_parser(char **input, t_hell *data);
+void	recall_parser(t_hell *data);
 void	token_type(char *s, t_token *tok, t_token *prev, char **path);
 
 // miscs:
@@ -102,6 +103,7 @@ t_hell	*init_hell(int ac, char **av, char **envp);
 t_bool	is_builtin(char *s);
 t_bool	is_command(char *s, char **path);
 int		check_prev(t_token *prev, t_token *current);
+void	clean_list(t_hell *data);
 void	prepare_next_input(t_hell *data);
 void	print_matrix(char **matrix);
 void	print_token(t_token *toks);

@@ -6,7 +6,7 @@
 /*   By: pmoreira <pmoreira@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/23 12:11:56 by ernda-si          #+#    #+#             */
-/*   Updated: 2025/05/28 13:26:05 by pmoreira         ###   ########.fr       */
+/*   Updated: 2025/05/29 10:02:10 by pmoreira         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,7 +37,7 @@ int	get_history_fd(t_hell *cmd)
 	return (0);
 }
 
-void load_history(t_hell *cmd)
+void	load_history(t_hell *cmd)
 {
 	char		*temp;
 	char	temp2[1024];
@@ -58,7 +58,7 @@ void load_history(t_hell *cmd)
 	}
 }
 
-void save_history(char *input, t_hell *cmd)
+void	save_history(char *input, t_hell *cmd)
 {
 	if (cmd->hist_fd == -1 || !input || !ft_strcmp(input, ""))
 		return;

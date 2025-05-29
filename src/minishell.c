@@ -6,7 +6,7 @@
 /*   By: pmoreira <pmoreira@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/23 12:17:06 by ernda-si          #+#    #+#             */
-/*   Updated: 2025/05/28 13:33:24 by pmoreira         ###   ########.fr       */
+/*   Updated: 2025/05/29 15:29:49 by pmoreira         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -73,7 +73,7 @@ int	main(int ac, char **av, char **envp)
 		return (1);
 	while (1)
 	{
-		input = readline(RED"Minishell> "RESET);
+		input = readline(RED"Minishell>"RESET);
 		save_history(input, hell);
 		parser(&input, hell);
 		if (!ft_strcmp(input, "exit"))
