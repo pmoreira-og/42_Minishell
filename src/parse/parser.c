@@ -6,7 +6,7 @@
 /*   By: pmoreira <pmoreira@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/14 14:59:37 by pmoreira          #+#    #+#             */
-/*   Updated: 2025/05/29 16:16:59 by pmoreira         ###   ########.fr       */
+/*   Updated: 2025/05/30 11:52:26 by pmoreira         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -80,18 +80,12 @@ void	process_str(char **ptr, char *s, t_hell *hell, t_bool *flag)
 void	parser(char **input, t_hell *data)
 {
 	if (!quotes_check(*input))
-		return (ft_putstr_fd(ERR_QUOTES, 2));
+		return ;
 	if (count_spaces(*input))
-	// {
-	// 	printf("count:%d\n", count_spaces(*input));
-	// 	printf("target:%s\n", ft_strchr(*input, 92));
 		*input = add_spaces(input, *input);
-	// }
-	// printf("new input:%s\n", *input);
-	// return ;
-	tokenize_test(*input, data);
-	if (data->tokens && !valid_input_test(data->tokens, data))
-		return (parser_error(TOKEN_NEWLINE, 2));
+	tokenize(*input, data);
+	if (data->tokens && !valid_input(data->tokens, data))
+		return ;
 	if (!check_cmds(data->tokens))
 		recall_parser(data);
 	quotes_remover(data);

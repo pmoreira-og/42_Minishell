@@ -6,7 +6,7 @@
 /*   By: pmoreira <pmoreira@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/22 15:21:45 by pmoreira          #+#    #+#             */
-/*   Updated: 2025/05/26 15:25:33 by pmoreira         ###   ########.fr       */
+/*   Updated: 2025/05/30 11:33:27 by pmoreira         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -65,6 +65,18 @@ int	count_spaces(char *s)
 	return (count);
 }
 
+void	check_quote_spaces(const char **s, t_bool *quote, t_bool *d_quote)
+{
+	if (!s)
+		return ;
+	check_quotes(**s, quote, d_quote);
+	if (**s == '\\' && *(*s + 1) && is_quotes(*(*s + 1)))
+	{
+		*quote = FALSE;
+		*d_quote = FALSE;
+	}
+}
+
 char	*add_spaces(char **ptr, char *s)
 {
 	char	*output;
@@ -79,7 +91,7 @@ char	*add_spaces(char **ptr, char *s)
 	init_proc((const char **) &start, s, &quotes[0], &quotes[1]);
 	while (*s)
 	{
-		check_char_quote((const char **)&s, &quotes[0], &quotes[1]);
+		check_quote_spaces((const char **)&s, &quotes[0], &quotes[1]);
 		if (is_meta(*s) && !quotes[0] && !quotes[1])
 		{
 			if (s > start && !is_meta(*(s - 1)) && *(s - 1) != ' ')

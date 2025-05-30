@@ -6,7 +6,7 @@
 /*   By: pmoreira <pmoreira@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/27 14:39:30 by pmoreira          #+#    #+#             */
-/*   Updated: 2025/05/29 14:53:29 by pmoreira         ###   ########.fr       */
+/*   Updated: 2025/05/30 12:13:53 by pmoreira         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,67 +21,14 @@ void	quotes_remover(t_hell *data)
 	temp = data->tokens;
 	while (temp->next)
 	{
-		if (temp && !temp->not_expansive 
-			&& !(!ft_strcmp(temp->cmd, "\"") || !ft_strcmp(temp->cmd, "\'")))
+		if (temp
+	&& !(!ft_strcmp(temp->cmd, "\"") || !ft_strcmp(temp->cmd, "\'")))
 			temp->cmd = remove_quotes(temp->cmd);
 		temp = temp->next;
 	}
 }
 
-int	valid_input_test(t_token *tok, t_hell *data)
-{
-	t_bool	cmd;
-	t_token	*temp;
 
-	if (!tok)
-		return (0);
-	temp = tok;
-	cmd = FALSE;
-	if (!valid_format(tok))
-		return (0);
-	while (temp->next)
-	{
-		process_str(&temp->cmd, temp->cmd, data, &temp->not_expansive);
-		if (temp->type == PIPE)
-			cmd = FALSE;
-		if (cmd && (temp->type == CMD || temp->type == BUILT_IN))
-			temp->type = ARG;
-		if (temp->type == CMD || temp->type == BUILT_IN)
-			cmd = TRUE;
-		temp = temp->next;
-	}
-	return (1);
-}
-
-void	tokenize_test(char *input, t_hell *data)
-{
-	char	**matrix;
-	int		i;
-	t_token	*temp;
-
-	matrix = ft_params(input);
-	if (!matrix)
-		return ;
-	i = -1;
-	print_matrix(matrix);
-	data->tokens = ft_calloc(1, sizeof(t_token));
-	if (!data->tokens)
-		return ;
-	temp = data->tokens;
-	while (matrix[++i])
-	{
-		token_type(matrix[i], temp, temp->prev, data->path);
-		temp->next = ft_calloc(1, sizeof(t_token));
-		if (!temp->next)
-			return (ft_clean_matrix(matrix));
-		if (count_expand_zones(matrix[i]))
-			matrix[i] = remove_zones(&matrix[i], matrix[i]);
-		temp->cmd = ft_strdup(matrix[i]);
-		temp->next->prev = temp;
-		temp = temp->next;
-	}
-	ft_clean_matrix(matrix);
-}
 
 void	ft_freed(t_token *tok, char **matrix)
 {
@@ -128,6 +75,34 @@ void	connect_list(t_token *new_args, t_token *current, t_hell *data)
 	ft_freed(temp2, NULL);
 }
 
+void	recall_token(t_token *tok, t_hell *data)
+{
+	t_bool	cmd;
+	t_token	*temp;
+
+	if (!tok)
+		return ;
+	temp = tok;
+	cmd = FALSE;
+	while (temp->next)
+	{
+		if (!cmd && is_builtin(temp->cmd))
+		{
+			temp->type = BUILT_IN;
+			cmd = TRUE;
+		}
+		else if (!cmd && is_command(temp->cmd, data->envp))
+		{
+			temp->type = CMD;
+			cmd = TRUE;
+		}
+		else
+			temp->type = ARG;
+		temp->not_expansive = TRUE;
+		temp = temp->next;
+	}
+}
+
 void	append_list(t_token *current, t_hell *data)
 {
 	t_token	*new_args;
@@ -152,6 +127,7 @@ void	append_list(t_token *current, t_hell *data)
 		temp->next->prev = temp;
 		temp = temp->next;
 	}
+	recall_token(new_args, data);
 	connect_list(new_args, current, data);
 	return (ft_freed(current, matrix));
 }

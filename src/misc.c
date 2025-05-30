@@ -6,7 +6,7 @@
 /*   By: pmoreira <pmoreira@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/23 12:11:56 by ernda-si          #+#    #+#             */
-/*   Updated: 2025/05/29 10:02:10 by pmoreira         ###   ########.fr       */
+/*   Updated: 2025/05/30 12:19:05 by pmoreira         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -90,5 +90,7 @@ char	*get_type(t_type type)
 		return ("INFILE");
 	if (type == OUTFILE)
 		return ("OUTFILE");
+	if (type == OUTFILE_APPEND)
+		return ("OUTFILE_APPEND");
 	return ("");
 }

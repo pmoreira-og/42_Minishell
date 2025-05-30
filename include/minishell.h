@@ -6,7 +6,7 @@
 /*   By: pmoreira <pmoreira@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/24 14:48:17 by pmoreira          #+#    #+#             */
-/*   Updated: 2025/05/29 14:20:18 by pmoreira         ###   ########.fr       */
+/*   Updated: 2025/05/30 11:38:41 by pmoreira         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,20 +27,19 @@
 # define HIST_FILE "minishell_history"
 # define ERR_QUOTES "minishell: syntax error: input contains unclosed quotes\n"
 # define ERR_BAD_FORMAT "minishell: syntax error near unexpected token "
-# define TOKEN_NEWLINE	"'newline'\n"
+# define TOKEN_NEWLINE	"'newline'"
 # define RED "\001\033[31m\002"
 # define RESET "\001\033[0m\002"
 
 // parse:
 void	ft_count(const char *input, int *count);
-int		valid_input_test(t_token *tok, t_hell *data);
-void	tokenize_test(char *input, t_hell *data);
+int		valid_input(t_token *tok, t_hell *data);
+void	tokenize(char *input, t_hell *data);
 void	quotes_remover(t_hell *data);
-int		valid_format(t_token *tok);
+char	*valid_format(t_token *tok);
 void	parser(char **input, t_hell *data);
 char	**ft_params(const char *start);
 void	tokenize(char *input, t_hell *data);
-int		valid_input(t_token *tok);
 int		quotes_check(char *input);
 void	literal(char **ptr, char *s, char *endptr, t_hell *hell);
 void	init_proc(const char **start, const char *s, t_bool *quote, \
