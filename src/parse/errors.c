@@ -6,7 +6,7 @@
 /*   By: pmoreira <pmoreira@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/22 15:33:31 by pmoreira          #+#    #+#             */
-/*   Updated: 2025/05/30 14:56:03 by pmoreira         ###   ########.fr       */
+/*   Updated: 2025/05/30 15:02:59 by pmoreira         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,7 @@ char	*check_str(char *s)
 	while (*s)
 	{
 		check_char_quote((const char **)&s, &quotes[0], &quotes[1]);
-		if (!quotes[0] && !quotes[1] && ((*s == '|') || (*s == '$')))
+		if (!quotes[0] && !quotes[1] && ((*s == '|') || (*s == '&')))
 		{
 			temp = s++;
 			if (*temp == *s)

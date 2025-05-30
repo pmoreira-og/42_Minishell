@@ -681,3 +681,11 @@ cut -d \' -f 1
 < infile | grep test cut -d \" -f 1 ">>>" out
 < infile | grep test cut -d \" -f 1 >>> out
 exit
+cat <<< $USER
+echo ola >>> out
+echo ola && echo banana
+cat <<< $USER
+echo ola >>> out
+echo ola && echo banana
+echo ola || echo banana
+exit
