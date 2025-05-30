@@ -6,7 +6,7 @@
 /*   By: pmoreira <pmoreira@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/27 14:39:30 by pmoreira          #+#    #+#             */
-/*   Updated: 2025/05/30 12:13:53 by pmoreira         ###   ########.fr       */
+/*   Updated: 2025/05/30 15:00:39 by pmoreira         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,13 +22,11 @@ void	quotes_remover(t_hell *data)
 	while (temp->next)
 	{
 		if (temp
-	&& !(!ft_strcmp(temp->cmd, "\"") || !ft_strcmp(temp->cmd, "\'")))
+			&& !(!ft_strcmp(temp->cmd, "\"") || !ft_strcmp(temp->cmd, "\'")))
 			temp->cmd = remove_quotes(temp->cmd);
 		temp = temp->next;
 	}
 }
-
-
 
 void	ft_freed(t_token *tok, char **matrix)
 {
@@ -56,7 +54,7 @@ void	connect_list(t_token *new_args, t_token *current, t_hell *data)
 	t_token	*temp2;
 
 	temp = new_args;
-	while(temp->next)
+	while (temp->next)
 		temp = temp->next;
 	temp2 = temp;
 	temp = temp->prev;
@@ -112,7 +110,7 @@ void	append_list(t_token *current, t_hell *data)
 
 	matrix = ft_params(current->cmd);
 	if (!matrix)
-		return ft_putstr_fd("Malloc error\n", 2);
+		return (ft_putstr_fd("Malloc error\n", 2));
 	i = -1;
 	new_args = ft_calloc(1, sizeof(t_token));
 	if (!new_args)

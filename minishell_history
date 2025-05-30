@@ -645,3 +645,39 @@ exit
 < infile | grep test cut -d \" -f 1 |
 < infile | grep test cut -d \" -f 1 >> out
 echo $_
+\e\c\h\o \o\l\a
+"\e\c\h"\"o \o\l"\a
+"\e\c\h"\"o \o\l"\a"
+"\e\c\h"\"o \o\"l\a"
+"\e\c\h"\"o "\o\l\a"
+\e\x\i\t\
+\\\
+\\\'
+"\\\'"
+" \\\'"
+cut -d \' -f 1
+cut -d "'" -f 1
+exit
+cut -d \' -f 1
+exit
+cut -d \' -f 1
+< infile | grep test cut -d \" -f 1 >> out
+< infile | grep test cut -d \" -f 1 >> out
+<<<ola
+cut -d \' -f 1
+<<<ola
+cut -d \' -f 1
+cut -d \' -f 1
+<<<ola
+<< ola ||
+<< ola |
+echo ola >>> outfile
+exit
+echo ola >>> outfile
+<< ola |
+cut -d \' -f 1
+< infile | grep test cut -d \" -f 1 >> out
+< infile | grep test cut -d \" -f 1 >>> out
+< infile | grep test cut -d \" -f 1 ">>>" out
+< infile | grep test cut -d \" -f 1 >>> out
+exit

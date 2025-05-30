@@ -6,7 +6,7 @@
 /*   By: pmoreira <pmoreira@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/24 14:48:17 by pmoreira          #+#    #+#             */
-/*   Updated: 2025/05/30 11:38:41 by pmoreira         ###   ########.fr       */
+/*   Updated: 2025/05/30 14:41:01 by pmoreira         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -73,6 +73,7 @@ void	parser_error(char *error_msg, int fd);
 int		check_cmds(t_token *tok);
 void	recall_parser(t_hell *data);
 void	token_type(char *s, t_token *tok, t_token *prev, char **path);
+char	*syntax_error_check(char *input);
 
 // miscs:
 void	printascii(void);
