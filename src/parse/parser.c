@@ -6,7 +6,7 @@
 /*   By: pmoreira <pmoreira@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/14 14:59:37 by pmoreira          #+#    #+#             */
-/*   Updated: 2025/05/30 14:45:37 by pmoreira         ###   ########.fr       */
+/*   Updated: 2025/05/31 09:27:58 by pmoreira         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -71,15 +71,12 @@ void	process_str(char **ptr, char *s, t_hell *hell, t_bool *flag)
 	literal(&output, start, end + 1, hell);
 	if (!output)
 		return ;
-	if (!ft_strcmp(s, "\"") || !ft_strcmp(s, "\'"))
-		return (free(*ptr), associate(ptr, output));
-	else
-		return (free(*ptr), associate(ptr, (output)));
+	return (free(*ptr), associate(ptr, output));
 }
 
 void	parser(char **input, t_hell *data)
 {
-	if (!quotes_check(*input))
+	if (!(*input) || !ft_strcmp(*input, "") || !quotes_check(*input))
 		return ;
 	if (count_spaces(*input))
 		*input = add_spaces(input, *input);

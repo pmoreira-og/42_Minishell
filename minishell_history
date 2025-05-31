@@ -689,3 +689,38 @@ echo ola >>> out
 echo ola && echo banana
 echo ola || echo banana
 exit
+echo ola && echo banana
+echo ola || echo banana
+echo ola >>> out
+cat <<< $USER
+cat < $USER
+cat <> $USER
+exit
+< >
+exit
+echo ola
+echo ola
+echo ola
+echo ola
+echo ola
+echo ola
+ banana spli
+exit
+exit
+asd
+ola
+""
+"
+cat <<< $USER
+< >
+echo echo" banana >>"> split
+exit
+echo echo" banana >>"> split
+echo echo " banana >>"> split
+|echo banana
+||echo banana
+das||echo banana
+das"||"echo banana
+exit
+echo ola
+echo ola ; asdas

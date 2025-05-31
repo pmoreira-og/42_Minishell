@@ -6,13 +6,42 @@
 /*   By: pmoreira <pmoreira@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/22 15:33:31 by pmoreira          #+#    #+#             */
-/*   Updated: 2025/05/30 15:02:59 by pmoreira         ###   ########.fr       */
+/*   Updated: 2025/05/31 08:47:44 by pmoreira         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minishell.h"
 
 char	*check_str(char *s)
+{
+	char	*temp;
+	t_bool	quotes[2];
+
+	if (!s)
+		return (NULL);
+	init_proc((const char **)&temp, s, &quotes[0], &quotes[1]);
+	while (*s)
+	{
+		check_char_quote((const char **)&s, &quotes[0], &quotes[1]);
+		if (!quotes[0] && !quotes[1] && ((*s == '|') || (*s == '&')))
+		{
+			temp = s++;
+			if (*temp == *s)
+				return (new_word(temp, s));
+		}
+		if ((!quotes[0] && !quotes[1] && ((*s == '<') || (*s == '>'))))
+		{
+			temp = s + 2;
+			if (*(s + 1) && *temp && *temp == *s && *s == *(s + 1))
+				return (new_word(temp, temp + 1));
+		}
+		if (*s)
+			s++;
+	}
+	return (NULL);
+}
+
+char	*check_str2(char *s)
 {
 	char	*temp;
 	t_bool	quotes[2];

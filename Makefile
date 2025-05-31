@@ -10,11 +10,12 @@ RESET=\033[0m
 NAME = minishell
 
 # === VALGRIND FLAGS ===
-# valgrind --leak-check=full --show-leak-kinds=all --track-fds=yes --track-origins=yes --suppressions=readline.supp
+VAL = valgrind --leak-check=full --show-leak-kinds=all --track-fds=yes \
+	--track-origins=yes --trace-children=yes --suppressions=readline.supp
 
 # === COMPILATION ===
 CC = cc
-CFLAGS = -Wall -Werror -Wextra -I$(INCLUDES) -I$(LIBFT_DIR)/include -g
+CFLAGS =  -Wall -Werror -Wextra -I$(INCLUDES) -I$(LIBFT_DIR)/include -g
 OBJDIR = build
 
 # === INCLUDES ===
@@ -94,4 +95,10 @@ fclean: clean
 re: fclean all
 	@echo "$(ORANGE)Re-Done!!$(RESET)"
 
-.PHONY: all clean fclean re
+val: re
+	$(VAL) ./minishell
+
+debug: re
+	$(VAL) ./minishell -d
+
+.PHONY: all clean fclean re val debug
