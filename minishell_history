@@ -768,3 +768,25 @@ ola
 echo $no
 echo $_
 exit
+echo $"$USER$"$'$USER$'$?$
+export a="echo ola"
+echo ola > $a
+> <
+<|>
+<l|>
+<l|>l
+<| >
+< | >
+< |>
+<|>
+< >
+<>
+<l|>
+<<<l|>
+<<<|>
+<<|>
+<<|>
+<<|>
+<<<|>
+< <|>
+<<| >

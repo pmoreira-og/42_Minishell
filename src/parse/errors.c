@@ -6,7 +6,7 @@
 /*   By: pmoreira <pmoreira@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/22 15:33:31 by pmoreira          #+#    #+#             */
-/*   Updated: 2025/06/02 12:03:50 by pmoreira         ###   ########.fr       */
+/*   Updated: 2025/06/02 15:23:07 by pmoreira         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,14 +41,24 @@ char	*check_str(char *s)
 	return (NULL);
 }
 
-// char	*check_str2(char *prev, char *s)
+// char	*check_str2(char *s)
 // {
 // 	char	*temp;
+// 	int		c;
 // 	t_bool	quotes[2];
 
-// 	if (!s || !prev)
+// 	if (!s)
 // 		return (NULL);
-// 	temp = ft_strchr()
+// 	init_proc((const char **)&temp, s, &quotes[0], &quotes[1]);
+// 	while(*s)
+// 	{
+// 		check_char_quote((const char **)&s, &quotes[0], &quotes[1]);
+// 		if (!quotes[0] && !quotes[1] && is_meta(*s))
+// 		{
+// 			c = *s;
+			
+// 		}
+// 	}
 // 	return (NULL);
 // }
 
@@ -69,7 +79,7 @@ char	*syntax_error_check(char *input)
 		if (error)
 			return (ft_clean_matrix(matrix), error);
 		// else if (!error && i > 0)
-		// 	error = check_str2(matrix[i - 1], matrix[i]);
+		// 	error = check_str2(matrix[i]);
 		// if (error)
 		// 	return (ft_clean_matrix(matrix), error);
 	}
