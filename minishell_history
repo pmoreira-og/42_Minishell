@@ -724,3 +724,47 @@ das"||"echo banana
 exit
 echo ola
 echo ola ; asdas
+echo ola ; asdas
+das||echo banana
+das"||"echo banana
+echo echo" banana >>"> split
+< >
+exit
+< infile | grep test cut -d \" -f 1 >> out
+< |
+< >
+cat <
+cat >
+cat |
+>
+ cat >>>
+echo $"USER"
+export a="ls -la"
+$a
+export a="ls	-la"
+$a
+\e\c\h\o\
+exit
+echo ' $HOME' $"$USER$" $ $'USER''$USER'$?$
+exit
+echo ' $HOME' $"$USER$" $ $'USER''$USER'$?$
+	
+"	"
+exit
+"	"
+export a="ls	-la"
+$a
+	
+	
+echo echo" banana >>"> split
+$a
+exit
+echo echo" banana >>"> split
+	exit
+ola
+	
+	cat Makefile 
+	echo Makefile 
+echo $no
+echo $_
+exit

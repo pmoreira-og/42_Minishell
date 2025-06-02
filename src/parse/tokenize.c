@@ -6,7 +6,7 @@
 /*   By: pmoreira <pmoreira@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/24 14:39:15 by pmoreira          #+#    #+#             */
-/*   Updated: 2025/05/30 12:14:28 by pmoreira         ###   ########.fr       */
+/*   Updated: 2025/06/02 10:29:00 by pmoreira         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,7 @@ int	special_token(t_token *tok)
 {
 	if (!tok)
 		return (0);
-	if (tok->type == REDIR_OUT || tok->type == PIPE)
+	if (tok->type == REDIR_OUT || tok->type == PIPE || tok->type == REDIR_IN)
 		return (1);
 	return (0);
 }

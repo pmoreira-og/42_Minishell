@@ -6,7 +6,7 @@
 /*   By: pmoreira <pmoreira@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/24 14:48:17 by pmoreira          #+#    #+#             */
-/*   Updated: 2025/05/31 10:05:51 by pmoreira         ###   ########.fr       */
+/*   Updated: 2025/06/02 12:00:42 by pmoreira         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,13 +23,14 @@
 # include "../libft/include/libft.h"
 # include "pipex.h"
 # include "structs.h"
-
 # define HIST_FILE "minishell_history"
 # define ERR_QUOTES "minishell: syntax error: input contains unclosed quotes\n"
 # define ERR_BAD_FORMAT "minishell: syntax error near unexpected token "
 # define TOKEN_NEWLINE	"'newline'"
 # define RED "\001\033[31m\002"
 # define RESET "\001\033[0m\002"
+// # define ft_calloc(x, y) NULL
+// # define malloc(x) NULL
 
 // parse:
 void	ft_count(const char *input, int *count);

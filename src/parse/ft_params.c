@@ -6,7 +6,7 @@
 /*   By: pmoreira <pmoreira@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/26 12:23:53 by pmoreira          #+#    #+#             */
-/*   Updated: 2025/05/30 11:07:23 by pmoreira         ###   ########.fr       */
+/*   Updated: 2025/06/02 10:47:32 by pmoreira         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,7 +57,7 @@ void	ft_count(const char *input, int *count)
 	while (*input)
 	{
 		check_char_quote(&input, &quote, &d_quote);
-		if (*input == ' ' && !quote && !d_quote)
+		if (ft_isspace(*input) && !quote && !d_quote)
 		{
 			if (input > start)
 				(*count)++;
@@ -69,7 +69,7 @@ void	ft_count(const char *input, int *count)
 		(*count)++;
 }
 
-static int	proc_str(char **matrix, const char *s, char c, int *index)
+static int	proc_str(char **matrix, const char *s, int *index)
 {
 	t_bool		quote;
 	t_bool		d_quote;
@@ -79,7 +79,7 @@ static int	proc_str(char **matrix, const char *s, char c, int *index)
 	while (*s)
 	{
 		check_char_quote(&s, &quote, &d_quote);
-		if (*s == c && !quote && !d_quote)
+		if (ft_isspace(*s) && !quote && !d_quote)
 		{
 			if (s > start)
 			{
@@ -115,7 +115,7 @@ char	**ft_params(const char *start)
 		return (NULL);
 	matrix[size] = NULL;
 	index = 0;
-	if (!proc_str(matrix, start, ' ', &index))
+	if (!proc_str(matrix, start, &index))
 		return (NULL);
 	return (matrix);
 }
