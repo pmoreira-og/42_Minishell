@@ -6,7 +6,7 @@
 /*   By: pmoreira <pmoreira@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/21 10:22:15 by pmoreira          #+#    #+#             */
-/*   Updated: 2025/02/07 11:30:27 by pmoreira         ###   ########.fr       */
+/*   Updated: 2025/06/03 10:42:38 by pmoreira         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,28 +52,24 @@ char	*ft_fill_line(char *buffer, int fd)
 char	*ft_strjoin_nl(char *line, char *buffer)
 {
 	char	*join;
-	ssize_t	i;
+	size_t	i;
 
-	if (line == NULL)
+	join = malloc(ft_len(line) +ft_len(buffer) + 1);
+	if (!join)
+		return (NULL);
+	i = 0;
+	while (line && line[i])
 	{
-		line = (char *) malloc(1);
-		line[0] = 0;
-	}
-	join = (char *) malloc((ft_len(line) +ft_len(buffer) + 1) * sizeof(char));
-	if (join == 0)
-		return (0);
-	i = -1;
-	while (line[++i])
 		join[i] = line[i];
-	while (*buffer && *buffer != '\n')
-	{
-		join[i++] = *buffer;
-		buffer++;
+		i++;
 	}
-	if (*buffer == '\n')
-		join[i++] = '\n';
+	while (*buffer && *buffer != '\n')
+		join[i++] = *buffer++;
+	if (*buffer && *buffer == '\n')
+		join[i++] = *buffer;
 	join[i] = 0;
-	free(line);
+	if (line)
+		free(line);
 	return (join);
 }
 

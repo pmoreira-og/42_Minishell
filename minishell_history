@@ -790,3 +790,13 @@ echo ola > $a
 <<<|>
 < <|>
 <<| >
+	
+"	"
+exit
+"	"
+	
+exit
+cat "a"
+cat "infile"
+"	"
+exit
