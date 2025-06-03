@@ -6,7 +6,7 @@
 /*   By: pmoreira <pmoreira@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/22 15:33:31 by pmoreira          #+#    #+#             */
-/*   Updated: 2025/06/02 15:23:07 by pmoreira         ###   ########.fr       */
+/*   Updated: 2025/06/03 14:47:55 by pmoreira         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,7 +44,6 @@ char	*check_str(char *s)
 // char	*check_str2(char *s)
 // {
 // 	char	*temp;
-// 	int		c;
 // 	t_bool	quotes[2];
 
 // 	if (!s)
@@ -55,7 +54,7 @@ char	*check_str(char *s)
 // 		check_char_quote((const char **)&s, &quotes[0], &quotes[1]);
 // 		if (!quotes[0] && !quotes[1] && is_meta(*s))
 // 		{
-// 			c = *s;
+// 			temp = s;
 			
 // 		}
 // 	}

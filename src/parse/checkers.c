@@ -6,7 +6,7 @@
 /*   By: pmoreira <pmoreira@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/07 13:55:22 by pmoreira          #+#    #+#             */
-/*   Updated: 2025/06/02 10:23:18 by pmoreira         ###   ########.fr       */
+/*   Updated: 2025/06/03 14:47:03 by pmoreira         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,10 +50,6 @@ int	quotes_check(char *input)
 	error = syntax_error_check(input);
 	if (error)
 		return (parser_error(error, 2), free(error), 0);
-	// else
-	// 	error = syntax_check2(input);
-	// if (error)
-	// 	return (parser_error(error, 2), free(error), 0);
 	return (1);
 }
 

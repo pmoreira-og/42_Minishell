@@ -800,3 +800,16 @@ cat "a"
 cat "infile"
 "	"
 exit
+"	"
+<<|>
+<<<<<<<<<
+<<|<<|<<|<<|<
+echo ' $HOME' $"$USER$" $ $'USER''$USER'$?$
+clear
+exit
+asd
+exit
+sdadas
+exit
+exit
+asdadadadadas
