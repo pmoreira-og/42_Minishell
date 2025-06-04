@@ -813,3 +813,12 @@ sdadas
 exit
 exit
 asdadadadadas
+echo $_
+exit
+echo $_
+exit
+$no echo
+$no echo ola
+"" echo ola
+"" echo ola
+exit
