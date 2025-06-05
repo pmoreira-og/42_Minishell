@@ -6,7 +6,7 @@
 /*   By: pmoreira <pmoreira@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/24 14:48:17 by pmoreira          #+#    #+#             */
-/*   Updated: 2025/06/05 11:06:40 by pmoreira         ###   ########.fr       */
+/*   Updated: 2025/06/05 12:10:49 by pmoreira         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -77,11 +77,9 @@ void	recall_parser(t_hell *data);
 void	token_type(char *s, t_token *tok, t_token *prev, char **path);
 char	*syntax_error_check(char *input);
 char	*space_put(char *input, int len);
+int		space_length(char *input);
 
 // TEST FUNCTIONS ON PARSE
-int	space_length(char *input);
-
-
 
 // miscs:
 void	printascii(void);
@@ -106,15 +104,20 @@ void	init_export(t_export **export, char **envp);
 void	ft_setexport(t_export **export, char *var, char *value);
 
 // Utils
-void	armageddon(t_hell *data);
 t_hell	*init_hell(int ac, char **av, char **envp);
 t_bool	is_builtin(char *s);
 t_bool	is_command(char *s, char **path);
 int		check_prev(t_token *prev, t_token *current);
 void	clean_list(t_hell *data);
-void	prepare_next_input(t_hell *data);
 void	print_matrix(char **matrix);
 void	print_token(t_token *toks);
 void	print_cmd_info(t_hell *data);
+void	armageddon(t_hell *data);
+void	prepare_next_input(t_hell *data);
 
+// Aux cleaners
+void	clean_cmds(t_hell *data);
+void	clean_env(t_hell *data);
+void	clean_list(t_hell *data);
+void	clean_export(t_hell *data);
 #endif
