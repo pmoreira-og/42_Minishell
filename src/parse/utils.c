@@ -6,7 +6,7 @@
 /*   By: pmoreira <pmoreira@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/27 14:39:30 by pmoreira          #+#    #+#             */
-/*   Updated: 2025/06/05 12:04:08 by pmoreira         ###   ########.fr       */
+/*   Updated: 2025/06/05 12:39:10 by pmoreira         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,7 +46,7 @@ void	quotes_remover(t_hell *data)
 	temp = data->tokens;
 	while (temp->next)
 	{
-		if (temp && temp->not_expansive == FALSE
+		if (temp /* && temp->not_expansive == FALSE */
 			&& !(!ft_strcmp(temp->cmd, "\"") || !ft_strcmp(temp->cmd, "\'")))
 			temp->cmd = remove_quotes(temp->cmd);
 		temp = temp->next;
