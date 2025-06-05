@@ -822,3 +822,133 @@ $no echo ola
 "" echo ola
 "" echo ola
 exit
+<<|>
+exit
+<<|>
+<<|>
+<<|>
+<<|>
+<<|>|>
+<<dsasad|>|>
+<<dsasad|>|>
+<<dsasad|>|>\.
+<<dsasad|>|>|>
+mrc
+<<dsasad
+<<dsasad
+<<dsasad<
+<<dsasad<<<
+<<dsasad<<
+cat<infile
+cat<infile
+cat<infile
+cat <infile
+<cat <infile
+<cat<infile
+<cat<infile
+<cat< infile
+< cat< infile
+< cat < infile
+"< cat < infile"
+"< cat < infile"
+<" cat < infile"
+<" cat < infile"
+"< cat < infile"
+"< cat < infile"
+"< cat < infile"
+"< cat < infile"
+<" cat < infile"
+<" cat < infile"
+" cat < infile"
+<" cat < infile"
+< " cat < infile"
+< " cat<infile"
+< " cat<infile"
+< " cat< infile"
+< " cat <infile"
+ < " cat <infile"
+ < "cat <infile"
+ < "cat <infile"
+as
+asddsa
+asddsa
+ < "cat <infile"
+<" cat < infile"
+"< cat < infile"
+<cat<infile
+<cat< infile
+<cat < infile
+<cat <infile
+< cat <infile
+< cat "<infile"
+< cat "<infile"
+<cat <infile
+exit
+<cat <infile
+<cat <infile
+<cat <infile
+\e\c\h\o 
+"''''''"'
+export a='echo " ola'
+echo $a
+echo "$a"
+echo ola > "banana split"
+export a="banana split"
+echo ola > $a
+echo ola > "banana split"
+<cat <infile
+<<dsasad<<<
+<<dsasad<<
+<<|>
+<<|>|>
+exit
+<<|>|>
+<<|>|>
+<<|>|>
+<<dsasad<<<
+<<dsasad<<
+<<|>
+<<|>|>
+<cat<infile
+"<cat<infile"
+"<cat<infile"
+<cat<infile
+<<|>|>
+<<|>
+<<dsasad<<<
+<<dsasad|>|>
+<<dsasad|
+<<|dsasad
+exit
+export a="banana split"
+echo "$a"
+echo $a
+export a="echo ' ola "
+echo $a
+echo "$a"
+export a='echo " ola '
+echo $a
+echo "$a"
+export a='echo " ola '
+export a='echo " ola'
+echo "$a"
+echo $a
+export a="echo ' ola "
+echo $a
+echo "$a"
+"<cat<infile"
+<cat<infile
+<<<cat<infile
+<<| <infile
+<<dsasad|>|>
+<<dsasad|>|> outfile
+export a="cat << $USER"
+echo $a
+echo "$a"
+echo '$a'
+$a
+"$USER'"'$HOME"'
+export a="echo ' ola "
+echo $a
+echo "$a"
+exit

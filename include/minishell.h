@@ -6,7 +6,7 @@
 /*   By: pmoreira <pmoreira@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/24 14:48:17 by pmoreira          #+#    #+#             */
-/*   Updated: 2025/06/02 12:00:42 by pmoreira         ###   ########.fr       */
+/*   Updated: 2025/06/05 11:06:40 by pmoreira         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -65,7 +65,8 @@ void	concat_expand(char **result, char **new_str, t_hell *hell);
 int		valid_expand(int c);
 int		localized_expansions(char *start, char *end);
 int		count_spaces(char *s);
-char	*add_spaces(char **ptr, char *s);
+void	add_spaces(char **input);
+// char	*add_spaces(char **ptr, char *s);
 int		count_expand_zones(char *input);
 char	*localized_expander(char *start, char *end, t_hell *hell);
 char	*remove_zones(char **ptr, char *input);
@@ -75,6 +76,12 @@ int		check_cmds(t_token *tok);
 void	recall_parser(t_hell *data);
 void	token_type(char *s, t_token *tok, t_token *prev, char **path);
 char	*syntax_error_check(char *input);
+char	*space_put(char *input, int len);
+
+// TEST FUNCTIONS ON PARSE
+int	space_length(char *input);
+
+
 
 // miscs:
 void	printascii(void);
