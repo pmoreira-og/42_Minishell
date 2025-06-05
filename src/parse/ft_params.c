@@ -6,7 +6,7 @@
 /*   By: pmoreira <pmoreira@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/26 12:23:53 by pmoreira          #+#    #+#             */
-/*   Updated: 2025/05/20 10:36:12 by pmoreira         ###   ########.fr       */
+/*   Updated: 2025/06/02 10:47:32 by pmoreira         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,19 +36,18 @@ static int	ft_add_word(char **matrix, const char *start, const char *end)
 	init_proc(NULL, NULL, &quote, &d_quote);
 	while (start < end)
 	{
-		check_quotes(*start, &quote, &d_quote);
-		if (*start == '\\' && !quote)
+		check_char_quote(&start, &quote, &d_quote);
+		if (*start && *start == '\\' && !quote)
 			start++;
-		word[i++] = *start;
 		if (*start)
-			start++;
+			word[i++] = *start++;
 	}
 	word[i] = '\0';
 	*matrix = word;
 	return (1);
 }
 
-static void	ft_count(const char *input, int *count)
+void	ft_count(const char *input, int *count)
 {
 	t_bool		quote;
 	t_bool		d_quote;
@@ -58,7 +57,7 @@ static void	ft_count(const char *input, int *count)
 	while (*input)
 	{
 		check_char_quote(&input, &quote, &d_quote);
-		if (*input == ' ' && !quote && !d_quote)
+		if (ft_isspace(*input) && !quote && !d_quote)
 		{
 			if (input > start)
 				(*count)++;
@@ -70,7 +69,7 @@ static void	ft_count(const char *input, int *count)
 		(*count)++;
 }
 
-static int	proc_str(char **matrix, const char *s, char c, int *index)
+static int	proc_str(char **matrix, const char *s, int *index)
 {
 	t_bool		quote;
 	t_bool		d_quote;
@@ -80,7 +79,7 @@ static int	proc_str(char **matrix, const char *s, char c, int *index)
 	while (*s)
 	{
 		check_char_quote(&s, &quote, &d_quote);
-		if (*s == c && !quote && !d_quote)
+		if (ft_isspace(*s) && !quote && !d_quote)
 		{
 			if (s > start)
 			{
@@ -116,7 +115,7 @@ char	**ft_params(const char *start)
 		return (NULL);
 	matrix[size] = NULL;
 	index = 0;
-	if (!proc_str(matrix, start, ' ', &index))
+	if (!proc_str(matrix, start, &index))
 		return (NULL);
 	return (matrix);
 }

@@ -56,3 +56,899 @@ exit
 echo > olaexit
 ls
 exit
+export _a="ola"
+echo $_a
+export _a
+echo $_a
+echo $_a="echo ola banana split 123"
+export _a="echo ola banana split 123"
+$_a
+export _a="echo ola banana split 123"
+$_a
+echo $_a
+export a=ech
+export b="o banana split"
+$a$b
+export b=" banana split"
+export a=echo
+$a$b
+export b="banana split"
+$a$b
+export b="banana split"
+$a $b
+export a
+$a$b
+export b="banana split"
+$a $b
+export b="banana split"
+$a $b
+export a=echo
+$a $b
+$a$b
+$a$b
+$a$b
+mrc
+mrc
+$a$b
+export a=echo
+export b="banana split"
+$a$b
+exit
+export a=echo
+export a=echo
+export b="banana split"
+$a$b
+export b="o banana split"
+export a=ech
+$a$b
+export b="o banana split"
+export a=ech
+$a$b
+export a=echo
+export b=" banana split"
+$a$b
+export b=" banana ' split"
+$a$b
+export b=" banana ' split"
+export a=echo
+$a$b
+export b=">"
+$a$b
+export b=">"
+export a=echo
+$a $b
+export a=echo
+export b=">"
+$a $b
+export b=">"
+export a=echo
+$a $b
+export a=echo
+export b=">"
+$a $b
+export a="ech"
+export b="o banana split"
+$a$b
+$a $b
+$a$b
+export a=echo
+export b="banana split"
+$a$b
+export a=ech
+export b="o banana split"
+$a$b
+$a $b
+export a="> out cat Makefile"
+$a
+export a="> out cat Makefile"
+$a
+export a="> out cat Makefile"
+$a
+export a="echo out 'cat' Makefile"
+$a
+export a="echo out 'cat' Makefile"
+$a
+export a="echo out 'cat' Makefile"
+$a
+export a="echo out 'cat' Makefile"
+export a="echo out 'cat' Makefile"
+$a
+> out $a
+export a="echo $USER 'cat' Makefile"
+> out $a
+echo $a
+export a="echo $USER 'cat' Makefile"
+echo $a
+export
+cut -d \' -f 1
+cut -d \' -f 1
+echo $a
+export a="echo $USER 'cat' Makefile"
+> out $a
+cut -d \' -f 1
+export a="echo $USER 'cat' Makefile"
+> out $a
+cut -d \' -f 1
+export a="echo $USER 'cat' Makefile"
+> out $a
+cut -d \' -f 1
+export a="echo $USER 'cat' Makefile"
+> out $a
+export a="echo $USER 'cat' Makefile"
+> out $a
+cut -d \' -f 1
+export a="echo $USER 'cat' Makefile"
+> out $a
+export
+$a
+'$a'
+exit
+export a="echo $USER 'cat' Makefile"
+> out $a
+cut -d \' -f 1
+cut -d \' -f 1
+export a="echo $USER 'cat' Makefile"
+> out $a
+cut -d \' -f 1
+export a="echo $USER 'cat' Makefile"
+> out $a
+export a="echo $USER 'cat' Makefile"
+> out $a
+cut -d \' -f 1
+export a="echo $USER 'cat' Makefile"
+> out $a
+export a="echo $USER 'cat' Makefile"
+> out $a
+export a="echo $USER 'cat' Makefile"
+> out $a
+export a="echo $USER 'cat' Makefile"
+> out $a
+export a="echo $USER 'cat' Makefile"
+> out $a
+export a="echo $USER 'cat' Makefile"
+> out $a
+export a="echo $USER 'cat' Makefile"
+> out $a
+export a="echo $USER 'cat' Makefile"
+cut -d \' -f 1
+export a="echo $USER 'cat' Makefile"
+> out $a
+mrc
+cut -d \' -f 1
+export a="echo $USER 'cat' Makefile"
+> out $a
+echo ola "'" $HOME$HO" $HOME$HOME '$HOME'"
+echo ola "'" $HOME$HO" $HOME$HOME '$HOME'"
+echo ola "'" $HOME$HO" $HOME$HOME $HOME'"
+echo ola "'" $HOME$HO" $HOME$HOME $HOME'""
+echo ola ""'" $HOME$HO" $HOME$HOME $HOME'""
+echo ola " $HOME$HOME '$HOME'"""
+echo ola  $HOME$HOME '$HOME'""
+echo ola  $HOME$H"""""""OME '$HOME'""
+echo ola  "$HOME$H"""""""O"ME" '$HOME'""
+cat << eof | cat > STDOUT
+cat << $USER | cat > STDOUT
+echo ola ' $HOME" $HOME  $HOME'
+> file echo aaa
+echo ola ' $HOME" $HOME  $HOME'"
+echo ola '" $HOME$HO"" '" $HOME$HO" $HOME$HOME $HOME' ""
+echo ola "'echo ola "'" $HOME$HO" $HOME$HOME '$HOME'"
+echo ola ""'" $HOME$HO" $HOME$HOME $HOME'"$HOME"
+echo ola'pipe'wow "ba'n'an'aa"
+'echo' 'ola' '>' 'outfile'
+"$USER'"'$HOME"'
+$USER"'$NO'"'"'$USER'"'
+$
+$$
+"\'\\"
+echo ' $HOME' $"$USER$" $ $USER'$USER'$?$
+echo ' $HOME' $'$USER$' $ $USER'$USER'$?$
+echo $'$USER"$USER"$USER'
+echo ' $HOME' $"$USER$" $ $'USER''$USER'$?$
+cat << $USER
+exit
+export a="cat << $USER"
+$a
+export a="cat << $USER"
+$a
+"$USER'"'$HOME"'
+$USER"'$NO'"'"'$USER'"'
+cut -d \' -f 1
+export a="echo $USER 'cat' Makefile"
+$a
+exit
+export a="cat << $USER"
+$a
+exit
+echo ola '>' outfil
+"echo" ola '>' outfil
+'echo' ola '>' outfil
+export a="> ola echo banana"
+$a
+echo ola > outfile banana split $USER
+echo ola > outfile banana split $USER
+exit
+echo ola > outfile banana split $USER
+echo ola > outfile banana split $USER
+mrc
+echo ola > outfile banana split $USER
+export a="> ola echo banana"
+echo ola '>' outfil
+echo ola '>' outfil
+$a
+export a="> ola echo banana"
+$a
+$a
+export a="> ola echo banana"
+$a
+exit
+export a="> ola echo banana"
+$a
+> out $a
+'echo' 'ola' '>' 'outfile'
+'>''echo' 'ola' '>' 'outfile'
+'>''echo' 'ola' '>' 'outfile'
+'>''echo' 'ola' '>' 'outfile'
+$a
+export a="> ola echo banana"
+$a
+export a="> ola echo banana"
+$a
+export a="> ola echo banana"
+$a
+export a="> ola echo banana"
+$a
+export a="> ola echo banana"
+$a
+export a="> ola echo banana"
+$a
+export a="> ola echo banana"
+$a
+export a="> ola echo banana"
+$a
+export a="> ola echo banana"
+$a
+export a="> ola echo banana"
+$a
+export a="> ola echo banana"
+$a
+export a="> ola echo banana"
+$a
+export a="> ola echo banana"
+$a
+export a="> ola echo banana"
+$a
+export a="> ola echo banana"
+$a
+export a="> ola echo banana"
+$a
+export a="> ola echo banana"
+$a
+> out $a
+exit
+export a="> ola echo banana"
+echo $a
+exit
+export a="> ola echo banana"
+$a
+export a="> ola echo banana"
+$a
+export a="> ola echo banana"
+$a
+exit
+export a="> ola echo banana"
+$a
+export a="> ola echo banana"
+$a
+export a="> ola echo banana"
+$a
+export a="> ola echo banana"
+$a
+export a="> ola echo banana"
+$a
+exit
+exit
+exit
+export a="> ola echo banana"
+$a
+export a="> ola echo banana"
+$a
+export a="> ola echo banana"
+$a
+export a="> ola echo banana"
+$a
+export a="> ola echo banana"
+$a
+exit
+export a="> ola echo banana"
+$a
+exit
+export a="> ola echo banana"
+$a
+exit
+export a="> ola echo banana"
+$a
+exit
+export a="> ola echo banana"
+$a
+export a="> ola echo banana"
+$a
+> out $a
+exit
+$a
+exit
+export a="> ola echo banana"
+$a
+exit
+export a="> ola echo banana"
+$a
+exit
+export a="> ola echo banana"
+$a
+'echo' ola '>' 'banana'
+export a="cat << $USER"
+$a
+cat << $USER 
+$a
+export a="> ola echo banana"
+$a
+$a > out
+exit
+export a="> ola echo banana"
+$a > out
+> $USER $a
+exit
+export a="> ola echo banana"
+> $USER $a
+> $USER $a | cat | > out
+exit
+exit
+> $USER $a | cat | > out
+exit
+> $USER $a | cat | > out
+exit
+echo ola "'" $HOME$HO" $HOME$HOME '$HOME'"
+echo ola "'" $HOME$HO" $HOME$HOME $HOME'"
+echo ola "'" $HOME$HO" $HOME$HOME $HOME'""
+echo ola ""'" $HOME$HO" $HOME$HOME $HOME'""
+echo ola " $HOME$HOME '$HOME'"""
+echo ola  $HOME$HOME '$HOME'""
+echo ola  "$HOME$H"""""""O"ME" '$HOME'""
+echo ola ' $HOME" $HOME  $HOME'
+cat << eof | cat > STDOUT
+cat << $USER | cat > STDOUT
+$USER"'$NO'"'"'$USER'"'
+$
+$$
+echo ' $HOME' $"$USER$" $ $USER'$USER'$?$
+echo ' $HOME' $'$USER$' $ $USER'$USER'$?$
+echo $'$USER"$USER"$USER'
+echo ' $HOME' $"$USER$" $ $'USER''$USER'$?$
+<< $USER
+export a="cat << $USER"
+$a
+cut -f \' -f 1
+cut -f \" -f 1
+< infile cat | grep test | cut -f \' -f 1 > outfile
+< infile cat | grep test | cut -d \" -f 1 > outfile
+< infile cat | grep test | cut -d \" -f 1 > outfile
+cut -d \' -f 1
+< infile cat | grep test | cut -d \" -f 1 > outfile
+< infile cat | cut -d \" -f 1 > outfile
+< infile cut -d \" -f 1 > outfile
+cut -d \" -f 1 > outfile
+\'
+cut -d \" -f 1 > outfile
+< infile cat | grep test | cut -d \" -f 1 > outfile
+<infile cat | grep test | cut -d \' -f 1 > outfile
+< infile cat | grep test | cut -d \' -f 1 > outfile
+< infile cat | grep test | cut -d  \' -f 1 > outfile
+< infile cat | grep test | cut -d \' -f 1 > outfile
+a -d \' -f 1 > outfile
+| a -d \' -f 1 > outfile
+< infile cat grep test cut -d \' -f 1 > outfile
+ infile cat grep test cut -d \' -f 1 > outfile
+$ infile cat grep test cut -d \' -f 1 > outfile
+< infile cat grep test cut -d \' -f 1 > outfile
+< infile cat | grep test | cut -d \\ -f 1 > outfile
+< infile cat | grep test | cut -d \' -f 1 > outfile
+< infile cat | grep test | cut -d \\ -f 1 > outfile
+< infile cat | grep test | cut -d ''\' -f 1 > outfile
+< infile cat | grep test | cut -d '' -f 1 > outfile
+ infile cat grep test cut -d \' -f 1 > outfile
+& infile cat grep test cut -d \' -f 1 > outfile
+< infile cat grep test cut -d \' -f 1 > outfile
+| infile cat grep test cut -d \' -f 1 > outfile
+\< infile cat grep test cut -d \' -f 1 > outfile
+< infile cat grep test cut -d \' -f 1 > outfile
+ infile cat grep test cut -d \' -f 1 > outfile
+< infile cat grep test cut -d \' -f 1 > outfile
+| infile cat grep test cut -d \' -f 1 > outfile
+ infile cat grep test cut -d \' -f 1 > outfile
+ infile cat grep test cut -d \' -f 1 > outfile
+| infile cat grep test cut -d \' -f 1 > outfile
+< infile cat grep test cut -d \' -f 1 > outfile
+****** infile cat grep test cut -d \' -f 1 > outfile
+\\ infile cat grep test cut -d \' -f 1 > outfile
+\' infile cat grep test cut -d \' -f 1 > outfile
+< infile cat grep test cut -d \' -f 1 > outfile
+ infile cat | grep test cut -d \' -f 1 > outfile
+< infile cat | grep test cut -d \' -f 1 > outfile
+a infile cat | grep test cut -d \' -f 1 > outfile
+ < infile cat | grep test cut -d \' -f 1 > outfile
+< infile cat | grep test cut -d \' -f 1 > outfile
+< infile cat | grep test cut -d \' -f 1 > outfile
+ < infile cat | grep test cut -d \' -f 1 > outfile
+< infile cat | grep test cut -d \' -f 1 > outfile
+ < infile cat | grep test cut -d \' -f 1 > outfile
+ < infile cat | grep test | cut -d \' -f 1 > outfile
+ < infile cat | grep test | cut -d \' -f 1 > outfile
+< infile cat | grep test | cut -d \' -f 1 > outfile
+< cut -d \' -f 1 > file
+ < cut -d \' -f 1 > file
+< infile cat | grep test cut -d \\ -f 1 > outfile
+ < infile cat | grep test cut -d \' -f 1 > outfile
+cat < infile | grep test cut -d \\ -f 1 > outfile
+cat < infile | grep test cut -d \' -f 1 > outfile
+t < infile | grep test cut -d \' -f 1 > outfile
+< infile | grep test cut -d \' -f 1 > outfile
+< infile | grep test cut -d \' -f 1 > outfile
+< infile | grep test cut -d \' -f 1 > outfile
+< infile | grep test cut -d \' -f 1 > outfile
+< infile | grep test cut -d \' -f 1 > outfile
+< infile | grep test cut -d \' -f 1 > outfile
+< infile | grep test cut -d \' -f 1 > outfile
+< infile | grep test cut -d \\ -f 1 > outfile
+< infile | grep test cut -d \\ -f 1 > outfile
+< infile | grep test cut -d \' -f 1 > outfile
+export a="> ola echo banana"
+\e\c\h\o
+\e\c\h\o
+< infile | grep test cut -d \' -f 1 > outfile
+ < infile | grep test cut -d \' -f 1 > outfile
+< \' a
+< \\ a
+< \' a
+< \' a
+ < infile | grep test cut -d \' -f 1 > outfile
+< infile | grep test cut -d \' -f 1 > outfile
+< infile | grep test cut -d \' -f 1 > outfile
+< \\ a
+< \' a
+< infile | grep test cut -d \' -f 1 > outfile
+<infile | grep test cut -d \' -f 1 > outfile
+<infile | grep test cut -d \' -f 1 > outfile
+< infile | grep test cut -d \' -f 1 > outfile
+< \' a
+< \' a
+< infile | grep test cut -d \' -f 1 > outfile
+< infile | grep test cut -d \\ -f 1 > outfile
+< infile | grep test cut -d \\ -f 1 > outfile
+< infile | grep test cut -d \" -f 1 > outfile
+< infile | grep test cut -d \" -f 1 > outfile
+ < infile | grep test cut -d \" -f 1 > outfile
+| infile | grep test cut -d \" -f 1 > outfile
+<<< infile 
+exit
+export a="echo banana ' split << $USER"
+$a
+export a="echo banana ' split << $USER"
+$a
+export a="echo banana ' split << $USER"
+$a
+export a="echo banana ' split << $USER"
+$a
+export a="echo banana 'dasdasdsadasd$USER' split << $USER"
+$a
+export a='echo banana 'dasdasdsadasd$USER' split << $USER'
+$a
+> out $a
+export a='echo banana '$USER$' split << $USER'
+$a
+export a='echo banana '$USER$3a$' split << $USER'
+$a
+< infile | grep test | cut -d \' -f 1 > outfile
+| echo ola
+| echo ola
+| echo ola
+| echo ola >
+ echo ola >
+ echo ola >
+ exit
+ echo ola >
+| echo ola
+ exit'
+ exit\
+ exi\t\
+ exi\t
+ ca\t\
+exit
+ ca\t\
+ exi\t\
+| echo ola
+$a\
+cat\
+cat\<<eof
+cat<<eof
+exit
+cat<<eof
+cat\<<eof
+cat\<<eof
+cat\<<eof
+exit
+echo ola "'" $HOME$HO" $HOME$HOME '$HOME'"
+echo ola "'" $HOME$HO" $HOME$HOME '$HOME'"
+echo ola "'" $HOME$HO" $HOME$HOME $HOME'"
+echo ola "'" $HOME$HO" $HOME$HOME $HOME'""
+echo ola "'" $HOME$HO" $HOME$HOME $HOME'""
+echo ola ""'" $HOME$HO" $HOME$HOME $HOME'""
+echo ola " $HOME$HOME '$HOME'"""
+echo ola  $HOME$HOME '$HOME'""
+echo ola  $HOME$H"""""""OME '$HOME'""
+echo ola  "$HOME$H"""""""O"ME" '$HOME'""
+cat << eof | cat > STDOUT
+cat << $USER | cat > STDOUT
+echo ola ' $HOME" $HOME  $HOME'
+> file echo aaa
+echo ola ' $HOME" $HOME  $HOME'"
+echo ola '" $HOME$HO"" '" $HOME$HO" $HOME$HOME $HOME' ""
+echo ola "'echo ola "'" $HOME$HO" $HOME$HOME '$HOME'"
+echo ola ""'" $HOME$HO" $HOME$HOME $HOME'"$HOME"
+echo ola'pipe'wow "ba'n'an'aa"
+\'echo' 'ola' '>' 'outfile'
+
+'echo' 'ola' '>' 'outfile'
+
+'echo' 'ola' '>' 'outfile'
+"$USER'"'$HOME"'
+$USER"'$NO'"'"'$USER'"'
+$
+$$
+$USER"'$NO'"'"'$USER'"'
+"\'\\"
+echo ' $HOME' $"$USER$" $ $USER'$USER'$?$
+echo ' $HOME' $'$USER$' $ $USER'$USER'$?$
+echo $'$USER"$USER"$USER'
+echo ' $HOME' $"$USER$" $ $'USER''$USER'$?$
+export a="cat << $USER"
+$a
+export a="echo << $USER"
+$a
+export a="cat << $USER"
+$a
+exit
+export a="cat << $USER"
+$a
+export a="echo << $USER"
+$a
+export a="cat << $USER"
+$a
+echo ola > out sexta feira ja
+> out echo sextou misera
+>out echo ola | caat
+exit
+'echo' 'ola' '>' 'out'
+'>' 'echo' 'ola' '>' 'out'
+<<< cat
+cat << '$USER'
+cat << '$USER'
+| infile | grep test cut -d \" -f 1 > outfile
+< infile | grep test cut -d \" -f 1 > outfile
+cat << '$USER'
+cat << "$USER"
+cat << yo"$USER"
+"\'\\"
+> file echo aaa
+exit
+| infile | grep test cut -d \" -f 1 > outfile
+| infile | grep test cut -d \" -f 1 |
+< infile | grep test cut -d \" -f 1 |
+< infile | grep test cut -d \" -f 1 >> out
+echo $_
+\e\c\h\o \o\l\a
+"\e\c\h"\"o \o\l"\a
+"\e\c\h"\"o \o\l"\a"
+"\e\c\h"\"o \o\"l\a"
+"\e\c\h"\"o "\o\l\a"
+\e\x\i\t\
+\\\
+\\\'
+"\\\'"
+" \\\'"
+cut -d \' -f 1
+cut -d "'" -f 1
+exit
+cut -d \' -f 1
+exit
+cut -d \' -f 1
+< infile | grep test cut -d \" -f 1 >> out
+< infile | grep test cut -d \" -f 1 >> out
+<<<ola
+cut -d \' -f 1
+<<<ola
+cut -d \' -f 1
+cut -d \' -f 1
+<<<ola
+<< ola ||
+<< ola |
+echo ola >>> outfile
+exit
+echo ola >>> outfile
+<< ola |
+cut -d \' -f 1
+< infile | grep test cut -d \" -f 1 >> out
+< infile | grep test cut -d \" -f 1 >>> out
+< infile | grep test cut -d \" -f 1 ">>>" out
+< infile | grep test cut -d \" -f 1 >>> out
+exit
+cat <<< $USER
+echo ola >>> out
+echo ola && echo banana
+cat <<< $USER
+echo ola >>> out
+echo ola && echo banana
+echo ola || echo banana
+exit
+echo ola && echo banana
+echo ola || echo banana
+echo ola >>> out
+cat <<< $USER
+cat < $USER
+cat <> $USER
+exit
+< >
+exit
+echo ola
+echo ola
+echo ola
+echo ola
+echo ola
+echo ola
+ banana spli
+exit
+exit
+asd
+ola
+""
+"
+cat <<< $USER
+< >
+echo echo" banana >>"> split
+exit
+echo echo" banana >>"> split
+echo echo " banana >>"> split
+|echo banana
+||echo banana
+das||echo banana
+das"||"echo banana
+exit
+echo ola
+echo ola ; asdas
+echo ola ; asdas
+das||echo banana
+das"||"echo banana
+echo echo" banana >>"> split
+< >
+exit
+< infile | grep test cut -d \" -f 1 >> out
+< |
+< >
+cat <
+cat >
+cat |
+>
+ cat >>>
+echo $"USER"
+export a="ls -la"
+$a
+export a="ls	-la"
+$a
+\e\c\h\o\
+exit
+echo ' $HOME' $"$USER$" $ $'USER''$USER'$?$
+exit
+echo ' $HOME' $"$USER$" $ $'USER''$USER'$?$
+	
+"	"
+exit
+"	"
+export a="ls	-la"
+$a
+	
+	
+echo echo" banana >>"> split
+$a
+exit
+echo echo" banana >>"> split
+	exit
+ola
+	
+	cat Makefile 
+	echo Makefile 
+echo $no
+echo $_
+exit
+echo $"$USER$"$'$USER$'$?$
+export a="echo ola"
+echo ola > $a
+> <
+<|>
+<l|>
+<l|>l
+<| >
+< | >
+< |>
+<|>
+< >
+<>
+<l|>
+<<<l|>
+<<<|>
+<<|>
+<<|>
+<<|>
+<<<|>
+< <|>
+<<| >
+	
+"	"
+exit
+"	"
+	
+exit
+cat "a"
+cat "infile"
+"	"
+exit
+"	"
+<<|>
+<<<<<<<<<
+<<|<<|<<|<<|<
+echo ' $HOME' $"$USER$" $ $'USER''$USER'$?$
+clear
+exit
+asd
+exit
+sdadas
+exit
+exit
+asdadadadadas
+echo $_
+exit
+echo $_
+exit
+$no echo
+$no echo ola
+"" echo ola
+"" echo ola
+exit
+<<|>
+exit
+<<|>
+<<|>
+<<|>
+<<|>
+<<|>|>
+<<dsasad|>|>
+<<dsasad|>|>
+<<dsasad|>|>\.
+<<dsasad|>|>|>
+mrc
+<<dsasad
+<<dsasad
+<<dsasad<
+<<dsasad<<<
+<<dsasad<<
+cat<infile
+cat<infile
+cat<infile
+cat <infile
+<cat <infile
+<cat<infile
+<cat<infile
+<cat< infile
+< cat< infile
+< cat < infile
+"< cat < infile"
+"< cat < infile"
+<" cat < infile"
+<" cat < infile"
+"< cat < infile"
+"< cat < infile"
+"< cat < infile"
+"< cat < infile"
+<" cat < infile"
+<" cat < infile"
+" cat < infile"
+<" cat < infile"
+< " cat < infile"
+< " cat<infile"
+< " cat<infile"
+< " cat< infile"
+< " cat <infile"
+ < " cat <infile"
+ < "cat <infile"
+ < "cat <infile"
+as
+asddsa
+asddsa
+ < "cat <infile"
+<" cat < infile"
+"< cat < infile"
+<cat<infile
+<cat< infile
+<cat < infile
+<cat <infile
+< cat <infile
+< cat "<infile"
+< cat "<infile"
+<cat <infile
+exit
+<cat <infile
+<cat <infile
+<cat <infile
+\e\c\h\o 
+"''''''"'
+export a='echo " ola'
+echo $a
+echo "$a"
+echo ola > "banana split"
+export a="banana split"
+echo ola > $a
+echo ola > "banana split"
+<cat <infile
+<<dsasad<<<
+<<dsasad<<
+<<|>
+<<|>|>
+exit
+<<|>|>
+<<|>|>
+<<|>|>
+<<dsasad<<<
+<<dsasad<<
+<<|>
+<<|>|>
+<cat<infile
+"<cat<infile"
+"<cat<infile"
+<cat<infile
+<<|>|>
+<<|>
+<<dsasad<<<
+<<dsasad|>|>
+<<dsasad|
+<<|dsasad
+exit
+export a="banana split"
+echo "$a"
+echo $a
+export a="echo ' ola "
+echo $a
+echo "$a"
+export a='echo " ola '
+echo $a
+echo "$a"
+export a='echo " ola '
+export a='echo " ola'
+echo "$a"
+echo $a
+export a="echo ' ola "
+echo $a
+echo "$a"
+"<cat<infile"
+<cat<infile
+<<<cat<infile
+<<| <infile
+<<dsasad|>|>
+<<dsasad|>|> outfile
+export a="cat << $USER"
+echo $a
+echo "$a"
+echo '$a'
+$a
+"$USER'"'$HOME"'
+export a="echo ' ola "
+echo $a
+echo "$a"
+exit

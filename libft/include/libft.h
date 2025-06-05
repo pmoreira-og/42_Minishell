@@ -6,7 +6,7 @@
 /*   By: pmoreira <pmoreira@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/28 11:59:03 by pmoreira          #+#    #+#             */
-/*   Updated: 2025/04/25 12:21:29 by pmoreira         ###   ########.fr       */
+/*   Updated: 2025/06/02 15:27:21 by pmoreira         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,6 +21,15 @@
 # include "get_next_line.h"
 # include "ft_list.h"
 # include "ft_fds.h"
+
+// srand((unsigned int)time(NULL));
+// # define MALLOC_FAIL_PROBABILITY 80
+// static inline void *random_fail_malloc(size_t size) {
+//     if ((rand() % MALLOC_FAIL_PROBABILITY) == 0)
+//         return NULL;
+//     return malloc(size);
+// }
+// # define malloc(x) random_fail_malloc(x)
 
 // FT_CHECK
 

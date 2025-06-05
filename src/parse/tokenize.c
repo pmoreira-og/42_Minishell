@@ -6,7 +6,7 @@
 /*   By: pmoreira <pmoreira@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/24 14:39:15 by pmoreira          #+#    #+#             */
-/*   Updated: 2025/05/27 10:49:18 by pmoreira         ###   ########.fr       */
+/*   Updated: 2025/06/02 10:29:00 by pmoreira         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,45 +16,47 @@ int	special_token(t_token *tok)
 {
 	if (!tok)
 		return (0);
-	if (tok->type == REDIR_OUT || tok->type == PIPE)
+	if (tok->type == REDIR_OUT || tok->type == PIPE || tok->type == REDIR_IN)
 		return (1);
 	return (0);
 }
 
-int	valid_format(t_token *tok)
+char	*valid_format(t_token *tok)
 {
-	t_bool	cmd;
 	t_token	*temp;
 
 	if (!tok)
 		return (0);
 	temp = tok;
-	cmd = FALSE;
+	if (temp->type == PIPE)
+		return (temp->cmd);
 	while (temp->next)
-	{
 		temp = temp->next;
-	}
 	if (temp->prev)
 	{
 		temp = temp->prev;
 		if (special_token(temp))
-			return (0);
+			return (TOKEN_NEWLINE);
 	}
-	return (1);
+	return (NULL);
 }
-int	valid_input(t_token *tok)
+
+int	valid_input(t_token *tok, t_hell *data)
 {
 	t_bool	cmd;
 	t_token	*temp;
+	char	*error;
 
 	if (!tok)
 		return (0);
 	temp = tok;
 	cmd = FALSE;
-	if (!valid_format(tok))
-		return (0);
+	error = valid_format(tok);
+	if (error)
+		return (parser_error(error, 2), 0);
 	while (temp->next)
 	{
+		process_str(&temp->cmd, temp->cmd, data, &temp->not_expansive);
 		if (temp->type == PIPE)
 			cmd = FALSE;
 		if (cmd && (temp->type == CMD || temp->type == BUILT_IN))
@@ -108,7 +110,7 @@ void	tokenize(char *input, t_hell *data)
 			return (ft_clean_matrix(matrix));
 		if (count_expand_zones(matrix[i]))
 			matrix[i] = remove_zones(&matrix[i], matrix[i]);
-		process_str(&temp->cmd, matrix[i], data, &temp->not_expansive);
+		temp->cmd = ft_strdup(matrix[i]);
 		temp->next->prev = temp;
 		temp = temp->next;
 	}

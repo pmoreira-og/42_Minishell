@@ -6,7 +6,7 @@
 /*   By: pmoreira <pmoreira@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/24 14:48:17 by pmoreira          #+#    #+#             */
-/*   Updated: 2025/05/27 11:55:36 by pmoreira         ###   ########.fr       */
+/*   Updated: 2025/06/05 11:06:40 by pmoreira         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,19 +23,24 @@
 # include "../libft/include/libft.h"
 # include "pipex.h"
 # include "structs.h"
-
 # define HIST_FILE "minishell_history"
 # define ERR_QUOTES "minishell: syntax error: input contains unclosed quotes\n"
 # define ERR_BAD_FORMAT "minishell: syntax error near unexpected token "
-# define TOKEN_NEWLINE	"'newline'\n"
+# define TOKEN_NEWLINE	"'newline'"
 # define RED "\001\033[31m\002"
 # define RESET "\001\033[0m\002"
+// # define ft_calloc(x, y) NULL
+// # define malloc(x) NULL
 
 // parse:
+void	ft_count(const char *input, int *count);
+int		valid_input(t_token *tok, t_hell *data);
+void	tokenize(char *input, t_hell *data);
+void	quotes_remover(t_hell *data);
+char	*valid_format(t_token *tok);
 void	parser(char **input, t_hell *data);
 char	**ft_params(const char *start);
 void	tokenize(char *input, t_hell *data);
-int		valid_input(t_token *tok);
 int		quotes_check(char *input);
 void	literal(char **ptr, char *s, char *endptr, t_hell *hell);
 void	init_proc(const char **start, const char *s, t_bool *quote, \
@@ -60,17 +65,29 @@ void	concat_expand(char **result, char **new_str, t_hell *hell);
 int		valid_expand(int c);
 int		localized_expansions(char *start, char *end);
 int		count_spaces(char *s);
-char	*add_spaces(char **ptr, char *s);
+void	add_spaces(char **input);
+// char	*add_spaces(char **ptr, char *s);
 int		count_expand_zones(char *input);
 char	*localized_expander(char *start, char *end, t_hell *hell);
 char	*remove_zones(char **ptr, char *input);
 int		is_meta(int c);
 void	parser_error(char *error_msg, int fd);
+int		check_cmds(t_token *tok);
+void	recall_parser(t_hell *data);
+void	token_type(char *s, t_token *tok, t_token *prev, char **path);
+char	*syntax_error_check(char *input);
+char	*space_put(char *input, int len);
+
+// TEST FUNCTIONS ON PARSE
+int	space_length(char *input);
+
+
 
 // miscs:
 void	printascii(void);
 int		get_history_fd(t_hell *cmd);
 void	load_history(t_hell *cmd);
+char	*get_type(t_type type);
 void	save_history(char *input, t_hell *cmd);
 
 // built in functions:
@@ -94,6 +111,7 @@ t_hell	*init_hell(int ac, char **av, char **envp);
 t_bool	is_builtin(char *s);
 t_bool	is_command(char *s, char **path);
 int		check_prev(t_token *prev, t_token *current);
+void	clean_list(t_hell *data);
 void	prepare_next_input(t_hell *data);
 void	print_matrix(char **matrix);
 void	print_token(t_token *toks);

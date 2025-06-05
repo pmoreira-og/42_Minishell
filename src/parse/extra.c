@@ -6,7 +6,7 @@
 /*   By: pmoreira <pmoreira@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/14 13:59:13 by pmoreira          #+#    #+#             */
-/*   Updated: 2025/05/26 15:29:54 by pmoreira         ###   ########.fr       */
+/*   Updated: 2025/06/02 11:12:58 by pmoreira         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -74,6 +74,8 @@ char	*get_env(t_env **env, char *name)
 {
 	t_env	*tmp;
 
+	if (!env || !name)
+		return (NULL);
 	tmp = *env;
 	while (tmp)
 	{

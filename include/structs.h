@@ -6,7 +6,7 @@
 /*   By: pmoreira <pmoreira@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/24 15:03:58 by pmoreira          #+#    #+#             */
-/*   Updated: 2025/05/27 12:12:13 by pmoreira         ###   ########.fr       */
+/*   Updated: 2025/05/30 12:18:16 by pmoreira         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,6 +42,7 @@ typedef enum s_type
 	BUILT_IN,
 	INFILE,
 	OUTFILE,
+	OUTFILE_APPEND,
 }	t_type;
 
 typedef struct s_hell
