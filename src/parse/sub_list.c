@@ -6,7 +6,7 @@
 /*   By: pmoreira <pmoreira@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/05 10:58:27 by pmoreira          #+#    #+#             */
-/*   Updated: 2025/06/05 11:01:02 by pmoreira         ###   ########.fr       */
+/*   Updated: 2025/06/05 12:14:17 by pmoreira         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -114,6 +114,7 @@ static void	append_list(t_token *current, t_hell *data)
 	return (ft_freed(current, matrix));
 }
 
+/// @brief Create a sub list of args and append it to main list.
 void	recall_parser(t_hell *data)
 {
 	t_token	*temp;

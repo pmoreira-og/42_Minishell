@@ -6,7 +6,7 @@
 /*   By: pmoreira <pmoreira@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/29 14:33:17 by pmoreira          #+#    #+#             */
-/*   Updated: 2025/05/30 12:18:34 by pmoreira         ###   ########.fr       */
+/*   Updated: 2025/06/05 12:13:41 by pmoreira         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,7 @@ t_bool	is_command(char *s, char **path)
 	char	*temp;
 
 	i = 0;
-	while(path && path[i])
+	while (path && path[i])
 	{
 		temp = ft_strjoin(path[i], s);
 		if (!temp)

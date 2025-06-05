@@ -6,7 +6,7 @@
 /*   By: pmoreira <pmoreira@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/29 11:28:20 by pmoreira          #+#    #+#             */
-/*   Updated: 2025/06/02 11:48:57 by pmoreira         ###   ########.fr       */
+/*   Updated: 2025/06/05 12:12:59 by pmoreira         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,7 @@ char	**init_local_envp(void)
 	return (new_envp);
 }
 
-t_hell	*init_hell(int ac, char **av,char **envp)
+t_hell	*init_hell(int ac, char **av, char **envp)
 {
 	t_hell	*hell;
 	char	**new_envp;
