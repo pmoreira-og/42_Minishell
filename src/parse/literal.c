@@ -6,7 +6,7 @@
 /*   By: pmoreira <pmoreira@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/15 11:06:07 by pmoreira          #+#    #+#             */
-/*   Updated: 2025/06/06 18:35:31 by pmoreira         ###   ########.fr       */
+/*   Updated: 2025/06/06 18:54:27 by pmoreira         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,7 +30,7 @@ char	*alloc_str(char *s, char *endptr)
 	while (s < endptr)
 	{
 		check_quotes(*s, &quote, &d_quote);
-		if ((!quote) && *s == '\"')
+		if (*s == '\"')
 			count++;
 		if (*s)
 			s++;
@@ -59,7 +59,7 @@ char	*remove_quotes(char *s, char *endptr)
 	while (++i < size)
 	{
 		check_quotes(s[i], &quotes[0], &quotes[1]);
-		if ((!quotes[0]) && s[i] == '\"')
+		if (s[i] == '\"')
 			continue ;
 		if (s[i])
 			output[j++] = s[i];
@@ -153,26 +153,26 @@ void	find_non_expand(char *input, char **start, char **end)
 
 char	*handle_expansion(char *s, char *endptr, t_hell *hell)
 {
-	char	*start;
-	char	*end;
-	char	*temp;
+	// char	*start;
+	// char	*end;
+	// char	*temp;
 	char	*output;
 
 	if (!s || !endptr || !hell)
 		return (NULL);
-	temp = remove_quotes(s, endptr);
-	if (!temp)
-		return (merror("handle_expansion:temp"), NULL);
-	start = temp;
-	output = NULL;
-	end = &temp[ft_strlen(temp)];
-	if (end > start)
-		output = expand_vars(start, end, hell);
-	else
-		output = ft_strdup("");
+	// temp = remove_quotes(s, endptr);
+	// if (!temp)
+	// 	return (merror("handle_expansion:temp"), NULL);
+	// start = temp;
+	// output = NULL;
+	// end = &temp[ft_strlen(temp)];
+	// if (end > start) free(temp), 
+	output = expand_vars(s, endptr, hell);
+	// else
+	// 	output = ft_strdup("");
 	if (!output)
-			return (free(temp), merror("handle_expansion:output"), NULL);
-	return (free(temp), output);
+			return (merror("handle_expansion:output"), NULL);
+	return (output);
 }
 
 void	literal(char **ptr, char *s, char *endptr, t_hell *hell)
