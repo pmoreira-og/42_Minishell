@@ -6,7 +6,7 @@
 /*   By: pmoreira <pmoreira@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/24 14:48:17 by pmoreira          #+#    #+#             */
-/*   Updated: 2025/06/05 12:10:49 by pmoreira         ###   ########.fr       */
+/*   Updated: 2025/06/06 17:55:02 by pmoreira         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,7 +51,10 @@ char	*new_word(const char *start, const char *end);
 char	*expand_vars(char *s, char *end, t_hell *hell);
 char	*ft_expand(char *s1, char *s2, char **temp);
 void	process_str(char **ptr, char *s, t_hell *hell, t_bool *flag);
-char	*remove_quotes(char *s);
+// char	*remove_quotes(char *s);
+char	*remove_quotes(char *s, char *endptr);
+
+
 void	check_char_quote(const char **s, t_bool *quote, t_bool *d_quote);
 int		tab_counter(const char *start, const char *end);
 void	skip_expand_name(char **start, char **s, char *end);
@@ -87,6 +90,7 @@ int		get_history_fd(t_hell *cmd);
 void	load_history(t_hell *cmd);
 char	*get_type(t_type type);
 void	save_history(char *input, t_hell *cmd);
+void	merror(char *s);
 
 // built in functions:
 void	mini_echo(t_cmd *cmd, t_env **env);

@@ -952,3 +952,201 @@ export a="echo ' ola "
 echo $a
 echo "$a"
 exit
+echo -n -nnnnnnn -n
+exit
+echo -n
+echo -n
+export a='echo " ola'
+echo $a
+echo "$a"
+exit
+export a='echo " ola'
+echo "$a"
+exit
+export a='echo " ola'
+echo $a
+ echo $"$USER$"$'$USER'
+$USER
+'$USER$''$USER$'
+'$USER$'$'$USER$'
+''
+""
+''
+'
+''''
+''''a
+exit
+''''a
+''''
+''''a
+''''a
+''''a
+''''a
+""
+ echo $"$USER$"$'$USER'
+ echo $"$USER$"$'$USER'
+ echo $"$USER$"$'$USER'
+ echo $"$USER$"$'$USER'
+ echo $"$USER$"$'$USER'
+ echo $"$USER$"$'$USER'
+''''a
+echo $a
+echo "$a"
+echo "$a" ' banana " split'
+export a='echo " ola'
+echo "$a" ' banana " split'
+echo $a
+echo "$a"
+echo '$a'
+export a="echo ' ola"
+export a="echo ' ola"
+echo "$a"
+echo $a
+export a="echo ' ola"
+export a='echo " ola'
+echo $a
+echo "$a"
+ echo $"$USER$"$'$USER'
+exit
+ echo $"$USER$"$'$USER'
+export a='echo " ola'
+echo "$a"
+echo $a
+export a="echo ' ola"
+echo "$a"
+echo $a
+export a="echo ' ola"
+echo $a
+echo "$a"
+export a='echo " ola'
+echo "$a"
+echo $a
+ echo $"$USER$"$'$USER'
+d
+ echo $"$USER$"$'$USER'
+echo ola "'" $HOME$HO" $HOME$HOME '$HOME'"
+echo ola "'" $HOME$HO" $HOME$HOME '$HOME'"
+echo ola "'" $HOME$HO" $HOME$HOME '$HOME'"
+echo ola "'" $HOME$HO" $HOME$HOME '$HOME'"
+echo ola "'" $HOME$HO" $HOME$HOME '$HOME'"
+echo ola "'" $HOME$HO" $HOME$HOME '$HOME'"
+echo ola "'" $HOME$HO" $HOME$HOME '$HOME'"
+echo ola "'" $HOME$HO" $HOME$HOME '$HOME'"
+echo ola "'" $HOME$HO" $HOME$HOME '$HOME'"
+echo ola "'" $HOME$HO" $HOME$HOME '$HOME'"
+echo ola "'" $HOME$HO" $HOME$HOME '$HOME'"
+echo ola "'" $HOME$HO" $HOME$HOME '$HOME'"
+echo ola "'" $HOME$HO" $HOME$HOME '$HOME'"
+echo ola "'" $HOME$HO" $HOME$HOME '$HOME'"
+echo ola "'" $HOME$HO" $HOME$HOME '$HOME'"
+echo ola "'" $HOME$HO" $HOME$HOME '$HOME'"
+echo ola "'" $HOME$HO" $HOME$HOME '$HOME'"
+echo ola "'" $HOME$HO" $HOME$HOME '$HOME'"
+mrc
+echo ola "'" $HOME$HO" $HOME$HOME '$HOME'"
+echo ola "'" $HOME$HO" $HOME$HOME '$HOME'"
+echo ola "'" $HOME$HO" $HOME$HOME '$HOME'"
+echo ola "'" $HOME$HO" $HOME$HOME '$HOME'"
+echo ola "'" $HOME$HO" $HOME$HOME '$HOME'"
+echo ola "'" $HOME$HO" $HOME$HOME '$HOME'"
+echo ola "'" $HOME$HO" $HOME$HOME '$HOME'"
+echo ola "'" $HOME$HO" $HOME$HOME '$HOME'"
+echo ola "'" $HOME$HO" $HOME$HOME '$HOME'"
+echo ola "'" $HOME$HO" $HOME$HOME '$HOME'"
+echo ola "'" $HOME$HO" $HOME$HOME '$HOME'"
+echo ola "'" $HOME$HO" $HOME$HOME '$HOME'"
+export a="echo ' ola"
+echo $a
+echo "$a"
+export a='echo " ola'
+echo "$a"
+echo $a
+ echo $"$USER$"$'$USER'
+''
+''''""
+""
+""
+""
+""
+""
+""
+""
+''''
+'"''"'
+echo "'"''"'"
+echo ""
+echo ""
+""
+""
+" "
+" a"
+"	"
+"	"
+	
+""
+echo "'"''"'"
+ echo $"$USER$"$'$USER'
+echo "$a"
+echo ""
+export a='echo " ola'
+echo "$a"
+echo "$a"
+""
+""
+"	"
+export a='echo " ola'
+echo "$a"
+echo $a
+export a="echo ' ola"
+echo $a
+echo "$a"
+export a="echo ' ola"
+echo "$a"
+echo $a
+export a='echo " ola'
+echo $a
+echo "$a"
+echo '$a'
+""
+''
+''""
+$"$USER$"$'$USER$'
+echo $"$USER$"$'$USER$'
+"echo" ''""
+'e'ch'o' ''""
+'e'ch'o' ''""
+'e'ch'o' ''""
+'e'c'h'o' ''""
+'e''c''h''o' ''""
+'e''c''h''o' ''"'"
+echo ola "'" $HOME$HO" $HOME$HOME '$HOME'"
+echo ola "'" $HOME$HO" $HOME$HOME $HOME'"
+echo ola "'" $HOME$HO" $HOME$HOME $HOME'""
+echo ola ""'" $HOME$HO" $HOME$HOME $HOME'""
+echo ola " $HOME$HOME '$HOME'"""
+echo ola  $HOME$HOME '$HOME'""
+echo ola  $HOME$H"""""""OME '$HOME'""
+echo ola  "$HOME$H"""""""O"ME" '$HOME'""
+echo ola ' $HOME" $HOME  $HOME'
+echo ola ' $HOME" $HOME  $HOME'"
+echo ola ""'" $HOME$HO" $HOME$HOME $HOME'"$HOME"
+echo ola'pipe'wow "ba'n'an'aa"
+'echo' 'ola' '>' 'outfile'
+"$USER'"'$HOME"'
+$USER"'$NO'"'"'$USER'"'
+$
+$$
+$""
+$''
+echo ' $HOME' $"$USER$" $ $USER'$USER'$?$
+echo ' $HOME' $'$USER$' $ $USER'$USER'$?$
+echo $'$USER"$USER"$USER'
+echo ' $HOME' $"$USER$" $ $'USER''$USER'$?$
+$no ls
+echo ' $HOME' $"$USER$" $ $'USER''$USER'$?$
+echo ' $HOME' $"$USER$" $ $'USER''$USER'$?$
+$""
+echo ' $HOME' $"$USER$" $ $'USER''$USER'$?$
+echo ' $HOME' $"$USER$" $ $'USER''$USER'$?$
+$""
+'echo' 'ola' '>' 'outfile'
