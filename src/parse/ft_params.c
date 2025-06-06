@@ -6,13 +6,13 @@
 /*   By: pmoreira <pmoreira@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/26 12:23:53 by pmoreira          #+#    #+#             */
-/*   Updated: 2025/06/02 10:47:32 by pmoreira         ###   ########.fr       */
+/*   Updated: 2025/06/06 21:07:36 by pmoreira         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minishell.h"
 
-static char	**ft_free(char **matrix, int index)
+char	**ft_free(char **matrix, int index)
 {
 	while (index > 0)
 		free(matrix[--index]);
@@ -109,13 +109,13 @@ char	**ft_params(const char *start)
 	size = 0;
 	ft_count(start, &size);
 	if (size == 0)
-		return (NULL);
+		return (merror("ft_params:matrix"), NULL);
 	matrix = (char **)malloc(sizeof(char *) * (size + 1));
 	if (!matrix)
 		return (NULL);
 	matrix[size] = NULL;
 	index = 0;
 	if (!proc_str(matrix, start, &index))
-		return (NULL);
+		return (merror("ft_params:words"), NULL);
 	return (matrix);
 }

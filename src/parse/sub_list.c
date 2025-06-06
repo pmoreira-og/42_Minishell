@@ -6,7 +6,7 @@
 /*   By: pmoreira <pmoreira@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/05 10:58:27 by pmoreira          #+#    #+#             */
-/*   Updated: 2025/06/05 12:41:55 by pmoreira         ###   ########.fr       */
+/*   Updated: 2025/06/06 21:12:09 by pmoreira         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -94,17 +94,17 @@ static void	append_list(t_token *current, t_hell *data)
 
 	matrix = ft_params(current->cmd);
 	if (!matrix)
-		return (ft_putstr_fd("Malloc append error\n", 2));
+		return (merror("append_list:matrix"));
 	i = -1;
 	new_args = ft_calloc(1, sizeof(t_token));
 	if (!new_args)
-		return ;
+		return (ft_clean_matrix(matrix), merror("append_list:head"));
 	temp = new_args;
 	while (matrix[++i])
 	{
 		temp->next = ft_calloc(1, sizeof(t_token));
 		if (!temp->next)
-			return (ft_clean_matrix(matrix));
+			return (ft_clean_matrix(matrix), merror("append_list:nodes"));
 		temp->cmd = ft_strdup(matrix[i]);
 		temp->next->prev = temp;
 		temp = temp->next;

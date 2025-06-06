@@ -6,7 +6,7 @@
 /*   By: pmoreira <pmoreira@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/24 14:48:17 by pmoreira          #+#    #+#             */
-/*   Updated: 2025/06/06 19:09:36 by pmoreira         ###   ########.fr       */
+/*   Updated: 2025/06/06 20:59:30 by pmoreira         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -120,5 +120,6 @@ void	prepare_next_input(t_hell *data);
 void	clean_cmds(t_hell *data);
 void	clean_env(t_hell *data);
 void	clean_list(t_hell *data);
+char	**ft_free(char **matrix, int index);
 void	clean_export(t_hell *data);
 #endif

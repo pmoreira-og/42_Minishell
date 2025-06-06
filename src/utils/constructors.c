@@ -6,7 +6,7 @@
 /*   By: pmoreira <pmoreira@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/29 11:28:20 by pmoreira          #+#    #+#             */
-/*   Updated: 2025/06/05 12:12:59 by pmoreira         ###   ########.fr       */
+/*   Updated: 2025/06/06 21:22:10 by pmoreira         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,7 +30,7 @@ t_hell	*init_hell(int ac, char **av, char **envp)
 
 	hell = ft_calloc(1, sizeof(t_hell));
 	if (!hell)
-		return (NULL);
+		return (merror("init_hell:main"), NULL);
 	if (!envp)
 		new_envp = init_local_envp();
 	else
@@ -38,11 +38,11 @@ t_hell	*init_hell(int ac, char **av, char **envp)
 	init_env(&hell->env, new_envp);
 	init_export(&hell->export, new_envp);
 	if (!hell->env || !hell->export)
-		return (armageddon(hell), NULL);
+		return (merror("init_hell:env"), armageddon(hell), NULL);
 	hell->envp = new_envp;
 	hell->path = ft_getenv(new_envp, "PATH", ':');
 	if (!hell->path)
-		return (armageddon(hell), NULL);
+		return (merror("init_hell:path"), armageddon(hell), NULL);
 	if (!get_history_fd(hell))
 		load_history(hell);
 	if (ac == 2 && !ft_strcmp(av[1], "-b"))

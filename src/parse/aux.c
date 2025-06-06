@@ -6,7 +6,7 @@
 /*   By: pmoreira <pmoreira@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/22 15:21:45 by pmoreira          #+#    #+#             */
-/*   Updated: 2025/06/05 11:17:10 by pmoreira         ###   ########.fr       */
+/*   Updated: 2025/06/06 20:55:28 by pmoreira         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,7 +55,7 @@ char	*remove_zones(char **ptr, char *input)
 		return (NULL);
 	output = malloc(ft_strlen(input) - count_expand_zones(input) + 1);
 	if (!output)
-		return (NULL);
+		return (merror("remove_zones"), NULL);
 	i = 0;
 	init_proc(NULL, NULL, &quote, &d_quote);
 	while (*input)

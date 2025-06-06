@@ -1210,3 +1210,7 @@ export a='echo " ola'
 $a
 echo $a
 echo "$a"
+echo ''""''
+echo ""'"'"""'"
+1	echo ola  "$HOME$H"""""""O"ME" '$HOME'""	4	ola /home/pmoreiraOME $HOM
+echo ola  "$HOME$H"""""""O"ME" '$HOME'""

@@ -6,7 +6,7 @@
 /*   By: pmoreira <pmoreira@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/15 11:06:07 by pmoreira          #+#    #+#             */
-/*   Updated: 2025/06/06 18:54:27 by pmoreira         ###   ########.fr       */
+/*   Updated: 2025/06/06 20:49:55 by pmoreira         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -66,62 +66,6 @@ char	*remove_quotes(char *s, char *endptr)
 	}
 	return (output);
 }
-// char	*alloc_str(char *s)
-// {
-// 	char	*output;
-// 	int		count;
-// 	int		i;
-// 	t_bool	quote;
-// 	t_bool	d_quote;
-
-// 	if (!s)
-// 		return (NULL);
-// 	count = 0;
-// 	i = 0;
-// 	init_proc(NULL, NULL, &quote, &d_quote);
-// 	while (s[i])
-// 	{
-// 		check_quotes(s[i], &quote, &d_quote);
-// 		if ((!quote) && s[i] == '\"')
-// 			count++;
-// 		else if ((!d_quote) && s[i] == '\'')
-// 			count++;
-// 		if (s[i])
-// 			i++;
-// 	}
-// 	output = ft_calloc(ft_strlen(s) - count + 1, 1);
-// 	if (!output)
-// 		return (NULL);
-// 	return (output);
-// }
-
-// char	*remove_quotes(char *s)
-// {
-// 	char	*output;
-// 	int		i;
-// 	int		j;
-// 	t_bool	quote;
-// 	t_bool	d_quote;
-
-// 	i = -1;
-// 	j = 0;
-// 	output = alloc_str(s);
-// 	if (!output)
-// 		return (NULL);
-// 	init_proc(NULL, NULL, &quote, &d_quote);
-// 	while (s[++i])
-// 	{
-// 		check_quotes(s[i], &quote, &d_quote);
-// 		if ((!quote) && s[i] == '\"')
-// 			continue ;
-// 		if ((!d_quote) && s[i] == '\'')
-// 			continue ;
-// 		if (s[i])
-// 			output[j++] = s[i];
-// 	}
-// 	free(s);
-// 	return (output);
-// }
 
 void	find_non_expand(char *input, char **start, char **end)
 {
@@ -153,25 +97,13 @@ void	find_non_expand(char *input, char **start, char **end)
 
 char	*handle_expansion(char *s, char *endptr, t_hell *hell)
 {
-	// char	*start;
-	// char	*end;
-	// char	*temp;
 	char	*output;
 
 	if (!s || !endptr || !hell)
 		return (NULL);
-	// temp = remove_quotes(s, endptr);
-	// if (!temp)
-	// 	return (merror("handle_expansion:temp"), NULL);
-	// start = temp;
-	// output = NULL;
-	// end = &temp[ft_strlen(temp)];
-	// if (end > start) free(temp), 
 	output = expand_vars(s, endptr, hell);
-	// else
-	// 	output = ft_strdup("");
 	if (!output)
-			return (merror("handle_expansion:output"), NULL);
+			return (merror("handle_expansion"), NULL);
 	return (output);
 }
 
@@ -202,30 +134,3 @@ void	literal(char **ptr, char *s, char *endptr, t_hell *hell)
 			break ;
 	}
 }
-// void	literal(char **ptr, char *s, char *endptr, t_hell *hell)
-// {
-// 	char	*start;
-// 	char	*end;
-// 	char	*temp;
-
-// 	while (s < endptr)
-// 	{
-// 		find_non_expand(s, &start, &end);
-// 		if (!start || !end)
-// 		{
-// 			temp = expand_vars(s, endptr, hell);
-// 			*ptr = ft_expand(*ptr, temp, &temp);
-// 			break ;
-// 		}
-// 		if (start > s)
-// 		{
-// 			temp = expand_vars(s, start, hell);
-// 			*ptr = ft_expand(*ptr, temp, &temp);
-// 		}
-// 		temp = new_word(start, end);
-// 		*ptr = ft_expand(*ptr, temp, &temp);
-// 		s = end;
-// 		if (*s == '\0')
-// 			break ;
-// 	}
-// }

@@ -6,7 +6,7 @@
 /*   By: pmoreira <pmoreira@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/29 14:33:17 by pmoreira          #+#    #+#             */
-/*   Updated: 2025/06/05 12:13:41 by pmoreira         ###   ########.fr       */
+/*   Updated: 2025/06/06 21:23:09 by pmoreira         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,7 @@ t_bool	is_command(char *s, char **path)
 	{
 		temp = ft_strjoin(path[i], s);
 		if (!temp)
-			return (FALSE);
+			return (merror("is_command:temp"), FALSE);
 		if (access(temp, F_OK) != -1)
 			return (free(temp), TRUE);
 		free(temp);

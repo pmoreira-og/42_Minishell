@@ -6,7 +6,7 @@
 /*   By: pmoreira <pmoreira@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/24 14:39:15 by pmoreira          #+#    #+#             */
-/*   Updated: 2025/06/06 16:00:24 by pmoreira         ###   ########.fr       */
+/*   Updated: 2025/06/06 21:17:30 by pmoreira         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -100,46 +100,17 @@ void	tokenize(char *input, t_hell *data)
 	i = -1;
 	data->tokens = ft_calloc(1, sizeof(t_token));
 	if (!data->tokens)
-		return ;
+		return (ft_clean_matrix(matrix), merror("tokenize:head"));
 	temp = data->tokens;
 	while (matrix[++i])
 	{
 		token_type(matrix[i], temp, temp->prev, data->path);
 		temp->next = ft_calloc(1, sizeof(t_token));
 		if (!temp->next)
-			return (ft_clean_matrix(matrix));
-		// matrix[i] = remove_quotes(matrix[i]);
+			return (ft_clean_matrix(matrix), merror("tokenize:node"));
 		temp->cmd = ft_strdup(matrix[i]);
 		temp->next->prev = temp;
 		temp = temp->next;
 	}
 	ft_clean_matrix(matrix);
 }
-// void	tokenize(char *input, t_hell *data)
-// {
-// 	char	**matrix;
-// 	int		i;
-// 	t_token	*temp;
-
-// 	matrix = ft_params(input);
-// 	if (!matrix)
-// 		return ;
-// 	i = -1;
-// 	data->tokens = ft_calloc(1, sizeof(t_token));
-// 	if (!data->tokens)
-// 		return ;
-// 	temp = data->tokens;
-// 	while (matrix[++i])
-// 	{
-// 		token_type(matrix[i], temp, temp->prev, data->path);
-// 		temp->next = ft_calloc(1, sizeof(t_token));
-// 		if (!temp->next)
-// 			return (ft_clean_matrix(matrix));
-// 		if (count_expand_zones(matrix[i]))
-// 			matrix[i] = remove_zones(&matrix[i], matrix[i]);
-// 		temp->cmd = ft_strdup(matrix[i]);
-// 		temp->next->prev = temp;
-// 		temp = temp->next;
-// 	}
-// 	ft_clean_matrix(matrix);
-// }
