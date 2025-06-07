@@ -1214,3 +1214,49 @@ echo ''""''
 echo ""'"'"""'"
 1	echo ola  "$HOME$H"""""""O"ME" '$HOME'""	4	ola /home/pmoreiraOME $HOM
 echo ola  "$HOME$H"""""""O"ME" '$HOME'""
+"$c""$a"$t Makefile
+export ola'pipe'wow "ba'n'an'aa"
+export
+export a=ola'pipe'wow" ""ba'n'an'aa"
+echo $a
+export a=ola'pipe'wow" ""ba'n'an'aa"
+echo $a
+export a=echo" "ola'pipe'wow" ""ba'n'an'aa"
+$a
+$"$USER$"""$'$USER$'''""''
+$no ls
+$no ls 
+"" ls
+$no ls
+$no ls
+"" ls
+"" ls
+$no ls
+$"$USER$"""$'$USER$'''""''
+$"$USER$"""$'$USER$'''""''
+$no ls
+"" ls
+$noexist$fucktheexport ls
+$USER ls
+$"$USER$"""$'$USER$'''""''
+export a=ola'pipe'wow" ""ba'n'an'aa"
+echo $a
+echo "$a"
+echo '$a'
+$a
+$
+$$
+$3
+$3a
+export a=ola'pipe'wow" ""ba'n'an'aa"
+$a
+echo ola  "$HOME$H"""""""O"ME" '$HOME'""
+export a=echo" "ola'pipe'wow" ""ba'n'an'aa"
+$a
+echo $a
+export a
+$a
+echo $a
+""
+$a
+''""''

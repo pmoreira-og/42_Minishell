@@ -6,7 +6,7 @@
 /*   By: pmoreira <pmoreira@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/15 11:06:07 by pmoreira          #+#    #+#             */
-/*   Updated: 2025/06/06 20:49:55 by pmoreira         ###   ########.fr       */
+/*   Updated: 2025/06/07 16:57:11 by pmoreira         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -103,7 +103,7 @@ char	*handle_expansion(char *s, char *endptr, t_hell *hell)
 		return (NULL);
 	output = expand_vars(s, endptr, hell);
 	if (!output)
-			return (merror("handle_expansion"), NULL);
+		return (merror("handle_expansion"), NULL);
 	return (output);
 }
 

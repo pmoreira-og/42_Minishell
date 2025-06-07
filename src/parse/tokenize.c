@@ -6,7 +6,7 @@
 /*   By: pmoreira <pmoreira@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/24 14:39:15 by pmoreira          #+#    #+#             */
-/*   Updated: 2025/06/06 21:17:30 by pmoreira         ###   ########.fr       */
+/*   Updated: 2025/06/07 18:12:51 by pmoreira         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,7 +56,9 @@ int	valid_input(t_token *tok, t_hell *data)
 		return (parser_error(error, 2), 0);
 	while (temp->next)
 	{
-		process_str(&temp->cmd, temp->cmd, data, &temp->not_expansive);
+		if (temp && temp->cmd)
+			temp->expanded = has_expansion(temp->cmd);
+		process_str(&temp->cmd, temp->cmd, data);
 		if (temp->type == PIPE)
 			cmd = FALSE;
 		if (cmd && (temp->type == CMD || temp->type == BUILT_IN))
@@ -109,6 +111,8 @@ void	tokenize(char *input, t_hell *data)
 		if (!temp->next)
 			return (ft_clean_matrix(matrix), merror("tokenize:node"));
 		temp->cmd = ft_strdup(matrix[i]);
+		if (!temp->cmd)
+			return (mini_cleaner(matrix, data), merror("tokenize:node:cmd"));
 		temp->next->prev = temp;
 		temp = temp->next;
 	}

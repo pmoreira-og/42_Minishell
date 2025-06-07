@@ -6,7 +6,7 @@
 /*   By: pmoreira <pmoreira@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/05 10:58:27 by pmoreira          #+#    #+#             */
-/*   Updated: 2025/06/06 21:12:09 by pmoreira         ###   ########.fr       */
+/*   Updated: 2025/06/07 17:14:55 by pmoreira         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -80,7 +80,6 @@ static void	recall_token(t_token *tok, t_hell *data)
 		}
 		else
 			temp->type = ARG;
-		temp->not_expansive = TRUE;
 		temp = temp->next;
 	}
 }

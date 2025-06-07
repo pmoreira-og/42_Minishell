@@ -6,7 +6,7 @@
 /*   By: pmoreira <pmoreira@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/27 14:39:30 by pmoreira          #+#    #+#             */
-/*   Updated: 2025/06/06 20:48:27 by pmoreira         ###   ########.fr       */
+/*   Updated: 2025/06/07 16:54:52 by pmoreira         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,7 +37,7 @@ int	quotes_check(char *input)
 	return (1);
 }
 
-void	add_spaces(char **input)
+void	pre_process_input(char **input)
 {
 	int		count;
 	char	*new_input;
@@ -50,7 +50,7 @@ void	add_spaces(char **input)
 	{
 		new_input = space_put(*input, count);
 		if (!new_input)
-			return (merror("add_spaces:new_input"));
+			return (merror("pre_process_input:new_input"));
 		free (*input);
 		*input = new_input;
 	}
@@ -58,6 +58,6 @@ void	add_spaces(char **input)
 	{
 		*input = remove_zones(input, *input);
 		if (!*input)
-			return (merror("add_spaces:remove_zones"));
+			return (merror("pre_process_input:remove_zones"));
 	}
 }
