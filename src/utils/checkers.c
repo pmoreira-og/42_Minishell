@@ -6,7 +6,7 @@
 /*   By: pmoreira <pmoreira@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/29 14:33:17 by pmoreira          #+#    #+#             */
-/*   Updated: 2025/06/05 12:13:41 by pmoreira         ###   ########.fr       */
+/*   Updated: 2025/06/07 17:15:25 by pmoreira         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,7 @@ t_bool	is_command(char *s, char **path)
 	{
 		temp = ft_strjoin(path[i], s);
 		if (!temp)
-			return (FALSE);
+			return (merror("is_command:temp"), FALSE);
 		if (access(temp, F_OK) != -1)
 			return (free(temp), TRUE);
 		free(temp);
@@ -57,10 +57,7 @@ int	check_prev(t_token *prev, t_token *current)
 	else if (prev && prev->type == REDIR_IN)
 		current->type = INFILE;
 	else if (prev && prev->type == REDIR_HERE_DOC)
-	{
 		current->type = LIM;
-		current->not_expansive = TRUE;
-	}
 	else if (prev && prev->type == REDIR_OUT)
 		current->type = OUTFILE;
 	else if (prev && prev->type == REDIR_OUT_APPEND)

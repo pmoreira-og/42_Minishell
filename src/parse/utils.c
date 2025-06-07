@@ -6,7 +6,7 @@
 /*   By: pmoreira <pmoreira@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/27 14:39:30 by pmoreira          #+#    #+#             */
-/*   Updated: 2025/06/05 12:04:08 by pmoreira         ###   ########.fr       */
+/*   Updated: 2025/06/07 16:54:52 by pmoreira         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,23 +37,7 @@ int	quotes_check(char *input)
 	return (1);
 }
 
-void	quotes_remover(t_hell *data)
-{
-	t_token	*temp;
-
-	if (!data->tokens)
-		return ;
-	temp = data->tokens;
-	while (temp->next)
-	{
-		if (temp && temp->not_expansive == FALSE
-			&& !(!ft_strcmp(temp->cmd, "\"") || !ft_strcmp(temp->cmd, "\'")))
-			temp->cmd = remove_quotes(temp->cmd);
-		temp = temp->next;
-	}
-}
-
-void	add_spaces(char **input)
+void	pre_process_input(char **input)
 {
 	int		count;
 	char	*new_input;
@@ -65,7 +49,15 @@ void	add_spaces(char **input)
 	if (count)
 	{
 		new_input = space_put(*input, count);
+		if (!new_input)
+			return (merror("pre_process_input:new_input"));
 		free (*input);
 		*input = new_input;
+	}
+	if (count_expand_zones(*input))
+	{
+		*input = remove_zones(input, *input);
+		if (!*input)
+			return (merror("pre_process_input:remove_zones"));
 	}
 }

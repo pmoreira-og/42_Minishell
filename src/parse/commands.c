@@ -6,11 +6,23 @@
 /*   By: pmoreira <pmoreira@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/20 11:36:02 by pmoreira          #+#    #+#             */
-/*   Updated: 2025/05/22 13:22:42 by pmoreira         ###   ########.fr       */
+/*   Updated: 2025/06/07 18:08:51 by pmoreira         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minishell.h"
+
+t_bool	valid_arg(t_token *tok)
+{
+	t_bool	invalid;
+
+	if (!tok)
+		return (FALSE);
+	invalid = tok->expanded && !ft_strcmp(tok->cmd, "");
+	if (invalid)
+		return (FALSE);
+	return (TRUE);
+}
 
 int	command_size(t_token *start, t_token **save_ptr, int *cmd_c, t_bool *flag)
 {
@@ -23,8 +35,8 @@ int	command_size(t_token *start, t_token **save_ptr, int *cmd_c, t_bool *flag)
 	count = 0;
 	while (temp->next && temp->type != PIPE)
 	{
-		if ((temp->type == ARG) || (temp->type == BUILT_IN)
-			|| (temp->type == CMD))
+		if (((temp->type == ARG) || (temp->type == BUILT_IN)
+				|| (temp->type == CMD)) && valid_arg(temp))
 			count++;
 		temp = temp->next;
 	}
@@ -52,13 +64,18 @@ char	**build_args(t_token *start, t_cmd **cmd)
 	(*cmd)->argc = command_size(start, &temp, NULL, &(*cmd)->is_piped);
 	args = ft_calloc((*cmd)->argc + 1, sizeof(char *));
 	if (!args)
-		return (NULL);
+		return (merror("build_args:matrix"), NULL);
 	i = 0;
 	while (start->next && start->type != PIPE)
 	{
-		if ((start->type == ARG) || (start->type == BUILT_IN)
-			|| (start->type == CMD))
-			args[i++] = ft_strdup(start->cmd);
+		if (((start->type == ARG) || (start->type == BUILT_IN)
+				|| (start->type == CMD)) && valid_arg(start))
+		{
+			args[i] = ft_strdup(start->cmd);
+			if (!args[i])
+				return (merror("build_args:arg"), ft_free(args, ++i));
+			i++;
+		}
 		start = start->next;
 	}
 	return (args);
@@ -68,7 +85,7 @@ void	fill_cmd(t_cmd **cmd, t_token *start)
 {
 	(*cmd)->args = build_args(start, cmd);
 	if (!(*cmd)->args)
-		return ((void) printf("DEU RUIM"));
+		return ;
 	if ((*cmd)->args[0])
 		(*cmd)->is_builtin = is_builtin((*cmd)->args[0]);
 }
@@ -83,13 +100,13 @@ void	init_cmds(t_hell *data)
 	temp = data->tokens;
 	data->cmd = ft_calloc(1, sizeof(t_cmd));
 	if (!data->cmd)
-		return ;
+		return (merror("init_cmds:struct"));
 	cmd_tmp = data->cmd;
 	while (temp)
 	{
 		cmd_tmp->next = ft_calloc(1, sizeof(t_cmd));
 		if (!cmd_tmp->next)
-			return ;
+			return (merror("init_cmds:node"));
 		fill_cmd(&cmd_tmp, temp);
 		command_size(temp, &temp, &data->cmd_count, NULL);
 		cmd_tmp = cmd_tmp->next;

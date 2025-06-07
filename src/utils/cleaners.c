@@ -6,7 +6,7 @@
 /*   By: pmoreira <pmoreira@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/29 11:10:40 by pmoreira          #+#    #+#             */
-/*   Updated: 2025/06/05 12:08:58 by pmoreira         ###   ########.fr       */
+/*   Updated: 2025/06/07 17:21:00 by pmoreira         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,6 +22,14 @@ void	prepare_next_input(t_hell *data)
 		clean_cmds(data);
 		data->cmd = NULL;
 	}
+}
+
+void	mini_cleaner(char **matrix, t_hell *data)
+{
+	if (matrix)
+		ft_clean_matrix(matrix);
+	if (data)
+		armageddon(data);
 }
 
 void	armageddon(t_hell *data)

@@ -6,7 +6,7 @@
 /*   By: pmoreira <pmoreira@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/14 14:59:37 by pmoreira          #+#    #+#             */
-/*   Updated: 2025/06/05 11:53:41 by pmoreira         ###   ########.fr       */
+/*   Updated: 2025/06/07 18:12:35 by pmoreira         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,10 +39,15 @@ char	*ft_expand(char *s1, char *s2, char **temp)
 	char	*tmp;
 
 	tmp = ft_strjoin(s1, s2);
+	if (!tmp)
+		return (free(s1), merror("ft_expand"), NULL);
 	if (s1)
 		free(s1);
-	if (temp)
+	if (temp && *temp)
+	{
 		free(*temp);
+		*temp = NULL;
+	}
 	return (tmp);
 }
 
@@ -53,7 +58,7 @@ void	associate(char **ptr, char *new_str)
 	*ptr = new_str;
 }
 
-void	process_str(char **ptr, char *s, t_hell *hell, t_bool *flag)
+void	process_str(char **ptr, char *s, t_hell *hell)
 {
 	char	*output;
 	char	*start;
@@ -64,13 +69,13 @@ void	process_str(char **ptr, char *s, t_hell *hell, t_bool *flag)
 		return ;
 	output = NULL;
 	start = s;
-	if (!ft_strcmp(s, "$") || *flag)
+	if (!ft_strcmp(s, "$"))
 		return ;
 	size = ft_strlen(s);
 	end = &s[size - 1];
 	literal(&output, start, end + 1, hell);
 	if (!output)
-		return ;
+		return (merror("process_str"));
 	return (free(*ptr), associate(ptr, output));
 }
 
@@ -83,13 +88,12 @@ void	parser(char **input, t_hell *data)
 	}
 	if (!ft_strcmp(*input, "") || !quotes_check(*input))
 		return ;
-	add_spaces(input);
+	pre_process_input(input);
 	tokenize(*input, data);
 	if (data->tokens && !valid_input(data->tokens, data))
 		return ;
 	if (!check_cmds(data->tokens))
 		recall_parser(data);
-	quotes_remover(data);
 	init_cmds(data);
 	if (data->debug)
 	{

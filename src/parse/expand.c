@@ -6,7 +6,7 @@
 /*   By: pmoreira <pmoreira@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/07 14:40:54 by pmoreira          #+#    #+#             */
-/*   Updated: 2025/05/26 11:41:32 by pmoreira         ###   ########.fr       */
+/*   Updated: 2025/06/07 16:57:26 by pmoreira         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,17 +32,48 @@ void	concat_expand(char **result, char **new_str, t_hell *hell)
 	{
 		temp = ft_itoa(hell->status);
 		if (!temp)
-			return ;
+			return (merror("concat_expand:itoa"));
 		if (!(*result))
 			*result = ft_strdup("");
 		*result = ft_expand(*result, temp, new_str);
+		if (!*result)
+			return (free(temp), merror("concat_expand:expand"));
 		free(temp);
 	}
 	else
 		*result = ft_expand(*result, (get_env(&hell->env, *new_str)), new_str);
+	if (!*result)
+		return (merror("concat_expand:expand2"));
 }
 
 char	*expand_vars(char *s, char *end, t_hell *hell)
+{
+	char	*result;
+	char	*start;
+	char	*temp;
+
+	result = NULL;
+	while (s < end)
+	{
+		start = s++;
+		if (*start == '$' && *s && (valid_expand(*s) || *s == '\?'))
+		{
+			skip_name(&start, &s, end);
+			temp = new_word(start, s);
+			concat_expand(&result, &temp, hell);
+		}
+		else
+		{
+			while ((s < end) && *s && *s != '$')
+				s++;
+			temp = remove_quotes(start, s);
+			result = ft_expand(result, temp, &temp);
+		}
+	}
+	return (result);
+}
+
+char	*expand_heredoc(char *s, char *end, t_hell *hell)
 {
 	char	*result;
 	char	*start;

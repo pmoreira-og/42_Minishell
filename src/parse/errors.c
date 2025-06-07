@@ -6,7 +6,7 @@
 /*   By: pmoreira <pmoreira@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/22 15:33:31 by pmoreira          #+#    #+#             */
-/*   Updated: 2025/06/03 14:47:55 by pmoreira         ###   ########.fr       */
+/*   Updated: 2025/06/06 21:18:44 by pmoreira         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,26 +41,6 @@ char	*check_str(char *s)
 	return (NULL);
 }
 
-// char	*check_str2(char *s)
-// {
-// 	char	*temp;
-// 	t_bool	quotes[2];
-
-// 	if (!s)
-// 		return (NULL);
-// 	init_proc((const char **)&temp, s, &quotes[0], &quotes[1]);
-// 	while(*s)
-// 	{
-// 		check_char_quote((const char **)&s, &quotes[0], &quotes[1]);
-// 		if (!quotes[0] && !quotes[1] && is_meta(*s))
-// 		{
-// 			temp = s;
-			
-// 		}
-// 	}
-// 	return (NULL);
-// }
-
 char	*syntax_error_check(char *input)
 {
 	char	*error;
@@ -77,12 +57,19 @@ char	*syntax_error_check(char *input)
 		error = check_str(matrix[i]);
 		if (error)
 			return (ft_clean_matrix(matrix), error);
-		// else if (!error && i > 0)
-		// 	error = check_str2(matrix[i]);
-		// if (error)
-		// 	return (ft_clean_matrix(matrix), error);
 	}
 	return (ft_clean_matrix(matrix), error);
+}
+
+/// @brief Function that send a error message of memory allocation to STDERR.
+/// @param s Name of the function that malloc error has occured.
+void	merror(char *s)
+{
+	if (s)
+	{
+		ft_putstr_fd("Malloc:", 2);
+		ft_putendl_fd(s, 2);
+	}
 }
 
 void	parser_error(char *error_msg, int fd)
