@@ -82,28 +82,28 @@ void	parent(t_pipex *pipex, int count)
 	}
 }
 
-int	pipex(int ac, char /*const*/ **av, char *envp[])
-{
-	int		i;
-	t_pipex	*pipex;
+// int	pipex(int ac, char /*const*/ **av, char *envp[])
+// {
+// 	int		i;
+// 	t_pipex	*pipex;
 
-	if (!envp || !*envp)
-		return (ft_putstr_fd("Invalid path\n", 2), 1);
-/* 	if (ac < 5 || (!ft_strcmp(av[1], "here_doc") && ac < 6))
-		return (ft_putstr_fd("Invalid input\n", 2), 0); */
-	pipex = ft_init_struct(envp, ac - 2, av);
-	if (!pipex)
-		return (ft_putstr_fd("Unable to generate a valid structure\n", 2), 1);
-	if (!check_files(ac, av, pipex))
-		return (ft_clean_pipex(pipex), 1);
-	dup_and_close(pipex->in_fd, 0);
-	i = -1;
-	while (++i < pipex->cmd_count)
-		parent(pipex, i);
-	close(0);
-	if (pipex->here_doc)
-		unlink(av[1]);
-	i = wait_childs(pipex);
-	ft_clean_pipex(pipex);
-	return (i);
-}
+// 	if (!envp || !*envp)
+// 		return (ft_putstr_fd("Invalid path\n", 2), 1);
+// /* 	if (ac < 5 || (!ft_strcmp(av[1], "here_doc") && ac < 6))
+// 		return (ft_putstr_fd("Invalid input\n", 2), 0); */
+// 	pipex = ft_init_struct(envp, ac - 2, av);
+// 	if (!pipex)
+// 		return (ft_putstr_fd("Unable to generate a valid structure\n", 2), 1);
+// 	if (!check_files(ac, av, pipex))
+// 		return (ft_clean_pipex(pipex), 1);
+// 	dup_and_close(pipex->in_fd, 0);
+// 	i = -1;
+// 	while (++i < pipex->cmd_count)
+// 		parent(pipex, i);
+// 	close(0);
+// 	if (pipex->here_doc)
+// 		unlink(av[1]);
+// 	i = wait_childs(pipex);
+// 	ft_clean_pipex(pipex);
+// 	return (i);
+// }

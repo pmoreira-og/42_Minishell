@@ -11,8 +11,6 @@
 /* ************************************************************************** */
 
 #include "minishell.h"
-#include <readline/history.h>
-#include <unistd.h>
 
 void	mini_pwd(t_cmd *cmd)
 {

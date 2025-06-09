@@ -32,6 +32,10 @@
 // # define ft_calloc(x, y) NULL
 // # define malloc(x) NULL
 
+// execution:
+void		list_builtin(t_hell *hell);
+void		execute_pipeline(t_hell *shell);
+
 // parse:
 void	ft_count(const char *input, int *count);
 int		valid_input(t_token *tok, t_hell *data);
@@ -118,6 +122,7 @@ void	clean_list(t_hell *data);
 void	print_matrix(char **matrix);
 void	print_token(t_token *toks);
 void	print_cmd_info(t_hell *data);
+int		lst_size(t_cmd *cmd);
 void	armageddon(t_hell *data);
 void	prepare_next_input(t_hell *data);
 void	mini_cleaner(char **matrix, t_hell *data);
