@@ -6,7 +6,7 @@
 /*   By: pmoreira <pmoreira@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/27 14:39:30 by pmoreira          #+#    #+#             */
-/*   Updated: 2025/06/07 16:54:52 by pmoreira         ###   ########.fr       */
+/*   Updated: 2025/06/09 12:44:36 by pmoreira         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -60,4 +60,26 @@ void	pre_process_input(char **input)
 		if (!*input)
 			return (merror("pre_process_input:remove_zones"));
 	}
+}
+
+char	*handle_limiter(char *s, t_bool *flag)
+{
+	char	*temp;
+
+	if (!s || !flag)
+		return (NULL);
+	temp = NULL;
+	if (!ft_strcmp(s, "$"))
+	{
+		temp = ft_strdup(s);
+		if (!temp)
+			return (merror("handle_limiter"), NULL);
+	}
+	if(flag && *flag)
+	{
+		temp = remove_both_quotes(s);
+		if (!temp)
+			return (merror("handle_limiter"), NULL);
+	}
+	return (temp);
 }

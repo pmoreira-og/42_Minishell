@@ -6,7 +6,7 @@
 /*   By: pmoreira <pmoreira@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/20 16:01:00 by pmoreira          #+#    #+#             */
-/*   Updated: 2025/05/28 13:37:13 by pmoreira         ###   ########.fr       */
+/*   Updated: 2025/06/09 11:29:37 by pmoreira         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,7 +37,7 @@ void	print_matrix(char **matrix)
 	i = 0;
 	while (matrix[i])
 	{
-		printf("[%d]:%s\n", i, matrix[i]);
+		printf("arg[%d]:%s\n", i, matrix[i]);
 		i++;
 	}
 }

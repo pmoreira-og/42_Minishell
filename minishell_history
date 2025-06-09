@@ -1260,3 +1260,94 @@ echo $a
 ""
 $a
 ''""''
+export a=echo" "ola'pipe'wow" ""ba'n'an'aa"
+$a
+"$a"
+'$a'
+export a
+$a
+<<|dasasdsadsa
+<<a|adsdsad
+<<< abana
+<<| abana
+"<<" eof cat
+<<'|'cat
+<< cat cat
+<< cat cat
+<< | cat
+<< > cat
+<< >> cat
+<< >>> cat
+<<< >>> cat
+<<< >> cat
+<< >> cat
+<< '|' cat
+<< | cat
+<< "|" cat
+''""''
+''""''
+<<| abana
+<< >> cat
+<< > cat
+<<< abana
+<< >>> cat
+<<< >>> cat
+<< a>> | cat
+< |
+< |
+<< a>> | cat
+<< >>> cat
+< > \
+< > |
+<< a>> |
+< > |
+<<a>>
+<<a<<
+<< a>
+<< a|
+<< a>>
+<< a>> | cat
+<< a>> | cat
+<< a>>
+<< a<<
+<< a<<
+<<a>
+cat << <
+cat << <<
+cat << oef
+cat << $USER
+cat << $USER
+cat << <<
+export a="banana'"-"' splitted"
+export a="banana '"-"' splitted"
+echo $a
+echo "$a"
+$a
+cat << $BA
+cat << '$USER'
+cat << <<
+cat << '
+'"''"''"""'''"''"
+'"''"''"""'''"''"'
+export a="echo banana'"-"' splitted"
+$a
+export a="cat banana'"-"' splitted"
+export a="cat banana'"-"' splitted"
+$a
+export a="echo ola > banana"
+#a
+$a
+export a="abc echo ola > banana"
+$no ls
+<<a<<
+<<a<<|
+<<a<<|>>
+<<a<<a|>>
+<<a<<a|>>>
+<<a<<a|>>>
+cat << '$USER'
+cat << "$USER"
+cat << "$USER"
+cat << '$USER'
+export a="cat banana'"-"' splitted"
+echo "$a"

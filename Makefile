@@ -44,7 +44,7 @@ SRC_PIPEX =	pipex.c aux.c utils.c ft_parse.c
 
 SRC_PARSE =	tokenize.c ft_params.c checkers.c expand.c extra.c parser.c \
 			literal.c commands.c utils.c aux.c errors.c ft_add_spaces.c \
-			sub_list.c
+			sub_list.c validators.c ft_quotes.c
 
 SRC_UTILS =	cleaners.c constructors.c checkers.c printers.c aux_cleaners.c
 

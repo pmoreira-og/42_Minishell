@@ -6,7 +6,7 @@
 /*   By: pmoreira <pmoreira@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/14 14:59:37 by pmoreira          #+#    #+#             */
-/*   Updated: 2025/06/07 18:12:35 by pmoreira         ###   ########.fr       */
+/*   Updated: 2025/06/09 12:48:15 by pmoreira         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,7 +58,7 @@ void	associate(char **ptr, char *new_str)
 	*ptr = new_str;
 }
 
-void	process_str(char **ptr, char *s, t_hell *hell)
+void	process_str(char **ptr, char *s, t_hell *hell, t_bool *flag)
 {
 	char	*output;
 	char	*start;
@@ -69,11 +69,14 @@ void	process_str(char **ptr, char *s, t_hell *hell)
 		return ;
 	output = NULL;
 	start = s;
-	if (!ft_strcmp(s, "$"))
-		return ;
-	size = ft_strlen(s);
-	end = &s[size - 1];
-	literal(&output, start, end + 1, hell);
+	if (!ft_strcmp(s, "$") || (flag && *flag))
+		output = handle_limiter(s, flag);
+	else
+	{
+		size = ft_strlen(s);
+		end = &s[size - 1];
+		literal(&output, start, end + 1, hell);
+	}
 	if (!output)
 		return (merror("process_str"));
 	return (free(*ptr), associate(ptr, output));
