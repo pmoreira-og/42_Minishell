@@ -6,7 +6,7 @@
 /*   By: pmoreira <pmoreira@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/24 15:03:58 by pmoreira          #+#    #+#             */
-/*   Updated: 2025/05/27 12:12:13 by pmoreira         ###   ########.fr       */
+/*   Updated: 2025/06/09 11:53:47 by pmoreira         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,6 +42,7 @@ typedef enum s_type
 	BUILT_IN,
 	INFILE,
 	OUTFILE,
+	OUTFILE_APPEND,
 }	t_type;
 
 typedef struct s_hell
@@ -99,6 +100,7 @@ typedef struct s_token
 {
 	t_type			type;
 	char			*cmd;
+	t_bool			expanded;
 	t_bool			not_expansive;
 	char			**args;
 	struct s_token	*next;

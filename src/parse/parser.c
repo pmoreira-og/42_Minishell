@@ -6,11 +6,27 @@
 /*   By: pmoreira <pmoreira@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/14 14:59:37 by pmoreira          #+#    #+#             */
-/*   Updated: 2025/05/27 12:14:25 by pmoreira         ###   ########.fr       */
+/*   Updated: 2025/06/09 12:48:15 by pmoreira         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minishell.h"
+
+int	check_cmds(t_token *tok)
+{
+	t_token	*temp;
+
+	if (!tok)
+		return (1);
+	temp = tok;
+	while (temp->next)
+	{
+		if (temp->type == CMD || temp->type == BUILT_IN)
+			return (1);
+		temp = temp->next;
+	}
+	return (0);
+}
 
 /// @brief Join the 2 strings, free the s1 and free the s2 if the pointer are 
 ///		given.
@@ -23,10 +39,15 @@ char	*ft_expand(char *s1, char *s2, char **temp)
 	char	*tmp;
 
 	tmp = ft_strjoin(s1, s2);
+	if (!tmp)
+		return (free(s1), merror("ft_expand"), NULL);
 	if (s1)
 		free(s1);
-	if (temp)
+	if (temp && *temp)
+	{
 		free(*temp);
+		*temp = NULL;
+	}
 	return (tmp);
 }
 
@@ -48,31 +69,38 @@ void	process_str(char **ptr, char *s, t_hell *hell, t_bool *flag)
 		return ;
 	output = NULL;
 	start = s;
-	if (!ft_strcmp(s, "$") || *flag)
-		return (associate(ptr, ft_strdup(s)));
-	size = ft_strlen(s);
-	end = &s[size - 1];
-	literal(&output, start, end + 1, hell);
-	if (!output)
-		return ;
-	if (!ft_strcmp(s, "\"") || !ft_strcmp(s, "\'"))
-		*ptr = output;
+	if (!ft_strcmp(s, "$") || (flag && *flag))
+		output = handle_limiter(s, flag);
 	else
-		*ptr = remove_quotes(output);
+	{
+		size = ft_strlen(s);
+		end = &s[size - 1];
+		literal(&output, start, end + 1, hell);
+	}
+	if (!output)
+		return (merror("process_str"));
+	return (free(*ptr), associate(ptr, output));
 }
 
 void	parser(char **input, t_hell *data)
 {
-	if (!quotes_check(*input))
-		return (ft_putstr_fd(ERR_QUOTES, 2));
-	if (count_spaces(*input))
-		*input = add_spaces(input, *input);
+	if (!(*input))
+	{
+		data->status = 0;
+		return (mini_exit(data));
+	}
+	if (!ft_strcmp(*input, "") || !quotes_check(*input))
+		return ;
+	pre_process_input(input);
 	tokenize(*input, data);
-	if (data->tokens && !valid_input(data->tokens))
-		return (parser_error(TOKEN_NEWLINE, 2));
+	if (data->tokens && !valid_input(data->tokens, data))
+		return ;
+	if (!check_cmds(data->tokens))
+		recall_parser(data);
 	init_cmds(data);
 	if (data->debug)
 	{
+		printf(RED"------RUNNING PARSING PART NOW-----------\n"RESET);
 		print_token(data->tokens);
 		print_cmd_info(data);
 	}

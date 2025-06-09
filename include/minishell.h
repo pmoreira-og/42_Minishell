@@ -6,7 +6,7 @@
 /*   By: pmoreira <pmoreira@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/24 14:48:17 by pmoreira          #+#    #+#             */
-/*   Updated: 2025/05/27 11:55:36 by pmoreira         ###   ########.fr       */
+/*   Updated: 2025/06/09 12:46:01 by pmoreira         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,24 +23,28 @@
 # include "../libft/include/libft.h"
 # include "pipex.h"
 # include "structs.h"
-
-
 # define HIST_FILE "minishell_history"
 # define ERR_QUOTES "minishell: syntax error: input contains unclosed quotes\n"
 # define ERR_BAD_FORMAT "minishell: syntax error near unexpected token "
-# define TOKEN_NEWLINE	"'newline'\n"
+# define TOKEN_NEWLINE	"'newline'"
 # define RED "\001\033[31m\002"
 # define RESET "\001\033[0m\002"
+// # define ft_calloc(x, y) NULL
+// # define malloc(x) NULL
 
 // execution:
 void		list_builtin(t_hell *hell);
 void		execute_pipeline(t_hell *shell);
 
 // parse:
+void	ft_count(const char *input, int *count);
+int		valid_input(t_token *tok, t_hell *data);
+void	tokenize(char *input, t_hell *data);
+void	quotes_remover(t_hell *data);
+char	*valid_format(t_token *tok);
 void	parser(char **input, t_hell *data);
 char	**ft_params(const char *start);
 void	tokenize(char *input, t_hell *data);
-int		valid_input(t_token *tok);
 int		quotes_check(char *input);
 void	literal(char **ptr, char *s, char *endptr, t_hell *hell);
 void	init_proc(const char **start, const char *s, t_bool *quote, \
@@ -51,7 +55,7 @@ char	*new_word(const char *start, const char *end);
 char	*expand_vars(char *s, char *end, t_hell *hell);
 char	*ft_expand(char *s1, char *s2, char **temp);
 void	process_str(char **ptr, char *s, t_hell *hell, t_bool *flag);
-char	*remove_quotes(char *s);
+char	*remove_quotes(char *s, char *endptr);
 void	check_char_quote(const char **s, t_bool *quote, t_bool *d_quote);
 int		tab_counter(const char *start, const char *end);
 void	skip_expand_name(char **start, char **s, char *end);
@@ -65,19 +69,34 @@ void	concat_expand(char **result, char **new_str, t_hell *hell);
 int		valid_expand(int c);
 int		localized_expansions(char *start, char *end);
 int		count_spaces(char *s);
-char	*add_spaces(char **ptr, char *s);
+void	pre_process_input(char **input);
+char	*expand_heredoc(char *s, char *end, t_hell *hell);
 int		count_expand_zones(char *input);
 char	*localized_expander(char *start, char *end, t_hell *hell);
 char	*remove_zones(char **ptr, char *input);
 int		is_meta(int c);
 void	parser_error(char *error_msg, int fd);
+int		check_cmds(t_token *tok);
+void	recall_parser(t_hell *data);
+void	token_type(char *s, t_token *tok, t_token *prev, char **path);
+char	*syntax_error_check(char *input);
+char	*space_put(char *input, int len);
+int		space_length(char *input);
+
+// TEST FUNCTIONS ON PARSE
+t_bool	has_expansion(char *s);
+int		check_redirs(t_token *tok);
+char	*remove_both_quotes(char *s);
+char	*handle_limiter(char *s, t_bool *flag);
+
 
 // miscs:
 void	printascii(void);
 int		get_history_fd(t_hell *cmd);
 void	load_history(t_hell *cmd);
+char	*get_type(t_type type);
 void	save_history(char *input, t_hell *cmd);
-void	print_all_cmd(t_cmd *cmd);
+void	merror(char *s);
 
 // built in functions:
 void	mini_echo(t_cmd *cmd, t_env **env);
@@ -94,22 +113,24 @@ void	ft_setenv(t_env **env, char *var, char *value);
 void	init_export(t_export **export, char **envp);
 void	ft_setexport(t_export **export, char *var, char *value);
 
-// Utils:
-void	armageddon(t_hell *data);
+// Utils
 t_hell	*init_hell(int ac, char **av, char **envp);
 t_bool	is_builtin(char *s);
 t_bool	is_command(char *s, char **path);
 int		check_prev(t_token *prev, t_token *current);
-void	prepare_next_input(t_hell *data);
+void	clean_list(t_hell *data);
 void	print_matrix(char **matrix);
 void	print_token(t_token *toks);
 void	print_cmd_info(t_hell *data);
 int		lst_size(t_cmd *cmd);
+void	armageddon(t_hell *data);
+void	prepare_next_input(t_hell *data);
+void	mini_cleaner(char **matrix, t_hell *data);
 
-// pipex:
-int		pipex(int ac, char **av, char *envp[], t_hell *hell);
-t_pipex	*ft_init_struct(char *envp[], int size, char **av, t_hell *hell);
-void	child(t_pipex *pipex, char **program, int count, t_hell *hell);
-void	parent(t_pipex *pipex, int count, t_hell *hell);
-
+// Aux cleaners
+void	clean_cmds(t_hell *data);
+void	clean_env(t_hell *data);
+void	clean_list(t_hell *data);
+char	**ft_free(char **matrix, int index);
+void	clean_export(t_hell *data);
 #endif

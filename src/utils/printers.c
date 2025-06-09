@@ -6,7 +6,7 @@
 /*   By: pmoreira <pmoreira@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/20 16:01:00 by pmoreira          #+#    #+#             */
-/*   Updated: 2025/05/23 16:09:02 by pmoreira         ###   ########.fr       */
+/*   Updated: 2025/06/09 11:29:37 by pmoreira         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,21 +19,25 @@ void	print_token(t_token *toks)
 	if (!toks)
 		return ;
 	temp = toks;
+	printf("------------------Tokens------------------\n");
 	while (temp->next)
 	{
-		printf("[%s]: %d\n", temp->cmd, temp->type);
+		printf("[%s]: %s\n", temp->cmd, get_type(temp->type));
 		temp = temp->next;
 	}
+	printf("------------------------------------------\n");
 }
 
 void	print_matrix(char **matrix)
 {
 	int	i;
 
+	if (!matrix)
+		return ;
 	i = 0;
 	while (matrix[i])
 	{
-		printf("[%d]:%s\n", i, matrix[i]);
+		printf("arg[%d]:%s\n", i, matrix[i]);
 		i++;
 	}
 }

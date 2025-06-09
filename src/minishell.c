@@ -6,7 +6,7 @@
 /*   By: pmoreira <pmoreira@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/23 12:17:06 by ernda-si          #+#    #+#             */
-/*   Updated: 2025/05/27 12:21:51 by pmoreira         ###   ########.fr       */
+/*   Updated: 2025/06/02 15:26:44 by pmoreira         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,27 +30,6 @@ void	list_builtin(t_hell *hell)
 		mini_unset(&hell->env, hell->cmd);
 }
 
-/* static char **list_env_matrix(t_env *env)
-{
-	char	**matrix;
-	t_env	*temp;
-	char	*str;
-	int		i;
-
-	matrix = ft_split("", '\0');
-	temp = env;
-	str = ft_strdup("");
-	i = 0;
-	while (temp)
-	{
-		str = ft_strjoin(env->var, "=");
-		matrix[i] = ft_strjoin(str, env->value);
-		free(str);
-		temp = temp->next;
-	}
-	return (matrix);
-} */
-
 int	lst_size(t_cmd *cmd)
 {
 	int		size;
@@ -69,28 +48,12 @@ int	lst_size(t_cmd *cmd)
 
 static void	init_exec(t_hell *hell)
 {
+	if (hell->debug)
+		printf(RED"------RUNNING EXEC PART NOW-----------\n"RESET);
 	if (hell->cmd && hell->cmd->args[0] && is_builtin(hell->cmd->args[0]))
 		list_builtin(hell);
 	else
-	{
 		execute_pipeline(hell);
-		// execute_commands(hell);
-		// print_all_cmd(hell->cmd);
-		// pipex(lst_size(hell->cmd), hell->cmd->args, list_env_matrix(hell->env), hell);
-	}
-}
-
-void	print_all_cmd(t_cmd *cmd)
-{
-	printf("argc: %d\n", cmd->argc);
-	for (int i = 0; cmd->args[i]; i++)
-		printf("args[%d]: %s\n", 1, cmd->args[i]);
-	printf("cmd_path: %s\n", cmd->cmd_path);
-	printf("infile: %s\n", cmd->infile);
-	printf("outfile: %s\n", cmd->outfile);
-	printf("delimite: %s\n", cmd->delimiter);
-	printf("pipe_in: %d\n", cmd->pipe_in);
-	printf("pipe_out: %d\n", cmd->pipe_out);
 }
 
 int	main(int ac, char **av, char **envp)
@@ -104,12 +67,9 @@ int	main(int ac, char **av, char **envp)
 		return (1);
 	while (1)
 	{
-		input = readline(RED"Minishell> "RESET);
+		input = readline(RED"Minishell>"RESET);
 		save_history(input, hell);
 		parser(&input, hell);
-		if (!ft_strcmp(input, "exit"))
-			mini_exit(hell);
-		// hell->cmd->args = ft_split(input, ' ');
 		if (hell->cmd)
 			init_exec(hell);
 		prepare_next_input(hell);

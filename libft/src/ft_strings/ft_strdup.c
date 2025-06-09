@@ -6,7 +6,7 @@
 /*   By: pmoreira <pmoreira@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/30 10:30:23 by pmoreira          #+#    #+#             */
-/*   Updated: 2025/02/04 14:17:36 by pmoreira         ###   ########.fr       */
+/*   Updated: 2025/06/06 17:37:00 by pmoreira         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,6 +18,8 @@ char	*ft_strdup(const char *s)
 	int		i;
 	int		sz;
 
+	if (!s)
+		return (NULL);
 	sz = ft_strlen(s);
 	dup = (char *) malloc((sz * sizeof(char)) + 1);
 	if (dup == 0)

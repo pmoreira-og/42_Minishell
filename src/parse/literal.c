@@ -6,68 +6,11 @@
 /*   By: pmoreira <pmoreira@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/15 11:06:07 by pmoreira          #+#    #+#             */
-/*   Updated: 2025/05/26 11:41:51 by pmoreira         ###   ########.fr       */
+/*   Updated: 2025/06/09 12:09:35 by pmoreira         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minishell.h"
-
-char	*alloc_str(char *s)
-{
-	char	*output;
-	int		count;
-	int		i;
-	t_bool	quote;
-	t_bool	d_quote;
-
-	if (!s)
-		return (NULL);
-	count = 0;
-	i = 0;
-	init_proc(NULL, NULL, &quote, &d_quote);
-	while (s[i])
-	{
-		check_quotes(s[i], &quote, &d_quote);
-		if ((!quote) && s[i] == '\"')
-			count++;
-		else if ((!d_quote) && s[i] == '\'')
-			count++;
-		if (s[i])
-			i++;
-	}
-	output = ft_calloc(ft_strlen(s) - count + 1, 1);
-	if (!output)
-		return (NULL);
-	return (output);
-}
-
-char	*remove_quotes(char *s)
-{
-	char	*output;
-	int		i;
-	int		j;
-	t_bool	quote;
-	t_bool	d_quote;
-
-	i = -1;
-	j = 0;
-	output = alloc_str(s);
-	if (!output)
-		return (NULL);
-	init_proc(NULL, NULL, &quote, &d_quote);
-	while (s[++i])
-	{
-		check_quotes(s[i], &quote, &d_quote);
-		if ((!quote) && s[i] == '\"')
-			continue ;
-		if ((!d_quote) && s[i] == '\'')
-			continue ;
-		if (s[i])
-			output[j++] = s[i];
-	}
-	free(s);
-	return (output);
-}
 
 void	find_non_expand(char *input, char **start, char **end)
 {
@@ -97,6 +40,18 @@ void	find_non_expand(char *input, char **start, char **end)
 	}
 }
 
+char	*handle_expansion(char *s, char *endptr, t_hell *hell)
+{
+	char	*output;
+
+	if (!s || !endptr || !hell)
+		return (NULL);
+	output = expand_vars(s, endptr, hell);
+	if (!output)
+		return (merror("handle_expansion"), NULL);
+	return (output);
+}
+
 void	literal(char **ptr, char *s, char *endptr, t_hell *hell)
 {
 	char	*start;
@@ -108,16 +63,16 @@ void	literal(char **ptr, char *s, char *endptr, t_hell *hell)
 		find_non_expand(s, &start, &end);
 		if (!start || !end)
 		{
-			temp = expand_vars(s, endptr, hell);
+			temp = handle_expansion(s, endptr, hell);
 			*ptr = ft_expand(*ptr, temp, &temp);
 			break ;
 		}
 		if (start > s)
 		{
-			temp = expand_vars(s, start, hell);
+			temp = handle_expansion(s, start, hell);
 			*ptr = ft_expand(*ptr, temp, &temp);
 		}
-		temp = new_word(start, end);
+		temp = new_word(start + 1, end - 1);
 		*ptr = ft_expand(*ptr, temp, &temp);
 		s = end;
 		if (*s == '\0')
