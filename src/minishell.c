@@ -12,7 +12,7 @@
 
 #include "minishell.h"
 
-static void	list_builtin(t_hell *hell)
+void	list_builtin(t_hell *hell)
 {
 	if (!ft_strcmp(hell->cmd->args[0], "echo"))
 		mini_echo(hell->cmd, &hell->env);
@@ -30,7 +30,7 @@ static void	list_builtin(t_hell *hell)
 		mini_unset(&hell->env, hell->cmd);
 }
 
-static char **list_env_matrix(t_env *env)
+/* static char **list_env_matrix(t_env *env)
 {
 	char	**matrix;
 	t_env	*temp;
@@ -49,6 +49,22 @@ static char **list_env_matrix(t_env *env)
 		temp = temp->next;
 	}
 	return (matrix);
+} */
+
+int	lst_size(t_cmd *cmd)
+{
+	int		size;
+	t_cmd	*temp;
+
+	size = 0;
+	temp = cmd;
+	while (temp -> next)
+	{
+		size++;
+		temp = temp->next;
+	}
+	printf("lst size: %d\n", size);
+	return (size);
 }
 
 static void	init_exec(t_hell *hell)
@@ -56,9 +72,26 @@ static void	init_exec(t_hell *hell)
 	if (hell->cmd && hell->cmd->args[0] && is_builtin(hell->cmd->args[0]))
 		list_builtin(hell);
 	else
-		pipex(4, hell->cmd->args, list_env_matrix(hell->env));
+	{
+		execute_pipeline(hell);
+		// execute_commands(hell);
+		// print_all_cmd(hell->cmd);
+		// pipex(lst_size(hell->cmd), hell->cmd->args, list_env_matrix(hell->env), hell);
+	}
 }
 
+void	print_all_cmd(t_cmd *cmd)
+{
+	printf("argc: %d\n", cmd->argc);
+	for (int i = 0; cmd->args[i]; i++)
+		printf("args[%d]: %s\n", 1, cmd->args[i]);
+	printf("cmd_path: %s\n", cmd->cmd_path);
+	printf("infile: %s\n", cmd->infile);
+	printf("outfile: %s\n", cmd->outfile);
+	printf("delimite: %s\n", cmd->delimiter);
+	printf("pipe_in: %d\n", cmd->pipe_in);
+	printf("pipe_out: %d\n", cmd->pipe_out);
+}
 
 int	main(int ac, char **av, char **envp)
 {

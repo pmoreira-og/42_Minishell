@@ -37,7 +37,7 @@ DIR_UTILS = utils
 # === FILES ===
 SRC_BUILT_INS = pwd.c cd.c echo.c env.c exit.c export.c unset.c
 
-SRC_FD = misc.c minishell.c env_manager.c export_manager.c
+SRC_FD = misc.c minishell.c env_manager.c export_manager.c executor.c
 
 SRC_PIPEX =	pipex.c aux.c utils.c ft_parse.c
 

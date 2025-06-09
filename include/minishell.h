@@ -24,12 +24,17 @@
 # include "pipex.h"
 # include "structs.h"
 
+
 # define HIST_FILE "minishell_history"
 # define ERR_QUOTES "minishell: syntax error: input contains unclosed quotes\n"
 # define ERR_BAD_FORMAT "minishell: syntax error near unexpected token "
 # define TOKEN_NEWLINE	"'newline'\n"
 # define RED "\001\033[31m\002"
 # define RESET "\001\033[0m\002"
+
+// execution:
+void		list_builtin(t_hell *hell);
+void		execute_pipeline(t_hell *shell);
 
 // parse:
 void	parser(char **input, t_hell *data);
@@ -72,6 +77,7 @@ void	printascii(void);
 int		get_history_fd(t_hell *cmd);
 void	load_history(t_hell *cmd);
 void	save_history(char *input, t_hell *cmd);
+void	print_all_cmd(t_cmd *cmd);
 
 // built in functions:
 void	mini_echo(t_cmd *cmd, t_env **env);
@@ -88,7 +94,7 @@ void	ft_setenv(t_env **env, char *var, char *value);
 void	init_export(t_export **export, char **envp);
 void	ft_setexport(t_export **export, char *var, char *value);
 
-// Utils
+// Utils:
 void	armageddon(t_hell *data);
 t_hell	*init_hell(int ac, char **av, char **envp);
 t_bool	is_builtin(char *s);
@@ -98,5 +104,12 @@ void	prepare_next_input(t_hell *data);
 void	print_matrix(char **matrix);
 void	print_token(t_token *toks);
 void	print_cmd_info(t_hell *data);
+int		lst_size(t_cmd *cmd);
+
+// pipex:
+int		pipex(int ac, char **av, char *envp[], t_hell *hell);
+t_pipex	*ft_init_struct(char *envp[], int size, char **av, t_hell *hell);
+void	child(t_pipex *pipex, char **program, int count, t_hell *hell);
+void	parent(t_pipex *pipex, int count, t_hell *hell);
 
 #endif

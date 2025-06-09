@@ -9,15 +9,23 @@ void	ft_setexport(t_export **export, char *var, char *value)
 	{
 		if (!ft_strcmp(temp->var, var))
 		{
-			free(temp->value);
-			temp->value = ft_strdup(value);
+			if (temp->value)
+			{
+				free(temp->value);
+				temp->value = ft_strdup(value);
+			}
+			else
+				temp->value = NULL;
 			return ;
 		}
 		temp = temp->next;
 	}
 	t_export	*new = (t_export *)malloc(sizeof(t_export));
 	new->var = ft_strdup(var);
-	new->value = ft_strdup(value);
+	if (new->value)
+		new->value = ft_strdup(value);
+	else
+		new->value = NULL;
 	new->next = *export;
 	*export = new;
 }

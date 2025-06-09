@@ -15,17 +15,50 @@ identifier_check(char **matrix)
 	return (1);
 }
 
+void	sort_export_list(t_export *head)
+{
+	t_export	*curr;
+	int			sorted;
+	char		*tmp_var;
+	char		*tmp_val;
+
+	sorted = 0;
+	curr = head;
+	tmp_var = curr->var;
+	tmp_val = curr->value;
+	while (!sorted)
+	{
+		sorted = 1;
+		curr = head;
+		while (curr && curr->next)
+		{
+			if (ft_strcmp(curr->var, curr->next->var) > 0)
+			{
+				tmp_var = curr->var;
+				tmp_val = curr->value;
+				curr->var = curr->next->var;
+				curr->value = curr->next->value;
+				curr->next->var = tmp_var;
+				curr->next->value = tmp_val;
+				sorted = 0;
+			}
+			curr = curr->next;
+		}
+	}
+}
+
 static void	print_export(t_export *export)
 {
 	t_export *temp;
 
 	temp = export;
+	sort_export_list(temp);
 	while (temp)
 	{
 		if (!temp->value)
-			printf("declare -x %s=\n", temp->var);
-		else if (temp->value[0] == '\0')
 			printf("declare -x %s\n", temp->var);
+		else if (temp->value[0] == '\0')
+			printf("declare -x %s=\"\"\n", temp->var);
 		else
 		{
 			printf("declare -x %s=", temp->var);

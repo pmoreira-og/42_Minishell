@@ -23,13 +23,13 @@ int	special_token(t_token *tok)
 
 int	valid_format(t_token *tok)
 {
-	t_bool	cmd;
+	// t_bool	cmd;
 	t_token	*temp;
 
 	if (!tok)
 		return (0);
 	temp = tok;
-	cmd = FALSE;
+	// cmd = FALSE;
 	while (temp->next)
 	{
 		temp = temp->next;
