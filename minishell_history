@@ -57,3 +57,31 @@ env
 export a
 env
 export
+env
+export
+pwd
+env
+cd ../
+ls
+env
+cd Minishell/
+env
+env
+export
+pwd
+env
+env
+env
+export
+env
+export
+env
+export
+env
+export
+env
+ola
+env
+export
+env
+export
