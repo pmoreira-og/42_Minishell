@@ -1,31 +1,44 @@
 #include "minishell.h"
 
-void	ft_setexport(t_export **export, char *var, char *value)
+static int	aux_export(t_export **export, char *var, char *value)
 {
 	t_export	*temp;
 	
+	if (!export || !var)
+		return (0);
 	temp = *export;
 	while (temp)
 	{
 		if (!ft_strcmp(temp->var, var))
 		{
 			if (temp->value)
-			{
 				free(temp->value);
+			if (value)
 				temp->value = ft_strdup(value);
-			}
 			else
 				temp->value = NULL;
-			return ;
+			return (0);
 		}
 		temp = temp->next;
 	}
-	t_export	*new = (t_export *)malloc(sizeof(t_export));
+	return (1);
+}
+
+void	ft_setexport(t_export **export, char *var, char *value)
+{
+	t_export	*new;
+
+	if (!export || !var)
+		return ;
+	if (!aux_export(export, var, value))
+		return ;
+	new = (t_export *)malloc(sizeof(t_export));
+	if (!new)
+		return (merror("ft_setexport:new"));
 	new->var = ft_strdup(var);
-	if (new->value)
-		new->value = ft_strdup(value);
-	else
-		new->value = NULL;
+	if (!new->var)
+		return (merror("ft_setexport:new->var"));
+	new->value = ft_strdup(value);
 	new->next = *export;
 	*export = new;
 }
@@ -45,9 +58,11 @@ void	init_export(t_export **export, char **envp)
 			i++;
 			continue ;
 		}
-		ft_setexport(export, matrix[0], matrix[1]);
-		// printf("env_var: %s=%s\n", (*env)->var, (*env)->value); // printa a env toda basicamente
-		ft_clean_matrix(matrix);
+		if (matrix)
+		{
+			ft_setexport(export, matrix[0], matrix[1]);
+			ft_clean_matrix(matrix);
+		}
 		i++;
 	}
 	return ;
