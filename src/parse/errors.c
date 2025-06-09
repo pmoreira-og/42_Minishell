@@ -6,7 +6,7 @@
 /*   By: pmoreira <pmoreira@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/22 15:33:31 by pmoreira          #+#    #+#             */
-/*   Updated: 2025/06/06 21:18:44 by pmoreira         ###   ########.fr       */
+/*   Updated: 2025/06/09 11:26:22 by pmoreira         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -74,9 +74,9 @@ void	merror(char *s)
 
 void	parser_error(char *error_msg, int fd)
 {
-	ft_putstr_fd(ERR_BAD_FORMAT, fd);
 	if (error_msg)
+	{
+		ft_putstr_fd(ERR_BAD_FORMAT, fd);
 		ft_putendl_fd(error_msg, fd);
-	else
-		ft_putstr_fd(TOKEN_NEWLINE, 2);
+	}
 }

@@ -6,7 +6,7 @@
 /*   By: pmoreira <pmoreira@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/24 14:39:15 by pmoreira          #+#    #+#             */
-/*   Updated: 2025/06/07 18:12:51 by pmoreira         ###   ########.fr       */
+/*   Updated: 2025/06/09 11:55:59 by pmoreira         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,9 @@ int	special_token(t_token *tok)
 {
 	if (!tok)
 		return (0);
-	if (tok->type == REDIR_OUT || tok->type == PIPE || tok->type == REDIR_IN)
+	if (tok->type == REDIR_OUT || tok->type == PIPE
+		|| tok->type == REDIR_IN || tok->type == REDIR_OUT_APPEND
+		|| tok->type == REDIR_HERE_DOC)
 		return (1);
 	return (0);
 }
@@ -31,7 +33,11 @@ char	*valid_format(t_token *tok)
 	if (temp->type == PIPE)
 		return (temp->cmd);
 	while (temp->next)
+	{
+		if (!check_redirs(temp))
+			return (temp->cmd);
 		temp = temp->next;
+	}
 	if (temp->prev)
 	{
 		temp = temp->prev;
@@ -58,7 +64,7 @@ int	valid_input(t_token *tok, t_hell *data)
 	{
 		if (temp && temp->cmd)
 			temp->expanded = has_expansion(temp->cmd);
-		process_str(&temp->cmd, temp->cmd, data);
+		process_str(&temp->cmd, temp->cmd, data, &temp->not_expansive);
 		if (temp->type == PIPE)
 			cmd = FALSE;
 		if (cmd && (temp->type == CMD || temp->type == BUILT_IN))
