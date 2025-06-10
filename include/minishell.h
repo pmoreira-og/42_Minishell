@@ -6,7 +6,7 @@
 /*   By: pmoreira <pmoreira@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/24 14:48:17 by pmoreira          #+#    #+#             */
-/*   Updated: 2025/06/09 12:46:01 by pmoreira         ###   ########.fr       */
+/*   Updated: 2025/06/10 18:54:16 by pmoreira         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -82,6 +82,7 @@ void	token_type(char *s, t_token *tok, t_token *prev, char **path);
 char	*syntax_error_check(char *input);
 char	*space_put(char *input, int len);
 int		space_length(char *input);
+int		init_redirs(t_cmd **cmd, t_token *start);
 
 // TEST FUNCTIONS ON PARSE
 t_bool	has_expansion(char *s);
@@ -121,6 +122,7 @@ int		check_prev(t_token *prev, t_token *current);
 void	clean_list(t_hell *data);
 void	print_matrix(char **matrix);
 void	print_token(t_token *toks);
+void	print_redirs(t_cmd *cmd);
 void	print_cmd_info(t_hell *data);
 int		lst_size(t_cmd *cmd);
 void	armageddon(t_hell *data);
@@ -133,4 +135,5 @@ void	clean_env(t_hell *data);
 void	clean_list(t_hell *data);
 char	**ft_free(char **matrix, int index);
 void	clean_export(t_hell *data);
+void	delete_cmd(t_cmd *cmd);
 #endif

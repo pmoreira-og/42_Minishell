@@ -85,3 +85,33 @@ env
 export
 env
 export
+pwd
+<infile cat | wc -l > outfile
+<infile cat | wc -l > outfile
+<infile cat | wc -l > outfile
+<infile cat | wc -l > outfile
+<idasdasdnfile cat | wc -l > outasdasdfile
+<idasdasdnfile cat | wc -l > outasdasdfile
+<infile cat | wc -l > outfile
+cat << $USER | cat >> out
+cat << "$USER" | cat >> out
+cat << "$USER" | cat >> out
+<infile cat | wc -l > outfile
+<infile cat | wc -l > outfile
+<infile cat | wc -l > outfile
+<infile cat | wc -l > outfile
+<infile cat | wc -l > outfile
+<infile cat | wc -l > outfile
+<infile cat | wc -l > outfile
+<infile cat | wc -l > outfile
+<infile cat | wc -l > outfile
+<infile cat | wc -l > outfile
+<infile cat | wc -l > outfile
+<infile cat | wc -l > outfile
+<infile cat | wc -l > outfile
+<infile cat | wc -l > outfile
+<infile cat | wc -l > outfile
+<$HOME cat | wc -l > $USER
+<$HOME cat | wc -l > $USER
+<infile cat | wc -l > outfile
+cat << $USER | cat >> out

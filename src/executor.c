@@ -62,36 +62,36 @@ static char *resolve_cmd_path(char *cmd, char **envp)
 	return NULL;
 }
 
-static void	handle_redirections(t_cmd *cmd)
-{
-	int	fd;
+// static void	handle_redirections(t_cmd *cmd)
+// {
+// 	int	fd;
 
-	if (cmd->infile)
-	{
-		fd = open(cmd->infile, O_RDONLY);
-		if (fd == -1)
-		{
-			perror(cmd->infile);
-			exit(EXIT_FAILURE);
-		}
-		dup2(fd, STDIN_FILENO);
-		close(fd);
-	}
-	if (cmd->outfile)
-	{
-		int flags = O_WRONLY | O_CREAT | O_TRUNC;
-		fd = open(cmd->outfile, flags, 0644);
-		if (fd == -1)
-		{
-			perror(cmd->outfile);
-			exit(EXIT_FAILURE);
-		}
-		dup2(fd, STDOUT_FILENO);
-		close(fd);
-	}
-	// ainda preciso fazer o heredoc aqui com o t_redirection ou cmd->delimiter
-	// mas por enquanto elas n estao linkando ent mantive assim por agora e vemos isso
-}
+// 	if (cmd->infile)
+// 	{
+// 		fd = open(cmd->infile, O_RDONLY);
+// 		if (fd == -1)
+// 		{
+// 			perror(cmd->infile);
+// 			exit(EXIT_FAILURE);
+// 		}
+// 		dup2(fd, STDIN_FILENO);
+// 		close(fd);
+// 	}
+// 	if (cmd->outfile)
+// 	{
+// 		int flags = O_WRONLY | O_CREAT | O_TRUNC;
+// 		fd = open(cmd->outfile, flags, 0644);
+// 		if (fd == -1)
+// 		{
+// 			perror(cmd->outfile);
+// 			exit(EXIT_FAILURE);
+// 		}
+// 		dup2(fd, STDOUT_FILENO);
+// 		close(fd);
+// 	}
+// 	// ainda preciso fazer o heredoc aqui com o t_redirection ou cmd->delimiter
+// 	// mas por enquanto elas n estao linkando ent mantive assim por agora e vemos isso
+// }
 
 static int	execute_builtin(t_hell *shell)
 {
@@ -134,7 +134,7 @@ static void	execute_child(t_cmd *cmd, int prev_pipe_fd, int *pipefd, t_hell *she
 		dup2(pipefd[1], STDOUT_FILENO);
 		close(pipefd[1]);
 	}
-	handle_redirections(cmd);
+	// handle_redirections(cmd);
 	if (cmd->is_builtin)
 		exit(execute_builtin(shell));
 	if (!cmd->cmd_path)
@@ -181,7 +181,7 @@ void	execute_pipeline(t_hell *shell)
 	{
 		if (cmd->is_builtin && !cmd->is_piped && !cmd->next)
 		{
-			handle_redirections(cmd);
+			// handle_redirections(cmd);
 			shell->status = execute_builtin(shell);
 			return ;
 		}

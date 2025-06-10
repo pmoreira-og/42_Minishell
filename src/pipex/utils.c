@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   utils.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ernda-si <ernda-si@student.42.fr>          +#+  +:+       +#+        */
+/*   By: pmoreira <pmoreira@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/11 10:10:57 by pmoreira          #+#    #+#             */
-/*   Updated: 2025/05/21 16:40:14 by ernda-si         ###   ########.fr       */
+/*   Updated: 2025/06/10 19:00:17 by pmoreira         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,7 +50,7 @@ char	**ft_getenv(char **envp, char *target, char split)
 			temp = envp[i] + (ft_strlen(target) + 1);
 		i++;
 	}
-	matrix = ft_split((/*const*/ char *) temp, split);
+	matrix = ft_split((char *) temp, split);
 	if (!matrix)
 		return (NULL);
 	i = 0;
