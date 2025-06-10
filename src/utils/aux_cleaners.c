@@ -6,13 +6,13 @@
 /*   By: pmoreira <pmoreira@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/05 12:08:31 by pmoreira          #+#    #+#             */
-/*   Updated: 2025/06/05 12:12:30 by pmoreira         ###   ########.fr       */
+/*   Updated: 2025/06/10 18:53:05 by pmoreira         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minishell.h"
 
-/// @brief Clear all cmd data but don't set cmd as NULL because of Normi
+/// @brief Clear all cmd data and set cmd as NULL.
 /// @param data Main struct
 void	clean_cmds(t_hell *data)
 {
@@ -23,24 +23,10 @@ void	clean_cmds(t_hell *data)
 	while (temp)
 	{
 		next_cmd = temp->next;
-		if (temp->args)
-		{
-			ft_clean_matrix(temp->args);
-			temp->args = NULL;
-		}
-		if (temp->envp)
-		{
-			ft_clean_matrix(temp->envp);
-			temp->envp = NULL;
-		}
-		if (temp->cmd_path)
-		{
-			free(temp->cmd_path);
-			temp->cmd_path = NULL;
-		}
-		free(temp);
+		delete_cmd(temp);
 		temp = next_cmd;
 	}
+	data->cmd = NULL;
 }
 
 /// @brief Clear all data and set pointer as NULL.

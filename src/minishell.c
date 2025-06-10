@@ -6,7 +6,7 @@
 /*   By: pmoreira <pmoreira@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/23 12:17:06 by ernda-si          #+#    #+#             */
-/*   Updated: 2025/06/02 15:26:44 by pmoreira         ###   ########.fr       */
+/*   Updated: 2025/06/10 11:49:40 by pmoreira         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,8 +52,8 @@ static void	init_exec(t_hell *hell)
 		printf(RED"------RUNNING EXEC PART NOW-----------\n"RESET);
 	if (hell->cmd && hell->cmd->args[0] && is_builtin(hell->cmd->args[0]))
 		list_builtin(hell);
-	else
-		execute_pipeline(hell);
+	// else
+	// 	execute_pipeline(hell);
 }
 
 int	main(int ac, char **av, char **envp)

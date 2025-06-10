@@ -6,11 +6,29 @@
 /*   By: pmoreira <pmoreira@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/29 11:28:20 by pmoreira          #+#    #+#             */
-/*   Updated: 2025/06/09 14:00:50 by pmoreira         ###   ########.fr       */
+/*   Updated: 2025/06/10 19:03:42 by pmoreira         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minishell.h"
+
+char	*find_var(char **envp, char *target)
+{
+	char	*temp;
+	int		i;
+
+	if (!envp)
+		return (NULL);
+	i = 0;
+	temp = NULL;
+	while (envp[i])
+	{
+		if (ft_strnstr(envp[i], target, ft_strlen(target)))
+			temp = envp[i] + (ft_strlen(target) + 1);
+		i++;
+	}
+	return (temp);
+}
 
 char	**init_local_envp(t_hell *hell)
 {
@@ -44,7 +62,7 @@ t_hell	*init_hell(int ac, char **av, char **envp)
 	hell = ft_calloc(1, sizeof(t_hell));
 	if (!hell)
 		return (merror("init_hell:main"), NULL);
-	if (!envp || !ft_getenv(envp, "SHLVL", '\0'))
+	if (!envp || !find_var(envp, "SHLVL"))
 		new_envp = init_local_envp(hell);
 	else
 		new_envp = envp;

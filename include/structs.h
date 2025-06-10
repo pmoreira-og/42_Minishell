@@ -6,7 +6,7 @@
 /*   By: pmoreira <pmoreira@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/24 15:03:58 by pmoreira          #+#    #+#             */
-/*   Updated: 2025/06/09 14:00:20 by pmoreira         ###   ########.fr       */
+/*   Updated: 2025/06/10 10:44:27 by pmoreira         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -64,7 +64,7 @@ typedef struct s_redirection
 {
 	t_type					type;
 	char					*filename;  // *For regular file redirections 
-	char					*heredoc_delimiter; // *For heredoc
+	char					*limiter; // *For heredoc
 	char					*heredoc_content;   // !Expanded heredoc content
 	int						fd;         // !File descriptor used
 	struct s_redirection	*next;
@@ -85,8 +85,8 @@ typedef struct s_cmd
 	int					argc;
 	char				**args;
 	char				*cmd_path;      // *Full path to executable (after path resolution)
-	char				*infile;
-	char				*outfile;
+	t_redirection		*redir_in;
+	t_redirection		*redir_out;
 	char				*delimiter;
 	int					pipe_in;        // !Read end of pipe from previous command
 	int					pipe_out;       // !Write end of pipe to next command

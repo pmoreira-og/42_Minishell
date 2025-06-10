@@ -6,7 +6,7 @@
 /*   By: pmoreira <pmoreira@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/29 11:10:40 by pmoreira          #+#    #+#             */
-/*   Updated: 2025/06/09 14:04:23 by pmoreira         ###   ########.fr       */
+/*   Updated: 2025/06/10 18:53:14 by pmoreira         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,10 +41,7 @@ void	armageddon(t_hell *data)
 	if (data->export)
 		clean_export(data);
 	if (data->cmd)
-	{
 		clean_cmds(data);
-		data->cmd = NULL;
-	}
 	if (data->path)
 		ft_clean_matrix(data->path);
 	if (data->hist_fd >= 0)
