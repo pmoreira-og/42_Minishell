@@ -160,3 +160,9 @@ cat /dev/urandom | sleep 3 | sleep 3 | sleep 3
 cat /dev/urandom | sleep 3 | sleep 3 | sleep 3
 cat Makefile | cat
 cat Makefile | cat
+cat Makefile | cat
+$no ls
+"" ls
+"" ls
+cate
+cate
