@@ -6,12 +6,15 @@
 /*   By: pmoreira <pmoreira@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/22 15:33:31 by pmoreira          #+#    #+#             */
-/*   Updated: 2025/06/09 11:26:22 by pmoreira         ###   ########.fr       */
+/*   Updated: 2025/06/11 10:54:24 by pmoreira         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minishell.h"
 
+/// @brief Handle <<< >>> || && as syntax errors.
+/// @param s String to check.
+/// @return Malloc with the char that caused the error.
 char	*check_str(char *s)
 {
 	char	*temp;
@@ -78,5 +81,18 @@ void	parser_error(char *error_msg, int fd)
 	{
 		ft_putstr_fd(ERR_BAD_FORMAT, fd);
 		ft_putendl_fd(error_msg, fd);
+	}
+}
+
+/// @brief Heredoc message for finishing with eof.
+/// @param c Char code of the number of the line that eof occurs.
+/// @param fd Fd where message gonna be written.
+void	heredoc_eof(int c, int fd)
+{
+	if (fd > 0 && c)
+	{
+		ft_putstr_fd(HEREDOC_EOF, fd);
+		ft_putchar_fd(c, fd);
+		ft_putendl_fd(" delimited by end-of-file", fd);
 	}
 }

@@ -6,7 +6,7 @@
 /*   By: pmoreira <pmoreira@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/20 11:36:02 by pmoreira          #+#    #+#             */
-/*   Updated: 2025/06/10 12:47:39 by pmoreira         ###   ########.fr       */
+/*   Updated: 2025/06/11 12:39:10 by pmoreira         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -81,7 +81,7 @@ char	**build_args(t_token *start, t_cmd **cmd)
 	return (args);
 }
 
-int	fill_cmd(t_cmd **cmd, t_token *start)
+int	fill_cmd(t_cmd **cmd, t_token *start, t_hell *data)
 {
 	(*cmd)->args = build_args(start, cmd);
 	if (!(*cmd)->args)
@@ -90,38 +90,20 @@ int	fill_cmd(t_cmd **cmd, t_token *start)
 		(*cmd)->is_builtin = is_builtin((*cmd)->args[0]);
 	if (!init_redirs(cmd, start))
 		return (0);
+	(*cmd)->envp = copy_env(data->envp);
+	if (!(*cmd)->envp)
+		return (0);
+	(*cmd)->cmd_path = get_full_path((*cmd)->args[0], (*cmd)->envp);
+	if (!(*cmd)->cmd_path)
+		return (0);
 	return (1);
 }
 
-// void	init_cmds(t_hell *data)
-// {
-// 	t_token	*temp;
-// 	t_cmd	*cmd_tmp;
-
-// 	if (!data->tokens)
-// 		return ;
-// 	temp = data->tokens;
-// 	data->cmd = ft_calloc(1, sizeof(t_cmd));
-// 	if (!data->cmd)
-// 		return (merror("init_cmds:struct"), armageddon(data));
-// 	cmd_tmp = data->cmd;
-// 	while (temp)
-// 	{
-// 		cmd_tmp->next = ft_calloc(1, sizeof(t_cmd));
-// 		if (!cmd_tmp->next)
-// 			return (merror("init_cmds:node"), armageddon(data));
-// 		if (!fill_cmd(&cmd_tmp, temp))
-// 			return (merror("init_cmds:fill_cmd"), armageddon(data));
-// 		command_size(temp, &temp, &data->cmd_count, NULL);
-// 		cmd_tmp = cmd_tmp->next;
-// 	}
-// }
-
-void init_cmds(t_hell *data)
+void	init_cmds(t_hell *data)
 {
-	t_token *temp;
-	t_cmd *cmd_tmp;
-	t_cmd *last;
+	t_token	*temp;
+	t_cmd	*cmd_tmp;
+	t_cmd	*last;
 
 	if (!data->tokens)
 		return ;
@@ -134,7 +116,7 @@ void init_cmds(t_hell *data)
 		cmd_tmp = ft_calloc(1, sizeof(t_cmd));
 		if (!cmd_tmp)
 			return (merror("init_cmds:struct"), armageddon(data));
-		if (!fill_cmd(&cmd_tmp, temp))
+		if (!fill_cmd(&cmd_tmp, temp, data))
 			return (merror("init_cmds:fill_cmd"), armageddon(data));
 		command_size(temp, &temp, &data->cmd_count, NULL);
 		if (!data->cmd)

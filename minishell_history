@@ -115,3 +115,48 @@ cat << "$USER" | cat >> out
 <$HOME cat | wc -l > $USER
 <infile cat | wc -l > outfile
 cat << $USER | cat >> out
+cat << $USER | cat >> out
+export a
+$a
+echo $a
+ls
+export a="echo ' ola"
+$a
+echo $a
+cat Makefile 
+cat Makefile 
+cat Makefile 
+cat Makefile 
+cat Makefile | cat
+cat < Makefile 
+cat Makefile  | wc -l
+export a
+export
+env
+export a=dasdasdas
+export
+env
+export a
+export
+env
+export c=c a=a t=t
+""$c''"$a"$t Makefile 
+"echo" '>' ola
+"echo" ">" ola
+"echo" ">" ola | cat Makefile 
+"echo" ">"> ola | cat Makefile 
+echo >>> ola
+echo >>> "dasd'dadsa'dadasd'asdas'"dadsaas"dadas'asdasd"
+echo "dasd'dadsa'dadasd'asdas'"dadsaas"dadas'asdasd"
+echo "dasd'dadsa'dadasd'asdas'"dadsaasdadas'asdasd"
+echo >>> "dasd'dadsa'dadasd'asdas'"dadsaasdadas'asdasd"
+echo >>> "dasd'dadsa'dadasd'asdas'"dadsaasdadas'asdasd"
+cat /dev/urandom | head -1
+cat /dev/urandom 
+cat /dev/urandom | head -1
+cat /dev/urandom | sleep 3 | sleep 3 | sleep 3
+cat /dev/urandom | sleep 3 | sleep 3 | sleep 3
+cat /dev/urandom | sleep 3 | sleep 3 | sleep 3
+cat /dev/urandom | sleep 3 | sleep 3 | sleep 3
+cat Makefile | cat
+cat Makefile | cat

@@ -6,7 +6,7 @@
 /*   By: pmoreira <pmoreira@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/20 16:01:00 by pmoreira          #+#    #+#             */
-/*   Updated: 2025/06/10 19:05:51 by pmoreira         ###   ########.fr       */
+/*   Updated: 2025/06/11 12:40:12 by pmoreira         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -84,6 +84,7 @@ void	print_cmd_info(t_hell *data)
 		print_matrix(temp->args);
 		printf("Pipe bool: %d\n", temp->is_piped);
 		printf("Built-in bool: %d\n", temp->is_builtin);
+		printf("Full_cmd_path:%s\n", temp->cmd_path);
 		print_redirs(temp);
 		printf("----------------------------------------\n");
 		temp = temp->next;

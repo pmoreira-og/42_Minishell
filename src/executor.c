@@ -1,66 +1,59 @@
 #include "minishell.h"
-#include <fcntl.h>
-#include <unistd.h>
-#include <sys/wait.h>
-#include <stdlib.h>
-#include <stdio.h>
-#include <string.h>
-#include <errno.h>
 
-static char *join_path(const char *dir, const char *cmd)
-{
-	size_t len;
-	char *full_path;
+// static char *join_path(const char *dir, const char *cmd)
+// {
+// 	size_t len;
+// 	char *full_path;
 
-	len = ft_strlen(dir) + ft_strlen(cmd) + 2;
-	full_path = (char *)malloc(len);
-	if (!full_path)
-		return NULL;
-	snprintf(full_path, len, "%s/%s", dir, cmd);
-	return (full_path);
-}
+// 	len = ft_strlen(dir) + ft_strlen(cmd) + 2;
+// 	full_path = (char *)malloc(len);
+// 	if (!full_path)
+// 		return NULL;
+// 	snprintf(full_path, len, "%s/%s", dir, cmd);
+// 	return (full_path);
+// }
 
-static char *resolve_cmd_path(char *cmd, char **envp)
-{
-	char	*path_env;
-	char	*paths;
-	char	*token;
+// static char *resolve_cmd_path(char *cmd, char **envp)
+// {
+// 	char	*path_env;
+// 	char	*paths;
+// 	char	*token;
 
-	if (strchr(cmd, '/'))
-	{
-		if (access(cmd, X_OK) == 0)
-			return strdup(cmd);
-		return NULL;
-	}
-	path_env = NULL;
-	for (int i = 0; envp && envp[i]; i++)
-	{
-		if (strncmp(envp[i], "PATH=", 5) == 0)
-		{
-			path_env = envp[i] + 5;
-			break;
-		}
-	}
-	if (!path_env)
-		return NULL;
-	paths = strdup(path_env);
-	if (!paths)
-		return NULL;
-	token = strtok(paths, ":");
-	while (token)
-	{
-		char *full_path = join_path(token, cmd);
-		if (full_path && access(full_path, X_OK) == 0)
-		{
-			free(paths);
-			return full_path;
-		}
-		free(full_path);
-		token = strtok(NULL, ":");
-	}
-	free(paths);
-	return NULL;
-}
+// 	if (strchr(cmd, '/'))
+// 	{
+// 		if (access(cmd, X_OK) == 0)
+// 			return strdup(cmd);
+// 		return NULL;
+// 	}
+// 	path_env = NULL;
+// 	for (int i = 0; envp && envp[i]; i++)
+// 	{
+// 		if (strncmp(envp[i], "PATH=", 5) == 0)
+// 		{
+// 			path_env = envp[i] + 5;
+// 			break;
+// 		}
+// 	}
+// 	if (!path_env)
+// 		return NULL;
+// 	paths = strdup(path_env);
+// 	if (!paths)
+// 		return NULL;
+// 	token = strtok(paths, ":");
+// 	while (token)
+// 	{
+// 		char *full_path = join_path(token, cmd);
+// 		if (full_path && access(full_path, X_OK) == 0)
+// 		{
+// 			free(paths);
+// 			return full_path;
+// 		}
+// 		free(full_path);
+// 		token = strtok(NULL, ":");
+// 	}
+// 	free(paths);
+// 	return NULL;
+// }
 
 // static void	handle_redirections(t_cmd *cmd)
 // {
@@ -137,8 +130,8 @@ static void	execute_child(t_cmd *cmd, int prev_pipe_fd, int *pipefd, t_hell *she
 	// handle_redirections(cmd);
 	if (cmd->is_builtin)
 		exit(execute_builtin(shell));
-	if (!cmd->cmd_path)
-		cmd->cmd_path = resolve_cmd_path(cmd->args[0], shell->envp);
+	if (shell->hist_fd >= 0)
+		close(shell->hist_fd);
 	if (!cmd->cmd_path)
 	{
 		fprintf(stderr, "%s: command not found\n", cmd->args[0]);

@@ -6,7 +6,7 @@
 /*   By: pmoreira <pmoreira@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/24 14:48:17 by pmoreira          #+#    #+#             */
-/*   Updated: 2025/06/10 18:54:16 by pmoreira         ###   ########.fr       */
+/*   Updated: 2025/06/11 12:37:50 by pmoreira         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,6 +17,9 @@
 # include <stdio.h>
 # include <string.h>
 # include <signal.h>
+# include <fcntl.h>
+# include <sys/wait.h>
+# include <errno.h>
 # include <unistd.h>
 # include <readline/readline.h>
 # include <readline/history.h>
@@ -27,14 +30,17 @@
 # define ERR_QUOTES "minishell: syntax error: input contains unclosed quotes\n"
 # define ERR_BAD_FORMAT "minishell: syntax error near unexpected token "
 # define TOKEN_NEWLINE	"'newline'"
+# define HEREDOC_EOF "minishell: warning: here-document at line "
 # define RED "\001\033[31m\002"
 # define RESET "\001\033[0m\002"
+# define ORANGE "\033[1;38;5;214m"
+
 // # define ft_calloc(x, y) NULL
 // # define malloc(x) NULL
 
 // execution:
-void		list_builtin(t_hell *hell);
-void		execute_pipeline(t_hell *shell);
+void	list_builtin(t_hell *hell);
+void	execute_pipeline(t_hell *shell);
 
 // parse:
 void	ft_count(const char *input, int *count);
@@ -89,7 +95,7 @@ t_bool	has_expansion(char *s);
 int		check_redirs(t_token *tok);
 char	*remove_both_quotes(char *s);
 char	*handle_limiter(char *s, t_bool *flag);
-
+char	*get_full_path(char *cmd, char **envp);
 
 // miscs:
 void	printascii(void);
@@ -128,6 +134,7 @@ int		lst_size(t_cmd *cmd);
 void	armageddon(t_hell *data);
 void	prepare_next_input(t_hell *data);
 void	mini_cleaner(char **matrix, t_hell *data);
+char	**copy_env(char **envp);
 
 // Aux cleaners
 void	clean_cmds(t_hell *data);

@@ -6,7 +6,7 @@
 /*   By: pmoreira <pmoreira@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/24 15:03:58 by pmoreira          #+#    #+#             */
-/*   Updated: 2025/06/10 10:44:27 by pmoreira         ###   ########.fr       */
+/*   Updated: 2025/06/11 11:00:05 by pmoreira         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -73,11 +73,8 @@ typedef struct s_redirection
 /// @brief Command Structure
 /// @param argc Number of tokens
 /// @param args Matrix that contains command plus args
-/// @param infile Filename (char *)
-/// @param outfile Filename (char *)
-/// @param append Flag: 0 for >, 1 for >>
-/// @param heredoc Heredoc flag
-/// @param delimiter Heredoc demiliter string
+/// @param redir_in List of t_redirection nodes
+/// @param redir_out List of t_redirection nodes
 /// @param next Next cmd node
 typedef struct s_cmd
 {

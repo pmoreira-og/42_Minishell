@@ -6,7 +6,7 @@
 /*   By: pmoreira <pmoreira@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/27 14:39:30 by pmoreira          #+#    #+#             */
-/*   Updated: 2025/06/09 12:44:36 by pmoreira         ###   ########.fr       */
+/*   Updated: 2025/06/11 10:57:40 by pmoreira         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -75,7 +75,7 @@ char	*handle_limiter(char *s, t_bool *flag)
 		if (!temp)
 			return (merror("handle_limiter"), NULL);
 	}
-	if(flag && *flag)
+	if (flag && *flag)
 	{
 		temp = remove_both_quotes(s);
 		if (!temp)

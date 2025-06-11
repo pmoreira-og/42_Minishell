@@ -6,7 +6,7 @@
 /*   By: pmoreira <pmoreira@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/22 15:21:45 by pmoreira          #+#    #+#             */
-/*   Updated: 2025/06/06 20:55:28 by pmoreira         ###   ########.fr       */
+/*   Updated: 2025/06/11 12:37:47 by pmoreira         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -68,4 +68,32 @@ char	*remove_zones(char **ptr, char *input)
 	output[i] = '\0';
 	free(*ptr);
 	return (output);
+}
+
+char	*get_full_path(char *cmd, char **envp)
+{
+	char	**path;
+	char	*temp;
+	int		i;
+
+	if (ft_strchr(cmd, '/'))
+	{
+		if (access(cmd, X_OK) == 0)
+			return (ft_strdup(cmd));
+		return (NULL);
+	}
+	path = ft_getenv(envp, "PATH", ':');
+	if (!path)
+		return (NULL);
+	i = -1;
+	while (path[++i])
+	{
+		temp = ft_strjoin(path[i], cmd);
+		if (!temp)
+			return (merror("get_full_path:temp"), ft_clean_matrix(path), NULL);
+		if (temp && access(temp, X_OK) == 0)
+			return (ft_clean_matrix(path), temp);
+		free(temp);
+	}
+	return (ft_clean_matrix(path), NULL);
 }

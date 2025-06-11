@@ -6,7 +6,7 @@
 /*   By: pmoreira <pmoreira@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/29 11:28:20 by pmoreira          #+#    #+#             */
-/*   Updated: 2025/06/10 19:03:42 by pmoreira         ###   ########.fr       */
+/*   Updated: 2025/06/11 11:31:26 by pmoreira         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,6 +30,28 @@ char	*find_var(char **envp, char *target)
 	return (temp);
 }
 
+char	**copy_env(char **envp)
+{
+	char	**temp;
+	int		i;
+	if (!envp)
+		return (NULL);
+	i = -1;
+	temp = NULL;
+	while (envp && envp[++i]);
+	temp = ft_calloc(i + 1, sizeof(char *));
+	if (!temp)
+		return (merror("copy_env"), NULL);
+	i = -1;
+	while (envp && envp[++i])
+	{
+		temp[i] = ft_strdup(envp[i]);
+		if (!temp[i])
+			return (merror("copy_env:str"), ft_free(temp, ++i), NULL);
+	}
+	return (temp);
+}
+
 char	**init_local_envp(t_hell *hell)
 {
 	char	**new_envp;
@@ -43,13 +65,13 @@ char	**init_local_envp(t_hell *hell)
 		return (ft_clean_matrix(new_envp), merror("init_local_envp"), NULL);
 	temp = getcwd(NULL, 0);
 	if (!temp)
-		return (ft_clean_matrix(new_envp), merror("init_local_envp"), NULL);
+		return (ft_clean_matrix(new_envp), merror("init_local_envp2"), NULL);
 	new_envp[0] = ft_expand(new_envp[0], temp, &temp);
 	if (!new_envp[0])
-		return (ft_clean_matrix(new_envp), merror("init_local_envp"), NULL);
+		return (ft_clean_matrix(new_envp), merror("init_local_envp3"), NULL);
 	new_envp[1] = ft_strdup("SHLVL=1");
 	if (!new_envp[1])
-		return (ft_clean_matrix(new_envp), merror("init_local_envp"), NULL);
+		return (ft_clean_matrix(new_envp), merror("init_local_envp4"), NULL);
 	hell->no_env = TRUE;
 	return (new_envp);
 }
