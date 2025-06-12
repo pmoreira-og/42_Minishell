@@ -1,21 +1,25 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_putchar_fd.c                                    :+:      :+:    :+:   */
+/*   putstr_fd.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: pmoreira <pmoreira@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/11/07 16:29:02 by pmoreira          #+#    #+#             */
-/*   Updated: 2025/06/12 15:10:43 by pmoreira         ###   ########.fr       */
+/*   Created: 2024/11/18 10:19:24 by pmoreira          #+#    #+#             */
+/*   Updated: 2025/06/12 14:46:33 by pmoreira         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
+#include "ft_printf_fd.h"
 
-void	ft_putchar_fd(int c, int fd)
+int	putstr_fd(char *s, int fd)
 {
-	char	letter;
+	int	size;
 
-	letter = (unsigned char) c;
-	write(fd, &letter, 1);
+	if (!s)
+		s = "(null)";
+	size = 0;
+	while (s[size])
+		size++;
+	return (write(fd, s, size));
 }

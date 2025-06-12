@@ -6,7 +6,7 @@
 /*   By: pmoreira <pmoreira@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/28 11:59:03 by pmoreira          #+#    #+#             */
-/*   Updated: 2025/06/02 15:27:21 by pmoreira         ###   ########.fr       */
+/*   Updated: 2025/06/12 15:06:17 by pmoreira         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,6 +18,7 @@
 # include <stdlib.h>
 # include <limits.h>
 # include "ft_printf.h"
+# include "ft_printf_fd.h"
 # include "get_next_line.h"
 # include "ft_list.h"
 # include "ft_fds.h"

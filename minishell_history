@@ -1,0 +1,29 @@
+echo ola > outfile
+cat outfile 
+cat outfile 
+echo ola > banana | cat 
+echo ola > banana | cat 
+cat outfile 
+cat banana 
+echo ola > banana | cat 
+echo ola > banana | cat 
+echo ola > banana | cat 
+rm banana 
+echo ola > banana | cat 
+cat outfile 
+cat banana 
+rm outfile banana 
+unset PATH
+ls
+cat Makefile 
+env
+env | grep PATH
+exit
+exit
+env
+unset PATH
+cat Makefile 
+echo $?
+echo $?
+echo '
+echo >>> ola

@@ -24,6 +24,7 @@ DIR_MEM = ft_memory
 DIR_NUM = ft_num
 DIR_STR = ft_strings
 DIR_PRINTF = ft_printf
+DIR_PRINTF_FD = ft_printf_fd
 DIR_GNL = gnl
 
 SRC_CHECK =	ft_isalnum.c ft_isalpha.c ft_isascii.c ft_isdigit.c ft_isprint.c ft_toupper.c \
@@ -45,9 +46,12 @@ SRC_STR =	ft_split.c ft_strchr.c ft_strdup.c ft_striteri.c ft_strjoin.c ft_strlc
 PRINTF =	ft_putchar.c ft_putstr.c ft_printnbr.c ft_itoh.c ft_printunbr.c ft_printptr.c \
 			ft_printf.c
 
+PRINTF_FD =	ft_printf_fd.c putstr_fd.c ft_printnbr_fd.c ft_printptr_fd.c ft_itoh_fd.c ft_printunbr_fd.c
+
 SRC_GNL =	get_next_line.c get_next_line_utils.c
 
 SRCS_DIR =	$(addprefix $(SRC)/, $(addprefix $(DIR_PRINTF)/, $(PRINTF))) \
+			$(addprefix $(SRC)/, $(addprefix $(DIR_PRINTF_FD)/, $(PRINTF_FD))) \
 			$(addprefix $(SRC)/, $(addprefix $(DIR_GNL)/, $(SRC_GNL))) \
 			$(addprefix $(SRC)/, $(addprefix $(DIR_STR)/, $(SRC_STR))) \
 			$(addprefix $(SRC)/, $(addprefix $(DIR_CHECK)/, $(SRC_CHECK))) \

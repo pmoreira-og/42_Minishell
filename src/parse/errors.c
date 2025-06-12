@@ -6,7 +6,7 @@
 /*   By: pmoreira <pmoreira@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/22 15:33:31 by pmoreira          #+#    #+#             */
-/*   Updated: 2025/06/11 10:54:24 by pmoreira         ###   ########.fr       */
+/*   Updated: 2025/06/12 15:07:47 by pmoreira         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -79,8 +79,9 @@ void	parser_error(char *error_msg, int fd)
 {
 	if (error_msg)
 	{
-		ft_putstr_fd(ERR_BAD_FORMAT, fd);
-		ft_putendl_fd(error_msg, fd);
+		ft_printf_fd(fd, "%s%s\n", ERR_BAD_FORMAT, error_msg);
+		// ft_putstr_fd(ERR_BAD_FORMAT, fd);
+		// ft_putendl_fd(error_msg, fd);
 	}
 }
 

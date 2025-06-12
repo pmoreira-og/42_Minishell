@@ -4,11 +4,11 @@ static void	handle_redirections(t_cmd *cmd)
 {
 	int	fd;
 	
-	printf("test1!\n");
+	// printf("test1!\n");
 	if (cmd->redir_in && cmd->redir_in->filename)
 	{
 		fd = open(cmd->redir_in->filename, O_RDONLY);
-		printf("test2!\n");
+		// printf("test2!\n");
 		if (fd == -1)
 		{
 			perror(cmd->redir_in->filename);
@@ -23,7 +23,7 @@ static void	handle_redirections(t_cmd *cmd)
 		
 		flags = O_WRONLY | O_CREAT | O_TRUNC;
 		fd = open(cmd->redir_out->filename, flags, 0644);
-		printf("test3!\n");
+		// printf("test3!\n");
 		if (fd == -1)
 		{
 			perror(cmd->redir_out->filename);
@@ -32,7 +32,7 @@ static void	handle_redirections(t_cmd *cmd)
 		dup2(fd, STDOUT_FILENO);
 		close(fd);
 	}
-	printf("test4!\n");
+	// printf("test4!\n");
 	// ainda preciso fazer o heredoc aqui com o t_redirection ou cmd->delimiter
 	// mas por enquanto elas n estao linkando ent mantive assim por agora e vemos isso
 }
