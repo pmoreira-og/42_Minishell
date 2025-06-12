@@ -11,8 +11,6 @@
 /* ************************************************************************** */
 
 #include "minishell.h"
-#include <stdio.h>
-#include <uchar.h>
 
 static int	is_flag_n(char *arg)
 {
@@ -35,7 +33,6 @@ int	mini_echo(t_cmd *cmd, t_env **env, t_hell *shell)
 	(void)shell;
 	no_newline = 0;
 	i = 1;
-
 	while (cmd->args[i] && is_flag_n(cmd->args[i]))
 	{
 		no_newline = 1;

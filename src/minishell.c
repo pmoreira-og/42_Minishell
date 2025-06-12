@@ -12,24 +12,6 @@
 
 #include "minishell.h"
 
-/* void	list_builtin(t_hell *hell)
-{
-	if (!ft_strcmp(hell->cmd->args[0], "echo"))
-		mini_echo(hell->cmd, &hell->env, hell);
-	else if (!ft_strcmp(hell->cmd->args[0], "pwd"))
-		mini_pwd(hell->cmd);
-	else if (!ft_strcmp(hell->cmd->args[0], "cd"))
-		mini_cd(hell->cmd, &hell->env, hell);
-	else if (!ft_strcmp(hell->cmd->args[0], "env"))
-		mini_env(hell->env);
-	else if (!ft_strcmp(hell->cmd->args[0], "exit"))
-		mini_exit(hell);
-	else if (!ft_strcmp(hell->cmd->args[0], "export"))
-		mini_export(&hell->env, &hell->export, hell->cmd);
-	else if (!ft_strcmp(hell->cmd->args[0], "unset"))
-		mini_unset(&hell->env, hell->cmd, &hell->export, hell);
-} */
-
 int	lst_size(t_cmd *cmd)
 {
 	int		size;

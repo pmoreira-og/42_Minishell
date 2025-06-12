@@ -1,40 +1,97 @@
 #include "minishell.h"
 
-static void	handle_redirections(t_cmd *cmd)
+int	shell_heredoc(char *limiter)
 {
-	int	fd;
+	int		pipefd[2];
+	char	*line;
+
+	if (pipe(pipefd) == -1)
+	{
+		perror("pipe");
+		return (-1);
+	}
+	while (1)
+	{
+		line = readline("> ");
+		if (!line)
+			break;
+		if (!ft_strcmp(line, limiter))
+		{
+			free(line);
+			break;
+		}
+		write(pipefd[1], line, ft_strlen(line));
+		write(pipefd[1], "\n", 1);
+		free(line);
+	}
+	close(pipefd[1]);
+	return (pipefd[0]);
+}
+
+static void	do_heredoc(t_redirection *redir)
+{
+	int fd;
+
+	fd = shell_heredoc(redir->limiter);
+	if (fd == -1)
+		exit(EXIT_FAILURE);
+	dup2(fd, STDIN_FILENO);
+	close(fd);
+}
+
+static void	open_infile(t_redirection *redir)
+{
+	redir->fd = open(redir->filename, O_RDONLY);
+	if (redir->fd == -1)
+	{
+		perror(redir->filename);
+		exit(EXIT_FAILURE);
+	}
+	dup2(redir->fd, STDIN_FILENO);
+	close(redir->fd);
+}
+
+static void	open_outfile(t_redirection *redir, int append)
+{
+	int flags;
 	
-	printf("test1!\n");
-	if (cmd->redir_in && cmd->redir_in->filename)
-	{
-		fd = open(cmd->redir_in->filename, O_RDONLY);
-		printf("test2!\n");
-		if (fd == -1)
-		{
-			perror(cmd->redir_in->filename);
-			exit(EXIT_FAILURE);
-		}
-		dup2(fd, STDIN_FILENO);
-		close(fd);
-	}
-	if (cmd->redir_out && cmd->redir_out->filename)
-	{
-		int flags;
-		
+	if (append)
+		flags = O_WRONLY | O_CREAT | O_APPEND;
+	else
 		flags = O_WRONLY | O_CREAT | O_TRUNC;
-		fd = open(cmd->redir_out->filename, flags, 0644);
-		printf("test3!\n");
-		if (fd == -1)
-		{
-			perror(cmd->redir_out->filename);
-			exit(EXIT_FAILURE);
-		}
-		dup2(fd, STDOUT_FILENO);
-		close(fd);
+	redir->fd = open(redir->filename, flags, 0644);
+	if (redir->fd == -1)
+	{
+		perror(redir->filename);
+		exit(EXIT_FAILURE);
 	}
-	printf("test4!\n");
-	// ainda preciso fazer o heredoc aqui com o t_redirection ou cmd->delimiter
-	// mas por enquanto elas n estao linkando ent mantive assim por agora e vemos isso
+	dup2(redir->fd, STDOUT_FILENO);
+	close(redir->fd);
+}
+
+void	handle_redirections(t_cmd *cmd)
+{
+	t_redirection *in;
+	t_redirection *out;
+
+	in = cmd->redir_in;
+	out = cmd->redir_out;
+	while (in)
+	{
+		if (in->type == REDIR_IN || in->type == INFILE)
+			open_infile(in);
+		else if (in->type == REDIR_HERE_DOC)
+			do_heredoc(in);
+		in = in->next;
+	}
+	while (out)
+	{
+		if (out->type == REDIR_OUT || out->type == OUTFILE)
+			open_outfile(out, 0);
+		else if (out->type == REDIR_OUT_APPEND || out->type == OUTFILE_APPEND)
+			open_outfile(out, 1);
+		out = out->next;
+	}
 }
 
 static int	execute_builtin(t_cmd *cmd, t_hell *shell)
@@ -81,7 +138,8 @@ static void	execute_child(t_cmd *cmd, int prev_pipe_fd, int *pipefd, t_hell *she
 		close(shell->hist_fd);
 	if (!cmd->cmd_path)
 	{
-		fprintf(stderr, "%s: command not found\n", cmd->args[0]);
+		ft_putstr_fd(cmd->args[0], 2);
+		ft_putstr_fd(": command not found\n", 2);
 		exit(127);
 	}
 	execve(cmd->cmd_path, cmd->args, cmd->envp);
@@ -119,12 +177,6 @@ void	execute_pipeline(t_hell *shell)
 	prev_pipe = -1;
 	while (cmd)
 	{
-		// if (cmd->is_builtin && !cmd->is_piped && !cmd->next)
-		// {
-		// 	handle_redirections(cmd);
-		// 	shell->status = execute_builtin(cmd, shell);
-		// 	return ;
-		// }
 		if (cmd->is_piped && pipe(pipes) == -1)
 		{
 			perror("pipe");
