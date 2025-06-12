@@ -1,168 +1,128 @@
 export a
 export
 export Z
-export
-export Z
-export
-export
-export Z
-export
-export a='dsasadsadsad 'adasdsadsa'dsadsadsad "dsada '
-$a
-echo $a
-export Z
-export Z=asdsadsad
-export
-export Z=asdsadsadsffdsfds
-export
-export Z
-export
-export Z=asdsadsad
-export
-export Z=asdsadsadsffdsfds
-export
-export a=asdsadsad
-export
 export a
-export
-export a
-export
-export a=banan
-export
-export a
-export
+export 
+echo -nnnnnnnnnnnnnnnnnnnnn -nnnnnnnnnnnnnn-nnnnnnnn
+echo --nnnnnnnnnnnnnnnnnnnnn -nnnnnnnnnnnnnn-nnnnnnnn
+<<dsasad|>|> outfile
+<<dsasad > outfile
 export a=
 export
-export a=asdsadsad
-env
-export a
-env
 export a
 export
-export a=asdsadsad
-export
-export a
-export a
-export
-export a=asdsadsad
+export a=asddasasdsadasdasdasdsad
 export
 export a
 export
-export a
-export
-env
-export a=asdsadsad
-export
-env
-export a
-env
-export
-env
-export
-pwd
-env
-cd ../
-ls
-env
-cd Minishell/
-env
-env
-export
-pwd
-env
-env
-env
-export
-env
-export
-env
-export
-env
-export
-env
-ola
-env
-export
-env
-export
-pwd
-<infile cat | wc -l > outfile
-<infile cat | wc -l > outfile
-<infile cat | wc -l > outfile
-<infile cat | wc -l > outfile
-<idasdasdnfile cat | wc -l > outasdasdfile
-<idasdasdnfile cat | wc -l > outasdasdfile
-<infile cat | wc -l > outfile
-cat << $USER | cat >> out
-cat << "$USER" | cat >> out
-cat << "$USER" | cat >> out
-<infile cat | wc -l > outfile
-<infile cat | wc -l > outfile
-<infile cat | wc -l > outfile
-<infile cat | wc -l > outfile
-<infile cat | wc -l > outfile
-<infile cat | wc -l > outfile
-<infile cat | wc -l > outfile
-<infile cat | wc -l > outfile
-<infile cat | wc -l > outfile
-<infile cat | wc -l > outfile
-<infile cat | wc -l > outfile
-<infile cat | wc -l > outfile
-<infile cat | wc -l > outfile
-<infile cat | wc -l > outfile
-<infile cat | wc -l > outfile
-<$HOME cat | wc -l > $USER
-<$HOME cat | wc -l > $USER
-<infile cat | wc -l > outfile
-cat << $USER | cat >> out
-cat << $USER | cat >> out
-export a
-$a
-echo $a
-ls
-export a="echo ' ola"
-$a
-echo $a
-cat Makefile 
-cat Makefile 
-cat Makefile 
-cat Makefile 
-cat Makefile | cat
-cat < Makefile 
-cat Makefile  | wc -l
-export a
-export
-env
-export a=dasdasdas
-export
-env
-export a
-export
-env
-export c=c a=a t=t
-""$c''"$a"$t Makefile 
-"echo" '>' ola
-"echo" ">" ola
-"echo" ">" ola | cat Makefile 
-"echo" ">"> ola | cat Makefile 
-echo >>> ola
-echo >>> "dasd'dadsa'dadasd'asdas'"dadsaas"dadas'asdasd"
-echo "dasd'dadsa'dadasd'asdas'"dadsaas"dadas'asdasd"
-echo "dasd'dadsa'dadasd'asdas'"dadsaasdadas'asdasd"
-echo >>> "dasd'dadsa'dadasd'asdas'"dadsaasdadas'asdasd"
-echo >>> "dasd'dadsa'dadasd'asdas'"dadsaasdadas'asdasd"
-cat /dev/urandom | head -1
-cat /dev/urandom 
-cat /dev/urandom | head -1
-cat /dev/urandom | sleep 3 | sleep 3 | sleep 3
-cat /dev/urandom | sleep 3 | sleep 3 | sleep 3
-cat /dev/urandom | sleep 3 | sleep 3 | sleep 3
-cat /dev/urandom | sleep 3 | sleep 3 | sleep 3
-cat Makefile | cat
-cat Makefile | cat
-cat Makefile | cat
-$no ls
 "" ls
-"" ls
-cate
-cate
+$noexit ls
+cat /dev/urandom | sleep 3 | sleep 3 | sleep 3
+echo - ola
+echo -
+echo -nnnn -
+echo -nnnn - ola
+echo -nnnn -n ola
+echo -nnnn -nnn ola
+echo -n -n -n -n ola
+exit 12312 12312
+unset 
+unset  ola
+unset  ola
+unset  ola
+unset  PATH
+ls
+unset  PATH
+env
+echo $PATH
+ls
+ls
+ls
+echo $SHLVL
+./minishell
+echo $SHLVL
+pwd
+unset PWD
+pwd
+unset PWD
+pwd
+echo PWD
+echo $PWD
+cd src/
+pwd
+echo $PWD
+pwd
+cd src/
+pwd
+echo $PWD
+cd asddasasdadsads
+echo $?
+cd daadsasdasdadsad
+echo $?
+cd sa adadaa
+$HOME
+/home
+$HOME
+echo $?
+dadadadaa
+echo $?
+$HOME
+echo $?
+exit 123 112312313
+exit aadasdas
+clear
+export a="echo ola"
+$a
+export a="echo" ola"
+export a='echo " ola'
+$a
+echo $A
+echo $a
+clear
+env
+export
+env
+export a=
+env
+exportba
+export a\
+export a\
+export
+export a\
+export a
+env
+export b
+env
+export
+export c
+export
+echo abc | ls
+ls | echo abc
+bash
+exit 222222222
+exit 222222222222222222222
+exit 222222222222222222222
+exit
+exit
+exit
+exit adasdasdasd232321
+exit adasdasdasd232321
+exit 2222222222222222
+exit 22222222222222222222222222222222222222222222
+exit 22222222222222222222222222222222222222222222
+exit 2222222222222222222
+exit aaaaaaaaaaaaaaaaaaa
+exit 2222222222222222222
+exit 22222222222222222222222222222222222222222222
+exit 22222222222222222222222222222222222222222222
+exit 22222222222222222222222222222222222222222222
+exit 222222222222222222222222222222222222222222222222222222222222222222222222222
+exit 222222222222222222222222222222222222222222222222222222222222222222222222222a
+exit 22222222222222222222222222222222222222222222
+asdasdasdasdasdasdsadasd
+bash
+bash
+clear
+echo ola
+dsasdsasdasdasdasdasd
+cat Makefile | cat
