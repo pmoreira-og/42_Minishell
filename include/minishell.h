@@ -107,13 +107,13 @@ void	save_history(char *input, t_hell *cmd);
 void	merror(char *s);
 
 // built in functions:
-void	mini_echo(t_cmd *cmd, t_env **env);
-void	mini_pwd(t_cmd *cmd);
-void	mini_cd(t_cmd *cmd, t_env **env);
+int	mini_echo(t_cmd *cmd, t_env **env, t_hell *shell);
+int	mini_pwd(t_cmd *cmd);
+void	mini_cd(t_cmd *cmd, t_env **env, t_hell *shell);
 void	mini_env(t_env *env);
 void	mini_exit(t_hell *hell);
 void	mini_export(t_env **env, t_export **export, t_cmd *cmd);
-void	mini_unset(t_env **env, t_cmd *cmd);
+void	mini_unset(t_env **env, t_cmd *cmd, t_export **export, t_hell *hell);
 
 // enviroment management:
 void	init_env(t_env **env, char **envp);

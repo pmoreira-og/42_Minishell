@@ -11,27 +11,6 @@
 /* ************************************************************************** */
 
 #include "minishell.h"
-// dd para double dots btw, n pensei em nome melhor ent se quiser mudar va em frentekkkk
-/* static void	dd_handler(char *path)
-{
-
-} */
-
-/* static int	dd_check(char *path)
-{
-	char	**dirs;
-	int		i;
-
-	i = 0;
-	dirs = ft_split(path, '/');
-	while (dirs[i] && ft_strcmp(dirs[i], ".."))
-	{
-		i++;
-		if (!dirs[i])
-			return(0);
-	}
-	return (1);
-} */
 
 static void	dir_handler(t_env **env, char *path, char *c_path)
 {
@@ -39,14 +18,15 @@ static void	dir_handler(t_env **env, char *path, char *c_path)
 	chdir(path);
 }
 
-void	mini_cd(t_cmd *cmd, t_env **env)
+void	mini_cd(t_cmd *cmd, t_env **env, t_hell *shell)
 {
 	char	*c_path;
 	char	*n_path;
 
 	c_path = getcwd(NULL, 0);
 	if (cmd->argc > 2)
-		exit(1);
+		return ((void)printf("minishell: cd: too many arguments\n"), \
+			(void)(shell->status = 1));
 	if (!cmd->args[1])
 		dir_handler(env, getenv("HOME"), c_path);
 	else if (!ft_strcmp(cmd->args[1], "/"))

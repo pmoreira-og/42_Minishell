@@ -12,6 +12,25 @@
 
 #include "minishell.h"
 
+/* 
+void	list_builtin(t_hell *hell)
+{
+	if (!ft_strcmp(hell->cmd->args[0], "echo"))
+		mini_echo(hell->cmd, &hell->env, hell);
+	else if (!ft_strcmp(hell->cmd->args[0], "pwd"))
+		mini_pwd(hell->cmd);
+	else if (!ft_strcmp(hell->cmd->args[0], "cd"))
+		mini_cd(hell->cmd, &hell->env, hell);
+	else if (!ft_strcmp(hell->cmd->args[0], "env"))
+		mini_env(hell->env);
+	else if (!ft_strcmp(hell->cmd->args[0], "exit"))
+		mini_exit(hell);
+	else if (!ft_strcmp(hell->cmd->args[0], "export"))
+		mini_export(&hell->env, &hell->export, hell->cmd);
+	else if (!ft_strcmp(hell->cmd->args[0], "unset"))
+		mini_unset(&hell->env, hell->cmd, &hell->export, hell);
+} */
+
 /// @brief Get the address of the memory allocated of the main struct.
 /// @param hell Pointer to main struct to save or NULL to get the address.
 /// @return NULL or Pointer to main struct.
@@ -27,25 +46,6 @@ t_hell	*get_hell(t_hell *hell)
 	else
 		return (addr);
 }
-
-void	list_builtin(t_hell *hell)
-{
-	if (!ft_strcmp(hell->cmd->args[0], "echo"))
-		mini_echo(hell->cmd, &hell->env);
-	else if (!ft_strcmp(hell->cmd->args[0], "pwd"))
-		mini_pwd(hell->cmd);
-	else if (!ft_strcmp(hell->cmd->args[0], "cd"))
-		mini_cd(hell->cmd, &hell->env);
-	else if (!ft_strcmp(hell->cmd->args[0], "env"))
-		mini_env(hell->env);
-	else if (!ft_strcmp(hell->cmd->args[0], "exit"))
-		mini_exit(hell);
-	else if (!ft_strcmp(hell->cmd->args[0], "export"))
-		mini_export(&hell->env, &hell->export, hell->cmd);
-	else if (!ft_strcmp(hell->cmd->args[0], "unset"))
-		mini_unset(&hell->env, hell->cmd);
-}
-
 int	lst_size(t_cmd *cmd)
 {
 	int		size;
@@ -69,10 +69,7 @@ static void	init_exec(t_hell *hell)
 		printf(ORANGE"--------RUNNING EXEC PART NOW-----------"RESET);
 		printf("\n");
 	}
-	if (hell->cmd && hell->cmd->args[0] && is_builtin(hell->cmd->args[0]))
-		list_builtin(hell);
-	else
-		execute_pipeline(hell);
+	execute_pipeline(hell);
 }
 
 int	main(int ac, char **av, char **envp)
