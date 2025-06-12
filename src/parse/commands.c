@@ -6,7 +6,7 @@
 /*   By: pmoreira <pmoreira@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/20 11:36:02 by pmoreira          #+#    #+#             */
-/*   Updated: 2025/06/11 14:00:48 by pmoreira         ###   ########.fr       */
+/*   Updated: 2025/06/11 15:27:39 by pmoreira         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -93,7 +93,8 @@ int	fill_cmd(t_cmd **cmd, t_token *start, t_hell *data)
 	(*cmd)->envp = copy_env(data->envp);
 	if (!(*cmd)->envp)
 		return (0);
-	(*cmd)->cmd_path = get_full_path((*cmd)->args[0], (*cmd)->envp);
+	if (!(*cmd)->is_builtin)
+		(*cmd)->cmd_path = get_full_path((*cmd)->args[0], (*cmd)->envp);
 	return (1);
 }
 
