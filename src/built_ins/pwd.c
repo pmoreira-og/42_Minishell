@@ -12,15 +12,18 @@
 
 #include "minishell.h"
 
-void	mini_pwd(t_cmd *cmd)
+int	mini_pwd(t_cmd *cmd)
 {
 	char *current;
 
 	(void)cmd;
 	current = getcwd(NULL, 0);
 	if (!current)
-		printf("Error 'pwd'\n");
+	{
+		perror("pwd");
+		return (1);
+	}
 	printf("%s\n", current);
 	free(current);
-	return ;
+	return (0);
 }

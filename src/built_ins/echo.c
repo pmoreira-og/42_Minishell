@@ -14,51 +14,41 @@
 #include <stdio.h>
 #include <uchar.h>
 
-// echo
-// echo arg
-// echo flag + arg
-// echo redirects (ver depois)
-
-static int	ft_check_n(t_cmd *cmd)
+static int	is_flag_n(char *arg)
 {
-	int	i;
+	int i;
 
-	i = 0;
-	if (cmd->args[1][i] == '-')
-	{
+	if (!arg || arg[0] != '-')
+		return (0);
+	i = 1;
+	while (arg[i] == 'n')
 		i++;
-		while (cmd->args[1][i] == 'n')
-		{
-			i++;
-			if (!cmd->args[1][i])
-				return(1);
-		}
-	}
-	return (0);
+	return (arg[i] == '\0');
 }
 
-void	mini_echo(t_cmd *cmd, t_env **env)
+int	mini_echo(t_cmd *cmd, t_env **env, t_hell *shell)
 {
-	int	token;
-	int	flag;
+	int	i;
+	int	no_newline;
 
-	flag = 0;
-	token = 0;
-	(void) env;
-	if (cmd->args[1] == NULL)
-		return ((void)printf("\n"));
-	if (ft_check_n(cmd))
+	(void)env;
+	(void)shell;
+	no_newline = 0;
+	i = 1;
+
+	while (cmd->args[i] && is_flag_n(cmd->args[i]))
 	{
-		token++;
-		flag++;
+		no_newline = 1;
+		i++;
 	}
-	while (cmd->args[++token])
+	while (cmd->args[i])
 	{
-		printf("%s", cmd->args[token]);
-		if (cmd->args[token + 1] != NULL)
-			printf(" ");
+		ft_putstr_fd(cmd->args[i], STDOUT_FILENO);
+		if (cmd->args[i + 1])
+			write(STDOUT_FILENO, " ", 1);
+		i++;
 	}
-	if (flag == 0)
-		printf("\n");
-	return ;
+	if (!no_newline)
+		write(STDOUT_FILENO, "\n", 1);
+	return (0);
 }

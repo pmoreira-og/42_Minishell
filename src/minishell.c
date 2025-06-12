@@ -12,14 +12,14 @@
 
 #include "minishell.h"
 
-void	list_builtin(t_hell *hell)
+/* void	list_builtin(t_hell *hell)
 {
 	if (!ft_strcmp(hell->cmd->args[0], "echo"))
-		mini_echo(hell->cmd, &hell->env);
+		mini_echo(hell->cmd, &hell->env, hell);
 	else if (!ft_strcmp(hell->cmd->args[0], "pwd"))
 		mini_pwd(hell->cmd);
 	else if (!ft_strcmp(hell->cmd->args[0], "cd"))
-		mini_cd(hell->cmd, &hell->env);
+		mini_cd(hell->cmd, &hell->env, hell);
 	else if (!ft_strcmp(hell->cmd->args[0], "env"))
 		mini_env(hell->env);
 	else if (!ft_strcmp(hell->cmd->args[0], "exit"))
@@ -27,8 +27,8 @@ void	list_builtin(t_hell *hell)
 	else if (!ft_strcmp(hell->cmd->args[0], "export"))
 		mini_export(&hell->env, &hell->export, hell->cmd);
 	else if (!ft_strcmp(hell->cmd->args[0], "unset"))
-		mini_unset(&hell->env, hell->cmd);
-}
+		mini_unset(&hell->env, hell->cmd, &hell->export, hell);
+} */
 
 int	lst_size(t_cmd *cmd)
 {
@@ -53,10 +53,7 @@ static void	init_exec(t_hell *hell)
 		printf(ORANGE"--------RUNNING EXEC PART NOW-----------"RESET);
 		printf("\n");
 	}
-	if (hell->cmd && hell->cmd->args[0] && is_builtin(hell->cmd->args[0]))
-		list_builtin(hell);
-	else
-		execute_pipeline(hell);
+	execute_pipeline(hell);
 }
 
 int	main(int ac, char **av, char **envp)
