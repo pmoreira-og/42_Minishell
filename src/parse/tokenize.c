@@ -6,7 +6,7 @@
 /*   By: pmoreira <pmoreira@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/24 14:39:15 by pmoreira          #+#    #+#             */
-/*   Updated: 2025/06/09 11:55:59 by pmoreira         ###   ########.fr       */
+/*   Updated: 2025/06/12 11:21:36 by pmoreira         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -118,7 +118,7 @@ void	tokenize(char *input, t_hell *data)
 			return (ft_clean_matrix(matrix), merror("tokenize:node"));
 		temp->cmd = ft_strdup(matrix[i]);
 		if (!temp->cmd)
-			return (mini_cleaner(matrix, data), merror("tokenize:node:cmd"));
+			return (mini_cleaner(matrix, data, 1), merror("tokenize:nod:cmd"));
 		temp->next->prev = temp;
 		temp = temp->next;
 	}

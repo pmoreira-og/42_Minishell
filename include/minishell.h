@@ -6,7 +6,7 @@
 /*   By: pmoreira <pmoreira@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/24 14:48:17 by pmoreira          #+#    #+#             */
-/*   Updated: 2025/06/11 12:37:50 by pmoreira         ###   ########.fr       */
+/*   Updated: 2025/06/12 12:50:10 by pmoreira         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,7 @@
 # define MINISHELL_H
 
 # include <stdlib.h>
+# include <limits.h>
 # include <stdio.h>
 # include <string.h>
 # include <signal.h>
@@ -133,8 +134,10 @@ void	print_cmd_info(t_hell *data);
 int		lst_size(t_cmd *cmd);
 void	armageddon(t_hell *data);
 void	prepare_next_input(t_hell *data);
-void	mini_cleaner(char **matrix, t_hell *data);
+void	mini_cleaner(char **matrix, t_hell *data, int status);
 char	**copy_env(char **envp);
+t_hell	*get_hell(t_hell *hell);
+void	signal_handler(t_hell *hell, int flag);
 
 // Aux cleaners
 void	clean_cmds(t_hell *data);

@@ -47,7 +47,7 @@ SRC_PARSE =	tokenize.c ft_params.c checkers.c expand.c extra.c parser.c \
 			sub_list.c validators.c ft_quotes.c ft_redirs.c
 
 SRC_UTILS =	cleaners.c constructors.c checkers.c printers.c aux_cleaners.c \
-			aux_cleaners2.c
+			aux_cleaners2.c signals.c
 
 SRCS_DIR =	$(addprefix $(SRC)/, $(addprefix $(DIR_BUILT_INS)/, $(SRC_BUILT_INS))) \
 			$(addprefix $(SRC)/, $(addprefix $(DIR_GENERAL)/, $(SRC_GENERAL))) \

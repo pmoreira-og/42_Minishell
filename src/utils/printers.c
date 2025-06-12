@@ -6,7 +6,7 @@
 /*   By: pmoreira <pmoreira@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/20 16:01:00 by pmoreira          #+#    #+#             */
-/*   Updated: 2025/06/11 12:40:12 by pmoreira         ###   ########.fr       */
+/*   Updated: 2025/06/12 13:31:47 by pmoreira         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,6 +31,7 @@ void	print_token(t_token *toks)
 void	print_redirs(t_cmd *cmd)
 {
 	t_redirection	*temp;
+
 	if (!cmd)
 		return ;
 	temp = cmd->redir_in;
@@ -51,7 +52,6 @@ void	print_redirs(t_cmd *cmd)
 		temp = temp->next;
 	}
 }
-
 
 void	print_matrix(char **matrix)
 {
