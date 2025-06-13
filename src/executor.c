@@ -12,7 +12,7 @@ int	shell_heredoc(char *limiter)
 	}
 	while (1)
 	{
-		line = readline("> ");
+		line = readline(RED"> "RESET);
 		if (!line)
 			break;
 		if (!ft_strcmp(line, limiter))
@@ -177,6 +177,11 @@ void	execute_pipeline(t_hell *shell)
 	prev_pipe = -1;
 	while (cmd)
 	{
+		if (!cmd->is_piped && cmd->is_builtin)
+		{
+			shell->status = execute_builtin(cmd, shell);
+			return ;
+		}
 		if (cmd->is_piped && pipe(pipes) == -1)
 		{
 			perror("pipe");

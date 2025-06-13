@@ -3,34 +3,14 @@
 /*                                                        :::      ::::::::   */
 /*   minishell.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: pmoreira <pmoreira@student.42lisboa.com    +#+  +:+       +#+        */
+/*   By: ernda-si <ernda-si@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/23 12:17:06 by ernda-si          #+#    #+#             */
-/*   Updated: 2025/06/12 10:04:55 by pmoreira         ###   ########.fr       */
+/*   Updated: 2025/06/13 13:02:17 by ernda-si         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minishell.h"
-
-
-/* 
-void	list_builtin(t_hell *hell)
-{
-	if (!ft_strcmp(hell->cmd->args[0], "echo"))
-		mini_echo(hell->cmd, &hell->env, hell);
-	else if (!ft_strcmp(hell->cmd->args[0], "pwd"))
-		mini_pwd(hell->cmd);
-	else if (!ft_strcmp(hell->cmd->args[0], "cd"))
-		mini_cd(hell->cmd, &hell->env, hell);
-	else if (!ft_strcmp(hell->cmd->args[0], "env"))
-		mini_env(hell->env);
-	else if (!ft_strcmp(hell->cmd->args[0], "exit"))
-		mini_exit(hell);
-	else if (!ft_strcmp(hell->cmd->args[0], "export"))
-		mini_export(&hell->env, &hell->export, hell->cmd);
-	else if (!ft_strcmp(hell->cmd->args[0], "unset"))
-		mini_unset(&hell->env, hell->cmd, &hell->export, hell);
-} */
 
 /// @brief Get the address of the memory allocated of the main struct.
 /// @param hell Pointer to main struct to save or NULL to get the address.
