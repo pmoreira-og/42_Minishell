@@ -6,7 +6,7 @@
 /*   By: pmoreira <pmoreira@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/14 14:59:37 by pmoreira          #+#    #+#             */
-/*   Updated: 2025/06/12 13:28:38 by pmoreira         ###   ########.fr       */
+/*   Updated: 2025/06/13 12:55:48 by pmoreira         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -87,6 +87,7 @@ void	parser(char **input, t_hell *data)
 	if (!(*input))
 	{
 		data->status = 0;
+		printf("exit\n");
 		return (mini_cleaner(NULL, data, 0));
 	}
 	if (!ft_strcmp(*input, "") || !quotes_check(*input))

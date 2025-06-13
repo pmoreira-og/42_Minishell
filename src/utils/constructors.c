@@ -6,7 +6,7 @@
 /*   By: pmoreira <pmoreira@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/29 11:28:20 by pmoreira          #+#    #+#             */
-/*   Updated: 2025/06/12 13:31:36 by pmoreira         ###   ########.fr       */
+/*   Updated: 2025/06/13 12:48:59 by pmoreira         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -86,7 +86,7 @@ t_hell	*init_hell(int ac, char **av, char **envp)
 	hell = ft_calloc(1, sizeof(t_hell));
 	if (!hell)
 		return (merror("init_hell:main"), NULL);
-	if (!envp || !find_var(envp, "SHLVL"))
+	if (!envp || !*envp)
 		new_envp = init_local_envp(hell);
 	else
 		new_envp = envp;

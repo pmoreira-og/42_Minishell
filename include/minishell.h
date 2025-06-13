@@ -6,7 +6,7 @@
 /*   By: ernda-si <ernda-si@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/24 14:48:17 by pmoreira          #+#    #+#             */
-/*   Updated: 2025/06/13 13:02:47 by ernda-si         ###   ########.fr       */
+/*   Updated: 2025/06/13 14:43:12 by pmoreira         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -89,6 +89,7 @@ char	*syntax_error_check(char *input);
 char	*space_put(char *input, int len);
 int		space_length(char *input);
 int		init_redirs(t_cmd **cmd, t_token *start);
+void	input_heredoc(int fd, char *limiter);
 
 // TEST FUNCTIONS ON PARSE
 t_bool	has_expansion(char *s);

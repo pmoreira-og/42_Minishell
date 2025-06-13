@@ -6,7 +6,7 @@
 /*   By: pmoreira <pmoreira@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/07 14:40:54 by pmoreira          #+#    #+#             */
-/*   Updated: 2025/06/07 16:57:26 by pmoreira         ###   ########.fr       */
+/*   Updated: 2025/06/13 14:39:00 by pmoreira         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -98,4 +98,29 @@ char	*expand_heredoc(char *s, char *end, t_hell *hell)
 		}
 	}
 	return (result);
+}
+
+void	input_heredoc(int fd, char *limiter)
+{
+	char	*line;
+	char	*temp;
+
+	while (1)
+	{
+		temp = readline("> ");
+		if (!temp || !ft_strcmp(temp, limiter))
+			break;
+		line = expand_heredoc(temp, &temp[ft_strlen(temp)], get_hell(NULL));
+		if (!line)
+			return (free(temp), merror("heredoc:line"));
+		write(fd, line, ft_strlen(line));
+		free(temp);
+		temp = NULL;
+		free(line);
+		line = NULL;
+	}
+	if (temp)
+		free(temp);
+	if (line)
+		free(line);
 }

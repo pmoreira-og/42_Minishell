@@ -6,7 +6,7 @@
 /*   By: pmoreira <pmoreira@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/22 15:33:31 by pmoreira          #+#    #+#             */
-/*   Updated: 2025/06/12 15:07:47 by pmoreira         ###   ########.fr       */
+/*   Updated: 2025/06/13 13:02:24 by pmoreira         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -69,20 +69,13 @@ char	*syntax_error_check(char *input)
 void	merror(char *s)
 {
 	if (s)
-	{
-		ft_putstr_fd("Malloc:", 2);
-		ft_putendl_fd(s, 2);
-	}
+		ft_printf_fd(2, "Malloc:%s\n", s);
 }
 
 void	parser_error(char *error_msg, int fd)
 {
 	if (error_msg)
-	{
 		ft_printf_fd(fd, "%s%s\n", ERR_BAD_FORMAT, error_msg);
-		// ft_putstr_fd(ERR_BAD_FORMAT, fd);
-		// ft_putendl_fd(error_msg, fd);
-	}
 }
 
 /// @brief Heredoc message for finishing with eof.
@@ -91,9 +84,6 @@ void	parser_error(char *error_msg, int fd)
 void	heredoc_eof(int c, int fd)
 {
 	if (fd > 0 && c)
-	{
-		ft_putstr_fd(HEREDOC_EOF, fd);
-		ft_putchar_fd(c, fd);
-		ft_putendl_fd(" delimited by end-of-file", fd);
-	}
+		ft_printf_fd(fd, "%s%c%s\n", HEREDOC_EOF, c,
+			" delimited by end-of-file");
 }
