@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   echo.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: pmoreira <pmoreira@student.42lisboa.com    +#+  +:+       +#+        */
+/*   By: ernda-si <ernda-si@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/23 12:11:58 by ernda-si          #+#    #+#             */
-/*   Updated: 2025/05/27 12:24:08 by pmoreira         ###   ########.fr       */
+/*   Updated: 2025/06/13 14:05:39 by ernda-si         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 static int	is_flag_n(char *arg)
 {
-	int i;
+	int	i;
 
 	if (!arg || arg[0] != '-')
 		return (0);

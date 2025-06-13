@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   misc.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: pmoreira <pmoreira@student.42lisboa.com    +#+  +:+       +#+        */
+/*   By: ernda-si <ernda-si@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/23 12:11:56 by ernda-si          #+#    #+#             */
-/*   Updated: 2025/05/30 12:19:05 by pmoreira         ###   ########.fr       */
+/*   Updated: 2025/06/13 14:05:21 by ernda-si         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,7 +31,7 @@ void	printascii(void)
 
 int	get_history_fd(t_hell *cmd)
 {
-	cmd->hist_fd = open(HIST_FILE, O_RDWR | O_APPEND | O_CREAT , 0766);
+	cmd->hist_fd = open(HIST_FILE, O_RDWR | O_APPEND | O_CREAT, 0766);
 	if (cmd->hist_fd == -1)
 		return (printf("DEU RUIM"), 1);
 	return (0);
@@ -39,8 +39,8 @@ int	get_history_fd(t_hell *cmd)
 
 void	load_history(t_hell *cmd)
 {
+	char		temp2[1024];
 	char		*temp;
-	char	temp2[1024];
 	int			size;
 
 	if (cmd->hist_fd == -1)
@@ -61,7 +61,7 @@ void	load_history(t_hell *cmd)
 void	save_history(char *input, t_hell *cmd)
 {
 	if (cmd->hist_fd == -1 || !input || !ft_strcmp(input, ""))
-		return;
+		return ;
 	ft_putendl_fd(input, cmd->hist_fd);
 	add_history(input);
 }

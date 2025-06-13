@@ -170,3 +170,178 @@ clera
 clera
 clear
 exit
+cat << EOF
+clera
+clear
+exit
+cat << EOF
+clear
+exit
+cat << EOF
+make
+make re
+./minishell
+a
+exit
+exit
+env | grep SHLVL
+./minishell
+env | grep SHLVL
+./minishell
+env | grep SHLVL
+./minishell
+env | grep SHLVL
+exit
+exit
+exi
+exit
+exit
+cat << EOF
+EXIT
+clear
+make re
+a
+s
+ls
+exit
+cat << EOF
+clear
+echo a | > a
+exit
+clear
+exit
+a
+ls
+echo 4?
+echo $?
+echo $?
+clear
+cd dsadsadsa
+echo $?
+echo $?
+clear
+ls -ldlsadlsalff
+clear
+echo $?
+echo $?
+clear
+echo a | > a
+clear
+exit
+echo a | > a
+make
+./minishell
+echo a | > a
+exit
+clear
+exit
+echo a | > a
+echo a | > a
+exit
+cat << EOF
+cear
+cat << EOF
+clear
+exit
+c
+echo $?
+echo $?
+clear
+exit
+cat << EOf
+clear
+cat << EOF
+cat << EOF
+a
+echo a | > a
+clear
+exit
+cat << EOF
+clear
+exit
+cat << EOF
+exit
+cat << EOF
+clear
+exit
+cat << EOF
+clear
+exit
+a
+cat << EOF
+clear
+a
+cat << EOF
+cat << EOF
+clera
+cat << EOF
+clear
+ls | grep a | echo a
+clear
+clear
+clear
+clear
+exit
+cat << a
+cat << EOF
+cat << EOf
+cat << EOF
+a
+cat <> EOF
+cat << EOF
+clear
+cat << EOF
+cear
+clear
+exit
+cat << EOf
+exit
+cat << EOf
+clear
+exit
+a
+cat << EOF
+clear
+echo a > a
+echo a > a >> a
+clear
+exit
+cat Makefile > a
+clear
+exit
+cat << EOF
+cat << eof
+cat << EOF
+cat << EOF
+cat << EOF
+cat << EOF
+clear
+exit
+cat << EOF
+cat << EOF
+clear
+exit
+cat << EOF
+cat << EOF
+cat << $USER
+exit
+cat << EOF
+a
+clear
+cat << EOF
+cat << EOF
+cat << EOF
+clear
+exit
+cat << EOF
+exit
+cat << EOF
+a
+ls | grep a
+cat << EOF
+clear
+exi
+exit
+cat << EOF
+exit
+cat << EOF

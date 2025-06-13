@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_printf_fd.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: pmoreira <pmoreira@student.42lisboa.com    +#+  +:+       +#+        */
+/*   By: ernda-si <ernda-si@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/15 11:14:38 by pmoreira          #+#    #+#             */
-/*   Updated: 2025/06/12 15:03:39 by pmoreira         ###   ########.fr       */
+/*   Updated: 2025/06/13 13:59:21 by ernda-si         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,7 +33,8 @@ static int	ft_inputtype_fd(const char *s, va_list *item, int fd)
 		return (ft_printptr_fd(va_arg(*item, unsigned long), fd));
 	return (0);
 }
-int		ft_printf_fd(int fd, const char *input, ...)
+
+int	ft_printf_fd(int fd, const char *input, ...)
 {
 	va_list	args;
 	int		count;

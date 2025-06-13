@@ -44,7 +44,7 @@ char	**ft_parse(char *s, char c);
 
 int		check_files(int ac, char **av, t_pipex *pipex);
 // t_pipex	*ft_init_struct(char *envp[], int size, char **av, t_hell *hell);
-char	*get_next_line_fd(int dst, int src, char **av);
+char	*get_next_line_fd(int dst, int src, char *limiter);
 int		wait_childs(t_pipex *pipex);
 char	**ft_getenv(char **envp, char *target, char split);
 

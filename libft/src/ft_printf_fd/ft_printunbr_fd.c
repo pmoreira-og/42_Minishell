@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_printunbr_fd.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: pmoreira <pmoreira@student.42lisboa.com    +#+  +:+       +#+        */
+/*   By: ernda-si <ernda-si@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/19 12:34:25 by pmoreira          #+#    #+#             */
-/*   Updated: 2025/06/12 15:05:22 by pmoreira         ###   ########.fr       */
+/*   Updated: 2025/06/13 14:00:12 by ernda-si         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,7 +28,7 @@ static void	putnum_fd(unsigned int n, int fd)
 	}
 }
 
-int		ft_printunbr_fd(unsigned int num, int fd)
+int	ft_printunbr_fd(unsigned int num, int fd)
 {
 	int	size;
 	int	temp;

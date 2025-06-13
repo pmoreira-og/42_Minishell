@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   utils.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: pmoreira <pmoreira@student.42lisboa.com    +#+  +:+       +#+        */
+/*   By: ernda-si <ernda-si@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/11 10:10:57 by pmoreira          #+#    #+#             */
-/*   Updated: 2025/06/10 19:00:17 by pmoreira         ###   ########.fr       */
+/*   Updated: 2025/06/13 14:23:50 by ernda-si         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -92,7 +92,7 @@ t_pipex	*ft_init_struct(char *envp[], int size, char /*const*/ **av)
 	return (pipex);
 }
 
-char	*get_next_line_fd(int dst, int src, /*const*/ char **av)
+char	*get_next_line_fd(int dst, int src, char *limiter)
 {
 	char	*line;
 
@@ -101,7 +101,7 @@ char	*get_next_line_fd(int dst, int src, /*const*/ char **av)
 	line = get_next_line(src);
 	if (!line)
 		return (perror("Signal"), NULL);
-	if (!line || !ft_strncmp(line, av[2], ft_strlen(av[2])))
+	if (!line || !ft_strncmp(line, limiter, ft_strlen(limiter)))
 		return (free(line), NULL);
 	write(dst, line, ft_strlen(line));
 	return (line);

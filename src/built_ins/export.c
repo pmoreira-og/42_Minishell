@@ -1,7 +1,18 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   export.c                                           :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: ernda-si <ernda-si@student.42.fr>          +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2025/06/13 14:07:18 by ernda-si          #+#    #+#             */
+/*   Updated: 2025/06/13 14:10:02 by ernda-si         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "minishell.h"
 
-static int	
-identifier_check(char **matrix)
+static int	identifier_check(char **matrix)
 {
 	int	i;
 
@@ -32,7 +43,7 @@ void	sort_export_list(t_export *head)
 		curr = head;
 		while (curr && curr->next)
 		{
-			if (ft_strcmp(curr->var, curr->next->var) > 0)
+			if (ft_strcmp(curr->var, curr->next->var))
 			{
 				tmp_var = curr->var;
 				tmp_val = curr->value;
@@ -49,7 +60,7 @@ void	sort_export_list(t_export *head)
 
 static void	print_export(t_export *export)
 {
-	t_export *temp;
+	t_export	*temp;
 
 	temp = export;
 	sort_export_list(temp);
@@ -69,14 +80,17 @@ static void	print_export(t_export *export)
 	return ;
 }
 
-void    mini_export(t_env **env, t_export **export, t_cmd *cmd)
+void	mini_export(t_env **env, t_export **export, t_cmd *cmd)
 {
-	int i = 1;
+	int		i;
+	char	**matrix;
+
+	i = 1;
 	if (cmd->argc == 1)
 		return (print_export(*export));
 	while (i < cmd->argc)
 	{
-		char **matrix = ft_split_once(cmd->args[i], '=');
+		matrix = ft_split_once(cmd->args[i], '=');
 		if (!identifier_check(matrix))
 			fprintf(stderr,
 				"Minishell: export: `%s': not a valid identifier\n",
