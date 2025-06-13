@@ -12,6 +12,7 @@
 
 #include "minishell.h"
 
+
 /* 
 void	list_builtin(t_hell *hell)
 {
@@ -46,6 +47,7 @@ t_hell	*get_hell(t_hell *hell)
 	else
 		return (addr);
 }
+
 int	lst_size(t_cmd *cmd)
 {
 	int		size;

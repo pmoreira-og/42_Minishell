@@ -1,29 +1,106 @@
-echo ola > outfile
-cat outfile 
-cat outfile 
-echo ola > banana | cat 
-echo ola > banana | cat 
-cat outfile 
-cat banana 
-echo ola > banana | cat 
-echo ola > banana | cat 
-echo ola > banana | cat 
-rm banana 
-echo ola > banana | cat 
-cat outfile 
-cat banana 
-rm outfile banana 
-unset PATH
+echo > a
+echo a > a
+echo a >> a
+echo a >> a
+echo a > a
+cat < EOF
+cat << EOF
+echo a 
+echo a >>a
+echo a >> aa
+echo a >> aa
+echo a >> aa
+clear
+exit
+echo abc > a > b > c
+exit
+cat << EOF
+cat << a
+cat << a
+a
+cat << a
+cat << a
+echo a | cat << EOF
+echo a << cat << EOF
+clear
+exit
+cat << a
+a
+cat << EOF
+cat << EOF
+cat << EOF
+cat << EOF
+cat << EOF
+a
+clear
+exit
+clear
+a
+cat << EOF
+a
+echo a
+echo | echo c
+clear
+echo | echo c > a > b > c
+echo | echo c > a > b > c | cat << eOF
+echo | echo c > a > b > c | cat << EOF
+clear
+echo | echo c > a > b > c | cat > EOF
+cat << EOF
+cat << EOF
+cat << EOF
+cat << EOF
+a
+echo a
 ls
-cat Makefile 
-env
-env | grep PATH
+l
+ls
+l
+l
+ls
+ls
+clear
 exit
+clear
+l
+ls
+ls
+echo a
+ls
+clear
+a
+a
+a
+ls
+a
+a
+ls
+ls
+a
+a
+echo a
+a
+a
+clear
+a
+a | ls
+a | ls | grep a
+a | ls | grep b
+a | ls | grep a
+clear
+a | ls | grep a
+a | ls | grep a > a
+clear
 exit
-env
-unset PATH
-cat Makefile 
-echo $?
-echo $?
-echo '
-echo >>> ola
+clear
+ls
+ls -la | grep a
+clear
+exit
+clear
+a >> a
+clear
+rm a
+clear
+exit
+clear
