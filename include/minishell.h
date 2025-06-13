@@ -6,7 +6,7 @@
 /*   By: pmoreira <pmoreira@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/24 14:48:17 by pmoreira          #+#    #+#             */
-/*   Updated: 2025/06/12 12:50:10 by pmoreira         ###   ########.fr       */
+/*   Updated: 2025/06/13 14:43:12 by pmoreira         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -90,6 +90,7 @@ char	*syntax_error_check(char *input);
 char	*space_put(char *input, int len);
 int		space_length(char *input);
 int		init_redirs(t_cmd **cmd, t_token *start);
+void	input_heredoc(int fd, char *limiter);
 
 // TEST FUNCTIONS ON PARSE
 t_bool	has_expansion(char *s);

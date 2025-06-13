@@ -104,3 +104,47 @@ rm a
 clear
 exit
 clear
+unset PATH
+ls
+unset PATH
+echo ola
+echo -n -n -nnnnnnnnnnnnnn -n ola
+env
+unset PATH
+env
+dasdasdasdasdsadasdasdasd
+ls
+echo ola
+adsasdasd
+echo $?
+echo $?
+echo $?
+echo $?
+sadasdasd
+echo $?
+echo $?
+cate Makefile 
+echo $?
+exit -asdasddas
+echo $?
+ls -la
+cat outfile > outfile
+cat outfile 
+bash
+cat <outfile <Makefile 
+cat outfile <Makefile 
+cat <outfile <Makefile <outfile 
+cat <outfile <Makefile > outfile 
+chmod 000 outfile 
+cat <outfile <Makefile > outfile 
+cat Makefile  | > outfile
+cat Makefile  | > outfile
+ola
+cat Makefile 
+/usr/bin/cat Makefile
+ls
+/usr/bin/ls
+export
+export a=a
+export
+echo '

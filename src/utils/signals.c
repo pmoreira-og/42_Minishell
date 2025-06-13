@@ -6,14 +6,13 @@
 /*   By: pmoreira <pmoreira@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/11 10:41:17 by pmoreira          #+#    #+#             */
-/*   Updated: 2025/06/12 13:27:13 by pmoreira         ###   ########.fr       */
+/*   Updated: 2025/06/13 12:07:56 by pmoreira         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minishell.h"
 
-/// @brief Exits the Here Doc process in case of CTRL+C
-static void	here_doc_sig_handler(int signal)
+static void	here_doc_handler(int signal)
 {
 	if (signal == SIGINT)
 	{
@@ -22,7 +21,7 @@ static void	here_doc_sig_handler(int signal)
 	}
 }
 
-static void	parent_sig_handler(int signal)
+static void	parent_handler(int signal)
 {
 	t_hell	*data;
 
@@ -39,10 +38,18 @@ static void	parent_sig_handler(int signal)
 
 void	signal_handler(t_hell *hell, int flag)
 {
+	static struct sigaction	sa;
+
 	get_hell(hell);
-	if (flag == 'H')
-		signal(SIGINT, here_doc_sig_handler);
-	else if (flag == 'P')
-		signal(SIGINT, parent_sig_handler);
+	if (flag == 'P')
+		sa.sa_handler = parent_handler;
+	else if (flag == 'H')
+		sa.sa_handler = here_doc_handler;
+	else
+		sa.sa_handler = SIG_DFL;
+	sa.sa_flags = 0;
+	if (sigemptyset(&sa.sa_mask) != 0)
+		return ;
+	sigaction(SIGINT, &sa, NULL);
 	signal(SIGQUIT, SIG_IGN);
 }

@@ -6,7 +6,7 @@
 /*   By: pmoreira <pmoreira@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/22 15:21:45 by pmoreira          #+#    #+#             */
-/*   Updated: 2025/06/11 12:37:47 by pmoreira         ###   ########.fr       */
+/*   Updated: 2025/06/13 12:38:01 by pmoreira         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -76,7 +76,7 @@ char	*get_full_path(char *cmd, char **envp)
 	char	*temp;
 	int		i;
 
-	if (ft_strchr(cmd, '/'))
+	if (cmd && ft_strchr(cmd, '/'))
 	{
 		if (access(cmd, X_OK) == 0)
 			return (ft_strdup(cmd));
@@ -86,7 +86,7 @@ char	*get_full_path(char *cmd, char **envp)
 	if (!path)
 		return (NULL);
 	i = -1;
-	while (path[++i])
+	while (cmd && path[++i])
 	{
 		temp = ft_strjoin(path[i], cmd);
 		if (!temp)
