@@ -104,3 +104,69 @@ rm a
 clear
 exit
 clear
+l
+clear
+exit
+clear
+a
+clear
+exit
+exit
+clear
+exit
+ls
+clera
+clear
+export a
+export
+env
+clear
+exit
+clear
+ex
+exit
+export a
+export
+env
+export a=
+export
+env
+unset a
+export
+env
+clear
+env | grep a
+clear
+exit
+echo a | echo b
+echo a | echo 
+echo a
+echo 
+echo a
+exit
+echo a | echo b
+echo a | echo b | ls
+echo a | echo b | ls | grep a
+clear
+echo $?
+echo $?
+echo a | echo b | ls | grep a
+echo $?
+echo $?
+echo a | echo b | ls | grep abc
+echo $?
+echo $?
+clear
+cd dsadsa
+clear
+cd dsadsa
+echo $?
+echo $?
+exit
+a
+echo $?
+echo $?
+clera
+clera
+clear
+exit
