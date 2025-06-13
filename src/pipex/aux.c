@@ -6,7 +6,7 @@
 /*   By: ernda-si <ernda-si@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/25 14:50:57 by pmoreira          #+#    #+#             */
-/*   Updated: 2025/05/21 16:40:09 by ernda-si         ###   ########.fr       */
+/*   Updated: 2025/06/13 14:24:41 by ernda-si         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -102,7 +102,7 @@ void	ft_heredoc(t_pipex *pipex, /*const*/ char **av)
 		return (perror("here_doc error"));
 	while (1)
 	{
-		line = get_next_line_fd(pipex->in_fd, 0, av);
+		// line = get_next_line_fd(pipex->in_fd, 0, av);
 		if (!line)
 			break ;
 		free(line);

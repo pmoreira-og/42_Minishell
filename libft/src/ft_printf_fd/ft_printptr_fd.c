@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_printptr_fd.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: pmoreira <pmoreira@student.42lisboa.com    +#+  +:+       +#+        */
+/*   By: ernda-si <ernda-si@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/19 13:47:26 by pmoreira          #+#    #+#             */
-/*   Updated: 2025/06/12 15:04:26 by pmoreira         ###   ########.fr       */
+/*   Updated: 2025/06/13 13:59:58 by ernda-si         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,7 +29,8 @@ static void	ft_printhex_fd(unsigned long nbr, char type, int fd)
 		ft_printhex_fd((nbr % 16), type, fd);
 	}
 }
-int		ft_printptr_fd(unsigned long ptr, int fd)
+
+int	ft_printptr_fd(unsigned long ptr, int fd)
 {
 	int				size;
 	unsigned long	temp;

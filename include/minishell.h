@@ -6,7 +6,7 @@
 /*   By: ernda-si <ernda-si@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/24 14:48:17 by pmoreira          #+#    #+#             */
-/*   Updated: 2025/06/13 14:43:12 by pmoreira         ###   ########.fr       */
+/*   Updated: 2025/06/13 14:52:23 by ernda-si         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -107,8 +107,8 @@ void	save_history(char *input, t_hell *cmd);
 void	merror(char *s);
 
 // built in functions:
-int	mini_echo(t_cmd *cmd, t_env **env, t_hell *shell);
-int	mini_pwd(t_cmd *cmd);
+int		mini_echo(t_cmd *cmd, t_env **env, t_hell *shell);
+int		mini_pwd(t_cmd *cmd);
 void	mini_cd(t_cmd *cmd, t_env **env, t_hell *shell);
 void	mini_env(t_env *env);
 void	mini_exit(t_hell *hell);

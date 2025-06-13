@@ -1,38 +1,37 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   executor.c                                         :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: ernda-si <ernda-si@student.42.fr>          +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2025/06/13 13:45:33 by ernda-si          #+#    #+#             */
+/*   Updated: 2025/06/13 15:05:39 by ernda-si         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "minishell.h"
 
-int	shell_heredoc(char *limiter)
+int	shell_heredoc(char *limiter, char *content)
 {
-	int		pipefd[2];
-	char	*line;
+	int	pipefd[2];
 
+	(void)content;
 	if (pipe(pipefd) == -1)
 	{
 		perror("pipe");
 		return (-1);
 	}
-	while (1)
-	{
-		line = readline(RED"> "RESET);
-		if (!line)
-			break;
-		if (!ft_strcmp(line, limiter))
-		{
-			free(line);
-			break;
-		}
-		write(pipefd[1], line, ft_strlen(line));
-		write(pipefd[1], "\n", 1);
-		free(line);
-	}
+	input_heredoc(pipefd[1], limiter);
 	close(pipefd[1]);
 	return (pipefd[0]);
 }
 
 static void	do_heredoc(t_redirection *redir)
 {
-	int fd;
+	int	fd;
 
-	fd = shell_heredoc(redir->limiter);
+	fd = shell_heredoc(redir->limiter, redir->heredoc_content);
 	if (fd == -1)
 		exit(EXIT_FAILURE);
 	dup2(fd, STDIN_FILENO);
@@ -53,8 +52,8 @@ static void	open_infile(t_redirection *redir)
 
 static void	open_outfile(t_redirection *redir, int append)
 {
-	int flags;
-	
+	int	flags;
+
 	if (append)
 		flags = O_WRONLY | O_CREAT | O_APPEND;
 	else
@@ -71,24 +70,24 @@ static void	open_outfile(t_redirection *redir, int append)
 
 void	handle_redirections(t_cmd *cmd)
 {
-	t_redirection *in;
-	t_redirection *out;
+	t_redirection	*in;
+	t_redirection	*out;
 
 	in = cmd->redir_in;
 	out = cmd->redir_out;
 	while (in)
 	{
-		if (in->type == REDIR_IN || in->type == INFILE)
+		if (in->type == INFILE)
 			open_infile(in);
-		else if (in->type == REDIR_HERE_DOC)
+		else if (in->type == LIM)
 			do_heredoc(in);
 		in = in->next;
 	}
 	while (out)
 	{
-		if (out->type == REDIR_OUT || out->type == OUTFILE)
+		if (out->type == OUTFILE)
 			open_outfile(out, 0);
-		else if (out->type == REDIR_OUT_APPEND || out->type == OUTFILE_APPEND)
+		else if (out->type == OUTFILE_APPEND)
 			open_outfile(out, 1);
 		out = out->next;
 	}
@@ -114,11 +113,12 @@ static int	execute_builtin(t_cmd *cmd, t_hell *shell)
 	else if (!ft_strcmp(cmd->args[0], "unset") && ++flag)
 		mini_unset(&shell->env, cmd, &shell->export, shell);
 	else if (flag)
-		return (shell->status = 0);
-	return (shell->status = 1);
+		return (shell->status = EXIT_SUCCESS);
+	return (shell->status = EXIT_FAILURE);
 }
 
-static void	execute_child(t_cmd *cmd, int prev_pipe_fd, int *pipefd, t_hell *shell)
+static void	execute_child(t_cmd *cmd, int prev_pipe_fd, \
+	int *pipefd, t_hell *shell)
 {
 	if (prev_pipe_fd != -1)
 	{

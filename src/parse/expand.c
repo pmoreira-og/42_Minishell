@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   expand.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: pmoreira <pmoreira@student.42lisboa.com    +#+  +:+       +#+        */
+/*   By: ernda-si <ernda-si@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/07 14:40:54 by pmoreira          #+#    #+#             */
-/*   Updated: 2025/06/13 14:39:00 by pmoreira         ###   ########.fr       */
+/*   Updated: 2025/06/13 15:05:24 by ernda-si         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -105,15 +105,19 @@ void	input_heredoc(int fd, char *limiter)
 	char	*line;
 	char	*temp;
 
+	line = NULL;
 	while (1)
 	{
 		temp = readline("> ");
 		if (!temp || !ft_strcmp(temp, limiter))
 			break;
-		line = expand_heredoc(temp, &temp[ft_strlen(temp)], get_hell(NULL));
+		if (!ft_strcmp(temp, ""))
+			line = ft_strdup("");
+		else
+			line = expand_heredoc(temp, &temp[ft_strlen(temp)], get_hell(NULL));
 		if (!line)
-			return (free(temp), merror("heredoc:line"));
-		write(fd, line, ft_strlen(line));
+			return (free(temp));
+		ft_putendl_fd(line, fd);
 		free(temp);
 		temp = NULL;
 		free(line);

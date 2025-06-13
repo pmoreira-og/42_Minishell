@@ -1,9 +1,21 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   export_manager.c                                   :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: ernda-si <ernda-si@student.42.fr>          +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2025/06/13 14:04:09 by ernda-si          #+#    #+#             */
+/*   Updated: 2025/06/13 14:04:21 by ernda-si         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "minishell.h"
 
 static int	aux_export(t_export **export, char *var, char *value)
 {
 	t_export	*temp;
-	
+
 	if (!export || !var)
 		return (0);
 	temp = *export;
