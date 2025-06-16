@@ -3,16 +3,19 @@
 /*                                                        :::      ::::::::   */
 /*   minishell.h                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ernda-si <ernda-si@student.42.fr>          +#+  +:+       +#+        */
+/*   By: pmoreira <pmoreira@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/24 14:48:17 by pmoreira          #+#    #+#             */
-/*   Updated: 2025/06/13 14:52:23 by ernda-si         ###   ########.fr       */
+/*   Updated: 2025/06/16 10:23:50 by pmoreira         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef MINISHELL_H
 # define MINISHELL_H
 
+# ifndef _GNU_SOURCE
+#  define _GNU_SOURCE
+# endif
 # include <stdlib.h>
 # include <limits.h>
 # include <stdio.h>
