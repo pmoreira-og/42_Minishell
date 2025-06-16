@@ -389,3 +389,82 @@ exit
 cat << EOF
 exit
 cat << EOF
+cat Makefile 
+"" ls
+$no ls
+export a=" echo '' ola"
+$a
+echo $a
+export
+echo ola  "$HOME$H"""""""O"ME" '$HOME'""
+\e\c\h\o \o\l\a
+cat << eof
+ls
+./minishell
+sdasa
+a
+cat << eof
+cat << eof 
+cat << eof
+cat << eof
+cat << eof
+asdasdasdad
+asdasdasdad
+cat << eof
+caa
+cat << eof
+ls
+cat << eof
+cat << eof
+cat << eof
+cat << eof
+ << a
+ << a
+ << a
+ << a
+ << a
+''
+''
+''
+echo $?
+cate Makefile 
+<< a
+<< a
+<< a
+<< a
+cate Makefile 
+<< a
+cate Makefile 
+""
+cate Makefile 
+""
+echo $?
+cate Makefile 
+echo $?
+<< a
+<< a
+<< a
+<< a
+<< a
+l
+<< a
+ls
+<< a
+<< a
+<< a
+ls
+<< a
+<< a
+ls
+<< a
+<< a
+<< a
+<< a
+<< a
+<< a
+<< a
+ls
+<< a
+<< a
+ls
+<< a

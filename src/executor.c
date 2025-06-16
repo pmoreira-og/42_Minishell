@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   executor.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ernda-si <ernda-si@student.42.fr>          +#+  +:+       +#+        */
+/*   By: pmoreira <pmoreira@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/13 13:45:33 by ernda-si          #+#    #+#             */
-/*   Updated: 2025/06/13 15:05:39 by ernda-si         ###   ########.fr       */
+/*   Updated: 2025/06/16 12:45:29 by pmoreira         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,6 +22,7 @@ int	shell_heredoc(char *limiter, char *content)
 		perror("pipe");
 		return (-1);
 	}
+	signal_handler(get_hell(NULL), 'H');
 	input_heredoc(pipefd[1], limiter);
 	close(pipefd[1]);
 	return (pipefd[0]);
@@ -134,17 +135,14 @@ static void	execute_child(t_cmd *cmd, int prev_pipe_fd, \
 	handle_redirections(cmd);
 	if (cmd->is_builtin)
 		exit(execute_builtin(cmd, shell));
-	if (shell->hist_fd >= 0)
-		close(shell->hist_fd);
-	if (!cmd->cmd_path)
+	if (!cmd->cmd_path && cmd->args[0])
 	{
-		ft_putstr_fd(cmd->args[0], 2);
-		ft_putstr_fd(": command not found\n", 2);
-		exit(127);
+		ft_printf_fd(2, "Command '%s' not found\n", cmd->args[0]);
+		shell->status = 127;
 	}
-	execve(cmd->cmd_path, cmd->args, cmd->envp);
-	perror("execve");
-	exit(EXIT_FAILURE);
+	if (cmd->cmd_path && cmd->args[0])
+		execve(cmd->cmd_path, cmd->args, cmd->envp);
+	mini_cleaner(NULL, shell, shell->status);
 }
 
 static void	wait_for_all(t_cmd *cmd_list, t_hell *shell)
@@ -153,6 +151,7 @@ static void	wait_for_all(t_cmd *cmd_list, t_hell *shell)
 	t_cmd	*tmp;
 
 	tmp = cmd_list;
+	status = 0;
 	while (tmp)
 	{
 		if (tmp->pid > 0)
@@ -187,6 +186,7 @@ void	execute_pipeline(t_hell *shell)
 			perror("pipe");
 			exit(EXIT_FAILURE);
 		}
+		signal_handler(shell, 'C');
 		cmd->pid = fork();
 		if (cmd->pid == -1)
 		{
@@ -210,4 +210,5 @@ void	execute_pipeline(t_hell *shell)
 		cmd = cmd->next;
 	}
 	wait_for_all(shell->cmd, shell);
+	signal_handler(shell, 'P');
 }

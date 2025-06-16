@@ -6,7 +6,7 @@
 /*   By: pmoreira <pmoreira@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/29 11:10:40 by pmoreira          #+#    #+#             */
-/*   Updated: 2025/06/13 12:45:56 by pmoreira         ###   ########.fr       */
+/*   Updated: 2025/06/16 12:57:37 by pmoreira         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,8 +30,16 @@ void	prepare_next_input(t_hell *data)
 /// @param status If status < 0, armageddon don't gonna be called.
 void	mini_cleaner(char **matrix, t_hell *data, int status)
 {
+	int	i;
+
 	if (matrix)
 		ft_clean_matrix(matrix);
+	i = 3;
+	while (i < 1024)
+	{
+		close(i);
+		i++;
+	}
 	if (data && status >= 0)
 	{
 		armageddon(data);
