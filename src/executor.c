@@ -21,6 +21,7 @@ int	shell_heredoc(char *limiter)
 		perror("pipe");
 		return (-1);
 	}
+	signal_handler(get_hell(NULL), 'H');
 	input_heredoc(pipefd[1], limiter);
 	close(pipefd[1]);
 	return (pipefd[0]);
