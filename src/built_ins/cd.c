@@ -6,7 +6,7 @@
 /*   By: pmoreira <pmoreira@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/23 12:12:04 by ernda-si          #+#    #+#             */
-/*   Updated: 2025/05/20 16:26:06 by pmoreira         ###   ########.fr       */
+/*   Updated: 2025/06/17 12:22:07 by pmoreira         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,7 @@ static int	check_dir(const char *path)
 	return (access(path, F_OK | X_OK) == 0);
 }
 
-static void	update_env(t_env **env, char *oldpwd, char *pwd)
+static void	update_env_pwd(t_env **env, char *oldpwd, char *pwd)
 {
 	ft_setenv(env, "OLDPWD", oldpwd);
 	ft_setenv(env, "PWD", pwd);
@@ -76,7 +76,7 @@ void	mini_cd(t_cmd *cmd, t_env **env, t_hell *shell)
 		new_path = getcwd(NULL, 0);
 		if (new_path)
 		{
-			update_env(env, c_path, new_path);
+			update_env_pwd(env, c_path, new_path);
 			free(new_path);
 		}
 		shell->status = 0;
