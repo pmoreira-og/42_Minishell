@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   structs.h                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ernda-si <ernda-si@student.42.fr>          +#+  +:+       +#+        */
+/*   By: pmoreira <pmoreira@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/24 15:03:58 by pmoreira          #+#    #+#             */
-/*   Updated: 2025/06/13 14:20:23 by ernda-si         ###   ########.fr       */
+/*   Updated: 2025/06/17 10:42:52 by pmoreira         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,6 +57,7 @@ typedef struct s_hell
 	t_bool			debug;
 	t_bool			no_env;
 	int				cmd_count;
+	int				lines;
 	int				hist_fd;
 }	t_hell;
 

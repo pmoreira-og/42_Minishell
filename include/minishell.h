@@ -6,7 +6,7 @@
 /*   By: pmoreira <pmoreira@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/24 14:48:17 by pmoreira          #+#    #+#             */
-/*   Updated: 2025/06/16 10:23:50 by pmoreira         ###   ########.fr       */
+/*   Updated: 2025/06/17 10:54:23 by pmoreira         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,6 +35,7 @@
 # define ERR_BAD_FORMAT "minishell: syntax error near unexpected token "
 # define TOKEN_NEWLINE	"'newline'"
 # define HEREDOC_EOF "minishell: warning: here-document at line "
+# define HEREDOC_LIM " delimited by end-of-file (wanted "
 # define RED "\001\033[31m\002"
 # define RESET "\001\033[0m\002"
 # define ORANGE "\033[1;38;5;214m"
@@ -93,13 +94,12 @@ char	*space_put(char *input, int len);
 int		space_length(char *input);
 int		init_redirs(t_cmd **cmd, t_token *start);
 void	input_heredoc(int fd, char *limiter);
-
-// TEST FUNCTIONS ON PARSE
 t_bool	has_expansion(char *s);
 int		check_redirs(t_token *tok);
 char	*remove_both_quotes(char *s);
 char	*handle_limiter(char *s, t_bool *flag);
 char	*get_full_path(char *cmd, char **envp);
+// TEST FUNCTIONS ON PARSE
 
 // miscs:
 void	printascii(void);
@@ -141,6 +141,7 @@ void	mini_cleaner(char **matrix, t_hell *data, int status);
 char	**copy_env(char **envp);
 t_hell	*get_hell(t_hell *hell);
 void	signal_handler(t_hell *hell, int flag);
+void	stop_parent_signals(void);
 
 // Aux cleaners
 void	clean_cmds(t_hell *data);

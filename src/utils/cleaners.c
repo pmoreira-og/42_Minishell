@@ -6,7 +6,7 @@
 /*   By: pmoreira <pmoreira@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/29 11:10:40 by pmoreira          #+#    #+#             */
-/*   Updated: 2025/06/16 12:57:37 by pmoreira         ###   ########.fr       */
+/*   Updated: 2025/06/17 10:52:53 by pmoreira         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,7 @@ void	prepare_next_input(t_hell *data)
 	}
 }
 
-/// @brief Clear all minishell data and exit with status given.
+/// @brief Clear all minishell data, close all fds and exit with status given.
 /// @param matrix If not null, clear the matrix.
 /// @param data If not null, call armageddon.
 /// @param status If status < 0, armageddon don't gonna be called.
@@ -46,7 +46,8 @@ void	mini_cleaner(char **matrix, t_hell *data, int status)
 		exit(status);
 	}
 }
-
+/// @brief Deletes all data from the program.
+/// @param data Main struct of the program.
 void	armageddon(t_hell *data)
 {
 	if (data->tokens)

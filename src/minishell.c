@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   minishell.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ernda-si <ernda-si@student.42.fr>          +#+  +:+       +#+        */
+/*   By: pmoreira <pmoreira@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/23 12:17:06 by ernda-si          #+#    #+#             */
-/*   Updated: 2025/06/13 13:02:17 by ernda-si         ###   ########.fr       */
+/*   Updated: 2025/06/17 10:43:50 by pmoreira         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -66,6 +66,7 @@ int	main(int ac, char **av, char **envp)
 	while (1)
 	{
 		input = readline(RED"Minishell>"RESET);
+		hell->lines++;
 		save_history(input, hell);
 		parser(&input, hell);
 		if (hell->cmd)

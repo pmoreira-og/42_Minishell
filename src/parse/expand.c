@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   expand.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ernda-si <ernda-si@student.42.fr>          +#+  +:+       +#+        */
+/*   By: pmoreira <pmoreira@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/07 14:40:54 by pmoreira          #+#    #+#             */
-/*   Updated: 2025/06/13 15:05:24 by ernda-si         ###   ########.fr       */
+/*   Updated: 2025/06/17 10:44:33 by pmoreira         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -104,8 +104,10 @@ void	input_heredoc(int fd, char *limiter)
 {
 	char	*line;
 	char	*temp;
+	int		i;
 
-	line = NULL;
+	temp = NULL;
+	i = get_hell(NULL)->lines;
 	while (1)
 	{
 		temp = readline("> ");
@@ -123,8 +125,6 @@ void	input_heredoc(int fd, char *limiter)
 		free(line);
 		line = NULL;
 	}
-	if (temp)
-		free(temp);
-	if (line)
-		free(line);
+	if (!temp)
+		ft_printf_fd(2, "%s%d%s'%s')\n", HEREDOC_EOF, i, HEREDOC_LIM, limiter);
 }

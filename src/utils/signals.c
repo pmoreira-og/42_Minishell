@@ -6,26 +6,26 @@
 /*   By: pmoreira <pmoreira@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/11 10:41:17 by pmoreira          #+#    #+#             */
-/*   Updated: 2025/06/16 13:05:06 by pmoreira         ###   ########.fr       */
+/*   Updated: 2025/06/17 10:23:09 by pmoreira         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minishell.h"
 
-static void	here_doc_handler(int signal)
+static void	here_doc_handler(int sign)
 {
-	if (signal == SIGINT)
+	if (sign == SIGINT)
 	{
 		printf("\n");
 		mini_cleaner(NULL, get_hell(NULL), 130);
 	}
 }
 
-static void	parent_handler(int signal)
+static void	parent_handler(int sign)
 {
 	t_hell	*data;
 
-	if (signal == SIGINT)
+	if (sign == SIGINT)
 	{
 		printf("\n");
 		rl_on_new_line();
@@ -36,26 +36,27 @@ static void	parent_handler(int signal)
 	}
 }
 
-static void	child_handler(int sign)
+void	stop_parent_signals(void)
 {
-	if (sign == SIGINT)
-		signal(sign, SIG_IGN);
+	signal(SIGINT, SIG_IGN);
+	signal(SIGQUIT, SIG_IGN);
 }
 
 void	signal_handler(t_hell *hell, int flag)
 {
-	static struct sigaction	sa;
+	struct sigaction	sa;
 
 	get_hell(hell);
+	sa.sa_handler = SIG_IGN;
+	sa.sa_flags = 0;
+	if (sigemptyset(&sa.sa_mask) != 0)
+		return ;
+	sigaction(SIGQUIT, &sa, NULL);
 	if (flag == 'P')
 		sa.sa_handler = parent_handler;
 	else if (flag == 'H')
 		sa.sa_handler = here_doc_handler;
-	else if(flag == 'C')
-		sa.sa_handler = child_handler;
-	sa.sa_flags = 0;
-	if (sigemptyset(&sa.sa_mask) != 0)
-		return ;
+	else if(flag == 'D')
+		sa.sa_handler = SIG_DFL;
 	sigaction(SIGINT, &sa, NULL);
-	signal(SIGQUIT, SIG_IGN);
 }

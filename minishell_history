@@ -468,3 +468,32 @@ ls
 << a
 ls
 << a
+<< a
+<< a << a << a << a
+<< a << a << a << a
+<< a << a << a << a
+<< a << a << a << a
+<< a 
+<< a 
+<< a 
+<< a 
+<< a 
+<< a 
+pwd
+<< a 
+<< a
+pwd
+<< a
+<< a
+<< a
+echo banana
+<< a
+<< a
+<< a
+<< a
+<< a
+./minishell
+<< a
+./minishell
+<< a
+<< a
