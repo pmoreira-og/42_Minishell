@@ -6,7 +6,7 @@
 /*   By: pmoreira <pmoreira@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/25 12:17:13 by pmoreira          #+#    #+#             */
-/*   Updated: 2025/06/17 12:58:15 by pmoreira         ###   ########.fr       */
+/*   Updated: 2025/06/17 13:23:56 by pmoreira         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,7 +44,7 @@ void	update_env(t_hell *shell)
 		temp = temp->next;
 	shell->envp = ft_calloc(i + 1, sizeof(char *));
 	if (!shell->envp)
-		return(merror("update_env"), mini_cleaner(NULL, shell, 1));
+		return (merror("update_env"), mini_cleaner(NULL, shell, 1));
 	temp = shell->env;
 	i = 0;
 	while (temp)

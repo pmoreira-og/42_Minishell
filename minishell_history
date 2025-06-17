@@ -28,3 +28,15 @@ unset PATH
 cat Makefile 
 export PATH=/home/pmoreira/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games:/usr/local/games:/snap/bin
 cat Makefile 
+unset PATH
+cat Makefile 
+export PATH=/home/pmoreira/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games:/usr/local/games:/snap/bin
+cat Makefile 
+unset PATH
+cat Makefile 
+export PATH=/home/pmoreira/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games:/usr/local/games:/snap/bin
+cat Makefile 
+echo ola > outfile
+cat Makefile | wc -l > outfile
+cat outfile 
+pwd > outfile 

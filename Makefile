@@ -31,7 +31,7 @@ SRC = src
 # === MODULE DIRS ===
 DIR_BUILT_INS = built_ins
 DIR_GENERAL = .
-DIR_PIPEX = pipex
+DIR_EXEC = exec
 DIR_PARSE = parse
 DIR_UTILS = utils
 
@@ -40,7 +40,7 @@ SRC_BUILT_INS = pwd.c cd.c echo.c env.c exit.c export.c unset.c
 
 SRC_GENERAL = misc.c minishell.c env_manager.c export_manager.c executor.c
 
-SRC_PIPEX =	pipex.c aux.c utils.c ft_parse.c
+SRC_EXEC	= aux.c redirs.c child.c
 
 SRC_PARSE =	tokenize.c ft_params.c checkers.c expand.c extra.c parser.c \
 			literal.c commands.c utils.c aux.c errors.c ft_add_spaces.c \
@@ -51,7 +51,7 @@ SRC_UTILS =	cleaners.c constructors.c checkers.c printers.c aux_cleaners.c \
 
 SRCS_DIR =	$(addprefix $(SRC)/, $(addprefix $(DIR_BUILT_INS)/, $(SRC_BUILT_INS))) \
 			$(addprefix $(SRC)/, $(addprefix $(DIR_GENERAL)/, $(SRC_GENERAL))) \
-			$(addprefix $(SRC)/, $(addprefix $(DIR_PIPEX)/, $(SRC_PIPEX))) \
+			$(addprefix $(SRC)/, $(addprefix $(DIR_EXEC)/, $(SRC_EXEC))) \
 			$(addprefix $(SRC)/, $(addprefix $(DIR_PARSE)/, $(SRC_PARSE))) \
 			$(addprefix $(SRC)/, $(addprefix $(DIR_UTILS)/, $(SRC_UTILS)))
 

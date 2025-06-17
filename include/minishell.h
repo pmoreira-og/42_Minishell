@@ -6,7 +6,7 @@
 /*   By: pmoreira <pmoreira@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/24 14:48:17 by pmoreira          #+#    #+#             */
-/*   Updated: 2025/06/17 12:31:29 by pmoreira         ###   ########.fr       */
+/*   Updated: 2025/06/17 13:28:34 by pmoreira         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,7 +28,6 @@
 # include <readline/readline.h>
 # include <readline/history.h>
 # include "../libft/include/libft.h"
-# include "pipex.h"
 # include "structs.h"
 # define HIST_FILE "minishell_history"
 # define ERR_QUOTES "minishell: syntax error: input contains unclosed quotes\n"
@@ -45,6 +44,10 @@
 
 // execution:
 void	execute_pipeline(t_hell *shell);
+void	handle_redirections(t_cmd *cmd);
+void	execute_child(t_cmd *cmd, int prev_pipe_fd, \
+	int *pipefd, t_hell *shell);
+int		execute_builtin(t_cmd *cmd, t_hell *shell);
 
 // parse:
 void	ft_count(const char *input, int *count);
@@ -143,6 +146,8 @@ char	**copy_env(char **envp);
 t_hell	*get_hell(t_hell *hell);
 void	signal_handler(t_hell *hell, int flag);
 void	stop_parent_signals(void);
+char	**ft_getenv(char **envp, char *target, char split);
+void	ft_dup(int dst, int src);
 
 // Aux cleaners
 void	clean_cmds(t_hell *data);
@@ -151,4 +156,5 @@ void	clean_list(t_hell *data);
 char	**ft_free(char **matrix, int index);
 void	clean_export(t_hell *data);
 void	delete_cmd(t_cmd *cmd);
+void	ft_clean_matrix(char **matrix);
 #endif
