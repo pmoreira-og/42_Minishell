@@ -6,7 +6,7 @@
 /*   By: pmoreira <pmoreira@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/20 16:01:00 by pmoreira          #+#    #+#             */
-/*   Updated: 2025/06/12 13:31:47 by pmoreira         ###   ########.fr       */
+/*   Updated: 2025/06/17 12:11:50 by pmoreira         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,7 +58,7 @@ void	print_matrix(char **matrix)
 	int	i;
 
 	if (!matrix)
-		return ;
+		return ((void) printf("(null)"));
 	i = 0;
 	while (matrix[i])
 	{

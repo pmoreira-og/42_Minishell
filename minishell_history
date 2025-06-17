@@ -501,3 +501,46 @@ echo banana
 cat << a
 cat << a
 cat | cat | ls
+echo ola > outfile
+unset USER
+echo $USER
+env
+env | grep USER
+env
+export
+pwd
+echo
+a
+export a=a
+echo $a
+env
+unset PATH
+cat Makefile 
+env
+env
+unset PATH
+cat Makefile 
+export PATH=/home/pmoreira/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games:/usr/local/games:/snap/bin
+cat Makefile 
+env
+export PATH=a
+env
+export PATH=/home/pmoreira/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games:/usr/local/games:/snap/bin
+env
+unset PATH
+cat Makefile
+export PATH=/home/pmoreira/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games:/usr/local/games:/snap/bin
+cat Makefile
+unset PATH
+cat Makefile
+export a
+export a=a
+cat Makefile
+cat Makefile
+export a=a
+cat Makefile
+env
+cat Makefile
+unset PATH
+unset PATH
+unset PATH

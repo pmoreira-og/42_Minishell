@@ -6,7 +6,7 @@
 /*   By: pmoreira <pmoreira@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/29 11:10:40 by pmoreira          #+#    #+#             */
-/*   Updated: 2025/06/17 11:04:11 by pmoreira         ###   ########.fr       */
+/*   Updated: 2025/06/17 11:29:32 by pmoreira         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -63,7 +63,7 @@ void	armageddon(t_hell *data)
 		ft_clean_matrix(data->path);
 	if (data->hist_fd >= 0)
 		close(data->hist_fd);
-	if (data && data->no_env)
+	if (data->envp)
 		ft_clean_matrix(data->envp);
 	rl_clear_history();
 	free(data);

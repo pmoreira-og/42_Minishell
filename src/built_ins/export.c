@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   export.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ernda-si <ernda-si@student.42.fr>          +#+  +:+       +#+        */
+/*   By: pmoreira <pmoreira@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/13 14:07:18 by ernda-si          #+#    #+#             */
-/*   Updated: 2025/06/13 14:10:02 by ernda-si         ###   ########.fr       */
+/*   Updated: 2025/06/17 11:59:21 by pmoreira         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -110,4 +110,5 @@ void	mini_export(t_env **env, t_export **export, t_cmd *cmd)
 		ft_clean_matrix(matrix);
 		i++;
 	}
+	update_env(get_hell(NULL));
 }

@@ -3,14 +3,60 @@
 /*                                                        :::      ::::::::   */
 /*   env_manager.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ernda-si <ernda-si@student.42.fr>          +#+  +:+       +#+        */
+/*   By: pmoreira <pmoreira@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/25 12:17:13 by pmoreira          #+#    #+#             */
-/*   Updated: 2025/06/13 14:01:30 by ernda-si         ###   ########.fr       */
+/*   Updated: 2025/06/17 12:10:12 by pmoreira         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minishell.h"
+
+static char	*get_og_var(char *var, char *value)
+{
+	char	*temp;
+	char	*output;
+
+	if (!var)
+		return (NULL);
+	temp = ft_strjoin(var, "=");
+	if (!temp)
+		return (merror("get_var:temp"), NULL);
+	output = ft_strjoin(temp, value);
+	if (!output)
+		return (free(temp), merror("get_var:output"), NULL);
+	return (output);
+	printf("%s\n", output);
+}
+
+void	update_env(t_hell *shell)
+{
+	t_env	*temp;
+	int		i;
+
+	temp = shell->env;
+	i = 0;
+	if (shell->envp)
+	{
+		ft_clean_matrix(shell->envp);
+		shell->envp = NULL;
+	}
+	while (temp && ++i)
+		temp = temp->next;
+	shell->envp = ft_calloc(i + 1, sizeof(char *));
+	if (!shell->envp)
+		return(merror("update_env"), mini_cleaner(NULL, shell, 1));
+	temp = shell->env;
+	i = -1;
+	while (temp && ++i)
+	{
+		shell->envp[i] = get_og_var(temp->var, temp->value);
+		if (!shell->envp[i])
+			return (mini_cleaner(NULL, shell, 1));
+		temp = temp->next;
+	}
+	print_matrix(shell->envp);
+}
 
 void	ft_setenv(t_env **env, char *var, char *value)
 {

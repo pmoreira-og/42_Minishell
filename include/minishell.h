@@ -6,7 +6,7 @@
 /*   By: pmoreira <pmoreira@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/24 14:48:17 by pmoreira          #+#    #+#             */
-/*   Updated: 2025/06/17 10:54:23 by pmoreira         ###   ########.fr       */
+/*   Updated: 2025/06/17 11:52:27 by pmoreira         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -113,7 +113,7 @@ void	merror(char *s);
 int		mini_echo(t_cmd *cmd, t_env **env, t_hell *shell);
 int		mini_pwd(t_cmd *cmd);
 void	mini_cd(t_cmd *cmd, t_env **env, t_hell *shell);
-void	mini_env(t_env *env);
+void	mini_env(t_hell *shell);
 void	mini_exit(t_hell *hell);
 void	mini_export(t_env **env, t_export **export, t_cmd *cmd);
 void	mini_unset(t_env **env, t_cmd *cmd, t_export **export, t_hell *hell);
@@ -123,6 +123,7 @@ void	init_env(t_env **env, char **envp);
 void	ft_setenv(t_env **env, char *var, char *value);
 void	init_export(t_export **export, char **envp);
 void	ft_setexport(t_export **export, char *var, char *value);
+void	update_env(t_hell *shell);
 
 // Utils
 t_hell	*init_hell(int ac, char **av, char **envp);
