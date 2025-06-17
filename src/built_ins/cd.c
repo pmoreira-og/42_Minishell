@@ -12,37 +12,75 @@
 
 #include "minishell.h"
 
-static void	dir_handler(t_env **env, char *path, char *c_path)
+static int	check_dir(const char *path)
 {
-	ft_setenv(env, "OLDPWD", c_path);
-	chdir(path);
+	return (access(path, F_OK | X_OK) == 0);
+}
+
+static void	update_env(t_env **env, char *oldpwd, char *pwd)
+{
+	ft_setenv(env, "OLDPWD", oldpwd);
+	ft_setenv(env, "PWD", pwd);
+}
+
+static char	*path_handler(char *arg)
+{
+	char	*home;
+
+	if (!arg || ft_strcmp(arg, "~") == 0)
+	{
+		home = getenv( "HOME");
+		if (home)
+			return (ft_strdup(home));
+		else
+			return (NULL);
+	}
+	if (ft_strncmp(arg, "~/", 2) == 0)
+	{
+		home = getenv("HOME");
+		if (!home)
+			return (NULL);
+		return (ft_strjoin(ft_strdup(home), ft_strchr(arg, '/')));
+	}
+	return (ft_strdup(arg));
 }
 
 void	mini_cd(t_cmd *cmd, t_env **env, t_hell *shell)
 {
 	char	*c_path;
 	char	*n_path;
+	char	*new_path;
 
 	c_path = getcwd(NULL, 0);
+	if (!c_path)
+		return ((void)(perror("minishell: cd"), shell->status = 1));
 	if (cmd->argc > 2)
 		return ((void)printf("minishell: cd: too many arguments\n"), \
-			(void)(shell->status = 1));
-	if (!cmd->args[1])
-		dir_handler(env, getenv("HOME"), c_path);
-	else if (!ft_strcmp(cmd->args[1], "/"))
-		dir_handler(env, "/", c_path);
-	if (cmd->args[1][0] == '~' && cmd->args[1][1] == '/')
+			(void)(shell->status = 1), free(c_path));
+	n_path = path_handler(cmd->args[1]);
+	if (!n_path)
+		return ((void)printf("minishell: cd: HOME not set\n"), \
+			(void)(shell->status = 1), free(c_path));
+	if (!check_dir(n_path))
 	{
-		n_path = ft_strjoin(getenv("HOME"), ft_strchr(cmd->args[1], '/'));
-		printf("n_path: %s\n", n_path);
-		dir_handler(env, n_path, c_path);
+		printf("minishell: cd: %s: No such file or directory\n", n_path);
+		shell->status = 1;
 	}
-	else if (cmd->args[1])
+	else if (chdir(n_path) == -1)
 	{
-		n_path = ft_strjoin(c_path, "/");
-		n_path = ft_strjoin(n_path, cmd->args[1]);
-		dir_handler(env, n_path, c_path);
+		perror("minishell: cd");
+		shell->status = 1;
 	}
-	n_path = getcwd(NULL, 0);
-	ft_setenv(env, "PWD", n_path);
+	else
+	{
+		new_path = getcwd(NULL, 0);
+		if (new_path)
+		{
+			update_env(env, c_path, new_path);
+			free(new_path);
+		}
+		shell->status = 0;
+	}
+	free(n_path);
+	free(c_path);
 }

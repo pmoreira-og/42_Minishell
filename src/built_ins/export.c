@@ -33,17 +33,16 @@ void	sort_export_list(t_export *head)
 	char		*tmp_var;
 	char		*tmp_val;
 
+	if (!head)
+		return ;
 	sorted = 0;
-	curr = head;
-	tmp_var = curr->var;
-	tmp_val = curr->value;
 	while (!sorted)
 	{
 		sorted = 1;
 		curr = head;
 		while (curr && curr->next)
 		{
-			if (ft_strcmp(curr->var, curr->next->var))
+			if (ft_strcmp(curr->var, curr->next->var) > 0)
 			{
 				tmp_var = curr->var;
 				tmp_val = curr->value;

@@ -76,7 +76,7 @@ char	*get_full_path(char *cmd, char **envp)
 	char	*temp;
 	int		i;
 
-	if (cmd && ft_strchr(cmd, '/'))
+	if (cmd && ft_strcmp(cmd, "") && ft_strchr(cmd, '/'))
 	{
 		if (access(cmd, X_OK) == 0)
 			return (ft_strdup(cmd));
@@ -86,7 +86,7 @@ char	*get_full_path(char *cmd, char **envp)
 	if (!path)
 		return (NULL);
 	i = -1;
-	while (cmd && path[++i])
+	while (cmd && ft_strcmp(cmd, "") && path[++i])
 	{
 		temp = ft_strjoin(path[i], cmd);
 		if (!temp)

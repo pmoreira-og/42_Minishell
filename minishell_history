@@ -389,3 +389,270 @@ exit
 cat << EOF
 exit
 cat << EOF
+.
+.
+ls
+a
+.
+..
+...
+clear
+exit
+<< 
+<< EOF
+ls
+a
+.
+<< EOF
+clear
+exit
+a
+.
+ls
+<< EOF
+clear
+exit
+ls
+a
+.
+exit
+ls
+.
+a
+<< EOF
+clear
+exit
+ls
+.
+a
+<< EOF
+<< EOF
+<< EOF
+clear
+<< EOF
+clear
+exit
+ls
+.
+a
+<< EOF
+exit
+<< cat
+clear
+cat << eof
+clear
+exit
+cd
+a
+ls
+ls | grep a
+ls | grep a | cd
+ls | grep a | cd a
+ls | grep a | cd | pwd
+ls | grep a | cd a | pwd
+ls | grep a | cd ~/dev/ | pwd
+ls | grep a | cd ~/dev/ | pwd
+exit
+clear
+clear
+clear
+exi
+tmake
+exit
+cd
+cd
+exit
+cd
+cd /
+pwd
+exit
+cd
+cd ~/
+pwd
+exit
+cd
+clear
+exit
+./minishell
+cd
+pwd
+cd
+cd
+pwd
+env
+cd ..
+pwd
+env
+env | greap PWD
+env | grep PWD
+pwd
+cd ..
+env | grep PWD
+exit
+cd
+pwd
+cd ~/
+pwd
+cd ~
+pwd
+cd dev/Minishell/
+pwd
+cd ..
+pwd
+cd ~/dev/Minishell///../
+pwd
+cd ~/dev/Minishell///../Minishell/../../..
+pwd
+clear
+clear
+clear
+cd ~/dev/Minishell///../Minishell/../../..
+pwd
+clear
+cd ~/dev/Minishell///../Minishell/../../..
+clear
+cd ~/dev/Minishell///../Minishell/../../..
+pwd
+clear
+clear
+echo $?
+echo $?
+cd ~/dev/Minishell///../Minishell/../../../dsadas
+echo $?
+echo $?
+clear
+exit
+cd
+pwd
+cd ~/
+pwd
+cd ~/home
+exit
+cd /
+pwd
+pwd
+cd /home
+pwd
+clear
+exit
+exit
+cd
+pwd
+clear
+exit
+a
+echo $?
+echo $?
+a | ls
+echo $?
+echo $?
+exit
+a
+a
+a
+a
+a
+echo $?
+echo $?
+echo $?
+clear
+clear
+unset PATH
+ls
+a
+echo 
+cd
+unset PWD
+unset OLDPWD
+unset OLDPWDa
+cd
+pwd
+cd ~/dev/
+pwd
+clear
+exit
+export
+a
+ls
+export
+export
+ls
+export
+env
+export
+export a
+env
+export a=
+env 
+./minishell
+enc
+env
+exit
+env 
+exit
+export a=
+env
+unset a
+export
+a
+ls
+export
+export
+export
+export
+export
+export
+export
+a
+export
+export
+export
+export
+export
+export
+export
+clear
+cd
+cd ~
+cd
+exit
+cd
+export
+env
+echo a
+exit
+a
+clear
+exit
+export
+exit
+a
+cd
+pwd
+unset HOMe
+unset HOME
+pwd
+cd
+pwd
+cd .
+cd ..
+pwd
+cd ~/dev/
+ls
+clear
+exit
+unset PATH
+clear
+ls
+clear
+exit
+ls
+export
+export a
+export
+unset a
+export
+export
+env
+clear
+exit

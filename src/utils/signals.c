@@ -6,7 +6,7 @@
 /*   By: pmoreira <pmoreira@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/11 10:41:17 by pmoreira          #+#    #+#             */
-/*   Updated: 2025/06/13 12:07:56 by pmoreira         ###   ########.fr       */
+/*   Updated: 2025/06/16 13:05:06 by pmoreira         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,6 +36,12 @@ static void	parent_handler(int signal)
 	}
 }
 
+static void	child_handler(int sign)
+{
+	if (sign == SIGINT)
+		signal(sign, SIG_IGN);
+}
+
 void	signal_handler(t_hell *hell, int flag)
 {
 	static struct sigaction	sa;
@@ -45,8 +51,8 @@ void	signal_handler(t_hell *hell, int flag)
 		sa.sa_handler = parent_handler;
 	else if (flag == 'H')
 		sa.sa_handler = here_doc_handler;
-	else
-		sa.sa_handler = SIG_DFL;
+	else if(flag == 'C')
+		sa.sa_handler = child_handler;
 	sa.sa_flags = 0;
 	if (sigemptyset(&sa.sa_mask) != 0)
 		return ;
