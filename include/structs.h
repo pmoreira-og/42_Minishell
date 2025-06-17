@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   structs.h                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ernda-si <ernda-si@student.42.fr>          +#+  +:+       +#+        */
+/*   By: pmoreira <pmoreira@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/24 15:03:58 by pmoreira          #+#    #+#             */
-/*   Updated: 2025/06/13 14:20:23 by ernda-si         ###   ########.fr       */
+/*   Updated: 2025/06/17 11:29:59 by pmoreira         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,18 +55,17 @@ typedef struct s_hell
 	char			**path;
 	int				status;
 	t_bool			debug;
-	t_bool			no_env;
 	int				cmd_count;
+	int				lines;
 	int				hist_fd;
 }	t_hell;
 
 typedef struct s_redirection
 {
 	t_type					type;
-	char					*filename; // *For regular file redirections 
-	char					*limiter; // *For heredoc
-	char					*heredoc_content; // !Expanded heredoc content
-	int						fd; // !File descriptor used
+	char					*filename;
+	char					*limiter;
+	int						fd;
 	struct s_redirection	*next;
 }	t_redirection;
 
@@ -81,16 +80,16 @@ typedef struct s_cmd
 	// Command and arguments
 	int					argc;
 	char				**args;
-	char				*cmd_path; // *Full path to executable (after path resolution)
+	char				*cmd_path;
 	t_redirection		*redir_in;
 	t_redirection		*redir_out;
 	char				*delimiter;
-	int					pipe_in; // !Read end of pipe from previous command
-	int					pipe_out; // !Write end of pipe to next command
-	t_bool				is_piped; // *Flag if this command is part of a pipe
-	pid_t				pid; // !Process ID when executed
-	t_bool				is_builtin; // *Flag if this is a shell builtin command
-	char				**envp; // !Copy of environment variables
+	int					pipe_in;
+	int					pipe_out;
+	t_bool				is_piped;
+	pid_t				pid;
+	t_bool				is_builtin;
+	char				**envp;
 	struct s_cmd		*next;
 }	t_cmd;
 

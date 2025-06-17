@@ -6,7 +6,7 @@
 /*   By: pmoreira <pmoreira@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/29 11:28:20 by pmoreira          #+#    #+#             */
-/*   Updated: 2025/06/13 12:48:59 by pmoreira         ###   ########.fr       */
+/*   Updated: 2025/06/17 11:54:45 by pmoreira         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,7 +54,7 @@ char	**copy_env(char **envp)
 	return (temp);
 }
 
-char	**init_local_envp(t_hell *hell)
+char	**init_local_envp(void)
 {
 	char	**new_envp;
 	char	*temp;
@@ -74,7 +74,6 @@ char	**init_local_envp(t_hell *hell)
 	new_envp[1] = ft_strdup("SHLVL=1");
 	if (!new_envp[1])
 		return (ft_clean_matrix(new_envp), merror("init_local_envp4"), NULL);
-	hell->no_env = TRUE;
 	return (new_envp);
 }
 
@@ -87,9 +86,9 @@ t_hell	*init_hell(int ac, char **av, char **envp)
 	if (!hell)
 		return (merror("init_hell:main"), NULL);
 	if (!envp || !*envp)
-		new_envp = init_local_envp(hell);
+		new_envp = init_local_envp();
 	else
-		new_envp = envp;
+		new_envp = copy_env(envp);
 	init_env(&hell->env, new_envp);
 	init_export(&hell->export, new_envp);
 	if (!hell->env || !hell->export)

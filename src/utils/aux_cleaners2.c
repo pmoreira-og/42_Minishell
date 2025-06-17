@@ -6,7 +6,7 @@
 /*   By: pmoreira <pmoreira@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/10 18:31:10 by pmoreira          #+#    #+#             */
-/*   Updated: 2025/06/10 18:55:09 by pmoreira         ###   ########.fr       */
+/*   Updated: 2025/06/17 11:05:47 by pmoreira         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,11 +28,6 @@ void	clear_redir(t_redirection **redir)
 		{
 			free((*redir)->limiter);
 			(*redir)->limiter = NULL;
-		}
-		if ((*redir)->heredoc_content)
-		{
-			free((*redir)->heredoc_content);
-			(*redir)->heredoc_content = NULL;
 		}
 		free(*redir);
 		*redir = temp;

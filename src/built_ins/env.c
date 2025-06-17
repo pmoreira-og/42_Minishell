@@ -3,20 +3,20 @@
 /*                                                        :::      ::::::::   */
 /*   env.c                                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ernda-si <ernda-si@student.42.fr>          +#+  +:+       +#+        */
+/*   By: pmoreira <pmoreira@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/25 12:15:18 by pmoreira          #+#    #+#             */
-/*   Updated: 2025/06/13 14:05:53 by ernda-si         ###   ########.fr       */
+/*   Updated: 2025/06/17 11:34:17 by pmoreira         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minishell.h"
 
-void	mini_env(t_env *env)
+void	mini_env(t_hell *shell)
 {
 	t_env	*temp;
 
-	temp = env;
+	temp = shell->env;
 	while (temp)
 	{
 		printf("%s=", temp->var);

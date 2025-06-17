@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   unset.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ernda-si <ernda-si@student.42.fr>          +#+  +:+       +#+        */
+/*   By: pmoreira <pmoreira@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/13 14:10:32 by ernda-si          #+#    #+#             */
-/*   Updated: 2025/06/13 14:10:32 by ernda-si         ###   ########.fr       */
+/*   Updated: 2025/06/17 11:53:18 by pmoreira         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -74,4 +74,5 @@ void	mini_unset(t_env **env, t_cmd *cmd, t_export **export, t_hell *hell)
 {
 	unset_env(env, cmd, hell);
 	unset_export(export, cmd, hell);
+	update_env(hell);
 }

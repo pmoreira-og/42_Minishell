@@ -6,17 +6,16 @@
 /*   By: pmoreira <pmoreira@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/13 13:45:33 by ernda-si          #+#    #+#             */
-/*   Updated: 2025/06/16 12:45:29 by pmoreira         ###   ########.fr       */
+/*   Updated: 2025/06/17 11:33:41 by pmoreira         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minishell.h"
 
-int	shell_heredoc(char *limiter, char *content)
+int	shell_heredoc(char *limiter)
 {
 	int	pipefd[2];
 
-	(void)content;
 	if (pipe(pipefd) == -1)
 	{
 		perror("pipe");
@@ -32,7 +31,8 @@ static void	do_heredoc(t_redirection *redir)
 {
 	int	fd;
 
-	fd = shell_heredoc(redir->limiter, redir->heredoc_content);
+	signal_handler(get_hell(NULL), 'H');
+	fd = shell_heredoc(redir->limiter);
 	if (fd == -1)
 		exit(EXIT_FAILURE);
 	dup2(fd, STDIN_FILENO);
@@ -106,7 +106,7 @@ static int	execute_builtin(t_cmd *cmd, t_hell *shell)
 	else if (!ft_strcmp(cmd->args[0], "cd") && ++flag)
 		mini_cd(cmd, &shell->env, shell);
 	else if (!ft_strcmp(cmd->args[0], "env") && ++flag)
-		mini_env(shell->env);
+		mini_env(shell);
 	else if (!ft_strcmp(cmd->args[0], "exit") && ++flag)
 		mini_exit(shell);
 	else if (!ft_strcmp(cmd->args[0], "export") && ++flag)
@@ -121,6 +121,9 @@ static int	execute_builtin(t_cmd *cmd, t_hell *shell)
 static void	execute_child(t_cmd *cmd, int prev_pipe_fd, \
 	int *pipefd, t_hell *shell)
 {
+	signal_handler(shell, 'D');
+	if (shell->hist_fd >= 0)
+		close(shell->hist_fd);
 	if (prev_pipe_fd != -1)
 	{
 		dup2(prev_pipe_fd, STDIN_FILENO);
@@ -134,7 +137,7 @@ static void	execute_child(t_cmd *cmd, int prev_pipe_fd, \
 	}
 	handle_redirections(cmd);
 	if (cmd->is_builtin)
-		exit(execute_builtin(cmd, shell));
+		mini_cleaner(NULL, shell, execute_builtin(cmd, shell));
 	if (!cmd->cmd_path && cmd->args[0])
 	{
 		ft_printf_fd(2, "Command '%s' not found\n", cmd->args[0]);
@@ -186,7 +189,7 @@ void	execute_pipeline(t_hell *shell)
 			perror("pipe");
 			exit(EXIT_FAILURE);
 		}
-		signal_handler(shell, 'C');
+		stop_parent_signals();
 		cmd->pid = fork();
 		if (cmd->pid == -1)
 		{
