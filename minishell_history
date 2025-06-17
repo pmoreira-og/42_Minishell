@@ -5,3 +5,26 @@ cat Makefile
 echo ola |
 echo ola >>>
 << a
+cat Makefile 
+unset a
+cat Makefile 
+unset a
+cat Makefile 
+unset a
+unset a
+unset a
+cat Makefile 
+unset PATH
+cat Makefile 
+export PATH=/home/pmoreira/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games:/usr/local/games:/snap/bin
+cat Makefile 
+cat Makefile 
+unset PATH
+cat Makefile 
+export PATH=/home/pmoreira/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games:/usr/local/games:/snap/bin
+cat Makefile 
+cat Makefile 
+unset PATH
+cat Makefile 
+export PATH=/home/pmoreira/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games:/usr/local/games:/snap/bin
+cat Makefile 

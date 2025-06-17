@@ -6,7 +6,7 @@
 /*   By: pmoreira <pmoreira@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/25 12:17:13 by pmoreira          #+#    #+#             */
-/*   Updated: 2025/06/17 12:10:12 by pmoreira         ###   ########.fr       */
+/*   Updated: 2025/06/17 12:58:15 by pmoreira         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,8 +25,7 @@ static char	*get_og_var(char *var, char *value)
 	output = ft_strjoin(temp, value);
 	if (!output)
 		return (free(temp), merror("get_var:output"), NULL);
-	return (output);
-	printf("%s\n", output);
+	return (free(temp), output);
 }
 
 void	update_env(t_hell *shell)
@@ -47,15 +46,15 @@ void	update_env(t_hell *shell)
 	if (!shell->envp)
 		return(merror("update_env"), mini_cleaner(NULL, shell, 1));
 	temp = shell->env;
-	i = -1;
-	while (temp && ++i)
+	i = 0;
+	while (temp)
 	{
 		shell->envp[i] = get_og_var(temp->var, temp->value);
 		if (!shell->envp[i])
-			return (mini_cleaner(NULL, shell, 1));
+			return (merror("args"), mini_cleaner(NULL, shell, 1));
 		temp = temp->next;
+		i++;
 	}
-	print_matrix(shell->envp);
 }
 
 void	ft_setenv(t_env **env, char *var, char *value)
