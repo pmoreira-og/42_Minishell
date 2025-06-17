@@ -6,7 +6,7 @@
 /*   By: pmoreira <pmoreira@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/07 14:40:54 by pmoreira          #+#    #+#             */
-/*   Updated: 2025/06/17 10:44:33 by pmoreira         ###   ########.fr       */
+/*   Updated: 2025/06/17 11:03:50 by pmoreira         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -112,7 +112,7 @@ void	input_heredoc(int fd, char *limiter)
 	{
 		temp = readline("> ");
 		if (!temp || !ft_strcmp(temp, limiter))
-			break;
+			break ;
 		if (!ft_strcmp(temp, ""))
 			line = ft_strdup("");
 		else

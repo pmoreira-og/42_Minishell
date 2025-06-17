@@ -6,17 +6,16 @@
 /*   By: pmoreira <pmoreira@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/13 13:45:33 by ernda-si          #+#    #+#             */
-/*   Updated: 2025/06/17 10:22:40 by pmoreira         ###   ########.fr       */
+/*   Updated: 2025/06/17 11:10:27 by pmoreira         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minishell.h"
 
-int	shell_heredoc(char *limiter, char *content)
+int	shell_heredoc(char *limiter)
 {
 	int	pipefd[2];
 
-	(void)content;
 	if (pipe(pipefd) == -1)
 	{
 		perror("pipe");
@@ -32,7 +31,7 @@ static void	do_heredoc(t_redirection *redir)
 	int	fd;
 
 	signal_handler(get_hell(NULL), 'H');
-	fd = shell_heredoc(redir->limiter, redir->heredoc_content);
+	fd = shell_heredoc(redir->limiter);
 	if (fd == -1)
 		exit(EXIT_FAILURE);
 	dup2(fd, STDIN_FILENO);
@@ -122,6 +121,8 @@ static void	execute_child(t_cmd *cmd, int prev_pipe_fd, \
 	int *pipefd, t_hell *shell)
 {
 	signal_handler(shell, 'D');
+	if (shell->hist_fd >= 0)
+		close(shell->hist_fd);
 	if (prev_pipe_fd != -1)
 	{
 		dup2(prev_pipe_fd, STDIN_FILENO);

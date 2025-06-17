@@ -6,7 +6,7 @@
 /*   By: pmoreira <pmoreira@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/11 10:41:17 by pmoreira          #+#    #+#             */
-/*   Updated: 2025/06/17 10:23:09 by pmoreira         ###   ########.fr       */
+/*   Updated: 2025/06/17 11:04:26 by pmoreira         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,7 +56,7 @@ void	signal_handler(t_hell *hell, int flag)
 		sa.sa_handler = parent_handler;
 	else if (flag == 'H')
 		sa.sa_handler = here_doc_handler;
-	else if(flag == 'D')
+	else if (flag == 'D')
 		sa.sa_handler = SIG_DFL;
 	sigaction(SIGINT, &sa, NULL);
 }
