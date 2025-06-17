@@ -2,3 +2,6 @@ export
 cat Makefile 
 unset a
 cat Makefile 
+echo ola |
+echo ola >>>
+<< a

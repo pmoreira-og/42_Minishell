@@ -6,7 +6,7 @@
 /*   By: pmoreira <pmoreira@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/24 14:48:17 by pmoreira          #+#    #+#             */
-/*   Updated: 2025/06/17 11:52:27 by pmoreira         ###   ########.fr       */
+/*   Updated: 2025/06/17 12:31:29 by pmoreira         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,7 +33,7 @@
 # define HIST_FILE "minishell_history"
 # define ERR_QUOTES "minishell: syntax error: input contains unclosed quotes\n"
 # define ERR_BAD_FORMAT "minishell: syntax error near unexpected token "
-# define TOKEN_NEWLINE	"'newline'"
+# define TOKEN_NEWLINE	"`newline'"
 # define HEREDOC_EOF "minishell: warning: here-document at line "
 # define HEREDOC_LIM " delimited by end-of-file (wanted "
 # define RED "\001\033[31m\002"
