@@ -40,3 +40,98 @@ echo ola > outfile
 cat Makefile | wc -l > outfile
 cat outfile 
 pwd > outfile 
+$no pwd
+$no echo ola
+$no $shit $bro echo ola
+<< a
+./minishell
+ola
+export a='banana split'
+export a='echo'" "'banana split'
+$a
+echo $a
+echo "$a"
+cat | cat | ls
+echo ola > outfile
+echo ola | cat 
+echo ola | cat > outfile
+cat outfile 
+cd .. > outfile
+pwd
+cd Minishell/
+pwd
+cd .. | cd ..
+env | env
+cd .. | cd ..
+pwd
+cd Minishell/
+cd .. | cd ..
+pwd
+cd Minishell/
+pwd | pwd
+export | export
+cate Makefile
+cat /dev/urandom | head -1
+cat outfile 
+echo $?
+echo ola | wc | cate
+echo $?
+export 123=asd
+export
+echo $123
+export
+export =asd
+export
+./minishell
+echo $SHLVL
+exit asdsadsadsa
+echo $?
+cate Makefile 
+exit
+cat | << eof | ls
+cat | << eof | ls
+cat | << eof | ls
+echo $?
+cat | ls | << eof
+cat << a | ls | << eof
+cat << a | ls | << eof
+cat | cat | ls
+cat << a | ls | << eof
+cat | cat | ls
+cat | cat | ls
+cat | cat | ls
+echo $?
+cat | cat | cate
+cate
+cat | ls | cat
+echo $?
+cat | ls | cate
+echo $?
+cat Makefile  | cate
+cat Makefile 
+cat Makefile 
+cat Makefile 
+cat | cat | ls
+cat | cat | ls
+cat Makefile 
+cat | cat | ls
+cat | cat | ls
+cat | cat | ls
+cl
+cat | cat | ls
+bash
+cat | cat | ls
+a casadas
+asdsa
+sadsadsa
+s
+s
+s
+s
+s
+clear
+pwd
+cat Makefile | cate
+cl
+cat|cat|ls
+cat << a | ls | << b

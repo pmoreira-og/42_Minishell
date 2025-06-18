@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   exit.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ernda-si <ernda-si@student.42.fr>          +#+  +:+       +#+        */
+/*   By: pmoreira <pmoreira@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/25 12:15:44 by pmoreira          #+#    #+#             */
-/*   Updated: 2025/06/13 14:06:50 by ernda-si         ###   ########.fr       */
+/*   Updated: 2025/06/17 16:26:36 by pmoreira         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,5 @@
 
 void	mini_exit(t_hell *hell)
 {
-	armageddon(hell);
-	exit(0);
+	mini_cleaner(NULL, hell, hell->status);
 }

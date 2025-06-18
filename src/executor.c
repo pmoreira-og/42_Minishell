@@ -6,18 +6,50 @@
 /*   By: pmoreira <pmoreira@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/13 13:45:33 by ernda-si          #+#    #+#             */
-/*   Updated: 2025/06/17 13:24:28 by pmoreira         ###   ########.fr       */
+/*   Updated: 2025/06/18 11:22:33 by pmoreira         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minishell.h"
 
+// static void	wait_for_last(t_cmd *cmd_list, t_hell *shell)
+// {
+// 	int		status;
+// 	t_cmd	*tmp;
+// 	t_cmd	*last;
+
+// 	tmp = cmd_list;
+// 	last = cmd_list;
+// 	while(last->next)
+// 		last = last->next;
+// 	status = 0;
+// 	while (tmp)
+// 	{
+// 		if (tmp->pid > 0)
+// 		{
+// 			if (tmp == last)
+// 			{
+// 				waitpid(tmp->pid, &status, 0);
+// 				if (WIFEXITED(status))
+// 					shell->status = WEXITSTATUS(status);
+// 				else if (WIFSIGNALED(status))
+// 					shell->status = 128 + WTERMSIG(status);
+// 			}
+// 		}
+// 		tmp = tmp->next;
+// 	}
+// }
+
 static void	wait_for_all(t_cmd *cmd_list, t_hell *shell)
 {
 	int		status;
 	t_cmd	*tmp;
+	t_cmd	*last;
 
 	tmp = cmd_list;
+	last = cmd_list;
+	while(last->next)
+		last = last->next;
 	status = 0;
 	while (tmp)
 	{
@@ -41,8 +73,10 @@ void	execute_pipeline(t_hell *shell)
 
 	cmd = shell->cmd;
 	prev_pipe = -1;
+	// *CHECK AND DO ALL HEREDOCS
 	while (cmd)
 	{
+		// *FIX REDIRS TO NO PIPED BUILT_INS
 		if (!cmd->is_piped && cmd->is_builtin)
 		{
 			shell->status = execute_builtin(cmd, shell);
