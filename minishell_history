@@ -138,3 +138,35 @@ cat << a | ls | << b
 cat << a
 cat << a
 ./minishell
+cat << a | ls | << b
+cat << a | ls | << b
+cat << a << b << c
+cat << a << b << c
+<< a << b << c
+<< a << b << c
+<< a << b << c
+<< a << b << c
+<< a << b << c
+<< a << b << c
+<< a << b << c
+sdsadsadsa
+<< a << b << c
+<< a << b << c
+cat << a << b << c
+<< a> outfile
+cat outfile 
+cat | ls | << a
+cat << a | cat<< b| cat << c
+cat << a | cat<< b| cat << c
+cl
+cat < Makefile 
+cat < Makefile << a
+cat < Makefile > outfile
+cat outfile 
+rm out
+rm outfile 
+cat << eof | cat | cat > outfile
+cat << eof  > outfile
+cat outfile 
+rm outfile 
+cl

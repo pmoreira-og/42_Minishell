@@ -6,7 +6,7 @@
 /*   By: pmoreira <pmoreira@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/25 14:50:57 by pmoreira          #+#    #+#             */
-/*   Updated: 2025/06/17 13:18:47 by pmoreira         ###   ########.fr       */
+/*   Updated: 2025/06/18 14:44:35 by pmoreira         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -61,8 +61,10 @@ void	ft_clean_matrix(char **matrix)
 }
 
 /// @brief Dup2 the src fd to the dst fd and close dst.
-void	ft_dup(int dst, int src)
+t_bool	ft_dup(int dst, int src)
 {
-	dup2(dst, src);
+	if (dup2(dst, src) == -1)
+		return (FALSE);
 	close(dst);
+	return (TRUE);
 }

@@ -6,7 +6,7 @@
 /*   By: pmoreira <pmoreira@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/17 13:18:28 by pmoreira          #+#    #+#             */
-/*   Updated: 2025/06/17 13:21:11 by pmoreira         ###   ########.fr       */
+/*   Updated: 2025/06/18 15:06:29 by pmoreira         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,17 +27,40 @@ static int	shell_heredoc(char *limiter)
 	return (pipefd[0]);
 }
 
+
 static void	do_heredoc(t_redirection *redir)
 {
-	int	fd;
 
 	signal_handler(get_hell(NULL), 'H');
-	fd = shell_heredoc(redir->limiter);
-	if (fd == -1)
+	redir->fd = shell_heredoc(redir->limiter);
+	if (redir->fd == -1)
 		exit(EXIT_FAILURE);
-	dup2(fd, STDIN_FILENO);
-	close(fd);
+	// dup2(fd, STDIN_FILENO);
+	// close(fd);
 }
+
+// void	do_heredoc(t_cmd *cmd)
+// {
+// 	int				fd;
+// 	t_redirection	*redir;
+
+// 	redir = cmd->redir_in;
+// 	fd = -1;
+// 	while (redir)
+// 	{
+// 		if (redir->type == LIM)
+// 		{
+// 			if (fd != -1)
+// 				close(fd);
+// 			fd = shell_heredoc(redir->limiter);
+// 			if (fd == -1)
+// 				exit(EXIT_FAILURE);
+// 		}
+// 		redir = redir->next;
+// 	}
+// 	if (fd != -1)
+// 		ft_dup(fd, STDIN_FILENO);
+// }
 
 static void	open_infile(t_redirection *redir)
 {
@@ -47,8 +70,8 @@ static void	open_infile(t_redirection *redir)
 		perror(redir->filename);
 		exit(EXIT_FAILURE);
 	}
-	dup2(redir->fd, STDIN_FILENO);
-	close(redir->fd);
+	// dup2(redir->fd, STDIN_FILENO);
+	// close(redir->fd);
 }
 
 static void	open_outfile(t_redirection *redir, int append)
@@ -65,8 +88,36 @@ static void	open_outfile(t_redirection *redir, int append)
 		perror(redir->filename);
 		exit(EXIT_FAILURE);
 	}
-	dup2(redir->fd, STDOUT_FILENO);
-	close(redir->fd);
+	// dup2(redir->fd, STDOUT_FILENO);
+	// close(redir->fd);
+}
+
+int	dup_redirs(t_cmd *cmd)
+{
+	t_redirection	*in;
+	t_redirection	*out;
+
+	in = cmd->redir_in;
+	out = cmd->redir_out;
+	while (in)
+	{
+		if (!in->next)
+		{
+			if (!ft_dup(in->fd, STDIN_FILENO))
+				return (0);
+		}
+		in = in->next;
+	}
+	while (out)
+	{
+		if (!out->next)
+		{
+			if (!ft_dup(out->fd, STDOUT_FILENO))
+				return (0);
+		}
+		out = out->next;
+	}
+	return (1);
 }
 
 void	handle_redirections(t_cmd *cmd)
@@ -92,4 +143,8 @@ void	handle_redirections(t_cmd *cmd)
 			open_outfile(out, 1);
 		out = out->next;
 	}
+	if (!cmd->is_piped && !dup_redirs(cmd))
+		return (mini_cleaner(NULL, get_hell(NULL), 1));
+	// else if (cmd->is_piped)
+	// 	ft_dup(cmd->fd_out, STDOUT_FILENO);
 }

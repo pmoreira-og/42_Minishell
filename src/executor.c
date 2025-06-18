@@ -6,7 +6,7 @@
 /*   By: pmoreira <pmoreira@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/13 13:45:33 by ernda-si          #+#    #+#             */
-/*   Updated: 2025/06/18 11:22:33 by pmoreira         ###   ########.fr       */
+/*   Updated: 2025/06/18 14:49:46 by pmoreira         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -65,6 +65,8 @@ static void	wait_for_all(t_cmd *cmd_list, t_hell *shell)
 	}
 }
 
+
+
 void	execute_pipeline(t_hell *shell)
 {
 	t_cmd	*cmd;
@@ -76,7 +78,7 @@ void	execute_pipeline(t_hell *shell)
 	// *CHECK AND DO ALL HEREDOCS
 	while (cmd)
 	{
-		// *FIX REDIRS TO NO PIPED BUILT_INS
+		// *FIX REDIRS TO NO PIPED BUILT_INS (REDIRS OUT AND REDIRS)
 		if (!cmd->is_piped && cmd->is_builtin)
 		{
 			shell->status = execute_builtin(cmd, shell);
@@ -96,7 +98,8 @@ void	execute_pipeline(t_hell *shell)
 		}
 		else if (cmd->pid == 0)
 		{
-			shell->cmd = cmd;
+			// do_heredoc(cmd);
+			// shell->cmd = cmd;
 			execute_child(cmd, prev_pipe, pipes, shell);
 		}
 		if (prev_pipe != -1)

@@ -40,7 +40,7 @@ SRC_BUILT_INS = pwd.c cd.c echo.c env.c exit.c export.c unset.c
 
 SRC_GENERAL = misc.c minishell.c env_manager.c export_manager.c executor.c
 
-SRC_EXEC	= aux.c redirs.c child.c
+SRC_EXEC	= aux.c redirs.c child.c checkers.c
 
 SRC_PARSE =	tokenize.c ft_params.c checkers.c expand.c extra.c parser.c \
 			literal.c commands.c utils.c aux.c errors.c ft_add_spaces.c \
