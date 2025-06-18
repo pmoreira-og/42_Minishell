@@ -135,3 +135,6 @@ cat Makefile | cate
 cl
 cat|cat|ls
 cat << a | ls | << b
+cat << a
+cat << a
+./minishell

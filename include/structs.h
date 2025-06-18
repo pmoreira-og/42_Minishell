@@ -6,7 +6,7 @@
 /*   By: pmoreira <pmoreira@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/24 15:03:58 by pmoreira          #+#    #+#             */
-/*   Updated: 2025/06/17 11:29:59 by pmoreira         ###   ########.fr       */
+/*   Updated: 2025/06/18 11:37:12 by pmoreira         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -84,8 +84,8 @@ typedef struct s_cmd
 	t_redirection		*redir_in;
 	t_redirection		*redir_out;
 	char				*delimiter;
-	int					pipe_in;
-	int					pipe_out;
+	int					fd_in;
+	int					fd_out;
 	t_bool				is_piped;
 	pid_t				pid;
 	t_bool				is_builtin;
