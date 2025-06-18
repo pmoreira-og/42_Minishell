@@ -170,3 +170,7 @@ cat << eof  > outfile
 cat outfile 
 rm outfile 
 cl
+echo $?
+cat | cat |ls
+cat << eof
+cat | cat |ls
