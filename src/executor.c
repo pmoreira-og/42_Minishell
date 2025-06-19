@@ -65,7 +65,42 @@ static void	wait_for_all(t_cmd *cmd_list, t_hell *shell)
 	}
 }
 
+static void	prepare_heredocs(t_cmd *cmd_list)
+{
+	t_cmd			*cmd;
+	t_redirection	*redir;
 
+	cmd = cmd_list;
+	while (cmd)
+	{
+		redir = cmd->redir_in;
+		while (redir)
+		{
+			if (redir->type == REDIR_HERE_DOC)
+				do_heredoc(redir);
+			redir = redir->next;
+		}
+		cmd = cmd->next;
+	}
+}
+
+static int redir_built_ins(t_cmd *cmd, t_hell *shell)
+{
+	int		orig_stdin;
+	int		orig_stdout;
+
+	orig_stdin = dup(STDIN_FILENO);
+	orig_stdout = dup(STDOUT_FILENO);
+	if (orig_stdin == -1 || orig_stdout == -1)
+		return (1);
+	handle_redirections(cmd);
+	shell->status = execute_builtin(cmd, shell);
+	dup2(orig_stdin, STDIN_FILENO);
+	dup2(orig_stdout, STDOUT_FILENO);
+	close(orig_stdin);
+	close(orig_stdout);
+	return (0);
+}
 
 void	execute_pipeline(t_hell *shell)
 {
@@ -75,13 +110,12 @@ void	execute_pipeline(t_hell *shell)
 
 	cmd = shell->cmd;
 	prev_pipe = -1;
-	// *CHECK AND DO ALL HEREDOCS
+	prepare_heredocs(shell->cmd);
 	while (cmd)
 	{
-		// *FIX REDIRS TO NO PIPED BUILT_INS (REDIRS OUT AND REDIRS)
 		if (!cmd->is_piped && cmd->is_builtin)
 		{
-			shell->status = execute_builtin(cmd, shell);
+			redir_built_ins(cmd, shell);
 			return ;
 		}
 		if (cmd->is_piped && pipe(pipes) == -1)
