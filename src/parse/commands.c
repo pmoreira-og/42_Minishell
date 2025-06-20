@@ -6,7 +6,7 @@
 /*   By: pmoreira <pmoreira@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/20 11:36:02 by pmoreira          #+#    #+#             */
-/*   Updated: 2025/06/11 15:27:39 by pmoreira         ###   ########.fr       */
+/*   Updated: 2025/06/18 16:08:09 by pmoreira         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -95,6 +95,8 @@ int	fill_cmd(t_cmd **cmd, t_token *start, t_hell *data)
 		return (0);
 	if (!(*cmd)->is_builtin)
 		(*cmd)->cmd_path = get_full_path((*cmd)->args[0], (*cmd)->envp);
+	(*cmd)->fd_in = STDIN_FILENO;
+	(*cmd)->fd_out = STDOUT_FILENO;
 	return (1);
 }
 

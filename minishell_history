@@ -170,52 +170,8 @@ cat << eof  > outfile
 cat outfile 
 rm outfile 
 cl
-echo a
-cat << eof | ls
-exit
-cat << eof | ls
-aaa
-aaa
-exit
-echo a > a
+echo $?
+cat | cat |ls
 cat << eof
-clear
-cat << eof | grep a
-c
-cccsacdasdasdas
-clear
-exit
-echo a > a
-clear
-cat << eof
-cat << eof
-cat << eof
-clear
-clear
-exit
-echo a > a
-clear
-exit
-cat << eof
-exit
-cat << eof
-clear
-exit
-cat << eof
-clear
-exit
-cat << eof | ls
-clear
-clcear
-clear
-exit
-cat << eof
-clear
-exit
-cat << eof
-clear
-exit
-echo a > a
-cat << eof
-clear
-exit
+cat | cat |ls
+
