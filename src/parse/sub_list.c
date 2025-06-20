@@ -6,7 +6,7 @@
 /*   By: pmoreira <pmoreira@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/05 10:58:27 by pmoreira          #+#    #+#             */
-/*   Updated: 2025/06/07 17:14:55 by pmoreira         ###   ########.fr       */
+/*   Updated: 2025/06/20 12:26:04 by pmoreira         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,6 +22,11 @@ static void	ft_freed(t_token *tok, char **matrix)
 	{
 		free(tok->cmd);
 		tok->cmd = NULL;
+	}
+	if (tok->backup)
+	{
+		free(tok->backup);
+		tok->backup = NULL;
 	}
 	if (tok->args)
 	{

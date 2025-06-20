@@ -6,7 +6,7 @@
 /*   By: pmoreira <pmoreira@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/14 14:59:37 by pmoreira          #+#    #+#             */
-/*   Updated: 2025/06/20 11:05:19 by pmoreira         ###   ########.fr       */
+/*   Updated: 2025/06/20 12:14:45 by pmoreira         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,17 +15,23 @@
 int	check_cmds(t_token *tok)
 {
 	t_token	*temp;
+	t_bool	expanded;
 
 	if (!tok)
 		return (1);
 	temp = tok;
+	expanded = FALSE;
 	while (temp->next)
 	{
+		if (temp->expanded)
+			expanded = TRUE;
 		if (temp->type == CMD || temp->type == BUILT_IN)
 			return (1);
 		temp = temp->next;
 	}
-	return (0);
+	if (expanded)
+		return (0);
+	return (1);
 }
 
 /// @brief Join the 2 strings, free the s1 and free the s2 if the pointer are 

@@ -217,3 +217,35 @@ cat < $a
 export a="banana split"
 cat < $a
 cat < $b
+echo ''""
+echo ''
+'echo' ''
+'e'c'h'o' ''
+'e'c'h'o' 'ola
+'e'c'h'o ola
+'e'c'h'o' 'ola
+'e'c'h'o' 'ola
+'e'c'h'o' 'ola
+cat < $a
+export a="echo ola"
+> outfile $a
+cat outfile 
+rm outfile 
+'e'c'h'o' 'ola
+$a
+ echo ola > $a
+ echo ola > $a
+'e'c'h'o' 'ola
+export a="echo ola"
+ echo ola > $a
+$a
+> outfile $a
+rm outfile 
+export a="echo ola"
+$a
+$a
+export a="echo ola"
+export a="echo ola"
+$a
+export a="echo ola"
+$a
