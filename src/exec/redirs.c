@@ -27,8 +27,7 @@ static int	shell_heredoc(char *limiter)
 	return (pipefd[0]);
 }
 
-
-static void	do_heredoc(t_redirection *redir)
+void	do_heredoc(t_redirection *redir)
 {
 
 	signal_handler(get_hell(NULL), 'H');

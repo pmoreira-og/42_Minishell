@@ -48,6 +48,7 @@ void	handle_redirections(t_cmd *cmd);
 void	execute_child(t_cmd *cmd, int prev_pipe_fd, \
 	int *pipefd, t_hell *shell);
 int		execute_builtin(t_cmd *cmd, t_hell *shell);
+void	do_heredoc(t_redirection *redir);
 // void	do_heredoc(t_cmd *cmd);
 t_bool	has_heredoc(t_cmd *cmd);
 t_bool	need_fork(t_cmd *cmd);
