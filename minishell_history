@@ -175,3 +175,45 @@ cat | cat |ls
 cat << eof
 cat | cat |ls
 
+cat | cat |ls
+cat << eof | cat | cat > outfile
+cat << eof 
+cat << eof 
+echo $?
+cl
+cat outfile 
+rm outfile 
+cat << eof  > outfile
+cat outfile 
+rm outfile 
+cat << eof  > outfile | echo ola
+cat libft/
+echo ola
+echo ola
+export a="banana split"
+echo ola > $a
+rm banana split 
+export a="banana split"
+echo ola > $a
+rm banana\ split 
+export a="banana split"
+echo ola > $a
+export a="banana split"
+export a="banana split"
+export a="banana split"
+echo ola > $a
+export a="banana split"
+echo ola > $a
+export a=
+echo ola > $a
+unset a
+echo ola > $a
+echo ola > $a
+export a=banana
+echo ola > $a > $b
+echo ola > $b > $a
+cat < $b
+cat < $a
+export a="banana split"
+cat < $a
+cat < $b

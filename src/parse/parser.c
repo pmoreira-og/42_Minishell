@@ -6,7 +6,7 @@
 /*   By: pmoreira <pmoreira@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/14 14:59:37 by pmoreira          #+#    #+#             */
-/*   Updated: 2025/06/13 12:55:48 by pmoreira         ###   ########.fr       */
+/*   Updated: 2025/06/20 11:05:19 by pmoreira         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -94,7 +94,10 @@ void	parser(char **input, t_hell *data)
 		return ;
 	pre_process_input(input);
 	tokenize(*input, data);
+	make_backup(data->tokens);
 	if (data->tokens && !valid_input(data->tokens, data))
+		return ;
+	if (check_ambiguous(data->tokens))
 		return ;
 	if (!check_cmds(data->tokens))
 		recall_parser(data);

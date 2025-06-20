@@ -6,7 +6,7 @@
 /*   By: pmoreira <pmoreira@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/22 15:33:31 by pmoreira          #+#    #+#             */
-/*   Updated: 2025/06/17 12:34:50 by pmoreira         ###   ########.fr       */
+/*   Updated: 2025/06/20 11:06:06 by pmoreira         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -76,4 +76,10 @@ void	parser_error(char *error_msg, int fd)
 {
 	if (error_msg)
 		ft_printf_fd(fd, "%s%s\n", ERR_BAD_FORMAT, error_msg);
+}
+
+void	error_ambiguous(char *s)
+{
+	if (s)
+		ft_printf_fd(2, "minishell: %s: ambiguous redirect\n", s);
 }

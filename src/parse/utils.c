@@ -6,7 +6,7 @@
 /*   By: pmoreira <pmoreira@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/27 14:39:30 by pmoreira          #+#    #+#             */
-/*   Updated: 2025/06/11 10:57:40 by pmoreira         ###   ########.fr       */
+/*   Updated: 2025/06/20 10:56:00 by pmoreira         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -82,4 +82,20 @@ char	*handle_limiter(char *s, t_bool *flag)
 			return (merror("handle_limiter"), NULL);
 	}
 	return (temp);
+}
+
+void	make_backup(t_token *tok)
+{
+	if (!tok)
+		return ;
+	while (tok->next)
+	{
+		tok->backup = ft_strdup(tok->cmd);
+		if (!tok->backup)
+		{
+			merror("make_backup");
+			return (mini_cleaner(NULL, get_hell(NULL), 1));
+		}
+		tok = tok->next;
+	}
 }

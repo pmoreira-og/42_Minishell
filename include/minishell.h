@@ -6,7 +6,7 @@
 /*   By: pmoreira <pmoreira@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/24 14:48:17 by pmoreira          #+#    #+#             */
-/*   Updated: 2025/06/18 14:44:35 by pmoreira         ###   ########.fr       */
+/*   Updated: 2025/06/20 11:04:21 by pmoreira         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -106,6 +106,9 @@ int		check_redirs(t_token *tok);
 char	*remove_both_quotes(char *s);
 char	*handle_limiter(char *s, t_bool *flag);
 char	*get_full_path(char *cmd, char **envp);
+t_bool	check_ambiguous(t_token *tok);
+void	error_ambiguous(char *s);
+void	make_backup(t_token *tok);
 // TEST FUNCTIONS ON PARSE
 
 // miscs:

@@ -6,7 +6,7 @@
 /*   By: pmoreira <pmoreira@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/22 15:21:45 by pmoreira          #+#    #+#             */
-/*   Updated: 2025/06/13 20:11:50 by pmoreira         ###   ########.fr       */
+/*   Updated: 2025/06/20 11:05:39 by pmoreira         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -96,4 +96,28 @@ char	*get_full_path(char *cmd, char **envp)
 		free(temp);
 	}
 	return (ft_clean_matrix(path), NULL);
+}
+
+t_bool	check_ambiguous(t_token *tok)
+{
+	int	i;
+
+	if (!tok)
+		return (TRUE);
+	while (tok)
+	{
+		i = 0;
+		if (tok->expanded)
+		{
+			if (tok->type == INFILE || tok->type == OUTFILE_APPEND
+					|| tok->type == OUTFILE)
+			{
+				ft_count(tok->cmd, &i);
+				if (i != 1)
+					return (error_ambiguous(tok->backup), TRUE);
+			}
+		}
+		tok = tok->next;
+	}
+	return (FALSE);
 }

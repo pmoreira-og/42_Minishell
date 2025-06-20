@@ -6,7 +6,7 @@
 /*   By: pmoreira <pmoreira@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/05 12:08:31 by pmoreira          #+#    #+#             */
-/*   Updated: 2025/06/10 18:53:05 by pmoreira         ###   ########.fr       */
+/*   Updated: 2025/06/20 10:59:13 by pmoreira         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -95,10 +95,9 @@ void	clean_list(t_hell *data)
 	{
 		next_node = temp->next;
 		if (temp->cmd)
-		{
 			free(temp->cmd);
-			temp->cmd = NULL;
-		}
+		if (temp->backup)
+			free(temp->backup);
 		if (temp->args)
 		{
 			ft_clean_matrix(temp->args);
