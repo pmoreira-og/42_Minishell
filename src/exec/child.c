@@ -6,7 +6,7 @@
 /*   By: pmoreira <pmoreira@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/17 13:20:53 by pmoreira          #+#    #+#             */
-/*   Updated: 2025/06/17 13:24:53 by pmoreira         ###   ########.fr       */
+/*   Updated: 2025/06/20 13:23:22 by pmoreira         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,20 +40,20 @@ void	execute_child(t_cmd *cmd, int prev_pipe_fd, \
 	int *pipefd, t_hell *shell)
 {
 	signal_handler(shell, 'D');
+	handle_redirections(cmd);
 	if (shell->hist_fd >= 0)
 		close(shell->hist_fd);
-	if (prev_pipe_fd != -1)
+	if (!cmd->redir_in && prev_pipe_fd != -1)
 	{
 		dup2(prev_pipe_fd, STDIN_FILENO);
 		close(prev_pipe_fd);
 	}
-	if (cmd->is_piped)
+	if (cmd->is_piped && !cmd->redir_out)
 	{
 		close(pipefd[0]);
 		dup2(pipefd[1], STDOUT_FILENO);
 		close(pipefd[1]);
 	}
-	handle_redirections(cmd);
 	if (cmd->is_builtin)
 		mini_cleaner(NULL, shell, execute_builtin(cmd, shell));
 	if (!cmd->cmd_path && cmd->args[0])

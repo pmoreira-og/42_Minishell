@@ -249,3 +249,57 @@ export a="echo ola"
 $a
 export a="echo ola"
 $a
+cat << eof | ls
+dsadasddsadsawewqewqewqewqewq
+cat << eof | ls
+export a="banana split"
+echo ola > $a
+cat << a | << b
+| echo ola
+||
+>>>
+cat | cat | ls
+cat | cat | ls
+echo ola > outfile
+cat outfile 
+pwd > outfile 
+cat outfile 
+export > outfile 
+cat outfile 
+env > outfile 
+cat outfile 
+export 123=asd
+echo $123
+export
+export
+export a=a
+export
+export a=
+export
+export a
+export
+unset a
+export
+export a=a
+env
+export a=
+env
+export a
+env
+export a=a
+export 123=asd
+export _123=asd
+export .123=asd
+export _123=asd
+export a=a
+export z=z
+export B=B
+export
+export B=B
+export z=z
+export a=a
+export
+cat src/
+echo $?
+test.sh 
+./test.sh 

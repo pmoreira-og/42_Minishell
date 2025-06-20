@@ -6,7 +6,7 @@
 /*   By: pmoreira <pmoreira@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/13 14:07:18 by ernda-si          #+#    #+#             */
-/*   Updated: 2025/06/17 11:59:21 by pmoreira         ###   ########.fr       */
+/*   Updated: 2025/06/20 16:18:53 by pmoreira         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,28 +17,28 @@ static int	identifier_check(char **matrix)
 	int	i;
 
 	i = 0;
+	if (!ft_isalpha(matrix[0][0]) && matrix[0][0] != '_')
+		return (0);
 	while (matrix[0][i])
 	{
-		if (matrix[0][i] == ' ' || matrix[0][i] == '\t')
+		if (ft_isspace(matrix[0][i]))
 			return (0);
 		i++;
 	}
 	return (1);
 }
 
-void	sort_export_list(t_export *head)
+void	sort_export_list(t_export *head, int *sorted)
 {
 	t_export	*curr;
-	int			sorted;
 	char		*tmp_var;
 	char		*tmp_val;
 
 	if (!head)
 		return ;
-	sorted = 0;
-	while (!sorted)
+	while (!*sorted)
 	{
-		sorted = 1;
+		*sorted = 1;
 		curr = head;
 		while (curr && curr->next)
 		{
@@ -50,7 +50,7 @@ void	sort_export_list(t_export *head)
 				curr->value = curr->next->value;
 				curr->next->var = tmp_var;
 				curr->next->value = tmp_val;
-				sorted = 0;
+				*sorted = 0;
 			}
 			curr = curr->next;
 		}
@@ -60,9 +60,11 @@ void	sort_export_list(t_export *head)
 static void	print_export(t_export *export)
 {
 	t_export	*temp;
+	int			sorted;
 
 	temp = export;
-	sort_export_list(temp);
+	sorted = 0;
+	sort_export_list(temp, &sorted);
 	while (temp)
 	{
 		if (!temp->value)
@@ -91,19 +93,15 @@ void	mini_export(t_env **env, t_export **export, t_cmd *cmd)
 	{
 		matrix = ft_split_once(cmd->args[i], '=');
 		if (!identifier_check(matrix))
-			fprintf(stderr,
-				"Minishell: export: `%s': not a valid identifier\n",
+			ft_printf_fd(2,
+				"minishell: export: `%s': not a valid identifier\n",
 				cmd->args[i]);
-		else if (matrix[0] && matrix[1])
-		{
+		ft_setexport(export, matrix[0], matrix[1]);
+		if (matrix[0] && matrix[1])
 			ft_setenv(env, matrix[0], matrix[1]);
-			ft_setexport(export, matrix[0], matrix[1]);
-		}
-		else if (matrix[0] && !matrix[1])
-			ft_setexport(export, matrix[0], NULL);
 		else if (!ft_strcmp(matrix[1], ""))
 		{
-			ft_setenv(env, matrix[0], "\"\"");
+			ft_setenv(env, matrix[0], "");
 			ft_setexport(export, matrix[0], "\"\"");
 		}
 		ft_clean_matrix(matrix);

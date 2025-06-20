@@ -6,7 +6,7 @@
 /*   By: pmoreira <pmoreira@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/22 15:21:45 by pmoreira          #+#    #+#             */
-/*   Updated: 2025/06/20 11:05:39 by pmoreira         ###   ########.fr       */
+/*   Updated: 2025/06/20 16:19:33 by pmoreira         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -110,7 +110,7 @@ t_bool	check_ambiguous(t_token *tok)
 		if (tok->expanded)
 		{
 			if (tok->type == INFILE || tok->type == OUTFILE_APPEND
-					|| tok->type == OUTFILE)
+				|| tok->type == OUTFILE)
 			{
 				ft_count(tok->cmd, &i);
 				if (i != 1)
