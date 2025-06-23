@@ -6,7 +6,7 @@
 /*   By: pmoreira <pmoreira@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/24 14:48:17 by pmoreira          #+#    #+#             */
-/*   Updated: 2025/06/23 12:06:26 by pmoreira         ###   ########.fr       */
+/*   Updated: 2025/06/23 13:57:24 by pmoreira         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,6 +53,7 @@ void	do_heredoc(t_redirection *redir);
 t_bool	has_heredoc(t_cmd *cmd);
 t_bool	need_fork(t_cmd *cmd);
 void	try_run(t_hell *data, char **program);
+char	*path_handler(char *arg);
 
 // parse:
 void	ft_count(const char *input, int *count);

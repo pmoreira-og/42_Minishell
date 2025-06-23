@@ -6,7 +6,7 @@
 /*   By: pmoreira <pmoreira@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/13 14:07:18 by ernda-si          #+#    #+#             */
-/*   Updated: 2025/06/20 16:18:53 by pmoreira         ###   ########.fr       */
+/*   Updated: 2025/06/23 13:40:00 by pmoreira         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -69,7 +69,7 @@ static void	print_export(t_export *export)
 	{
 		if (!temp->value)
 			printf("declare -x %s\n", temp->var);
-		else if (temp->value[0] == '\0')
+		else if (temp->value && !ft_strcmp(temp->value, ""))
 			printf("declare -x %s=\"\"\n", temp->var);
 		else
 		{
@@ -99,7 +99,7 @@ void	mini_export(t_env **env, t_export **export, t_cmd *cmd)
 		ft_setexport(export, matrix[0], matrix[1]);
 		if (matrix[0] && matrix[1])
 			ft_setenv(env, matrix[0], matrix[1]);
-		else if (!ft_strcmp(matrix[1], ""))
+		else if (matrix[1] && !ft_strcmp(matrix[1], ""))
 		{
 			ft_setenv(env, matrix[0], "");
 			ft_setexport(export, matrix[0], "\"\"");

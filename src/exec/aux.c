@@ -6,7 +6,7 @@
 /*   By: pmoreira <pmoreira@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/25 14:50:57 by pmoreira          #+#    #+#             */
-/*   Updated: 2025/06/23 10:56:32 by pmoreira         ###   ########.fr       */
+/*   Updated: 2025/06/23 14:04:13 by pmoreira         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -71,18 +71,26 @@ t_bool	ft_dup(int dst, int src)
 
 void	try_run(t_hell *data, char **program)
 {
+	char	*new_path;
+
 	if (data && program && program[0])
 	{
-		if (access(program[0], F_OK) == -1)
+		new_path = path_handler(program[0]);
+		if (!new_path)
+			return (merror("try_run:new_path"));
+		if (access(new_path, F_OK) == -1)
 		{
 			ft_printf_fd(2, "Command '%s' not found\n", program[0]);
+			free(new_path);
 			mini_cleaner(NULL, data, 127);
 		}
-		if (access(program[0], X_OK) == -1)
+		if (access(new_path, X_OK) == -1)
 		{
+			printf("%s\n", new_path);
 			ft_printf_fd(2, "minishell: %s: Permission denied\n", program[0]);
+			free(new_path);
 			mini_cleaner(NULL, data, 126);
 		}
-		execve(program[0], program, data->envp);
+		execve(new_path, program, data->envp);
 	}
 }

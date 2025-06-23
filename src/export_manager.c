@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   export_manager.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ernda-si <ernda-si@student.42.fr>          +#+  +:+       +#+        */
+/*   By: pmoreira <pmoreira@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/13 14:04:09 by ernda-si          #+#    #+#             */
-/*   Updated: 2025/06/13 14:04:21 by ernda-si         ###   ########.fr       */
+/*   Updated: 2025/06/23 13:47:31 by pmoreira         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,12 +23,14 @@ static int	aux_export(t_export **export, char *var, char *value)
 	{
 		if (!ft_strcmp(temp->var, var))
 		{
-			if (temp->value)
-				free(temp->value);
 			if (value)
+			{
+				if (temp->value)
+					free(temp->value);
 				temp->value = ft_strdup(value);
-			else
-				temp->value = NULL;
+			}
+			// else
+			// 	temp->value = NULL;
 			return (0);
 		}
 		temp = temp->next;

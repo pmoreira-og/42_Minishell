@@ -407,3 +407,73 @@ unset
 export
 unset a banana
 export
+export a banana
+export
+unset a banana
+export
+export a
+export
+export a
+export a
+export 
+export a banana
+export 
+export 
+export a banana
+export 
+export a banana
+export 
+export a= banana
+export 
+export a banana
+export 
+export a banana
+export 
+export a= banana
+export 
+export a banana
+export 
+export a banana
+export 
+export a= banana
+export 
+export a banana
+export 
+export a= banana
+export 
+export a banana
+export 
+export a= banana
+export 
+export a banana
+export 
+export a banana
+export 
+export a= banana
+export 
+export a banana
+export 
+export a banana=spit
+export 
+env
+export 
+export a banana=
+export 
+env
+unset a banana
+env
+export 
+./test.sh 
+chmod 000 test.sh 
+./test.sh 
+echo $?
+chmod 755 test.sh 
+cate Makefile 
+~/test.sh
+~/test.sh
+echo $?
+~/test.sh
+~/test.sh
+~/test.sh
+cd ~/42Cursus/
+./test.sh

@@ -6,7 +6,7 @@
 /*   By: pmoreira <pmoreira@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/23 12:12:04 by ernda-si          #+#    #+#             */
-/*   Updated: 2025/06/17 12:22:07 by pmoreira         ###   ########.fr       */
+/*   Updated: 2025/06/23 14:05:24 by pmoreira         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,7 @@ static void	update_env_pwd(t_env **env, char *oldpwd, char *pwd)
 	ft_setenv(env, "PWD", pwd);
 }
 
-static char	*path_handler(char *arg)
+char	*path_handler(char *arg)
 {
 	char	*home;
 
@@ -40,7 +40,7 @@ static char	*path_handler(char *arg)
 		home = getenv("HOME");
 		if (!home)
 			return (NULL);
-		return (ft_strjoin(ft_strdup(home), ft_strchr(arg, '/')));
+		return (ft_strjoin(home, ft_strchr(arg, '/')));
 	}
 	return (ft_strdup(arg));
 }
