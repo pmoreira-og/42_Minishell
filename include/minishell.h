@@ -6,7 +6,7 @@
 /*   By: pmoreira <pmoreira@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/24 14:48:17 by pmoreira          #+#    #+#             */
-/*   Updated: 2025/06/20 11:04:21 by pmoreira         ###   ########.fr       */
+/*   Updated: 2025/06/23 12:06:26 by pmoreira         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,6 +52,7 @@ void	do_heredoc(t_redirection *redir);
 // void	do_heredoc(t_cmd *cmd);
 t_bool	has_heredoc(t_cmd *cmd);
 t_bool	need_fork(t_cmd *cmd);
+void	try_run(t_hell *data, char **program);
 
 // parse:
 void	ft_count(const char *input, int *count);
@@ -120,7 +121,7 @@ void	save_history(char *input, t_hell *cmd);
 void	merror(char *s);
 
 // built in functions:
-int		mini_echo(t_cmd *cmd, t_env **env, t_hell *shell);
+int		mini_echo(t_cmd *cmd);
 int		mini_pwd(t_cmd *cmd);
 void	mini_cd(t_cmd *cmd, t_env **env, t_hell *shell);
 void	mini_env(t_hell *shell);

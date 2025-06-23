@@ -6,7 +6,7 @@
 /*   By: pmoreira <pmoreira@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/17 13:20:53 by pmoreira          #+#    #+#             */
-/*   Updated: 2025/06/20 13:23:22 by pmoreira         ###   ########.fr       */
+/*   Updated: 2025/06/23 12:06:08 by pmoreira         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,7 @@ int	execute_builtin(t_cmd *cmd, t_hell *shell)
 
 	flag = 0;
 	if (!ft_strcmp(cmd->args[0], "echo") && ++flag)
-		return (mini_echo(cmd, &shell->env, shell));
+		return (mini_echo(cmd));
 	else if (!ft_strcmp(cmd->args[0], "pwd") && ++flag)
 		return (mini_pwd(cmd));
 	else if (!ft_strcmp(cmd->args[0], "cd") && ++flag)
@@ -44,23 +44,16 @@ void	execute_child(t_cmd *cmd, int prev_pipe_fd, \
 	if (shell->hist_fd >= 0)
 		close(shell->hist_fd);
 	if (!cmd->redir_in && prev_pipe_fd != -1)
-	{
-		dup2(prev_pipe_fd, STDIN_FILENO);
-		close(prev_pipe_fd);
-	}
+		ft_dup(prev_pipe_fd, STDIN_FILENO);
 	if (cmd->is_piped && !cmd->redir_out)
 	{
 		close(pipefd[0]);
-		dup2(pipefd[1], STDOUT_FILENO);
-		close(pipefd[1]);
+		ft_dup(pipefd[1], STDOUT_FILENO);
 	}
 	if (cmd->is_builtin)
 		mini_cleaner(NULL, shell, execute_builtin(cmd, shell));
 	if (!cmd->cmd_path && cmd->args[0])
-	{
-		ft_printf_fd(2, "Command '%s' not found\n", cmd->args[0]);
-		shell->status = 127;
-	}
+		try_run(shell, cmd->args);
 	if (cmd->cmd_path && cmd->args[0])
 		execve(cmd->cmd_path, cmd->args, cmd->envp);
 	mini_cleaner(NULL, shell, shell->status);

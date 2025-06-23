@@ -6,7 +6,7 @@
 /*   By: pmoreira <pmoreira@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/11 10:41:17 by pmoreira          #+#    #+#             */
-/*   Updated: 2025/06/17 11:04:26 by pmoreira         ###   ########.fr       */
+/*   Updated: 2025/06/23 10:43:02 by pmoreira         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,6 +42,9 @@ void	stop_parent_signals(void)
 	signal(SIGQUIT, SIG_IGN);
 }
 
+/// @brief Updates shell behavior of some signals.
+/// @param hell Main struct.
+/// @param flag 'D'-> Default 'P'-> Parent 'H'-> Heredoc.
 void	signal_handler(t_hell *hell, int flag)
 {
 	struct sigaction	sa;

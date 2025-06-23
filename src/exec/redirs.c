@@ -6,14 +6,15 @@
 /*   By: pmoreira <pmoreira@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/17 13:18:28 by pmoreira          #+#    #+#             */
-/*   Updated: 2025/06/18 15:06:29 by pmoreira         ###   ########.fr       */
+/*   Updated: 2025/06/23 11:28:47 by pmoreira         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minishell.h"
 
-static int	shell_heredoc(char *limiter)
+static int	shell_heredoc(char *limiter, t_hell *data)
 {
+	int	pid;
 	int	pipefd[2];
 
 	if (pipe(pipefd) == -1)
@@ -21,17 +22,29 @@ static int	shell_heredoc(char *limiter)
 		perror("pipe");
 		return (-1);
 	}
-	signal_handler(get_hell(NULL), 'H');
-	input_heredoc(pipefd[1], limiter);
+	stop_parent_signals();
+	pid = fork();
+	if (pid == 0)
+	{
+		if (data->hist_fd >= 0)
+			close(data->hist_fd);
+		signal_handler(get_hell(NULL), 'H');
+		input_heredoc(pipefd[1], limiter);
+		mini_cleaner(NULL, get_hell(NULL), 0);
+	}
+	else
+		wait(&data->status);
+	if (WIFEXITED(data->status))
+		data->status = WEXITSTATUS(data->status);
+	signal_handler(get_hell(NULL), 'P');
 	close(pipefd[1]);
 	return (pipefd[0]);
 }
 
 void	do_heredoc(t_redirection *redir)
 {
-
-	signal_handler(get_hell(NULL), 'H');
-	redir->fd = shell_heredoc(redir->limiter);
+	
+	redir->fd = shell_heredoc(redir->limiter, get_hell(NULL));
 	if (redir->fd == -1)
 		exit(EXIT_FAILURE);
 	// dup2(fd, STDIN_FILENO);
@@ -130,8 +143,8 @@ void	handle_redirections(t_cmd *cmd)
 	{
 		if (in->type == INFILE)
 			open_infile(in);
-		else if (in->type == LIM)
-			do_heredoc(in);
+		// else if (in->type == LIM)
+		// 	do_heredoc(in);
 		in = in->next;
 	}
 	while (out)

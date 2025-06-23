@@ -6,7 +6,7 @@
 /*   By: pmoreira <pmoreira@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/04 14:50:33 by pmoreira          #+#    #+#             */
-/*   Updated: 2025/06/07 16:56:12 by pmoreira         ###   ########.fr       */
+/*   Updated: 2025/06/23 10:43:37 by pmoreira         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,11 +54,6 @@ int	space_length(char *input)
 	return (spaces);
 }
 
-/// @brief What happens between quotes, in my space_put function
-/// @param input The string received from the Stdout
-/// @param dest New string with the spaces
-/// @param i increment
-/// @param j increment
 static void	between_quotes(char *input, char *dest, int *i, int *j)
 {
 	char	quote;
@@ -71,11 +66,6 @@ static void	between_quotes(char *input, char *dest, int *i, int *j)
 		dest[(*j)++] = input[(*i++)];
 }
 
-/// @brief What happens between quotes, in my space_put function
-/// @param input The string received from the Stdout
-/// @param dest New string with the spaces
-/// @param i increment
-/// @param j increment
 static void	if_operators(char *input, char *dest, int *i, int *j)
 {
 	if (*i > 0 && input[*i - 1] != ' ' && !is_meta(input[*i - 1]))

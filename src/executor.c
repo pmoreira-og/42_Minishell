@@ -6,7 +6,7 @@
 /*   By: pmoreira <pmoreira@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/13 13:45:33 by ernda-si          #+#    #+#             */
-/*   Updated: 2025/06/18 14:49:46 by pmoreira         ###   ########.fr       */
+/*   Updated: 2025/06/23 11:35:16 by pmoreira         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,12 +44,8 @@ static void	wait_for_all(t_cmd *cmd_list, t_hell *shell)
 {
 	int		status;
 	t_cmd	*tmp;
-	t_cmd	*last;
 
 	tmp = cmd_list;
-	last = cmd_list;
-	while(last->next)
-		last = last->next;
 	status = 0;
 	while (tmp)
 	{
@@ -76,7 +72,7 @@ static void	prepare_heredocs(t_cmd *cmd_list)
 		redir = cmd->redir_in;
 		while (redir)
 		{
-			if (redir->type == REDIR_HERE_DOC)
+			if (redir->type == LIM)
 				do_heredoc(redir);
 			redir = redir->next;
 		}
@@ -121,14 +117,14 @@ void	execute_pipeline(t_hell *shell)
 		if (cmd->is_piped && pipe(pipes) == -1)
 		{
 			perror("pipe");
-			exit(EXIT_FAILURE);
+			mini_cleaner(NULL, shell, EXIT_FAILURE);
 		}
 		stop_parent_signals();
 		cmd->pid = fork();
 		if (cmd->pid == -1)
 		{
 			perror("fork");
-			exit(EXIT_FAILURE);
+			mini_cleaner(NULL, shell, EXIT_FAILURE);
 		}
 		else if (cmd->pid == 0)
 		{

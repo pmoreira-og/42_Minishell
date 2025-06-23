@@ -6,7 +6,7 @@
 /*   By: pmoreira <pmoreira@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/25 14:50:57 by pmoreira          #+#    #+#             */
-/*   Updated: 2025/06/18 14:44:35 by pmoreira         ###   ########.fr       */
+/*   Updated: 2025/06/23 10:56:32 by pmoreira         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -67,4 +67,22 @@ t_bool	ft_dup(int dst, int src)
 		return (FALSE);
 	close(dst);
 	return (TRUE);
+}
+
+void	try_run(t_hell *data, char **program)
+{
+	if (data && program && program[0])
+	{
+		if (access(program[0], F_OK) == -1)
+		{
+			ft_printf_fd(2, "Command '%s' not found\n", program[0]);
+			mini_cleaner(NULL, data, 127);
+		}
+		if (access(program[0], X_OK) == -1)
+		{
+			ft_printf_fd(2, "minishell: %s: Permission denied\n", program[0]);
+			mini_cleaner(NULL, data, 126);
+		}
+		execve(program[0], program, data->envp);
+	}
 }

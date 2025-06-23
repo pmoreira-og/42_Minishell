@@ -303,3 +303,82 @@ cat src/
 echo $?
 test.sh 
 ./test.sh 
+export a= banana
+export
+unset a banana
+export banana
+export
+export a="echo banana split"
+$a
+echo $a
+echo ola
+$no pwd
+"" pwd
+./test.sh
+./test.sh
+echo $?
+echo $?
+./test.sh
+./test.sh 
+echo $?
+chmod 755 test.sh 
+./test.sh 
+chmod 000 test.sh 
+./test.sh 
+echo $?
+rm test.sh 
+./test.sh 
+echo $?
+cat|cat|ls
+cate Makefile 
+echo $?
+./test.sh banana
+echo $?
+./test.sh banana
+echo $?
+chmod 755 test.sh 
+./test.sh 
+./test.sh 
+clear
+cat << eof | cat << a | cat 
+ls
+cat << eof | cat << a | cat 
+cat << eof | cat << a | cat 
+cat << eof | cat << a | cat 
+cat << eof | cat << a
+cat << eof | cat << a
+cat << eof | cat << a
+cat << eof | cat << a
+cat << eof 
+cat << eof 
+cat << eof | cat << a
+asddsdasdas
+clear
+cat << eof < Makefile 
+export a banana
+export
+unset a banana
+export a
+export
+unset a banana
+export
+echo ola
+echo ola > outfile 
+cat outfile 
+echo -nnnnnnnnnnnnnnnnnn -n           -n                       -nnnnnnnnn -nn-ola
+echo -nnnnnnnnnnnnnnnnnn -n           -n                       -nnnnnnnnn -nn-ola > outfile
+cat outfile 
+rm outfile 
+echo -nnnnnnnnnnnnnnnnnn -n           -n                       -nnnnnnnnn -nn-ola > outfile
+chmod 000 outfile 
+cat outfile 
+echo $?
+chmod 755 outfile 
+echo $?
+cat outfile 
+rm outfile 
+echo ola > outfile
+echo ola
+a
+cat outfile 
+rm outfile 

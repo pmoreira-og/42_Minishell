@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   echo.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ernda-si <ernda-si@student.42.fr>          +#+  +:+       +#+        */
+/*   By: pmoreira <pmoreira@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/23 12:11:58 by ernda-si          #+#    #+#             */
-/*   Updated: 2025/06/13 14:05:39 by ernda-si         ###   ########.fr       */
+/*   Updated: 2025/06/23 12:05:10 by pmoreira         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,13 +24,11 @@ static int	is_flag_n(char *arg)
 	return (arg[i] == '\0');
 }
 
-int	mini_echo(t_cmd *cmd, t_env **env, t_hell *shell)
+int	mini_echo(t_cmd *cmd)
 {
 	int	i;
 	int	no_newline;
 
-	(void)env;
-	(void)shell;
 	no_newline = 0;
 	i = 1;
 	while (cmd->args[i] && is_flag_n(cmd->args[i]))
