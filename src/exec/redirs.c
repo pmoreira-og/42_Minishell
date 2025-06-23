@@ -6,7 +6,7 @@
 /*   By: pmoreira <pmoreira@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/17 13:18:28 by pmoreira          #+#    #+#             */
-/*   Updated: 2025/06/23 15:14:42 by pmoreira         ###   ########.fr       */
+/*   Updated: 2025/06/23 15:22:58 by pmoreira         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -86,23 +86,20 @@ int	dup_redirs(t_cmd *cmd)
 	{
 		if (!in->next)
 		{
-			if (in->type == LIM)
-				printf("dupped:%s\n", in->limiter);
-			else
-				printf("dupped:%s\n", in->filename);
 			if (!ft_dup(in->fd, STDIN_FILENO))
 				return (0);
 		}
+		close(in->fd);
 		in = in->next;
 	}
 	while (out)
 	{
 		if (!out->next)
 		{
-			printf("dupped:%s\n", out->filename);
 			if (!ft_dup(out->fd, STDOUT_FILENO))
 				return (0);
 		}
+		close(out->fd);
 		out = out->next;
 	}
 	return (1);

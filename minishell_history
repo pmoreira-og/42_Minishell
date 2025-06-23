@@ -492,3 +492,39 @@ cat << eof | cat << a | cat << b
 cat << eof | cat << a | cat << b 
 cat << eof | cat << a | cat << b 
 cat << eof | cat << a | cat << b 
+cat << eof | cat << a | cat << b 
+cat << eof | cat << a 
+cat Makefile | wc -l > outfile
+cat Makefile | wc -l > outfile
+cat << eof | cat << a 
+cat << eof << a << b 
+cat << eof | cat << a  
+cat << eof | cat << a  | cat << b
+cat << eof | cat << a  | cat << b
+cat << eof | cat << a  | cat << b
+cat << eof | cat << a  | cat << b
+cat << eof | cat << a  | cat << b | cat <<o
+cat << eof | cat << a  | cat << b 
+cat << eof | cat << a  
+cat << eof 
+cat << eof | cat << a  
+cat << eof | cat << a  | cat << b 
+cat << eof | cat << a  | cat << b 
+cat << eof | cat << a  | cat << b 
+cat << eof | cat << a  | cat << b | cat <<o
+cat << eof | cat << a  
+cat << eof | cat << a  
+cat << eof | cat << a  
+cat << eof | cat << a  
+cat << eof | cat << a  
+cat << eof | cat << a  | cat << b
+cat << eof | cat << a  
+cat << eof | cat << a  | cat << b
+cat | cat | ls
+cat | cat 
+cat << eof | cat << a  | cat << b
+cat << eof | cat << a  
+cat << eof | cat << a  | cat << b
+cat << eof | cat << a  
+cat << eof | cat << a  
+cat << eof | cat << a  
