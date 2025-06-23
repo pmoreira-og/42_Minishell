@@ -6,7 +6,7 @@
 /*   By: pmoreira <pmoreira@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/13 13:45:33 by ernda-si          #+#    #+#             */
-/*   Updated: 2025/06/23 11:35:16 by pmoreira         ###   ########.fr       */
+/*   Updated: 2025/06/23 15:04:12 by pmoreira         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -110,10 +110,7 @@ void	execute_pipeline(t_hell *shell)
 	while (cmd)
 	{
 		if (!cmd->is_piped && cmd->is_builtin)
-		{
-			redir_built_ins(cmd, shell);
-			return ;
-		}
+			return ((void) redir_built_ins(cmd, shell));
 		if (cmd->is_piped && pipe(pipes) == -1)
 		{
 			perror("pipe");
@@ -127,11 +124,7 @@ void	execute_pipeline(t_hell *shell)
 			mini_cleaner(NULL, shell, EXIT_FAILURE);
 		}
 		else if (cmd->pid == 0)
-		{
-			// do_heredoc(cmd);
-			// shell->cmd = cmd;
 			execute_child(cmd, prev_pipe, pipes, shell);
-		}
 		if (prev_pipe != -1)
 			close(prev_pipe);
 		if (cmd->is_piped)

@@ -6,7 +6,7 @@
 /*   By: pmoreira <pmoreira@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/17 13:18:28 by pmoreira          #+#    #+#             */
-/*   Updated: 2025/06/23 11:28:47 by pmoreira         ###   ########.fr       */
+/*   Updated: 2025/06/23 15:14:42 by pmoreira         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,7 +33,7 @@ static int	shell_heredoc(char *limiter, t_hell *data)
 		mini_cleaner(NULL, get_hell(NULL), 0);
 	}
 	else
-		wait(&data->status);
+		waitpid(pid, &data->status, 0);
 	if (WIFEXITED(data->status))
 		data->status = WEXITSTATUS(data->status);
 	signal_handler(get_hell(NULL), 'P');
@@ -43,36 +43,10 @@ static int	shell_heredoc(char *limiter, t_hell *data)
 
 void	do_heredoc(t_redirection *redir)
 {
-	
 	redir->fd = shell_heredoc(redir->limiter, get_hell(NULL));
 	if (redir->fd == -1)
-		exit(EXIT_FAILURE);
-	// dup2(fd, STDIN_FILENO);
-	// close(fd);
+		mini_cleaner(NULL, get_hell(NULL), EXIT_FAILURE);
 }
-
-// void	do_heredoc(t_cmd *cmd)
-// {
-// 	int				fd;
-// 	t_redirection	*redir;
-
-// 	redir = cmd->redir_in;
-// 	fd = -1;
-// 	while (redir)
-// 	{
-// 		if (redir->type == LIM)
-// 		{
-// 			if (fd != -1)
-// 				close(fd);
-// 			fd = shell_heredoc(redir->limiter);
-// 			if (fd == -1)
-// 				exit(EXIT_FAILURE);
-// 		}
-// 		redir = redir->next;
-// 	}
-// 	if (fd != -1)
-// 		ft_dup(fd, STDIN_FILENO);
-// }
 
 static void	open_infile(t_redirection *redir)
 {
@@ -82,8 +56,6 @@ static void	open_infile(t_redirection *redir)
 		perror(redir->filename);
 		exit(EXIT_FAILURE);
 	}
-	// dup2(redir->fd, STDIN_FILENO);
-	// close(redir->fd);
 }
 
 static void	open_outfile(t_redirection *redir, int append)
@@ -100,8 +72,7 @@ static void	open_outfile(t_redirection *redir, int append)
 		perror(redir->filename);
 		exit(EXIT_FAILURE);
 	}
-	// dup2(redir->fd, STDOUT_FILENO);
-	// close(redir->fd);
+
 }
 
 int	dup_redirs(t_cmd *cmd)
@@ -115,6 +86,10 @@ int	dup_redirs(t_cmd *cmd)
 	{
 		if (!in->next)
 		{
+			if (in->type == LIM)
+				printf("dupped:%s\n", in->limiter);
+			else
+				printf("dupped:%s\n", in->filename);
 			if (!ft_dup(in->fd, STDIN_FILENO))
 				return (0);
 		}
@@ -124,6 +99,7 @@ int	dup_redirs(t_cmd *cmd)
 	{
 		if (!out->next)
 		{
+			printf("dupped:%s\n", out->filename);
 			if (!ft_dup(out->fd, STDOUT_FILENO))
 				return (0);
 		}
@@ -143,7 +119,7 @@ void	handle_redirections(t_cmd *cmd)
 	{
 		if (in->type == INFILE)
 			open_infile(in);
-		// else if (in->type == LIM)
+		// if (in->type == LIM)
 		// 	do_heredoc(in);
 		in = in->next;
 	}
@@ -157,6 +133,4 @@ void	handle_redirections(t_cmd *cmd)
 	}
 	if (!cmd->is_piped && !dup_redirs(cmd))
 		return (mini_cleaner(NULL, get_hell(NULL), 1));
-	// else if (cmd->is_piped)
-	// 	ft_dup(cmd->fd_out, STDOUT_FILENO);
 }

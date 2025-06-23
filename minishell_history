@@ -477,3 +477,18 @@ echo $?
 ~/test.sh
 cd ~/42Cursus/
 ./test.sh
+cat << eof < Makefile 
+cat << eof < Makefile 
+cat << eof | cat << a | cat << b 
+cat << eof | cat << a 
+cat << eof | cat << a 
+cat << eof 
+cat Makefile | wc -l > outfile
+cat Makefile | wc -l > outfile
+cat outfile 
+cat Makefile | wc -l > outfile
+cat Makefile | wc -l > outfile
+cat << eof | cat << a | cat << b 
+cat << eof | cat << a | cat << b 
+cat << eof | cat << a | cat << b 
+cat << eof | cat << a | cat << b 

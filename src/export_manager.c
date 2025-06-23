@@ -6,7 +6,7 @@
 /*   By: pmoreira <pmoreira@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/13 14:04:09 by ernda-si          #+#    #+#             */
-/*   Updated: 2025/06/23 13:47:31 by pmoreira         ###   ########.fr       */
+/*   Updated: 2025/06/23 14:13:16 by pmoreira         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,8 +29,6 @@ static int	aux_export(t_export **export, char *var, char *value)
 					free(temp->value);
 				temp->value = ft_strdup(value);
 			}
-			// else
-			// 	temp->value = NULL;
 			return (0);
 		}
 		temp = temp->next;
