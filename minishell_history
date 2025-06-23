@@ -382,3 +382,28 @@ echo ola
 a
 cat outfile 
 rm outfile 
+export a banana
+export
+unset a banana
+export a banana
+unset a banana
+export a banana
+export
+unset a banana
+export
+unset a banana
+export
+export a banana
+export
+unset a banana
+export
+export a banana
+export
+unset a banana
+export
+unset
+export a banana
+unset
+export
+unset a banana
+export
