@@ -563,3 +563,6 @@ cat << a | echo ola > a > b > outfile
 cat a
 cat b
 cat outfile 
+echo ola | pwd > outfile
+pwd
+cat outfile 
