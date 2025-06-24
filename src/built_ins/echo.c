@@ -6,7 +6,7 @@
 /*   By: pmoreira <pmoreira@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/23 12:11:58 by ernda-si          #+#    #+#             */
-/*   Updated: 2025/06/24 10:33:40 by pmoreira         ###   ########.fr       */
+/*   Updated: 2025/06/24 11:45:44 by pmoreira         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,12 +38,12 @@ int	mini_echo(t_cmd *cmd)
 	}
 	while (cmd->args[i])
 	{
-		ft_printf_fd(cmd->fd_out, "%s", cmd->args[i]);
+		ft_printf_fd(1, "%s", cmd->args[i]);
 		if (cmd->args[i + 1])
-			ft_printf_fd(cmd->fd_out, " ");
+			ft_printf_fd(1, " ");
 		i++;
 	}
 	if (!no_newline)
-		ft_printf_fd(cmd->fd_out, "\n");
+		ft_printf_fd(1, "\n");
 	return (0);
 }

@@ -584,3 +584,80 @@ cat outfile
 env > outfile 
 chmod 000 outfile 
 env > outfile 
+env > outfile 
+cat outfile 
+echo ola | cat 
+echo < Makefile ola banana
+pwd
+cd .. | cd ..
+pwd
+pwd
+cd .. | cd ..
+pwd
+echo ola > outfile
+cat outfile 
+ export
+export a | export a
+export
+export a
+export
+echo ola
+echo ola > outfile
+cat outfile 
+chmod 000 outfile 
+echo ola > outfile
+echo $?
+cat Makefile > outfile 
+echo ola > a
+cat a
+echo ola > a
+echo ola > a
+cat a
+rm a
+echo ola > a
+cat a
+env
+env > a
+cat a
+export 
+export > a
+cat a
+pwd
+pwd | pwd
+pwd | pwd > a
+cat a
+echo ola |cat
+echo ola>a
+echo ola>a
+cat outfile 
+echo ola> outfile 
+echo $"$USER$"ola>a
+cat a
+rm a
+echo ola
+echo ola|pwd|echo $"$USER$"$'$USER$'|cat
+cat|cat|ls
+cat<<a|cat<<b|cat<<c
+echo ola > outfile
+echo ola > outfile
+echo ola > outfile
+echo ola > outfile
+echo ola > outfile
+echo ola > outfile
+echo ola > outfile
+echo ola > outfile
+echo ola > outfile
+pwd | pwd > a
+cat a
+cl
+clear
+echo ola > outfile
+echo ola>a
+cat a
+echo $?
+cate a
+echo $?
+echo ola > outfile
+echo $?
+cl
+echo $?

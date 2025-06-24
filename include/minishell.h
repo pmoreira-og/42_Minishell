@@ -6,7 +6,7 @@
 /*   By: pmoreira <pmoreira@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/24 14:48:17 by pmoreira          #+#    #+#             */
-/*   Updated: 2025/06/24 10:49:28 by pmoreira         ###   ########.fr       */
+/*   Updated: 2025/06/24 12:32:08 by pmoreira         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,6 +53,9 @@ t_bool	has_heredoc(t_cmd *cmd);
 t_bool	need_fork(t_cmd *cmd);
 void	try_run(t_hell *data, char **program);
 char	*path_handler(char *arg);
+int		update_fds(t_cmd *cmd);
+void	wait_for_all(t_cmd *cmd_list, t_hell *shell);
+void	prepare_heredocs(t_cmd *cmd_list);
 
 // parse:
 void	ft_count(const char *input, int *count);
@@ -122,9 +125,9 @@ void	merror(char *s);
 
 // built in functions:
 int		mini_echo(t_cmd *cmd);
-int		mini_pwd(t_cmd *cmd);
+int		mini_pwd(void);
 void	mini_cd(t_cmd *cmd, t_env **env, t_hell *shell);
-void	mini_env(t_hell *shell, t_cmd *cmd);
+void	mini_env(t_hell *shell);
 void	mini_exit(t_hell *hell);
 void	mini_export(t_env **env, t_export **export, t_cmd *cmd);
 void	mini_unset(t_env **env, t_cmd *cmd, t_export **export, t_hell *hell);

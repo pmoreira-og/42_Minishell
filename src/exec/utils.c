@@ -1,36 +1,53 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   checkers.c                                         :+:      :+:    :+:   */
+/*   utils.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: pmoreira <pmoreira@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/18 13:57:09 by pmoreira          #+#    #+#             */
-/*   Updated: 2025/06/18 13:57:37 by pmoreira         ###   ########.fr       */
+/*   Updated: 2025/06/24 12:31:38 by pmoreira         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minishell.h"
 
-t_bool	has_heredoc(t_cmd *cmd)
+void	wait_for_all(t_cmd *cmd_list, t_hell *shell)
 {
-	t_redirection	*temp;
+	int		status;
+	t_cmd	*tmp;
 
-	temp = cmd->redir_in;
-	while (temp && temp->next)
+	tmp = cmd_list;
+	status = 0;
+	while (tmp)
 	{
-		if (temp->type == LIM)
-			return (TRUE);
-		temp = temp->next;
+		if (tmp->pid > 0)
+		{
+			waitpid(tmp->pid, &status, 0);
+			if (WIFEXITED(status))
+				shell->status = WEXITSTATUS(status);
+			else if (WIFSIGNALED(status))
+				shell->status = 128 + WTERMSIG(status);
+		}
+		tmp = tmp->next;
 	}
-	return (FALSE);
 }
 
-t_bool	need_fork(t_cmd *cmd)
+void	prepare_heredocs(t_cmd *cmd_list)
 {
-	if (cmd->is_piped)
-		return (TRUE);
-	if (has_heredoc(cmd))
-		return (TRUE);
-	return (FALSE);
+	t_cmd			*cmd;
+	t_redirection	*redir;
+
+	cmd = cmd_list;
+	while (cmd)
+	{
+		redir = cmd->redir_in;
+		while (redir)
+		{
+			if (redir->type == LIM)
+				do_heredoc(redir);
+			redir = redir->next;
+		}
+		cmd = cmd->next;
+	}
 }

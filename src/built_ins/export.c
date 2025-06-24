@@ -6,7 +6,7 @@
 /*   By: pmoreira <pmoreira@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/13 14:07:18 by ernda-si          #+#    #+#             */
-/*   Updated: 2025/06/24 10:45:54 by pmoreira         ###   ########.fr       */
+/*   Updated: 2025/06/24 11:48:26 by pmoreira         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,7 +57,7 @@ void	sort_export_list(t_export *head, int *sorted)
 	}
 }
 
-static void	print_export(t_export *export, t_cmd *cmd)
+static void	print_export(t_export *export)
 {
 	t_export	*temp;
 	int			sorted;
@@ -68,13 +68,13 @@ static void	print_export(t_export *export, t_cmd *cmd)
 	while (temp)
 	{
 		if (!temp->value)
-			ft_printf_fd(cmd->fd_out, "declare -x %s\n", temp->var);
+			ft_printf_fd(1, "declare -x %s\n", temp->var);
 		else if (temp->value && !ft_strcmp(temp->value, ""))
-			ft_printf_fd(cmd->fd_out, "declare -x %s=\"\"\n", temp->var);
+			ft_printf_fd(1, "declare -x %s=\"\"\n", temp->var);
 		else
 		{
-			ft_printf_fd(cmd->fd_out, "declare -x %s=", temp->var);
-			ft_printf_fd(cmd->fd_out, "%s\n", temp->value);
+			ft_printf_fd(1, "declare -x %s=", temp->var);
+			ft_printf_fd(1, "%s\n", temp->value);
 		}
 		temp = temp->next;
 	}
@@ -88,7 +88,7 @@ void	mini_export(t_env **env, t_export **export, t_cmd *cmd)
 
 	i = 1;
 	if (cmd->argc == 1)
-		return (print_export(*export, cmd));
+		return (print_export(*export));
 	while (i < cmd->argc)
 	{
 		matrix = ft_split_once(cmd->args[i], '=');

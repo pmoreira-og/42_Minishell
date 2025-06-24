@@ -6,7 +6,7 @@
 /*   By: pmoreira <pmoreira@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/04 14:50:33 by pmoreira          #+#    #+#             */
-/*   Updated: 2025/06/23 10:43:37 by pmoreira         ###   ########.fr       */
+/*   Updated: 2025/06/24 11:55:25 by pmoreira         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -100,7 +100,7 @@ char	*space_put(char *input, int len)
 	j = 0;
 	dest = ft_calloc(len + ft_strlen(input) + 1, sizeof(char));
 	if (!dest)
-		return (perror("malloc10"), NULL);
+		return (merror("space_put"), NULL);
 	while (input[i])
 	{
 		if (input[i] && (input[i] == '\"' || input[i] == '\''))

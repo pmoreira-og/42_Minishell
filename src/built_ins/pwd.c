@@ -6,13 +6,13 @@
 /*   By: pmoreira <pmoreira@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/23 12:12:02 by ernda-si          #+#    #+#             */
-/*   Updated: 2025/06/24 10:41:43 by pmoreira         ###   ########.fr       */
+/*   Updated: 2025/06/24 11:50:32 by pmoreira         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minishell.h"
 
-int	mini_pwd(t_cmd *cmd)
+int	mini_pwd(void)
 {
 	char	*current;
 
@@ -22,7 +22,7 @@ int	mini_pwd(t_cmd *cmd)
 		perror("pwd");
 		return (1);
 	}
-	ft_printf_fd(cmd->fd_out, "%s\n", current);
+	ft_printf_fd(1, "%s\n", current);
 	free(current);
 	return (0);
 }

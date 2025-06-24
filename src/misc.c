@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   misc.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ernda-si <ernda-si@student.42.fr>          +#+  +:+       +#+        */
+/*   By: pmoreira <pmoreira@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/23 12:11:56 by ernda-si          #+#    #+#             */
-/*   Updated: 2025/06/13 14:05:21 by ernda-si         ###   ########.fr       */
+/*   Updated: 2025/06/24 12:25:15 by pmoreira         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,7 +33,7 @@ int	get_history_fd(t_hell *cmd)
 {
 	cmd->hist_fd = open(HIST_FILE, O_RDWR | O_APPEND | O_CREAT, 0766);
 	if (cmd->hist_fd == -1)
-		return (printf("DEU RUIM"), 1);
+		return (1);
 	return (0);
 }
 
@@ -60,9 +60,10 @@ void	load_history(t_hell *cmd)
 
 void	save_history(char *input, t_hell *cmd)
 {
-	if (cmd->hist_fd == -1 || !input || !ft_strcmp(input, ""))
+	if (!input || !ft_strcmp(input, ""))
 		return ;
-	ft_putendl_fd(input, cmd->hist_fd);
+	if (cmd->hist_fd != -1)
+		ft_putendl_fd(input, cmd->hist_fd);
 	add_history(input);
 }
 

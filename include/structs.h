@@ -6,7 +6,7 @@
 /*   By: pmoreira <pmoreira@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/24 15:03:58 by pmoreira          #+#    #+#             */
-/*   Updated: 2025/06/24 09:04:04 by pmoreira         ###   ########.fr       */
+/*   Updated: 2025/06/24 11:57:55 by pmoreira         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,6 +53,7 @@ typedef struct s_hell
 	struct s_token	*tokens;
 	char			**envp;
 	char			**path;
+	char			*input;
 	int				status;
 	t_bool			debug;
 	int				cmd_count;

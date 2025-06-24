@@ -6,7 +6,7 @@
 /*   By: pmoreira <pmoreira@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/29 11:10:40 by pmoreira          #+#    #+#             */
-/*   Updated: 2025/06/24 10:08:20 by pmoreira         ###   ########.fr       */
+/*   Updated: 2025/06/24 12:16:18 by pmoreira         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,6 +21,11 @@ void	prepare_next_input(t_hell *data)
 	{
 		clean_cmds(data);
 		data->cmd = NULL;
+	}
+	if (data->input)
+	{
+		free(data->input);
+		data->input = NULL;
 	}
 }
 
@@ -70,6 +75,8 @@ void	armageddon(t_hell *data)
 		close(data->hist_fd);
 	if (data->envp)
 		ft_clean_matrix(data->envp);
+	if (data->input)
+		free(data->input);
 	rl_clear_history();
 	free(data);
 }

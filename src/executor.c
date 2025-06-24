@@ -6,7 +6,7 @@
 /*   By: pmoreira <pmoreira@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/13 13:45:33 by ernda-si          #+#    #+#             */
-/*   Updated: 2025/06/24 09:53:13 by pmoreira         ###   ########.fr       */
+/*   Updated: 2025/06/24 12:31:44 by pmoreira         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,61 +40,11 @@
 // 	}
 // }
 
-static void	wait_for_all(t_cmd *cmd_list, t_hell *shell)
-{
-	int		status;
-	t_cmd	*tmp;
 
-	tmp = cmd_list;
-	status = 0;
-	while (tmp)
-	{
-		if (tmp->pid > 0)
-		{
-			waitpid(tmp->pid, &status, 0);
-			if (WIFEXITED(status))
-				shell->status = WEXITSTATUS(status);
-			else if (WIFSIGNALED(status))
-				shell->status = 128 + WTERMSIG(status);
-		}
-		tmp = tmp->next;
-	}
-}
-
-static void	prepare_heredocs(t_cmd *cmd_list)
-{
-	t_cmd			*cmd;
-	t_redirection	*redir;
-
-	cmd = cmd_list;
-	while (cmd)
-	{
-		redir = cmd->redir_in;
-		while (redir)
-		{
-			if (redir->type == LIM)
-				do_heredoc(redir);
-			redir = redir->next;
-		}
-		cmd = cmd->next;
-	}
-}
 
 static int redir_built_ins(t_cmd *cmd, t_hell *shell)
 {
-	int		orig_stdin;
-	int		orig_stdout;
-
-	orig_stdin = dup(STDIN_FILENO);
-	orig_stdout = dup(STDOUT_FILENO);
-	if (orig_stdin == -1 || orig_stdout == -1)
-		return (1);
-	handle_redirections(cmd);
 	shell->status = execute_builtin(cmd, shell);
-	dup2(orig_stdin, STDIN_FILENO);
-	dup2(orig_stdout, STDOUT_FILENO);
-	close(orig_stdin);
-	close(orig_stdout);
 	return (0);
 }
 
@@ -106,10 +56,12 @@ void	execute_pipeline(t_hell *shell)
 
 	cmd = shell->cmd;
 	prev_pipe = -1;
+	//* SIGINT should stop all heredocs and go back to Minishell>
 	prepare_heredocs(shell->cmd);
 	while (cmd)
 	{
-		if (!cmd->is_piped && cmd->is_builtin)
+		//* FORK on redirs and pipes
+		if (cmd->is_builtin && !cmd->redir_in && !cmd->redir_out && !cmd->is_piped && !cmd->prev)
 			return ((void) redir_built_ins(cmd, shell));
 		if (cmd->is_piped && pipe(pipes) == -1)
 		{
