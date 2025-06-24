@@ -573,3 +573,14 @@ cat outfile
 rm a b outfile 
 cat << a | export > outfile
 cat outfile 
+ env | env | env 
+ env | env | env > outfile 
+cat outfile 
+env
+env > outfile 
+cat outfile 
+env >> outfile 
+cat outfile 
+env > outfile 
+chmod 000 outfile 
+env > outfile 

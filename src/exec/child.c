@@ -6,7 +6,7 @@
 /*   By: pmoreira <pmoreira@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/17 13:20:53 by pmoreira          #+#    #+#             */
-/*   Updated: 2025/06/24 10:08:59 by pmoreira         ###   ########.fr       */
+/*   Updated: 2025/06/24 10:51:11 by pmoreira         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,7 @@ int	execute_builtin(t_cmd *cmd, t_hell *shell)
 	else if (!ft_strcmp(cmd->args[0], "cd") && ++flag)
 		mini_cd(cmd, &shell->env, shell);
 	else if (!ft_strcmp(cmd->args[0], "env") && ++flag)
-		mini_env(shell);
+		mini_env(shell, cmd);
 	else if (!ft_strcmp(cmd->args[0], "exit") && ++flag)
 		mini_exit(shell);
 	else if (!ft_strcmp(cmd->args[0], "export") && ++flag)
