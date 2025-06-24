@@ -6,7 +6,7 @@
 /*   By: pmoreira <pmoreira@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/24 14:48:17 by pmoreira          #+#    #+#             */
-/*   Updated: 2025/06/24 12:32:08 by pmoreira         ###   ########.fr       */
+/*   Updated: 2025/06/24 13:53:13 by pmoreira         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -61,7 +61,6 @@ void	prepare_heredocs(t_cmd *cmd_list);
 void	ft_count(const char *input, int *count);
 int		valid_input(t_token *tok, t_hell *data);
 void	tokenize(char *input, t_hell *data);
-void	quotes_remover(t_hell *data);
 char	*valid_format(t_token *tok);
 void	parser(char **input, t_hell *data);
 char	**ft_params(const char *start);
@@ -79,21 +78,17 @@ void	process_str(char **ptr, char *s, t_hell *hell, t_bool *flag);
 char	*remove_quotes(char *s, char *endptr);
 void	check_char_quote(const char **s, t_bool *quote, t_bool *d_quote);
 int		tab_counter(const char *start, const char *end);
-void	skip_expand_name(char **start, char **s, char *end);
 int		command_size(t_token *start, t_token **save_ptr, int *cmd_c, \
 	t_bool *flag);
 char	**build_args(t_token *start, t_cmd **cmd);
 char	*get_env(t_env **env, char *name);
 void	init_cmds(t_hell *data);
-void	get_status(char **result, t_hell *hell, char **s);
 void	concat_expand(char **result, char **new_str, t_hell *hell);
 int		valid_expand(int c);
-int		localized_expansions(char *start, char *end);
 int		count_spaces(char *s);
 void	pre_process_input(char **input);
 char	*expand_heredoc(char *s, char *end, t_hell *hell);
 int		count_expand_zones(char *input);
-char	*localized_expander(char *start, char *end, t_hell *hell);
 char	*remove_zones(char **ptr, char *input);
 int		is_meta(int c);
 void	parser_error(char *error_msg, int fd);
