@@ -566,3 +566,10 @@ cat outfile
 echo ola | pwd > outfile
 pwd
 cat outfile 
+export > a > b > outfile
+cat a
+cat b
+cat outfile 
+rm a b outfile 
+cat << a | export > outfile
+cat outfile 
