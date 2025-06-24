@@ -528,3 +528,38 @@ cat << eof | cat << a  | cat << b
 cat << eof | cat << a  
 cat << eof | cat << a  
 cat << eof | cat << a  
+cat Makefile 
+cat Makefile 
+cat Makefile 
+cat < Makefile << a >> outfile
+cat outfile 
+cat << a
+echo ola | echo teste
+cat | cat | ls
+cl
+clear
+cl
+echo $?
+cat | cat | ls
+cat | cat | ls
+cat | cat | ls
+cl
+cat << eof | cat << a  
+cat << eof | cat << a  | cat
+cat << eof | cat << a  | cat
+cat << eof | cat << a  | cat
+cat | cat | ls
+cat Makefile | grep CC
+ cat << a | cat | cat > outfile
+cat outfile 
+ cat << a | cat | cat << b > outfile
+cat outfile 
+echo ola > banana > split > outfile
+echo ola > banana > split > outfile
+cat outfile 
+cat banana 
+rm banana split outfile 
+cat << a | echo ola > a > b > outfile
+cat a
+cat b
+cat outfile 

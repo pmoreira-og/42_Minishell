@@ -6,7 +6,7 @@
 /*   By: pmoreira <pmoreira@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/20 11:36:02 by pmoreira          #+#    #+#             */
-/*   Updated: 2025/06/18 16:08:09 by pmoreira         ###   ########.fr       */
+/*   Updated: 2025/06/24 09:11:44 by pmoreira         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -126,4 +126,5 @@ void	init_cmds(t_hell *data)
 			last->next = cmd_tmp;
 		last = cmd_tmp;
 	}
+	update_prev_cmd(data->cmd);
 }

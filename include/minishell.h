@@ -6,7 +6,7 @@
 /*   By: pmoreira <pmoreira@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/24 14:48:17 by pmoreira          #+#    #+#             */
-/*   Updated: 2025/06/23 13:57:24 by pmoreira         ###   ########.fr       */
+/*   Updated: 2025/06/24 10:08:34 by pmoreira         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,8 +45,7 @@
 // execution:
 void	execute_pipeline(t_hell *shell);
 void	handle_redirections(t_cmd *cmd);
-void	execute_child(t_cmd *cmd, int prev_pipe_fd, \
-	int *pipefd, t_hell *shell);
+void	execute_child(t_cmd *cmd, int prev_pipe, int *pipes, t_hell *shell);
 int		execute_builtin(t_cmd *cmd, t_hell *shell);
 void	do_heredoc(t_redirection *redir);
 // void	do_heredoc(t_cmd *cmd);
@@ -111,7 +110,7 @@ char	*get_full_path(char *cmd, char **envp);
 t_bool	check_ambiguous(t_token *tok);
 void	error_ambiguous(char *s);
 void	make_backup(t_token *tok);
-// TEST FUNCTIONS ON PARSE
+void	update_prev_cmd(t_cmd *cmd);
 
 // miscs:
 void	printascii(void);
@@ -166,4 +165,5 @@ char	**ft_free(char **matrix, int index);
 void	clean_export(t_hell *data);
 void	delete_cmd(t_cmd *cmd);
 void	ft_clean_matrix(char **matrix);
+void	close_all(void);
 #endif

@@ -6,7 +6,7 @@
 /*   By: pmoreira <pmoreira@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/17 13:18:28 by pmoreira          #+#    #+#             */
-/*   Updated: 2025/06/23 15:22:58 by pmoreira         ###   ########.fr       */
+/*   Updated: 2025/06/24 09:18:26 by pmoreira         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -75,7 +75,7 @@ static void	open_outfile(t_redirection *redir, int append)
 
 }
 
-int	dup_redirs(t_cmd *cmd)
+int	update_fds(t_cmd *cmd)
 {
 	t_redirection	*in;
 	t_redirection	*out;
@@ -85,20 +85,14 @@ int	dup_redirs(t_cmd *cmd)
 	while (in)
 	{
 		if (!in->next)
-		{
-			if (!ft_dup(in->fd, STDIN_FILENO))
-				return (0);
-		}
+			cmd->fd_in = dup(in->fd);
 		close(in->fd);
 		in = in->next;
 	}
 	while (out)
 	{
 		if (!out->next)
-		{
-			if (!ft_dup(out->fd, STDOUT_FILENO))
-				return (0);
-		}
+			cmd->fd_out = dup(out->fd);
 		close(out->fd);
 		out = out->next;
 	}
@@ -116,8 +110,6 @@ void	handle_redirections(t_cmd *cmd)
 	{
 		if (in->type == INFILE)
 			open_infile(in);
-		// if (in->type == LIM)
-		// 	do_heredoc(in);
 		in = in->next;
 	}
 	while (out)
@@ -128,6 +120,5 @@ void	handle_redirections(t_cmd *cmd)
 			open_outfile(out, 1);
 		out = out->next;
 	}
-	if (!cmd->is_piped && !dup_redirs(cmd))
-		return (mini_cleaner(NULL, get_hell(NULL), 1));
+	update_fds(cmd);
 }

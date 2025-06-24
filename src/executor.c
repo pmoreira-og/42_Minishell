@@ -6,7 +6,7 @@
 /*   By: pmoreira <pmoreira@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/13 13:45:33 by ernda-si          #+#    #+#             */
-/*   Updated: 2025/06/23 16:20:37 by pmoreira         ###   ########.fr       */
+/*   Updated: 2025/06/24 09:53:13 by pmoreira         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -124,7 +124,7 @@ void	execute_pipeline(t_hell *shell)
 			mini_cleaner(NULL, shell, EXIT_FAILURE);
 		}
 		else if (cmd->pid == 0)
-			execute_child(cmd, prev_pipe, pipes, shell);
+			execute_child(cmd, prev_pipe, &pipes[0], shell);
 		if (prev_pipe != -1)
 			close(prev_pipe);
 		if (cmd->is_piped)

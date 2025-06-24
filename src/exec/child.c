@@ -6,7 +6,7 @@
 /*   By: pmoreira <pmoreira@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/17 13:20:53 by pmoreira          #+#    #+#             */
-/*   Updated: 2025/06/23 12:06:08 by pmoreira         ###   ########.fr       */
+/*   Updated: 2025/06/24 10:08:59 by pmoreira         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,20 +36,21 @@ int	execute_builtin(t_cmd *cmd, t_hell *shell)
 	return (shell->status = EXIT_FAILURE);
 }
 
-void	execute_child(t_cmd *cmd, int prev_pipe_fd, \
-	int *pipefd, t_hell *shell)
+void	execute_child(t_cmd *cmd, int prev_pipe, int *pipes, t_hell *shell)
 {
 	signal_handler(shell, 'D');
+	if (cmd->prev && prev_pipe != -1)
+		cmd->fd_in = prev_pipe;
+	if (cmd->is_piped)
+		cmd->fd_out = pipes[1];
 	handle_redirections(cmd);
 	if (shell->hist_fd >= 0)
 		close(shell->hist_fd);
-	if (!cmd->redir_in && prev_pipe_fd != -1)
-		ft_dup(prev_pipe_fd, STDIN_FILENO);
-	if (cmd->is_piped && !cmd->redir_out)
-	{
-		close(pipefd[0]);
-		ft_dup(pipefd[1], STDOUT_FILENO);
-	}
+	if (cmd->fd_in != 0)
+		ft_dup(cmd->fd_in, 0);
+	if (cmd->fd_out != 1)
+		ft_dup(cmd->fd_out, 1);
+	close_all();
 	if (cmd->is_builtin)
 		mini_cleaner(NULL, shell, execute_builtin(cmd, shell));
 	if (!cmd->cmd_path && cmd->args[0])

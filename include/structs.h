@@ -6,7 +6,7 @@
 /*   By: pmoreira <pmoreira@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/24 15:03:58 by pmoreira          #+#    #+#             */
-/*   Updated: 2025/06/20 10:50:40 by pmoreira         ###   ########.fr       */
+/*   Updated: 2025/06/24 09:04:04 by pmoreira         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -91,6 +91,7 @@ typedef struct s_cmd
 	t_bool				is_builtin;
 	char				**envp;
 	struct s_cmd		*next;
+	struct s_cmd		*prev;
 }	t_cmd;
 
 typedef struct s_token

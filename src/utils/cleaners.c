@@ -6,7 +6,7 @@
 /*   By: pmoreira <pmoreira@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/29 11:10:40 by pmoreira          #+#    #+#             */
-/*   Updated: 2025/06/18 10:08:34 by pmoreira         ###   ########.fr       */
+/*   Updated: 2025/06/24 10:08:20 by pmoreira         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,22 +24,27 @@ void	prepare_next_input(t_hell *data)
 	}
 }
 
-/// @brief Clear all minishell data, close all fds and exit with status given.
-/// @param matrix If not null, clear the matrix.
-/// @param data If not null, call armageddon.
-/// @param status If status < 0, armageddon don't gonna be called.
-void	mini_cleaner(char **matrix, t_hell *data, int status)
+void	close_all(void)
 {
 	int	i;
 
-	if (matrix)
-		ft_clean_matrix(matrix);
 	i = 3;
 	while (i < 1024)
 	{
 		close(i);
 		i++;
 	}
+}
+
+/// @brief Clear all minishell data, close all fds and exit with status given.
+/// @param matrix If not null, clear the matrix.
+/// @param data If not null, call armageddon.
+/// @param status If status < 0, armageddon don't gonna be called.
+void	mini_cleaner(char **matrix, t_hell *data, int status)
+{
+	if (matrix)
+		ft_clean_matrix(matrix);
+	close_all();
 	if (data && status >= 0)
 	{
 		armageddon(data);
