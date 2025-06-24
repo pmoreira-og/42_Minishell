@@ -6,7 +6,7 @@
 /*   By: pmoreira <pmoreira@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/07 14:40:54 by pmoreira          #+#    #+#             */
-/*   Updated: 2025/06/17 12:30:42 by pmoreira         ###   ########.fr       */
+/*   Updated: 2025/06/24 12:39:15 by pmoreira         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -104,10 +104,8 @@ void	input_heredoc(int fd, char *limiter)
 {
 	char	*line;
 	char	*temp;
-	int		i;
 
 	temp = NULL;
-	i = get_hell(NULL)->lines;
 	while (1)
 	{
 		temp = readline("> ");
@@ -116,7 +114,8 @@ void	input_heredoc(int fd, char *limiter)
 		if (!ft_strcmp(temp, ""))
 			line = ft_strdup("");
 		else
-			line = expand_heredoc(temp, &temp[ft_strlen(temp)], get_hell(NULL));
+			line = expand_heredoc(temp, \
+				&temp[ft_strlen(temp)], get_hell(NULL));
 		if (!line)
 			return (free(temp));
 		ft_putendl_fd(line, fd);
@@ -126,5 +125,6 @@ void	input_heredoc(int fd, char *limiter)
 		line = NULL;
 	}
 	if (!temp)
-		ft_printf_fd(2, "%s%d%s`%s')\n", HEREDOC_EOF, i, HEREDOC_LIM, limiter);
+		ft_printf_fd(2, "%s%d%s`%s')\n", \
+			HEREDOC_EOF, get_hell(NULL)->lines, HEREDOC_LIM, limiter);
 }

@@ -661,3 +661,6 @@ echo ola > outfile
 echo $?
 cl
 echo $?
+cat << a
+cat << a
+cat << a
