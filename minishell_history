@@ -717,3 +717,38 @@ cat<<a|cat<<b|>cat<<c|cat>outfile
 cat<<a|cat<<b|>cat<<c|cat>outfile
 cat outfile 
 cat cat
+export hello
+echo $?
+export
+export A-
+export
+$?
+$?
+$?
+$?
+$?
+$?
+$?
+$PWD
+$PWD
+$PWD/test.sh 
+$PWD
+$EMPTY
+$EMPTY
+echo $?
+./missing.out
+cat <"./minishell_tester/test_files/infile" | echo hi
+yes | head -1
+echo $?
+echo $?
+cat
+cat
+cat
+cat
+cat
+cat
+\\cat
+cat
+cat << a
+cat << a
+cd 123123

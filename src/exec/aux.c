@@ -6,7 +6,7 @@
 /*   By: pmoreira <pmoreira@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/25 14:50:57 by pmoreira          #+#    #+#             */
-/*   Updated: 2025/06/24 12:29:42 by pmoreira         ###   ########.fr       */
+/*   Updated: 2025/06/25 11:35:44 by pmoreira         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -81,7 +81,7 @@ void	try_run(t_hell *data, char **program)
 			return (merror("try_run:new_path"));
 		if (access(new_path, F_OK) == -1)
 		{
-			ft_printf_fd(2, "Command '%s' not found\n", program[0]);
+			ft_printf_fd(2, "minishell: %s: command not found\n", program[0]);
 			free(new_path);
 			mini_cleaner(NULL, data, 127);
 		}

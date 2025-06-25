@@ -6,11 +6,27 @@
 /*   By: pmoreira <pmoreira@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/17 13:20:53 by pmoreira          #+#    #+#             */
-/*   Updated: 2025/06/24 11:50:43 by pmoreira         ###   ########.fr       */
+/*   Updated: 2025/06/25 11:52:39 by pmoreira         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minishell.h"
+
+int	check_is_dir(t_cmd *cmd)
+{
+	DIR	*check;
+
+	if (!cmd->args[0])
+		return (1);
+	check = opendir(cmd->cmd_path);
+	if (check && ft_strchr(cmd->cmd_path, '/'))
+	{
+		ft_printf_fd(2, "minishell: %s: Is a directory\n", cmd->cmd_path);
+		closedir(check);
+		mini_cleaner(NULL, get_hell(NULL), 126);
+	}
+	return (0);
+}
 
 int	execute_builtin(t_cmd *cmd, t_hell *shell)
 {
@@ -55,7 +71,7 @@ void	execute_child(t_cmd *cmd, int prev_pipe, int *pipes, t_hell *shell)
 		mini_cleaner(NULL, shell, execute_builtin(cmd, shell));
 	if (!cmd->cmd_path && cmd->args[0])
 		try_run(shell, cmd->args);
-	if (cmd->cmd_path && cmd->args[0])
+	if (!check_is_dir(cmd) && cmd->cmd_path && cmd->args[0])
 		execve(cmd->cmd_path, cmd->args, cmd->envp);
 	mini_cleaner(NULL, shell, shell->status);
 }
