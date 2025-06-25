@@ -6,7 +6,7 @@
 /*   By: pmoreira <pmoreira@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/13 13:45:33 by ernda-si          #+#    #+#             */
-/*   Updated: 2025/06/24 12:31:44 by pmoreira         ###   ########.fr       */
+/*   Updated: 2025/06/25 10:53:37 by pmoreira         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,7 +40,18 @@
 // 	}
 // }
 
+/// @brief Get pid exit status and save it on Main struct status.
+void	get_status(int pid)
+{
+	int	status;
 
+	status = 0;
+	waitpid(pid, &status, 0);
+	if (WIFEXITED(status))
+		get_hell(NULL)->status = WEXITSTATUS(status);
+	else if (WIFSIGNALED(status))
+		get_hell(NULL)->status = 128 + WTERMSIG(status);
+}
 
 static int redir_built_ins(t_cmd *cmd, t_hell *shell)
 {
@@ -56,11 +67,10 @@ void	execute_pipeline(t_hell *shell)
 
 	cmd = shell->cmd;
 	prev_pipe = -1;
-	//* SIGINT should stop all heredocs and go back to Minishell>
-	prepare_heredocs(shell->cmd);
+	if (prepare_heredocs(shell->cmd) && shell->status == 130)
+		return ;
 	while (cmd)
 	{
-		//* FORK on redirs and pipes
 		if (cmd->is_builtin && !cmd->redir_in && !cmd->redir_out && !cmd->is_piped && !cmd->prev)
 			return ((void) redir_built_ins(cmd, shell));
 		if (cmd->is_piped && pipe(pipes) == -1)

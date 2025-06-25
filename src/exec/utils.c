@@ -6,7 +6,7 @@
 /*   By: pmoreira <pmoreira@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/18 13:57:09 by pmoreira          #+#    #+#             */
-/*   Updated: 2025/06/24 12:31:38 by pmoreira         ###   ########.fr       */
+/*   Updated: 2025/06/25 10:48:28 by pmoreira         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,35 +19,38 @@ void	wait_for_all(t_cmd *cmd_list, t_hell *shell)
 
 	tmp = cmd_list;
 	status = 0;
+	(void) shell;
 	while (tmp)
 	{
 		if (tmp->pid > 0)
-		{
-			waitpid(tmp->pid, &status, 0);
-			if (WIFEXITED(status))
-				shell->status = WEXITSTATUS(status);
-			else if (WIFSIGNALED(status))
-				shell->status = 128 + WTERMSIG(status);
-		}
+			get_status(tmp->pid);
 		tmp = tmp->next;
 	}
 }
 
-void	prepare_heredocs(t_cmd *cmd_list)
+int	prepare_heredocs(t_cmd *cmd_list)
 {
 	t_cmd			*cmd;
 	t_redirection	*redir;
+	int				flag;
 
 	cmd = cmd_list;
+	flag = 0;
 	while (cmd)
 	{
 		redir = cmd->redir_in;
 		while (redir)
 		{
 			if (redir->type == LIM)
+			{
+				flag = 1;
 				do_heredoc(redir);
+				if (get_hell(NULL)->status == 130)
+					return (flag);
+			}
 			redir = redir->next;
 		}
 		cmd = cmd->next;
 	}
+	return (flag);
 }

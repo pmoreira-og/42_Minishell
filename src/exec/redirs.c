@@ -6,7 +6,7 @@
 /*   By: pmoreira <pmoreira@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/17 13:18:28 by pmoreira          #+#    #+#             */
-/*   Updated: 2025/06/24 12:32:26 by pmoreira         ###   ########.fr       */
+/*   Updated: 2025/06/25 10:02:24 by pmoreira         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,9 +33,7 @@ static int	shell_heredoc(char *limiter, t_hell *data)
 		mini_cleaner(NULL, get_hell(NULL), 0);
 	}
 	else
-		waitpid(pid, &data->status, 0);
-	if (WIFEXITED(data->status))
-		data->status = WEXITSTATUS(data->status);
+		get_status(pid);
 	signal_handler(get_hell(NULL), 'P');
 	close(pipefd[1]);
 	return (pipefd[0]);

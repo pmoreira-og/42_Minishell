@@ -6,7 +6,7 @@
 /*   By: pmoreira <pmoreira@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/24 14:48:17 by pmoreira          #+#    #+#             */
-/*   Updated: 2025/06/24 13:53:13 by pmoreira         ###   ########.fr       */
+/*   Updated: 2025/06/25 10:47:31 by pmoreira         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,7 +55,8 @@ void	try_run(t_hell *data, char **program);
 char	*path_handler(char *arg);
 int		update_fds(t_cmd *cmd);
 void	wait_for_all(t_cmd *cmd_list, t_hell *shell);
-void	prepare_heredocs(t_cmd *cmd_list);
+int		prepare_heredocs(t_cmd *cmd_list);
+void	get_status(int pid);
 
 // parse:
 void	ft_count(const char *input, int *count);

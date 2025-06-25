@@ -664,3 +664,56 @@ echo $?
 cat << a
 cat << a
 cat << a
+cat << a
+cat << a | cat << b
+cat << a | cat > outfile
+rm outfile 
+cat << a | cat > outfile
+echo $?
+cat << a
+echo $?
+cat << a
+echo $?
+cat << a
+echo $?
+cat << a
+echo $?
+cate Makefile 
+echo $?
+cat bannaa
+echo $?
+echo $?
+cat << a
+echo $?
+echo $?
+echo banana>split
+cat split 
+chmod 000 split 
+echo banana>split
+echo $?
+./test.sh 
+echo $?
+cl
+echo $?
+<< a
+echo $?
+cat << a
+echo $?
+cat << a
+echo $?
+cat << a
+echo $?
+cat << a | cat << b | cat << c | cat
+echo $?
+rm outfile 
+cat << a | cat << b | cat << c | cat > outfile
+echo $?
+echo $?
+clear
+cat<<a|cat<<b|cat<<c|cat>outfile
+echo $?
+cat<<a|cat<<b|cat<>c|cat>outfile
+cat<<a|cat<<b|>cat<<c|cat>outfile
+cat<<a|cat<<b|>cat<<c|cat>outfile
+cat outfile 
+cat cat
