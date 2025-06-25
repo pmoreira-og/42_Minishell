@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cd.c                                               :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: pmoreira <pmoreira@student.42lisboa.com    +#+  +:+       +#+        */
+/*   By: ernda-si <ernda-si@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/23 12:12:04 by ernda-si          #+#    #+#             */
-/*   Updated: 2025/06/23 14:05:24 by pmoreira         ###   ########.fr       */
+/*   Updated: 2025/06/25 14:36:04 by ernda-si         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,7 +29,7 @@ char	*path_handler(char *arg)
 
 	if (!arg || ft_strcmp(arg, "~") == 0)
 	{
-		home = getenv( "HOME");
+		home = getenv("HOME");
 		if (home)
 			return (ft_strdup(home));
 		else
@@ -45,42 +45,39 @@ char	*path_handler(char *arg)
 	return (ft_strdup(arg));
 }
 
-void	mini_cd(t_cmd *cmd, t_env **env, t_hell *shell)
+static void	normi_handler(char *c_path, t_env **env)
+{
+	char	*new_path;
+
+	new_path = getcwd(NULL, 0);
+	if (new_path)
+		(update_env_pwd(env, c_path, new_path), free(new_path));
+	get_hell(NULL)->status = 0;
+}
+
+int	mini_cd(t_cmd *cmd, t_env **env)
 {
 	char	*c_path;
 	char	*n_path;
-	char	*new_path;
 
 	c_path = getcwd(NULL, 0);
 	if (!c_path)
-		return ((void)(perror("minishell: cd"), shell->status = 1));
+		return (perror("minishell: cd"), 1);
 	if (cmd->argc > 2)
-		return ((void)printf("minishell: cd: too many arguments\n"), \
-			(void)(shell->status = 1), free(c_path));
+		return (printf("minishell: cd: too many arguments\n"), \
+			free(c_path), 1);
 	n_path = path_handler(cmd->args[1]);
 	if (!n_path)
-		return ((void)printf("minishell: cd: HOME not set\n"), \
-			(void)(shell->status = 1), free(c_path));
+		return (printf("minishell: cd: HOME not set\n"), \
+			free(c_path), 1);
 	if (!check_dir(n_path))
-	{
-		printf("minishell: cd: %s: No such file or directory\n", n_path);
-		shell->status = 1;
-	}
+		return (ft_printf_fd(1, \
+			"minishell: cd: %s: No such file or directory\n", n_path), free(n_path), 1);
 	else if (chdir(n_path) == -1)
-	{
-		perror("minishell: cd");
-		shell->status = 1;
-	}
+		return (perror("minishell: cd"), 1);
 	else
-	{
-		new_path = getcwd(NULL, 0);
-		if (new_path)
-		{
-			update_env_pwd(env, c_path, new_path);
-			free(new_path);
-		}
-		shell->status = 0;
-	}
+		normi_handler(c_path, env);
 	free(n_path);
 	free(c_path);
+	return (0);
 }

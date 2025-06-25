@@ -752,3 +752,352 @@ cat
 cat << a
 cat << a
 cd 123123
+export a_A
+export a_A?
+export a
+export a"
+export a?
+export ?a
+clear
+exit
+export a
+export a?
+export a_
+export a_?
+export a_?@
+export a_?@asdasd
+export a_?@asdasd2313
+export 123
+clear
+exit
+export ?
+export ?a
+export ?adsadas
+export ?adsadas_2 21 e12_ E!@ 
+12
+clear
+a
+aa
+a
+a
+a
+aa
+a
+a
+a
+aa
+clear
+exit
+export abc
+exit
+export ?
+export ?abc_
+clear
+make
+./minishell
+export a_a
+export a_a?
+export a_a?123
+clear
+exit
+exit
+exit
+export a?
+export a?_
+export a?_1
+clear
+exit
+export ?
+export ?a
+export ?a_
+export ?a_123123
+export ?a_123123 ;12 ;f
+12F!@ F!@" 1@" f!@
+f1
+clear
+exit
+export a
+export a1
+export a1?
+export ?1
+clear
+exit
+export a
+export a?
+export a?1
+clear
+exit
+export a
+export a1
+export a1?
+export a1?@
+export a1?@CDASDAS@CE!@E!@!@
+clear
+exit
+export 123sad 2? @_!@ "
+export 123sad 2? @_!@ 
+clear
+exit
+export 1
+export ?
+export ?_
+export ?_1
+export ?_1a
+CLEAR
+clear
+make
+clear
+make
+exit
+export 1
+export 1a
+export a1
+export a
+export a
+clear
+export a
+export a1
+export a123
+export 1
+export ?
+clear
+export _
+export _1
+clear
+clear
+exit
+export a
+export 1
+export 1a
+export _a13213.
+export _a13213?
+clear
+exit
+export 1a
+export a
+export 1
+clear
+make
+./minishell
+export a
+export 1
+exit
+exit
+export 1
+export a1
+export a1/
+export a1/?
+clear
+exit
+export a
+export 1
+clear
+exit
+export 1\
+export 1
+clear
+exit
+export 1
+clear
+exit
+export 1
+export 1a
+clear
+exit
+export 1
+clear
+exit
+export 1
+clear
+exit
+export 1
+clear
+export 1a
+export a1
+export a1?
+clear
+clear
+exit
+export a1
+export 1a
+export a1_
+export a1_?
+export a1_
+export a1_-
+export a1_@
+exit
+cd ~
+pwd
+clear
+pwd
+clear
+exit
+cd .
+pwd
+cd ..
+pwd
+clear
+exit
+export 1
+export a
+clear
+exi
+exit
+export a
+export 1
+clear
+clear
+exit
+export 1
+export a
+export 1a
+export a1
+export a1?
+export a1_
+export "a1_"
+export " a1_"
+export "a 1_"
+export "aa1_ "
+clear
+exit
+echo 4?
+echo $?
+echo $?
+export 1
+echo $?
+echo $?
+export a
+echo $?
+echo $?
+clear
+exit
+clear
+export 1
+echo $?
+echo $?
+clear
+cd sdsadasdas
+echo $?
+echo $?
+pwd
+echo $?
+echo $?
+pwd
+cd .. | cd ..
+pwd
+cd .. | cd ..
+cd ..
+cd dsdasdas
+cd .. | ls
+cd ..
+cd . | ls
+cd dsadsadas
+cd dsadsadas
+exit
+cd dsadas
+cd dsadas | ls
+cd .. | cd ..
+cd ..
+exit
+ls
+exit
+cd dsadas
+cd ..
+cd .. | cd ..
+pwd
+cd ..
+pwd
+cd .. | cd ..
+pwd
+cd .. | cd ..
+exit
+cd .. | cd ..
+clear
+exit
+a
+a
+clear
+exit
+cd ..
+cd | cd ..
+clear
+exit
+clear
+pwd
+cd .. | cd .. 
+pwd
+echo $?
+echo $?
+cd .. | cd .. 
+echo $?
+echo $?
+clear
+exit
+exit 
+exit
+dnsah at4rejuht4ahtb 3kij 2o32p; 611p[ 51p[ 51p[5 1-25 1=25-125 -[12- 15o2[o [o2[d12p ][12]1 -2or-=ow-=fp[sl eg,4 gh43
+echo kp; 43yp5[4u/2u]2][[1]5up]5u31u
+clear
+exit
+exit
+exit
+exit
+exit
+exit | exit
+exit | exit
+exit 1 2 3 | exit 1 2 3 
+	if (cmd->argc > 2)
+		return (printf("minishell: exit: too many arguments\n"), 1)
+clear
+exit
+exit | exit
+exit
+exit | exit
+exit 1 2 3 | exit 1 2 3 
+exit
+exit | exit
+exit 1 2 3 | exit 1 2 3
+exit
+clear
+exit | exit
+exit 1 2 3 | exit 1 2 3
+exit | exit
+exit 1 2 3 | exit 1 2 3
+exit | exit
+exit 1 2 3 | exit 1 2 3
+exit
+exit | exit
+exit | exit
+exit | exit
+exit 1 2 3 | exit 1 2 3 
+exit
+clear
+exit
+exit 1 2 3 | exit 1 2 3 
+echo $?
+exit
+exit 1 2 3 | exit 12
+echo $?
+echo $?
+exit
+exit 12
+exit a
+exit a
+exit abc
+exit abc
+exit 999
+exit 9223372036854775807
+exit -9223372036854775808
+exit 9223372036854775807
+exit 9223372036854775807
+exit 9223372036854775807
+exit 9223372036854775807
+clear
+exit -9223372036854775808
+a
+clear
+exit -9223372036854775808
+exit 9223372036854775807
+exit 99999999999999999999999999999999999999999999999999999999999999999999999999999999
+exit 99999999999999999999999999999999999999999999999999999999999999999999999999999999
+exit 9223372036854775808

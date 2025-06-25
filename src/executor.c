@@ -3,42 +3,14 @@
 /*                                                        :::      ::::::::   */
 /*   executor.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: pmoreira <pmoreira@student.42lisboa.com    +#+  +:+       +#+        */
+/*   By: ernda-si <ernda-si@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/13 13:45:33 by ernda-si          #+#    #+#             */
-/*   Updated: 2025/06/25 10:53:37 by pmoreira         ###   ########.fr       */
+/*   Updated: 2025/06/25 13:14:48 by ernda-si         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minishell.h"
-
-// static void	wait_for_last(t_cmd *cmd_list, t_hell *shell)
-// {
-// 	int		status;
-// 	t_cmd	*tmp;
-// 	t_cmd	*last;
-
-// 	tmp = cmd_list;
-// 	last = cmd_list;
-// 	while(last->next)
-// 		last = last->next;
-// 	status = 0;
-// 	while (tmp)
-// 	{
-// 		if (tmp->pid > 0)
-// 		{
-// 			if (tmp == last)
-// 			{
-// 				waitpid(tmp->pid, &status, 0);
-// 				if (WIFEXITED(status))
-// 					shell->status = WEXITSTATUS(status);
-// 				else if (WIFSIGNALED(status))
-// 					shell->status = 128 + WTERMSIG(status);
-// 			}
-// 		}
-// 		tmp = tmp->next;
-// 	}
-// }
 
 /// @brief Get pid exit status and save it on Main struct status.
 void	get_status(int pid)
@@ -53,11 +25,16 @@ void	get_status(int pid)
 		get_hell(NULL)->status = 128 + WTERMSIG(status);
 }
 
-static int redir_built_ins(t_cmd *cmd, t_hell *shell)
+static int	redir_built_ins(t_cmd *cmd, t_hell *shell)
 {
 	shell->status = execute_builtin(cmd, shell);
 	return (0);
 }
+
+// static void exec_checkers()
+// {
+
+// }
 
 void	execute_pipeline(t_hell *shell)
 {
@@ -71,20 +48,15 @@ void	execute_pipeline(t_hell *shell)
 		return ;
 	while (cmd)
 	{
-		if (cmd->is_builtin && !cmd->redir_in && !cmd->redir_out && !cmd->is_piped && !cmd->prev)
+		if (cmd->is_builtin && !cmd->redir_in && \
+			!cmd->redir_out && !cmd->is_piped && !cmd->prev)
 			return ((void) redir_built_ins(cmd, shell));
 		if (cmd->is_piped && pipe(pipes) == -1)
-		{
-			perror("pipe");
-			mini_cleaner(NULL, shell, EXIT_FAILURE);
-		}
+			(perror("pipe"), mini_cleaner(NULL, shell, EXIT_FAILURE));
 		stop_parent_signals();
 		cmd->pid = fork();
 		if (cmd->pid == -1)
-		{
-			perror("fork");
-			mini_cleaner(NULL, shell, EXIT_FAILURE);
-		}
+			(perror("fork"), mini_cleaner(NULL, shell, EXIT_FAILURE));
 		else if (cmd->pid == 0)
 			execute_child(cmd, prev_pipe, &pipes[0], shell);
 		if (prev_pipe != -1)
@@ -98,6 +70,5 @@ void	execute_pipeline(t_hell *shell)
 			prev_pipe = -1;
 		cmd = cmd->next;
 	}
-	wait_for_all(shell->cmd, shell);
-	signal_handler(shell, 'P');
+	(wait_for_all(shell->cmd, shell), signal_handler(shell, 'P'));
 }

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   child.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: pmoreira <pmoreira@student.42lisboa.com    +#+  +:+       +#+        */
+/*   By: ernda-si <ernda-si@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/17 13:20:53 by pmoreira          #+#    #+#             */
-/*   Updated: 2025/06/25 11:52:39 by pmoreira         ###   ########.fr       */
+/*   Updated: 2025/06/25 16:04:30 by ernda-si         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,26 +30,21 @@ int	check_is_dir(t_cmd *cmd)
 
 int	execute_builtin(t_cmd *cmd, t_hell *shell)
 {
-	int	flag;
-
-	flag = 0;
-	if (!ft_strcmp(cmd->args[0], "echo") && ++flag)
+	if (!ft_strcmp(cmd->args[0], "echo"))
 		return (mini_echo(cmd));
-	else if (!ft_strcmp(cmd->args[0], "pwd") && ++flag)
+	else if (!ft_strcmp(cmd->args[0], "pwd"))
 		return (mini_pwd());
-	else if (!ft_strcmp(cmd->args[0], "cd") && ++flag)
-		mini_cd(cmd, &shell->env, shell);
-	else if (!ft_strcmp(cmd->args[0], "env") && ++flag)
+	else if (!ft_strcmp(cmd->args[0], "cd"))
+		return (mini_cd(cmd, &shell->env));
+	else if (!ft_strcmp(cmd->args[0], "env"))
 		mini_env(shell);
-	else if (!ft_strcmp(cmd->args[0], "exit") && ++flag)
-		mini_exit(shell);
-	else if (!ft_strcmp(cmd->args[0], "export") && ++flag)
-		mini_export(&shell->env, &shell->export, cmd);
-	else if (!ft_strcmp(cmd->args[0], "unset") && ++flag)
+	else if (!ft_strcmp(cmd->args[0], "exit"))
+		return(mini_exit(shell, cmd));
+	else if (!ft_strcmp(cmd->args[0], "export"))
+		return (mini_export(&shell->env, &shell->export, cmd));
+	else if (!ft_strcmp(cmd->args[0], "unset"))
 		mini_unset(&shell->env, cmd, &shell->export, shell);
-	else if (flag)
-		return (shell->status = EXIT_SUCCESS);
-	return (shell->status = EXIT_FAILURE);
+	return (0);
 }
 
 void	execute_child(t_cmd *cmd, int prev_pipe, int *pipes, t_hell *shell)

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   export.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: pmoreira <pmoreira@student.42lisboa.com    +#+  +:+       +#+        */
+/*   By: ernda-si <ernda-si@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/13 14:07:18 by ernda-si          #+#    #+#             */
-/*   Updated: 2025/06/24 11:48:26 by pmoreira         ###   ########.fr       */
+/*   Updated: 2025/06/25 14:26:03 by ernda-si         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,11 +17,13 @@ static int	identifier_check(char **matrix)
 	int	i;
 
 	i = 0;
-	if (!ft_isalpha(matrix[0][0]) && matrix[0][0] != '_')
+	if (ft_isspace(matrix[0][i]) || (!ft_isalpha(matrix[0][i]) \
+	&& matrix[0][i] != '_'))
 		return (0);
 	while (matrix[0][i])
 	{
-		if (ft_isspace(matrix[0][i]))
+		if (ft_isspace(matrix[0][i]) || (!ft_isalnum(matrix[0][i]) \
+		&& matrix[0][i] != '_'))
 			return (0);
 		i++;
 	}
@@ -81,31 +83,31 @@ static void	print_export(t_export *export)
 	return ;
 }
 
-void	mini_export(t_env **env, t_export **export, t_cmd *cmd)
+int	mini_export(t_env **env, t_export **export, t_cmd *cmd)
 {
 	int		i;
-	char	**matrix;
+	int		flag;
+	char	**m;
 
+	flag = 0;
 	i = 1;
 	if (cmd->argc == 1)
-		return (print_export(*export));
+		return (print_export(*export), 0);
 	while (i < cmd->argc)
 	{
-		matrix = ft_split_once(cmd->args[i], '=');
-		if (!identifier_check(matrix))
+		m = ft_split_once(cmd->args[i], '=');
+		if (!identifier_check(m) && ++flag)
 			ft_printf_fd(2,
 				"minishell: export: `%s': not a valid identifier\n",
 				cmd->args[i]);
-		ft_setexport(export, matrix[0], matrix[1]);
-		if (matrix[0] && matrix[1])
-			ft_setenv(env, matrix[0], matrix[1]);
-		else if (matrix[1] && !ft_strcmp(matrix[1], ""))
-		{
-			ft_setenv(env, matrix[0], "");
-			ft_setexport(export, matrix[0], "\"\"");
-		}
-		ft_clean_matrix(matrix);
+		ft_setexport(export, m[0], m[1]);
+		if (m[0] && m[1])
+			ft_setenv(env, m[0], m[1]);
+		else if (m[1] && !ft_strcmp(m[1], ""))
+			(ft_setenv(env, m[0], ""), ft_setexport(export, m[0], "\"\""));
+		ft_clean_matrix(m);
 		i++;
 	}
 	update_env(get_hell(NULL));
+	return (flag != 0);
 }

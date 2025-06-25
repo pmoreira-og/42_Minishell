@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   minishell.h                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: pmoreira <pmoreira@student.42lisboa.com    +#+  +:+       +#+        */
+/*   By: ernda-si <ernda-si@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/24 14:48:17 by pmoreira          #+#    #+#             */
-/*   Updated: 2025/06/25 11:46:41 by pmoreira         ###   ########.fr       */
+/*   Updated: 2025/06/25 15:07:11 by ernda-si         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -123,10 +123,10 @@ void	merror(char *s);
 // built in functions:
 int		mini_echo(t_cmd *cmd);
 int		mini_pwd(void);
-void	mini_cd(t_cmd *cmd, t_env **env, t_hell *shell);
+int		mini_cd(t_cmd *cmd, t_env **env);
 void	mini_env(t_hell *shell);
-void	mini_exit(t_hell *hell);
-void	mini_export(t_env **env, t_export **export, t_cmd *cmd);
+int	mini_exit(t_hell *hell, t_cmd *cmd);
+int		mini_export(t_env **env, t_export **export, t_cmd *cmd);
 void	mini_unset(t_env **env, t_cmd *cmd, t_export **export, t_hell *hell);
 
 // enviroment management:
