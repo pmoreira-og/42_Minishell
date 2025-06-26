@@ -31,10 +31,24 @@ static int	redir_built_ins(t_cmd *cmd, t_hell *shell)
 	return (0);
 }
 
-// static void exec_checkers()
-// {
-
-// }
+static void	child_and_pipe(t_cmd *cmd, int *prev_pipe, int *pipes, t_hell *shell)
+{
+	stop_parent_signals();
+	cmd->pid = fork();
+	if (cmd->pid == -1)
+		(perror("fork"), mini_cleaner(NULL, shell, EXIT_FAILURE));
+	else if (cmd->pid == 0)
+		execute_child(cmd, *prev_pipe, &pipes[0], shell);
+	if (*prev_pipe != -1)
+		close(*prev_pipe);
+	if (cmd->is_piped)
+	{
+		close(pipes[1]);
+		*prev_pipe = pipes[0];
+	}
+	else
+		*prev_pipe = -1;
+}
 
 void	execute_pipeline(t_hell *shell)
 {
@@ -52,22 +66,9 @@ void	execute_pipeline(t_hell *shell)
 			return ((void) redir_built_ins(cmd, shell));
 		if (cmd->is_piped && pipe(pipes) == -1)
 			(perror("pipe"), mini_cleaner(NULL, shell, EXIT_FAILURE));
-		stop_parent_signals();
-		cmd->pid = fork();
-		if (cmd->pid == -1)
-			(perror("fork"), mini_cleaner(NULL, shell, EXIT_FAILURE));
-		else if (cmd->pid == 0)
-			execute_child(cmd, prev_pipe, &pipes[0], shell);
-		if (prev_pipe != -1)
-			close(prev_pipe);
-		if (cmd->is_piped)
-		{
-			close(pipes[1]);
-			prev_pipe = pipes[0];
-		}
-		else
-			prev_pipe = -1;
+		child_and_pipe(cmd, &prev_pipe, pipes, shell);
 		cmd = cmd->next;
 	}
-	(wait_for_all(shell->cmd, shell), signal_handler(shell, 'P'));
+	wait_for_all(shell->cmd, shell);
+	signal_handler(shell, 'P');
 }

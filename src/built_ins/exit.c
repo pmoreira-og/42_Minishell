@@ -12,39 +12,56 @@
 
 #include "minishell.h"
 
-// arg > 1 n sai , status = 1, printa exit anyway, printa erro "bash: exit: too many arguments"
-// arg value > 255 status vira 0
-// arg value < 0 ele soma com 256
-// arg value < 0 e < -255
-// letter check status == 2
-// 9223372036854775807 long max size == 19 | -9223372036854775808 long min size == 20
-
-static int	first_check(char *arg)
+static int	num_limit(char *str)
 {
-	char	**matrix;
-	int		flag;
-	int		i;
+	int	is_neg;
+	
+	is_neg = (str[0] == '-');
+	if (str[0] == '+' || str[0] == '-')
+		str++;
+	if (ft_strlen(str) > 19)
+		return (0);
+	if (ft_strlen(str) == 19)
+	{
+		if (!is_neg && ft_strcmp(str, "9223372036854775807") > 0)
+			return (0);
+		if (is_neg && ft_strcmp(str, "9223372036854775808") > 0)
+			return (0);
+	}
+	return (1);
+}
+
+static int	is_valid_numeric_arg(char *arg)
+{
+	int	i;
+	int	has_sign;
 
 	i = 0;
+	has_sign = (arg[i] == '-' || arg[i] == '+');
+	if (has_sign)
+		i++;
+	while (arg[i])
+	{
+		if (!ft_isdigit(arg[i]))
+			return (0);
+		i++;
+	}
+	return (num_limit(arg));
+}
+
+int	first_check(char *arg)
+{
+	char	**matrix;
+	int		result;
+
 	matrix = ft_params(arg);
 	if (!matrix)
 		return (0);
 	if (matrix[1])
 		return (ft_clean_matrix(matrix), 0);
-	flag = matrix[0][i] == '-' || matrix[0][i] == '+';
-	if (flag)
-		i++;
-	while (matrix[0][i])
-	{
-		if (!ft_isdigit(matrix[0][i]))
-			return (ft_clean_matrix(matrix), 0);
-		i++;
-	}
-	if (!matrix[0][i])
-		i--;
-	if (i > (19 + flag))
-		return (ft_clean_matrix(matrix), 0);
-	return (ft_clean_matrix(matrix), 1);
+	result = is_valid_numeric_arg(matrix[0]);
+	ft_clean_matrix(matrix);
+	return (result);
 }
 
 int	mini_exit(t_hell *hell, t_cmd *cmd)

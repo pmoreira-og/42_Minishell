@@ -1156,3 +1156,77 @@ minishell.h
 cl
 minishell.h
 ./minishell.h
+clear
+ls
+cat << eof
+clear
+ls | grep a
+clear
+exit
+clear
+ls
+exit
+a
+ls
+unset PATH
+ls
+env
+export
+ls
+clear
+clear
+clear
+exit
+clear
+ls
+clear
+ls 
+clear
+ls | grep a
+clear
+a
+ls
+clear
+clear
+exit 256
+env | grep SHLVL
+./minishell
+env | grep SHLVL
+exit
+env | grep SHLVL
+env | grep SHLVL
+./minishell
+exit
+exit 256
+c;lear
+clear
+env | grep SHLVL
+export | grep SHLVL
+clear
+clear
+exit
+echo a
+echo a > a
+rm a
+clear
+cat << eof | cat << b | cat << c | ls
+clear
+clear
+exit
+exit 92233720368547758070
+
+exit 9223372036854775807
+exit 9223372036854775807
+exit 922337203685477580
+exit 9223372036854775807
+exit 9223372036854775806
+9223372036854775807
+clear
+exit
+exit 9223372036854775808
+exit 9223372036854775807
+exit -9223372036854775807
+exit -9223372036854775808
+exit -9223372036854775809
+clear
+exit

@@ -14,11 +14,11 @@
 
 void	wait_for_all(t_cmd *cmd_list, t_hell *shell)
 {
-	int		status;
+	// int		status;
 	t_cmd	*tmp;
 
 	tmp = cmd_list;
-	status = 0;
+	// status = 0;
 	(void) shell;
 	while (tmp)
 	{
