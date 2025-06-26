@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   child.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ernda-si <ernda-si@student.42.fr>          +#+  +:+       +#+        */
+/*   By: pmoreira <pmoreira@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/17 13:20:53 by pmoreira          #+#    #+#             */
-/*   Updated: 2025/06/25 16:04:30 by ernda-si         ###   ########.fr       */
+/*   Updated: 2025/06/26 12:35:46 by pmoreira         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,7 +39,7 @@ int	execute_builtin(t_cmd *cmd, t_hell *shell)
 	else if (!ft_strcmp(cmd->args[0], "env"))
 		mini_env(shell);
 	else if (!ft_strcmp(cmd->args[0], "exit"))
-		return(mini_exit(shell, cmd));
+		return (mini_exit(shell, cmd));
 	else if (!ft_strcmp(cmd->args[0], "export"))
 		return (mini_export(&shell->env, &shell->export, cmd));
 	else if (!ft_strcmp(cmd->args[0], "unset"))

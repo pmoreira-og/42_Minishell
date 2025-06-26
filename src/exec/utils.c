@@ -6,7 +6,7 @@
 /*   By: pmoreira <pmoreira@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/18 13:57:09 by pmoreira          #+#    #+#             */
-/*   Updated: 2025/06/25 11:28:43 by pmoreira         ###   ########.fr       */
+/*   Updated: 2025/06/26 11:42:54 by pmoreira         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,7 +38,7 @@ int	prepare_heredocs(t_cmd *cmd_list)
 	flag = 0;
 	while (cmd)
 	{
-		redir = cmd->redir_in;
+		redir = cmd->redirs;
 		while (redir)
 		{
 			if (redir->type == LIM)

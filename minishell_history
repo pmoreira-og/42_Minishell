@@ -1101,3 +1101,58 @@ exit 9223372036854775807
 exit 99999999999999999999999999999999999999999999999999999999999999999999999999999999
 exit 99999999999999999999999999999999999999999999999999999999999999999999999999999999
 exit 9223372036854775808
+cat >./minishell_tester/outfiles/outfile01 <missing >./minishell_tester/test_files/invalid_permission
+echo $?
+cat >./minishell_tester/outfiles/outfile01 <missing >./minishell_tester/test_files/invalid_permission
+cat >./minishell_tester/outfiles/outfile01 <missing >./minishell_tester/test_files/invalid_permission
+cat >./minishell_tester/outfiles/outfile01 <missing >./minishell_tester/test_files/invalid_permission
+cat >./minishell_tester/outfiles/outfile01 <missing >./minishell_tester/test_files/invalid_permission
+README.md 
+README.md 
+README.md 
+pwd
+.
+..
+.....
+.
+<< eof << eof2 > outfile1 < Makefile 
+ls
+cat outfile1
+clear
+ cat | cat | cat | cat |ls
+<< $USER
+<< $USER
+cat << $USER
+cat << $USER
+cat << USER
+'$USER'
+"$USER"
+echo "$USER"
+echo "'$USER'"
+echo "'$USER"'
+echo "'"$USER"'"
+echo "'"'$USER'"'"
+echo "'"'''''$USER'''''"'"
+echo "'"'''''"$USER"'''''"'"
+echo "''''''"$USER"''''''"
+./minishell
+<< eof
+<< eof
+cat << eof
+echo Makefile << eof
+cat  Makefile << eof
+cat << eof
+clear
+clear
+cat << $USER
+cat << $USER < Makefile 
+./minishell_tester/test_files/
+./minishell_tester/test_files
+./minishell_tester/test_files/invalid_permission
+minishell.h
+minishell.h
+minishell.h
+minishell.h
+cl
+minishell.h
+./minishell.h

@@ -6,7 +6,7 @@
 /*   By: pmoreira <pmoreira@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/17 13:18:28 by pmoreira          #+#    #+#             */
-/*   Updated: 2025/06/25 10:02:24 by pmoreira         ###   ########.fr       */
+/*   Updated: 2025/06/26 11:41:52 by pmoreira         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,52 +46,40 @@ void	do_heredoc(t_redirection *redir)
 		mini_cleaner(NULL, get_hell(NULL), EXIT_FAILURE);
 }
 
-static void	open_infile(t_redirection *redir)
-{
-	redir->fd = open(redir->filename, O_RDONLY);
-	if (redir->fd == -1)
-	{
-		perror(redir->filename);
-		mini_cleaner(NULL, get_hell(NULL), EXIT_FAILURE);
-	}
-}
-
-static void	open_outfile(t_redirection *redir, int append)
+static void	open_file(t_redirection *redir, t_type	type)
 {
 	int	flags;
 
-	if (append)
+	if (type == OUTFILE_APPEND)
 		flags = O_WRONLY | O_CREAT | O_APPEND;
-	else
+	else if (type == OUTFILE)
 		flags = O_WRONLY | O_CREAT | O_TRUNC;
-	redir->fd = open(redir->filename, flags, 0644);
+	if (type == INFILE)
+		redir->fd = open(redir->filename, O_RDONLY);
+	else
+		redir->fd = open(redir->filename, flags, 0644);
 	if (redir->fd == -1)
 	{
-		perror(redir->filename);
+		ft_printf_fd(2, "minishell: %s: ", redir->filename);
+		perror(NULL);
 		mini_cleaner(NULL, get_hell(NULL), EXIT_FAILURE);
 	}
 }
 
 void	handle_redirections(t_cmd *cmd)
 {
-	t_redirection	*in;
-	t_redirection	*out;
+	t_redirection	*temp;
 
-	in = cmd->redir_in;
-	out = cmd->redir_out;
-	while (in)
+	temp = cmd->redirs;
+	while (temp)
 	{
-		if (in->type == INFILE)
-			open_infile(in);
-		in = in->next;
-	}
-	while (out)
-	{
-		if (out->type == OUTFILE)
-			open_outfile(out, 0);
-		else if (out->type == OUTFILE_APPEND)
-			open_outfile(out, 1);
-		out = out->next;
+		if (temp->type == OUTFILE)
+			open_file(temp, OUTFILE);
+		if (temp->type == OUTFILE_APPEND)
+			open_file(temp, OUTFILE_APPEND);
+		if (temp->type == INFILE)
+			open_file(temp, INFILE);
+		temp = temp->next;
 	}
 	update_fds(cmd);
 }

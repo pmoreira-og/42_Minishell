@@ -4,3 +4,4 @@ infile
 outfile
 test.sh
 minishell_tester
+minishell_tester/minishell_history

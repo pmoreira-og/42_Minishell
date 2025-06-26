@@ -6,7 +6,7 @@
 /*   By: pmoreira <pmoreira@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/25 14:50:57 by pmoreira          #+#    #+#             */
-/*   Updated: 2025/06/25 11:35:44 by pmoreira         ###   ########.fr       */
+/*   Updated: 2025/06/26 12:30:34 by pmoreira         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -70,29 +70,32 @@ t_bool	ft_dup(int dst, int src)
 	return (TRUE);
 }
 
-void	try_run(t_hell *data, char **program)
+void	try_run(t_hell *data, char **args)
 {
 	char	*new_path;
 
-	if (data && program && program[0])
+	if (data && args && args[0])
 	{
-		new_path = path_handler(program[0]);
+		new_path = path_handler(args[0]);
 		if (!new_path)
 			return (merror("try_run:new_path"));
-		if (access(new_path, F_OK) == -1)
+		if (ft_strchr(new_path, '/') && access(new_path, F_OK) == -1)
 		{
-			ft_printf_fd(2, "minishell: %s: command not found\n", program[0]);
+			ft_printf_fd(2, "minishell: %s: %s\n", args[0], strerror(errno));
 			free(new_path);
 			mini_cleaner(NULL, data, 127);
 		}
-		if (access(new_path, X_OK) == -1)
+		if (ft_strchr(new_path, '/') && access(new_path, X_OK) == -1)
 		{
-			printf("%s\n", new_path);
-			ft_printf_fd(2, "minishell: %s: Permission denied\n", program[0]);
+			ft_printf_fd(2, "minishell: %s: %s\n", args[0], strerror(errno));
 			free(new_path);
 			mini_cleaner(NULL, data, 126);
 		}
-		execve(new_path, program, data->envp);
+		execve(new_path, args, data->envp);
+		if (new_path)
+			free(new_path);
+		ft_printf_fd(2, "minishell: %s: command not found\n", args[0]);
+		mini_cleaner(NULL, data, 127);
 	}
 }
 
@@ -100,24 +103,23 @@ int	update_fds(t_cmd *cmd)
 {
 	t_redirection	*in;
 	t_redirection	*out;
+	t_redirection	*temp;
 
-	in = cmd->redir_in;
-	out = cmd->redir_out;
-	while (in)
+	in = NULL;
+	out = NULL;
+	temp = cmd->redirs;
+	while (temp)
 	{
-		if (!in->next)
-			cmd->fd_in = dup(in->fd);
-		if (in->fd != -1)
-			close(in->fd);
-		in = in->next;
+		if (temp->type == INFILE || temp->type == LIM)
+			in = temp;
+		if (temp->type == OUTFILE \
+			|| temp->type == OUTFILE_APPEND)
+			out = temp;
+		temp = temp->next;
 	}
-	while (out)
-	{
-		if (!out->next)
-			cmd->fd_out = dup(out->fd);
-		if (out->fd != -1)
-			close(out->fd);
-		out = out->next;
-	}
+	if (in)
+		cmd->fd_in = dup(in->fd);
+	if (out)
+		cmd->fd_out = dup(out->fd);
 	return (1);
 }

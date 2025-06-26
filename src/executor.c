@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   executor.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ernda-si <ernda-si@student.42.fr>          +#+  +:+       +#+        */
+/*   By: pmoreira <pmoreira@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/13 13:45:33 by ernda-si          #+#    #+#             */
-/*   Updated: 2025/06/25 13:14:48 by ernda-si         ###   ########.fr       */
+/*   Updated: 2025/06/26 11:37:04 by pmoreira         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,8 +48,7 @@ void	execute_pipeline(t_hell *shell)
 		return ;
 	while (cmd)
 	{
-		if (cmd->is_builtin && !cmd->redir_in && \
-			!cmd->redir_out && !cmd->is_piped && !cmd->prev)
+		if (cmd->is_builtin && !cmd->redirs && !cmd->is_piped && !cmd->prev)
 			return ((void) redir_built_ins(cmd, shell));
 		if (cmd->is_piped && pipe(pipes) == -1)
 			(perror("pipe"), mini_cleaner(NULL, shell, EXIT_FAILURE));

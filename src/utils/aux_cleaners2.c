@@ -6,7 +6,7 @@
 /*   By: pmoreira <pmoreira@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/10 18:31:10 by pmoreira          #+#    #+#             */
-/*   Updated: 2025/06/24 12:22:01 by pmoreira         ###   ########.fr       */
+/*   Updated: 2025/06/26 11:45:33 by pmoreira         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,10 +46,8 @@ void	delete_cmd(t_cmd *cmd)
 		ft_clean_matrix(cmd->envp);
 	if (cmd->cmd_path)
 		free(cmd->cmd_path);
-	if (cmd->redir_in)
-		clear_redir(&cmd->redir_in);
-	if (cmd->redir_out)
-		clear_redir(&cmd->redir_out);
+	if (cmd->redirs)
+		clear_redir(&cmd->redirs);
 	free(cmd);
 	cmd = NULL;
 }

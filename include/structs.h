@@ -6,7 +6,7 @@
 /*   By: pmoreira <pmoreira@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/24 15:03:58 by pmoreira          #+#    #+#             */
-/*   Updated: 2025/06/24 11:57:55 by pmoreira         ###   ########.fr       */
+/*   Updated: 2025/06/26 11:31:24 by pmoreira         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -82,8 +82,7 @@ typedef struct s_cmd
 	int					argc;
 	char				**args;
 	char				*cmd_path;
-	t_redirection		*redir_in;
-	t_redirection		*redir_out;
+	t_redirection		*redirs;
 	char				*delimiter;
 	int					fd_in;
 	int					fd_out;

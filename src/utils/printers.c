@@ -6,7 +6,7 @@
 /*   By: pmoreira <pmoreira@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/20 16:01:00 by pmoreira          #+#    #+#             */
-/*   Updated: 2025/06/17 12:11:50 by pmoreira         ###   ########.fr       */
+/*   Updated: 2025/06/26 11:44:43 by pmoreira         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,21 +34,22 @@ void	print_redirs(t_cmd *cmd)
 
 	if (!cmd)
 		return ;
-	temp = cmd->redir_in;
+	temp = cmd->redirs;
 	printf("Redir_ins:\n");
 	while (temp)
 	{
-		if (temp->type != LIM)
+		if (temp->type == INFILE)
 			printf("[%s]:%s\n", get_type(temp->type), temp->filename);
-		else
+		else if (temp->type == LIM)
 			printf("[%s]:%s\n", get_type(temp->type), temp->limiter);
 		temp = temp->next;
 	}
-	temp = cmd->redir_out;
+	temp = cmd->redirs;
 	printf("Redir_outs:\n");
 	while (temp)
 	{
-		printf("[%s]:%s\n", get_type(temp->type), temp->filename);
+		if (temp->type == OUTFILE || temp->type == OUTFILE_APPEND)
+			printf("[%s]:%s\n", get_type(temp->type), temp->filename);
 		temp = temp->next;
 	}
 }

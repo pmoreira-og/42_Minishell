@@ -6,7 +6,7 @@
 /*   By: pmoreira <pmoreira@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/10 10:14:53 by pmoreira          #+#    #+#             */
-/*   Updated: 2025/06/10 12:49:56 by pmoreira         ###   ########.fr       */
+/*   Updated: 2025/06/26 11:35:57 by pmoreira         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -82,8 +82,7 @@ int	init_redirs(t_cmd **cmd, t_token *start)
 
 	if (!start || !cmd)
 		return (0);
-	(*cmd)->redir_in = NULL;
-	(*cmd)->redir_out = NULL;
+	(*cmd)->redirs = NULL;
 	temp = NULL;
 	while (start->next && start->type != PIPE)
 	{
@@ -93,9 +92,9 @@ int	init_redirs(t_cmd **cmd, t_token *start)
 			if (!temp)
 				return (merror("init_redirs:temp"), 0);
 			if (is_redir_in(start))
-				append_node(&(*cmd)->redir_in, temp);
+				append_node(&(*cmd)->redirs, temp);
 			else if (is_redir_out(start))
-				append_node(&(*cmd)->redir_out, temp);
+				append_node(&(*cmd)->redirs, temp);
 		}
 		start = start->next;
 	}
