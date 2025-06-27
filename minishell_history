@@ -137,3 +137,11 @@ echo $?
 .
 echo $?
 cl
+mkdir test
+mkdir test/t
+rm -rf test/t
+mkdir test/t
+rm -rf test
+mkdir test
+mkdir test/t
+rm -rf test

@@ -6,7 +6,7 @@
 /*   By: pmoreira <pmoreira@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/23 12:12:04 by ernda-si          #+#    #+#             */
-/*   Updated: 2025/06/27 11:18:05 by pmoreira         ###   ########.fr       */
+/*   Updated: 2025/06/27 16:02:48 by pmoreira         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -68,7 +68,7 @@ int	mini_cd(t_cmd *cmd, t_env **env)
 			free(c_path), 1);
 	n_path = path_handler(cmd->args[1]);
 	if (!n_path)
-		return (printf("minishell: cd: HOME not set\n"), \
+		return (ft_printf_fd(2, "minishell: cd: HOME not set\n"), \
 			free(c_path), 1);
 	if (!check_dir(n_path))
 		return (ft_printf_fd(2, \
