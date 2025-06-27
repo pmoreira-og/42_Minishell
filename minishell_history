@@ -124,3 +124,10 @@ export
 export a=
 export
 cl
+< $USER
+echo $?
+echo $?
+< $var
+echo $?
+< $var
+echo $?

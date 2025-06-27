@@ -6,7 +6,7 @@
 /*   By: pmoreira <pmoreira@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/22 15:21:45 by pmoreira          #+#    #+#             */
-/*   Updated: 2025/06/27 15:22:39 by pmoreira         ###   ########.fr       */
+/*   Updated: 2025/06/27 15:47:10 by pmoreira         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -114,7 +114,10 @@ t_bool	check_ambiguous(t_token *tok)
 			{
 				ft_count(tok->cmd, &i);
 				if (i != 1)
+				{
+					get_hell(NULL)->status = 1;
 					return (error_ambiguous(tok->backup), TRUE);
+				}
 			}
 		}
 		tok = tok->next;
