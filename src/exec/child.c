@@ -6,7 +6,7 @@
 /*   By: pmoreira <pmoreira@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/17 13:20:53 by pmoreira          #+#    #+#             */
-/*   Updated: 2025/06/26 12:35:46 by pmoreira         ###   ########.fr       */
+/*   Updated: 2025/06/27 15:24:16 by pmoreira         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,6 +55,8 @@ void	execute_child(t_cmd *cmd, int prev_pipe, int *pipes, t_hell *shell)
 	if (cmd->is_piped)
 		cmd->fd_out = pipes[1];
 	handle_redirections(cmd);
+	if (shell->status == 1 && !cmd->is_fork)
+		return ;
 	if (shell->hist_fd >= 0)
 		close(shell->hist_fd);
 	if (cmd->fd_in != 0)

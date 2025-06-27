@@ -6,7 +6,7 @@
 /*   By: pmoreira <pmoreira@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/24 15:03:58 by pmoreira          #+#    #+#             */
-/*   Updated: 2025/06/26 11:31:24 by pmoreira         ###   ########.fr       */
+/*   Updated: 2025/06/27 11:55:46 by pmoreira         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -78,7 +78,7 @@ typedef struct s_redirection
 /// @param next Next cmd node
 typedef struct s_cmd
 {
-	// Command and arguments
+	t_bool				is_fork;
 	int					argc;
 	char				**args;
 	char				*cmd_path;

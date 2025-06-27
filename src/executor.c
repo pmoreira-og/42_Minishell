@@ -6,7 +6,7 @@
 /*   By: pmoreira <pmoreira@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/13 13:45:33 by ernda-si          #+#    #+#             */
-/*   Updated: 2025/06/26 11:37:04 by pmoreira         ###   ########.fr       */
+/*   Updated: 2025/06/27 15:30:13 by pmoreira         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,14 +31,21 @@ static int	redir_built_ins(t_cmd *cmd, t_hell *shell)
 	return (0);
 }
 
-static void	child_and_pipe(t_cmd *cmd, int *prev_pipe, int *pipes, t_hell *shell)
+static void	child_and_pipe(t_cmd *cmd, int *prev_pipe, int *pipes, \
+	t_hell *shell)
 {
 	stop_parent_signals();
+	if (cmd->is_builtin && (!ft_strcmp(cmd->args[0], "exit")) \
+		&& !cmd->is_piped && !cmd->prev)
+		return (execute_child(cmd, *prev_pipe, &pipes[0], shell));
 	cmd->pid = fork();
 	if (cmd->pid == -1)
 		(perror("fork"), mini_cleaner(NULL, shell, EXIT_FAILURE));
 	else if (cmd->pid == 0)
+	{
+		cmd->is_fork = TRUE;
 		execute_child(cmd, *prev_pipe, &pipes[0], shell);
+	}
 	if (*prev_pipe != -1)
 		close(*prev_pipe);
 	if (cmd->is_piped)

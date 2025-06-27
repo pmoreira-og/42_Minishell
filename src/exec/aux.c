@@ -6,7 +6,7 @@
 /*   By: pmoreira <pmoreira@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/25 14:50:57 by pmoreira          #+#    #+#             */
-/*   Updated: 2025/06/26 12:30:34 by pmoreira         ###   ########.fr       */
+/*   Updated: 2025/06/27 12:01:41 by pmoreira         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -117,9 +117,9 @@ int	update_fds(t_cmd *cmd)
 			out = temp;
 		temp = temp->next;
 	}
-	if (in)
+	if (in && in->fd != -1)
 		cmd->fd_in = dup(in->fd);
-	if (out)
+	if (out && out->fd != -1)
 		cmd->fd_out = dup(out->fd);
 	return (1);
 }

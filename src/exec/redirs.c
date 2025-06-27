@@ -6,7 +6,7 @@
 /*   By: pmoreira <pmoreira@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/17 13:18:28 by pmoreira          #+#    #+#             */
-/*   Updated: 2025/06/26 11:41:52 by pmoreira         ###   ########.fr       */
+/*   Updated: 2025/06/27 11:57:53 by pmoreira         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,7 +46,7 @@ void	do_heredoc(t_redirection *redir)
 		mini_cleaner(NULL, get_hell(NULL), EXIT_FAILURE);
 }
 
-static void	open_file(t_redirection *redir, t_type	type)
+static void	open_file(t_cmd *cmd, t_redirection *redir, t_type	type)
 {
 	int	flags;
 
@@ -62,7 +62,10 @@ static void	open_file(t_redirection *redir, t_type	type)
 	{
 		ft_printf_fd(2, "minishell: %s: ", redir->filename);
 		perror(NULL);
-		mini_cleaner(NULL, get_hell(NULL), EXIT_FAILURE);
+		if (cmd->is_fork)
+			mini_cleaner(NULL, get_hell(NULL), EXIT_FAILURE);
+		else
+			get_hell(NULL)->status = 1;
 	}
 }
 
@@ -74,11 +77,11 @@ void	handle_redirections(t_cmd *cmd)
 	while (temp)
 	{
 		if (temp->type == OUTFILE)
-			open_file(temp, OUTFILE);
+			open_file(cmd, temp, OUTFILE);
 		if (temp->type == OUTFILE_APPEND)
-			open_file(temp, OUTFILE_APPEND);
+			open_file(cmd, temp, OUTFILE_APPEND);
 		if (temp->type == INFILE)
-			open_file(temp, INFILE);
+			open_file(cmd, temp, INFILE);
 		temp = temp->next;
 	}
 	update_fds(cmd);

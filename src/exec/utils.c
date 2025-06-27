@@ -6,7 +6,7 @@
 /*   By: pmoreira <pmoreira@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/18 13:57:09 by pmoreira          #+#    #+#             */
-/*   Updated: 2025/06/26 11:42:54 by pmoreira         ###   ########.fr       */
+/*   Updated: 2025/06/27 15:29:15 by pmoreira         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,11 +14,9 @@
 
 void	wait_for_all(t_cmd *cmd_list, t_hell *shell)
 {
-	// int		status;
 	t_cmd	*tmp;
 
 	tmp = cmd_list;
-	// status = 0;
 	(void) shell;
 	while (tmp)
 	{

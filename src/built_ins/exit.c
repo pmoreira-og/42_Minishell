@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   exit.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ernda-si <ernda-si@student.42.fr>          +#+  +:+       +#+        */
+/*   By: pmoreira <pmoreira@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/25 12:15:44 by pmoreira          #+#    #+#             */
-/*   Updated: 2025/06/25 16:18:22 by ernda-si         ###   ########.fr       */
+/*   Updated: 2025/06/27 15:28:47 by pmoreira         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,7 @@
 static int	num_limit(char *str)
 {
 	int	is_neg;
-	
+
 	is_neg = (str[0] == '-');
 	if (str[0] == '+' || str[0] == '-')
 		str++;
@@ -67,17 +67,17 @@ int	first_check(char *arg)
 int	mini_exit(t_hell *hell, t_cmd *cmd)
 {
 	if (!cmd->prev)
-		ft_printf_fd(1, "exit\n");
+		ft_printf_fd(2, "exit\n");
 	if (cmd->argc == 1)
 		mini_cleaner(NULL, hell, hell->status);
 	if (!cmd->prev && cmd->argc > 2)
-		return (ft_printf_fd(1, "minishell: exit: too many arguments\n"), 1);
+		return (ft_printf_fd(2, "minishell: exit: too many arguments\n"), 1);
 	if (!cmd->prev && !first_check(cmd->args[1]))
 	{
-		ft_printf_fd(1, "minishell: exit: %s: numeric argument required\n", \
+		ft_printf_fd(2, "minishell: exit: %s: numeric argument required\n", \
 			cmd->args[1]);
 		mini_cleaner(NULL, hell, 2);
 	}
 	mini_cleaner(NULL, hell, (unsigned char)ft_strtol(cmd->args[1], NULL, 10));
-	return 1;
+	return (1);
 }

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cd.c                                               :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ernda-si <ernda-si@student.42.fr>          +#+  +:+       +#+        */
+/*   By: pmoreira <pmoreira@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/23 12:12:04 by ernda-si          #+#    #+#             */
-/*   Updated: 2025/06/25 14:36:04 by ernda-si         ###   ########.fr       */
+/*   Updated: 2025/06/27 11:18:05 by pmoreira         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -64,20 +64,19 @@ int	mini_cd(t_cmd *cmd, t_env **env)
 	if (!c_path)
 		return (perror("minishell: cd"), 1);
 	if (cmd->argc > 2)
-		return (printf("minishell: cd: too many arguments\n"), \
+		return (ft_printf_fd(2, "minishell: cd: too many arguments\n"), \
 			free(c_path), 1);
 	n_path = path_handler(cmd->args[1]);
 	if (!n_path)
 		return (printf("minishell: cd: HOME not set\n"), \
 			free(c_path), 1);
 	if (!check_dir(n_path))
-		return (ft_printf_fd(1, \
-			"minishell: cd: %s: No such file or directory\n", n_path), free(n_path), 1);
+		return (ft_printf_fd(2, \
+			"minishell: cd: %s: No such file or directory\n", n_path), \
+			free(n_path), free(c_path), 1);
 	else if (chdir(n_path) == -1)
 		return (perror("minishell: cd"), 1);
 	else
 		normi_handler(c_path, env);
-	free(n_path);
-	free(c_path);
-	return (0);
+	return (free(n_path), free(c_path), 0);
 }
