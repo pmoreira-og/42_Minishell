@@ -6,7 +6,7 @@
 /*   By: pmoreira <pmoreira@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/09 11:00:56 by pmoreira          #+#    #+#             */
-/*   Updated: 2025/06/11 10:56:51 by pmoreira         ###   ########.fr       */
+/*   Updated: 2025/06/27 15:55:13 by pmoreira         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -83,4 +83,15 @@ int	check_redirs(t_token *tok)
 	if (!check_outfile(tok))
 		return (0);
 	return (1);
+}
+
+int	check_point(t_hell *data)
+{
+	if (data->input && !ft_strcmp(data->input, "."))
+	{
+		ft_printf_fd(2, "minishell: .: filename argument required\n");
+		data->status = 2;
+		return (1);
+	}
+	return (0);
 }

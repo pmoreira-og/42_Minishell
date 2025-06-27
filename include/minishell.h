@@ -6,7 +6,7 @@
 /*   By: pmoreira <pmoreira@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/24 14:48:17 by pmoreira          #+#    #+#             */
-/*   Updated: 2025/06/26 12:33:54 by pmoreira         ###   ########.fr       */
+/*   Updated: 2025/06/27 15:55:33 by pmoreira         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -111,6 +111,7 @@ t_bool	check_ambiguous(t_token *tok);
 void	error_ambiguous(char *s);
 void	make_backup(t_token *tok);
 void	update_prev_cmd(t_cmd *cmd);
+int		check_point(t_hell *data);
 
 // miscs:
 void	printascii(void);
