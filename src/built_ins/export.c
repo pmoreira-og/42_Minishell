@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   export.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ernda-si <ernda-si@student.42.fr>          +#+  +:+       +#+        */
+/*   By: pmoreira <pmoreira@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/13 14:07:18 by ernda-si          #+#    #+#             */
-/*   Updated: 2025/06/25 14:26:03 by ernda-si         ###   ########.fr       */
+/*   Updated: 2025/06/27 15:35:53 by pmoreira         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -76,7 +76,7 @@ static void	print_export(t_export *export)
 		else
 		{
 			ft_printf_fd(1, "declare -x %s=", temp->var);
-			ft_printf_fd(1, "%s\n", temp->value);
+			ft_printf_fd(1, "\"%s\"\n", temp->value);
 		}
 		temp = temp->next;
 	}

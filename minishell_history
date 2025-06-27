@@ -111,3 +111,16 @@ exit > outfile
 ..
 ..
 ..
+export
+export
+export a
+export
+export a=
+export
+export a=a
+export
+export a
+export
+export a=
+export
+cl
