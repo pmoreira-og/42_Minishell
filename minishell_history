@@ -145,3 +145,34 @@ rm -rf test
 mkdir test
 mkdir test/t
 rm -rf test
+ls
+clear
+dasdada
+adada
+aad
+ada
+..
+clear
+cat | cat | ls
+echo $?
+export
+ls
+.
+..
+echo $?
+export
+export a
+export
+export a='banana split'
+echo ola > $a
+echo $?
+mkdir test
+mkdir test/t
+cd test/t/
+pwd
+pwd
+mkdir test/t
+mkdir test
+mkdir test/t
+rm -rf test
+ls

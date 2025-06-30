@@ -11,7 +11,7 @@ NAME = minishell
 
 # === VALGRIND FLAGS ===
 VAL = valgrind --leak-check=full --show-leak-kinds=all --track-fds=yes \
-	--track-origins=yes --trace-children=yes --suppressions=readline.supp
+	--track-origins=yes  --suppressions=readline.supp #--trace-children=yes
 
 # === COMPILATION ===
 CC = cc
