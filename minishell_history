@@ -176,3 +176,166 @@ mkdir test
 mkdir test/t
 rm -rf test
 ls
+clear
+a
+ls
+pwd
+mkdir test
+cd test
+mkdir test2
+ls
+clear
+ls
+ls
+pwd
+pwd
+env | grep PWD
+exit
+clear
+mkdir test
+cd test
+mkdir test2
+cd test2
+clear
+pwd
+env | grep PWD
+env | grep PWD
+pwd
+env | grep PWD
+cd ..
+pwd
+env | grep PWD
+cd ..
+cd ..
+cd ..
+env | grep PWD
+pwd
+cd .
+pwd
+env | grep PWD
+cd
+clear
+cd
+cd ../../..
+clear
+pwd
+clear
+exit
+clear
+mkdir test
+cd test
+mkdir test2
+cd test2/
+clear
+cd ..
+cd test/test32
+cd test/test2
+pwd
+clear
+clear
+pwd
+cd
+pwd
+clear
+exit
+mkdir test
+cd test
+mkdir test2
+cd test2
+clear
+pwd
+clear
+clear
+ls
+pwd
+cd 
+exit
+mkdir test
+cd test
+mkdir test2
+pwd
+cd test2/
+pwd
+cd
+pwd
+exit
+mkdir test
+cd test
+mkdir test2
+cd test2
+clear
+pwd
+cd .
+pwd
+env | grep PWD
+cd ..
+env | grep PWD
+cd ..
+env | grep PWD
+unset 
+cd
+ls
+clear
+pwd
+unset HOME
+pwd
+cd
+pwd
+unset PATH
+ls
+clear
+exit
+mkdir test
+cd test
+mkdir test2
+cd test2
+pwd
+cd ..
+pwd
+exit
+clear
+clear
+exit
+clear
+ls
+mkdir test
+cd test
+mkdir test2
+cd test2/
+clear
+clear
+ls
+pwd
+pwd
+cd ..
+pwd
+cd..
+cd ..
+pwd
+cd test/
+pwd
+ls
+cd test2/
+clear
+pwd
+pwd
+cd ..
+pwd
+cd ..
+pwd
+clear
+exit
+clear
+mkdir test/test2
+mkdir test/
+mkdir test/test2
+cd test/test2/
+clear
+ls
+pwd
+cd ..
+pwd
+cd ..
+pwd
+ext
+exit
