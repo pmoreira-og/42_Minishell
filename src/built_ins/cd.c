@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cd.c                                               :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ernda-si <ernda-si@student.42.fr>          +#+  +:+       +#+        */
+/*   By: pmoreira <pmoreira@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/23 12:12:04 by ernda-si          #+#    #+#             */
-/*   Updated: 2025/06/30 14:29:50 by ernda-si         ###   ########.fr       */
+/*   Updated: 2025/07/02 09:58:08 by pmoreira         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -61,8 +61,6 @@ int	mini_cd(t_cmd *cmd, t_env **env)
 	char	*n_path;
 
 	c_path = getcwd(NULL, 0);
-	// if (!c_path)
-		// return (perror("minishell: cd1"), 1);
 	if (cmd->argc > 2)
 		return (ft_printf_fd(2, "minishell: cd: too many arguments\n"), \
 			free(c_path), 1);

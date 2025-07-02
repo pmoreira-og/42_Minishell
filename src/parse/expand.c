@@ -6,7 +6,7 @@
 /*   By: pmoreira <pmoreira@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/07 14:40:54 by pmoreira          #+#    #+#             */
-/*   Updated: 2025/06/24 12:39:15 by pmoreira         ###   ########.fr       */
+/*   Updated: 2025/07/02 09:49:14 by pmoreira         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,7 +43,7 @@ void	concat_expand(char **result, char **new_str, t_hell *hell)
 	else
 		*result = ft_expand(*result, (get_env(&hell->env, *new_str)), new_str);
 	if (!*result)
-		return (merror("concat_expand:expand2"));
+		return (merror("concat_expand:expand2"), free(*new_str));
 }
 
 char	*expand_vars(char *s, char *end, t_hell *hell)

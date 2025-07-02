@@ -339,3 +339,45 @@ cd ..
 pwd
 ext
 exit
+mkdir test
+mkdir test/t
+rm -rf test/t
+ls
+mkdir test/t
+rm -rf test
+cd test/t/
+pwd
+cd ..
+pwd
+cd ..
+pwd
+cd test/t
+pwd
+clear
+pwd
+cd 
+pwd
+cd test/t
+cd $OLDPWD
+echo $OLDPWD
+env
+echo $var
+export
+export | grep PWD
+echo PWD
+export | grep PWD
+export | grep PWD
+echo $OLDPWD
+export a
+export
+echo $a
+export | grep a
+cd test/t
+cd 
+cd $OLDPWD
+export | grep PWD
+cd test/t
+pwd
+cd
+cd $OLDPWD
+export | grep PWD
