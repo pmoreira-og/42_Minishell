@@ -25,4 +25,42 @@ export | grep PWD
 env | grep PWD
 cd ..
 env | grep PWD
-export | grep PWD
+export | grep PWDcat << a << b << c
+cat << a << b << c > out
+clear
+cat /dev/urandom | sleep 3 | sleep 3
+cat /dev/urandom | sleep 3 | sleep 3 | sleep 5
+cat /dev/urandom | sleep 5 | sleep 3 | sleep 3
+cat /dev/urandom | sleep 10 | sleep 3 | sleep 3
+cat /dev/urandom | sleep 3 | sleep 3 | sleep 3
+cat /dev/urandom | head -1
+<Makefile cat src/built_ins/cd.c 
+<Makefile cat src/built_ins/cd.c | < Makefile cat
+<Makefile cat src/built_ins/cd.c | < Makefile cat > outfile | cat
+rm outfile 
+<Makefile cat src/built_ins/cd.c | < Makefile cat > outfile | cat
+cat outfile 
+clear
+gst
+git status
+cat outfile 
+cd .. ..
+echo $?
+echo $?
+echo $?
+<Makefile cat src/built_ins/cd.c | < Makefile cat > outfile | cat
+chmod 000 outfile 
+<Makefile cat src/built_ins/cd.c | < Makefile cat > outfile | cat
+echo $?
+echo $?
+<Makefile cat src/built_ins/cd.c | < Makefile cat > outfile
+echo $?
+<Makefile cat src/built_ins/cd.c | < Makefile cat > outfile
+<Makefile cat src/built_ins/cd.c | < Makefile cat > outfile
+<Makefile cat src/built_ins/cd.c | < Makefile cat > outfile
+<Makefile cat src/built_ins/cd.c | < Makefile cat > outfile
+echo $?
+<Makefile cat src/built_ins/cd.c | < Makefile cat > outfile
+<Makefile cat src/built_ins/cd.c | < Makefile cat > outfile
+echo $?
+<Makefile cat src/built_ins/cd.c | < Makefile cat > outfile

@@ -6,7 +6,7 @@
 /*   By: pmoreira <pmoreira@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/26 12:23:53 by pmoreira          #+#    #+#             */
-/*   Updated: 2025/06/06 21:07:36 by pmoreira         ###   ########.fr       */
+/*   Updated: 2025/07/02 11:49:35 by pmoreira         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -109,10 +109,10 @@ char	**ft_params(const char *start)
 	size = 0;
 	ft_count(start, &size);
 	if (size == 0)
-		return (merror("ft_params:matrix"), NULL);
+		return (NULL);
 	matrix = (char **)malloc(sizeof(char *) * (size + 1));
 	if (!matrix)
-		return (NULL);
+		return (merror("ft_params:matrix"), NULL);
 	matrix[size] = NULL;
 	index = 0;
 	if (!proc_str(matrix, start, &index))

@@ -91,7 +91,10 @@ re: fclean all
 val: re
 	$(VAL) ./minishell
 
+banner: re
+	$(VAL) ./minishell -b
+
 debug: re
 	$(VAL) ./minishell -d
 
-.PHONY: all clean fclean re val debug
+.PHONY: all clean fclean re val banner debug
