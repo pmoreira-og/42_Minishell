@@ -6,7 +6,7 @@
 /*   By: pmoreira <pmoreira@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/24 14:48:17 by pmoreira          #+#    #+#             */
-/*   Updated: 2025/06/27 15:55:33 by pmoreira         ###   ########.fr       */
+/*   Updated: 2025/07/03 13:55:42 by pmoreira         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,9 +39,6 @@
 # define RED "\001\033[31m\002"
 # define RESET "\001\033[0m\002"
 # define ORANGE "\033[1;38;5;214m"
-
-// # define ft_calloc(x, y) NULL
-// # define malloc(x) NULL
 
 // execution:
 void	execute_pipeline(t_hell *shell);
