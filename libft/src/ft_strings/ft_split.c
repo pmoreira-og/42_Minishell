@@ -6,15 +6,11 @@
 /*   By: pmoreira <pmoreira@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/04 15:38:44 by pmoreira          #+#    #+#             */
-/*   Updated: 2025/02/04 14:18:39 by pmoreira         ###   ########.fr       */
+/*   Updated: 2025/07/04 10:40:54 by pmoreira         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
-
-static int		ft_add_word(char **matrix, const char *start, const char *end);
-static char		**ft_free(char **matrix, int index);
-static char		**ft_alloc_matrix(char const *s, char c);
 
 static char	**ft_alloc_matrix(char const *s, char c)
 {
@@ -37,7 +33,7 @@ static char	**ft_alloc_matrix(char const *s, char c)
 	return (alloc);
 }
 
-static char	**ft_free(char **matrix, int index)
+char	**ft_free(char **matrix, int index)
 {
 	while (index > 0)
 		free(matrix[--index]);
