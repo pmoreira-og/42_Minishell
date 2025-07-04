@@ -6,7 +6,7 @@
 /*   By: pmoreira <pmoreira@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/24 14:48:17 by pmoreira          #+#    #+#             */
-/*   Updated: 2025/07/03 13:55:42 by pmoreira         ###   ########.fr       */
+/*   Updated: 2025/07/04 11:43:10 by pmoreira         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -85,7 +85,7 @@ void	init_cmds(t_hell *data);
 void	concat_expand(char **result, char **new_str, t_hell *hell);
 int		valid_expand(int c);
 int		count_spaces(char *s);
-void	pre_process_input(char **input);
+int		pre_process_input(char **input);
 char	*expand_heredoc(char *s, char *end, t_hell *hell);
 int		count_expand_zones(char *input);
 char	*remove_zones(char **ptr, char *input);

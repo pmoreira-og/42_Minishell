@@ -6,7 +6,7 @@
 /*   By: pmoreira <pmoreira@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/14 14:59:37 by pmoreira          #+#    #+#             */
-/*   Updated: 2025/07/02 12:05:16 by pmoreira         ###   ########.fr       */
+/*   Updated: 2025/07/04 11:41:39 by pmoreira         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -97,7 +97,8 @@ void	parser(char **input, t_hell *data)
 	}
 	if (!ft_strcmp(*input, "") || !quotes_check(*input) || check_point(data))
 		return ;
-	pre_process_input(input);
+	if (!pre_process_input(input))
+		mini_cleaner(NULL, data, 1);
 	tokenize(*input, data);
 	make_backup(data->tokens);
 	if (data->tokens && !valid_input(data->tokens, data))
