@@ -6,7 +6,7 @@
 /*   By: pmoreira <pmoreira@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/25 12:17:13 by pmoreira          #+#    #+#             */
-/*   Updated: 2025/07/04 11:32:00 by pmoreira         ###   ########.fr       */
+/*   Updated: 2025/07/04 11:53:36 by pmoreira         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -104,7 +104,7 @@ void	init_env(t_env **env, char **envp)
 	int		i;
 
 	i = 0;
-	while (envp[i])
+	while (envp && envp[i])
 	{
 		matrix = ft_split_once(envp[i], '=');
 		if (!matrix || !matrix[0] || !matrix[1])

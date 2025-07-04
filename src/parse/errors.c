@@ -6,7 +6,7 @@
 /*   By: pmoreira <pmoreira@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/22 15:33:31 by pmoreira          #+#    #+#             */
-/*   Updated: 2025/06/20 16:19:12 by pmoreira         ###   ########.fr       */
+/*   Updated: 2025/07/04 11:58:51 by pmoreira         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -68,8 +68,13 @@ char	*syntax_error_check(char *input)
 /// @param s Name of the function that malloc error has occured.
 void	merror(char *s)
 {
+	t_hell	*data;
+
+	data = get_hell(NULL);
 	if (s)
 		ft_printf_fd(2, "Malloc:%s\n", s);
+	if (data)
+		data->fmalloc = TRUE;
 }
 
 void	parser_error(char *error_msg, int fd)

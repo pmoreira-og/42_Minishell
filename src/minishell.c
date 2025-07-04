@@ -6,7 +6,7 @@
 /*   By: pmoreira <pmoreira@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/23 12:17:06 by ernda-si          #+#    #+#             */
-/*   Updated: 2025/06/24 11:59:04 by pmoreira         ###   ########.fr       */
+/*   Updated: 2025/07/04 11:59:53 by pmoreira         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -63,6 +63,8 @@ int	main(int ac, char **av, char **envp)
 		return (1);
 	while (1)
 	{
+		if (hell->fmalloc)
+			mini_cleaner(NULL, hell, 1);
 		hell->input = readline(RED"Minishell>"RESET);
 		hell->lines++;
 		save_history(hell->input, hell);

@@ -6,7 +6,7 @@
 /*   By: pmoreira <pmoreira@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/13 14:04:09 by ernda-si          #+#    #+#             */
-/*   Updated: 2025/06/23 14:13:16 by pmoreira         ###   ########.fr       */
+/*   Updated: 2025/07/04 11:53:56 by pmoreira         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -61,7 +61,7 @@ void	init_export(t_export **export, char **envp)
 	int		i;
 
 	i = 0;
-	while (envp[i])
+	while (envp && envp[i])
 	{
 		matrix = ft_split_once(envp[i], '=');
 		if (!matrix || !matrix[0] || !matrix[1])
