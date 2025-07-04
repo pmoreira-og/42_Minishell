@@ -6,7 +6,7 @@
 /*   By: pmoreira <pmoreira@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/22 15:21:45 by pmoreira          #+#    #+#             */
-/*   Updated: 2025/06/27 15:47:10 by pmoreira         ###   ########.fr       */
+/*   Updated: 2025/07/04 12:31:32 by pmoreira         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -82,7 +82,7 @@ char	*get_full_path(char *cmd, char **envp)
 			return (ft_strdup(cmd));
 		return (NULL);
 	}
-	path = ft_getenv(envp, "PATH", ':');
+	path = ft_getenv(envp, "PATH", ':', &get_hell(NULL)->fmalloc);
 	if (!path)
 		return (NULL);
 	i = -1;

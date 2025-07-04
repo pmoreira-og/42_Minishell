@@ -6,7 +6,7 @@
 /*   By: pmoreira <pmoreira@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/25 12:17:13 by pmoreira          #+#    #+#             */
-/*   Updated: 2025/07/04 11:53:36 by pmoreira         ###   ########.fr       */
+/*   Updated: 2025/07/04 12:40:17 by pmoreira         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -104,6 +104,7 @@ void	init_env(t_env **env, char **envp)
 	int		i;
 
 	i = 0;
+	matrix = NULL;
 	while (envp && envp[i])
 	{
 		matrix = ft_split_once(envp[i], '=');
@@ -115,7 +116,10 @@ void	init_env(t_env **env, char **envp)
 		}
 		ft_setenv(env, matrix[0], matrix[1]);
 		ft_clean_matrix(matrix);
+		matrix = NULL;
 		i++;
 	}
+	if (get_hell(NULL)->fmalloc)
+		mini_cleaner(matrix, get_hell(NULL), 1);
 	return ;
 }

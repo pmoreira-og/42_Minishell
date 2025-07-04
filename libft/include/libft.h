@@ -6,7 +6,7 @@
 /*   By: pmoreira <pmoreira@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/28 11:59:03 by pmoreira          #+#    #+#             */
-/*   Updated: 2025/07/04 11:11:09 by pmoreira         ###   ########.fr       */
+/*   Updated: 2025/07/04 13:24:24 by pmoreira         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -70,7 +70,7 @@ char		*ft_itoa(int n);
 int			count_words(const char *str, char c);
 char		*ft_strmapi(char const *s, char (*f)(unsigned int, char));
 char		**ft_split_once(char *str, char d);
-char		**ft_getenv(char **envp, char *target, char split);
+char		**ft_getenv(char **envp, char *target, char split, int *flag);
 char		**ft_free(char **matrix, int index);
 
 #endif

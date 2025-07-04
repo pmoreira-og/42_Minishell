@@ -64,3 +64,208 @@ echo $?
 <Makefile cat src/built_ins/cd.c | < Makefile cat > outfile
 echo $?
 <Makefile cat src/built_ins/cd.c | < Makefile cat > outfile
+ola
+banana spit
+echo
+echo ola
+echo ola > redtir
+cat redtir 
+rm redtir 
+exit 123
+dasd
+wqeqweqweqe
+7556567756
+vbnbvnvnvnvbnvvnbvnvbnv
+tryrtytrytryrty
+asdads
+dasdasd
+oadsadsadsad
+echo
+gst
+echo
+echo ola
+asdsad
+adsadaedee
+saodsadadas
+adsadad
+dasda
+dad
+assadada
+s
+dadsaa
+dadsad
+dsa
+sa
+d
+a
+echo
+echo ola
+asdsadas
+asdad
+adsasad
+asdadasd
+balada
+asdsadasdasd
+asdadada
+asdadasdadsadasd
+qwewqeqwe
+dsadsada
+dasdsad
+asdads
+sadsadsa
+adsadsa
+sa
+adadadsadsa
+dasdas
+sadsadadsa
+asdasdas
+asdasd
+asdsadadad
+dasda
+dadasda
+asdasda
+dasd
+dasda
+dasdasd
+dasdadadsadawdadw
+dadadsadazzcxz
+asdadads
+adsasda
+adsasda
+asdsad
+asdasda
+echo ola > outfile
+cat outfile 
+chmod 755 outfile 
+echo ola > outfile
+chmod 755 outfile 
+cat outfile 
+cat |cat|ls
+chmod 000 outfile 
+cat outfile 
+echo $?
+./outfile 
+..
+chmod 777 outfile 
+./outfile 
+ls
+echo -nnnn a
+echo -nnann a
+echo -nnnn -n a
+ls
+mkdir t1 t2
+vim t1/a
+vim t2/a
+ps
+ls
+export PATH
+ls
+echo $PATH
+chmod +x t1/a
+chmod +x t12/a
+chmod +x t2/a
+export PATH=t1:t2
+a
+export PATH=t2:t1
+a
+a
+ls
+/bin/ls
+export _42="t1/a pagman oms"
+vim t1/a 
+/bin/vim t1/a 
+export _42="t1/a pagman oms"
+_42
+$_42
+ls
+ls
+ls
+mkdir pagman
+cd pagmn
+cd pagman
+pwd
+rm -rf ../pagman/
+ls
+pwd
+cd ..
+ls
+mkdir pamgan
+cd pamgan/
+rm -rf ../pamgan/
+./min
+../minishell
+sssl
+s
+l
+ls
+ls
+ls
+ls
+ls
+./minishell
+ls
+lsl
+ls
+echo 43755557237458235325
+exit 43755557237458235325
+exit 4375555
+unset PATH
+ls
+ls
+ls
+export PAT
+export PATH
+export PATH=
+export PATH=2
+ls
+ls
+echo "$PDW"
+echo "$PWD"
+echo "'$PWD'"
+echo '"$PWD"'
+echo ""''''''$USEr
+echo ""''''''$USER
+echo ""'''''''$USER'
+echo """'''''''$USER'"
+ls
+ls
+neofetch
+curl parrot.live > a.txt
+cat a.txt 
+ls
+lsblk >> a.txt
+cat a.txt 
+clear
+ls
+ls
+ls
+ls
+ls
+ls
+ls
+true && false
+true  || false
+true
+echo $?
+false
+echo $?
+expr $? + $?
+expr $? + $?
+expr $? + $?
+expr $? + $?
+expr $? + $?
+ls
+ls -lah
+env
+export
+ls
+mkdir pagman
+cd pagman/
+s
+pwd
+rm -rf ../pagman/
+ls
+pwd
+./min
+./minishell
+../minishell

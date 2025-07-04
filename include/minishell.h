@@ -6,7 +6,7 @@
 /*   By: pmoreira <pmoreira@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/24 14:48:17 by pmoreira          #+#    #+#             */
-/*   Updated: 2025/07/04 11:43:10 by pmoreira         ###   ########.fr       */
+/*   Updated: 2025/07/04 12:29:45 by pmoreira         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -152,7 +152,6 @@ char	**copy_env(char **envp);
 t_hell	*get_hell(t_hell *hell);
 void	signal_handler(t_hell *hell, int flag);
 void	stop_parent_signals(void);
-char	**ft_getenv(char **envp, char *target, char split);
 t_bool	ft_dup(int dst, int src);
 
 // Aux cleaners

@@ -6,7 +6,7 @@
 /*   By: pmoreira <pmoreira@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/24 15:03:58 by pmoreira          #+#    #+#             */
-/*   Updated: 2025/07/04 11:57:46 by pmoreira         ###   ########.fr       */
+/*   Updated: 2025/07/04 12:30:31 by pmoreira         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,7 +56,7 @@ typedef struct s_hell
 	char			*input;
 	int				status;
 	t_bool			debug;
-	t_bool			fmalloc;
+	int				fmalloc;
 	int				cmd_count;
 	int				lines;
 	int				hist_fd;
