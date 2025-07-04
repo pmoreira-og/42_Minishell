@@ -6,13 +6,13 @@
 /*   By: pmoreira <pmoreira@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/26 12:23:53 by pmoreira          #+#    #+#             */
-/*   Updated: 2025/07/02 11:49:35 by pmoreira         ###   ########.fr       */
+/*   Updated: 2025/07/04 10:54:28 by pmoreira         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minishell.h"
 
-char	**ft_free(char **matrix, int index)
+static char	**ft_clear(char **matrix, int index)
 {
 	while (index > 0)
 		free(matrix[--index]);
@@ -84,7 +84,7 @@ static int	proc_str(char **matrix, const char *s, int *index)
 			if (s > start)
 			{
 				if (!ft_add_word(&matrix[(*index)++], start, s))
-					return (ft_free(matrix, *index), 0);
+					return (ft_clear(matrix, *index), 0);
 			}
 			start = s + 1;
 		}
@@ -93,7 +93,7 @@ static int	proc_str(char **matrix, const char *s, int *index)
 	if (s > start)
 	{
 		if (!ft_add_word(&matrix[(*index)++], start, s))
-			return (ft_free(matrix, *index), 0);
+			return (ft_clear(matrix, *index), 0);
 	}
 	return (1);
 }
@@ -110,10 +110,9 @@ char	**ft_params(const char *start)
 	ft_count(start, &size);
 	if (size == 0)
 		return (NULL);
-	matrix = (char **)malloc(sizeof(char *) * (size + 1));
+	matrix = ft_calloc(sizeof(char *), (size + 1));
 	if (!matrix)
 		return (merror("ft_params:matrix"), NULL);
-	matrix[size] = NULL;
 	index = 0;
 	if (!proc_str(matrix, start, &index))
 		return (merror("ft_params:words"), NULL);

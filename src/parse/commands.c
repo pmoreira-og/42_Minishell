@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   commands.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ernda-si <ernda-si@student.42.fr>          +#+  +:+       +#+        */
+/*   By: pmoreira <pmoreira@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/20 11:36:02 by pmoreira          #+#    #+#             */
-/*   Updated: 2025/06/25 15:53:39 by ernda-si         ###   ########.fr       */
+/*   Updated: 2025/07/04 10:34:15 by pmoreira         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -89,10 +89,10 @@ int	fill_cmd(t_cmd **cmd, t_token *start, t_hell *data)
 	if ((*cmd)->args[0])
 		(*cmd)->is_builtin = is_builtin((*cmd)->args[0]);
 	if (!init_redirs(cmd, start))
-		return (0);
+		return (delete_cmd(*cmd), 0);
 	(*cmd)->envp = copy_env(data->envp);
 	if (!(*cmd)->envp)
-		return (0);
+		return (delete_cmd(*cmd), 0);
 	if (!(*cmd)->is_builtin)
 		(*cmd)->cmd_path = get_full_path((*cmd)->args[0], (*cmd)->envp);
 	(*cmd)->fd_in = STDIN_FILENO;
@@ -116,9 +116,9 @@ void	init_cmds(t_hell *data)
 	{
 		cmd_tmp = ft_calloc(1, sizeof(t_cmd));
 		if (!cmd_tmp)
-			return (merror("init_cmds:struct"), armageddon(data));
+			return (merror("init_cmds:struct"), mini_cleaner(NULL, data, 1));
 		if (!fill_cmd(&cmd_tmp, temp, data))
-			return (merror("init_cmds:fill_cmd"), armageddon(data));
+			return (merror("init_cmds:fill_cmd"), mini_cleaner(NULL, data, 1));
 		command_size(temp, &temp, &data->cmd_count, NULL);
 		if (!data->cmd)
 			data->cmd = cmd_tmp;
