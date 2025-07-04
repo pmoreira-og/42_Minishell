@@ -6,7 +6,7 @@
 /*   By: pmoreira <pmoreira@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/25 12:17:13 by pmoreira          #+#    #+#             */
-/*   Updated: 2025/06/17 13:23:56 by pmoreira         ###   ########.fr       */
+/*   Updated: 2025/07/04 11:32:00 by pmoreira         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,11 +57,30 @@ void	update_env(t_hell *shell)
 	}
 }
 
+int	alloc_node(t_env **new, char *var, char *value)
+{
+	*new = (t_env *)malloc(sizeof(t_env));
+	if (!*new)
+		return (merror("ft_setenv:*new"), 0);
+	(*new)->var = ft_strdup(var);
+	if (!(*new)->var)
+		return (merror("ft_setenv:(*new)->var"), free((*new)), 0);
+	(*new)->value = ft_strdup(value);
+	if (!(*new)->value)
+	{
+		merror("ft_setenv:(*new)->value");
+		return (free((*new)->var), free((*new)), 0);
+	}
+	return (1);
+}
+
 void	ft_setenv(t_env **env, char *var, char *value)
 {
 	t_env	*temp;
 	t_env	*new;
 
+	if (!env)
+		return ;
 	temp = *env;
 	while (temp)
 	{
@@ -73,9 +92,8 @@ void	ft_setenv(t_env **env, char *var, char *value)
 		}
 		temp = temp->next;
 	}
-	new = (t_env *)malloc(sizeof(t_env));
-	new->var = ft_strdup(var);
-	new->value = ft_strdup(value);
+	if (!alloc_node(&new, var, value))
+		return ;
 	new->next = *env;
 	*env = new;
 }
