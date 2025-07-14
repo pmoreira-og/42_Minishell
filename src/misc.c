@@ -6,7 +6,7 @@
 /*   By: pmoreira <pmoreira@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/23 12:11:56 by ernda-si          #+#    #+#             */
-/*   Updated: 2025/06/24 12:25:15 by pmoreira         ###   ########.fr       */
+/*   Updated: 2025/07/14 15:46:30 by pmoreira         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,21 +39,16 @@ int	get_history_fd(t_hell *cmd)
 
 void	load_history(t_hell *cmd)
 {
-	char		temp2[1024];
-	char		*temp;
-	int			size;
+	char	*temp;
 
 	if (cmd->hist_fd == -1)
 		return ;
-	ft_bzero(&temp2, 1024);
 	while (1)
 	{
 		temp = get_next_line(cmd->hist_fd);
 		if (!temp)
 			break ;
-		size = ft_strlen(temp);
-		ft_strlcpy(temp2, temp, size);
-		add_history(temp2);
+		add_history(temp);
 		free(temp);
 	}
 }
